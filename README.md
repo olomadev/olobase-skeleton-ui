@@ -1,2 +1,3 @@
-# Oloma Vue/Vuetify Framework
-Oloma-va Vue.js/Vuetify UI framework
+# Oloma Vuetify Framework
+
+Oloma Vuetify Admin
