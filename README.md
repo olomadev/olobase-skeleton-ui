@@ -1,3 +1,3 @@
-# Oloma Vuetify Framework
+# Oloma Vuetify Admin Framework
 
 Oloma Vuetify Admin
