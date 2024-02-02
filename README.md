@@ -1,3 +1,3 @@
-# Vuetify Admin Framework
+# Olobase Vuetify Skeleton
 
-Oloma Vuetify Admin.
+Oloma Vuetify Admin Skeleton.
