@@ -1,3 +1,3 @@
-# Olobase Vuetify Skeleton
+# Olobase UI Admin Skeleton
 
 Oloma Vuetify Admin Skeleton.
