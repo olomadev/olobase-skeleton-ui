@@ -19,7 +19,7 @@
     "js-cookie": "^3.0.5",
     "lodash": "4.17.21",
     "maska": "^2.1.10",
-    "olobase": "^1.2.5",
+    "olobase": "^1.2.7",
     "parse-domain": "^8.0.1",
     "portal-vue": "^3.0.0",
     "primevue": "^3.49.1",
