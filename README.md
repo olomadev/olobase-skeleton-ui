@@ -25,7 +25,9 @@ Install npm packages
 npm i 
 ```
 
-<a href="https://oloma.dev/olobase-docs/1.0/vuetify/environments.html" target="_blank">Configure environments</a>
+## Environments
+
+<a href="https://olobase.dev/docs/latest/ui/environments.html" target="_blank">https://olobase.dev/docs/latest/ui/environments.html</a>
 
 Start your local server
 
