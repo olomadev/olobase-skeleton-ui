@@ -1,6 +1,5 @@
 {
-  "name": "olobase-ui-demo",
-  "version": "1.0.0",
+  "name": "olobase-skeleton-ui",
   "private": true,
   "scripts": {
     "dev": "VITE_CJS_IGNORE_WARNING=true vite --host --mode dev",
@@ -49,7 +48,6 @@
     "vite-plugin-vuetify": "^2.0.1"
   },
   "workspaces": [
-    "packages/admin",
-    "app"
+    "packages/admin"
   ]
 }
