@@ -4,7 +4,7 @@
 Installation.
 
 ```sh
-git clone git@github.com:olomadev/olobase-skeleton-ui myproject
+git clone --branch 1.0 git@github.com:olomadev/olobase-skeleton-ui myproject
 ```
 
 Go to your project root
