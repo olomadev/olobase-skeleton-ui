@@ -76,10 +76,3 @@ npm run lint
 ### Customize configuration
 
 See [Configuration Reference](https://vitejs.dev/config/).
-
-### Upgrading Vue-Vuetify to Next Versions
-
-```
-npm remove vuetify
-npm install --save vuetify@3.4.9
-```
