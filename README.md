@@ -25,7 +25,7 @@ Install npm packages
 npm i 
 ```
 
-## Environments
+## Environments & Run
 
 <a href="https://olobase.dev/docs/latest/ui/environments.html" target="_blank">https://olobase.dev/docs/latest/ui/environments.html</a>
 
