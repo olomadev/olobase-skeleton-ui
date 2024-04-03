@@ -1,0 +1,457 @@
+{
+  "locale": {
+    "en": "English",
+    "tr": "Türkçe"
+  },
+  "titles": {
+    "demo": "Demo",
+    "home": "Home",
+    "login": "Login",
+    "users": "Users",
+    "roles": "Roles",
+    "bread crumb": "Bread Crumb",
+    "forgotten password": "Forgotten Password",
+    "avatars": "Avatars",
+    "auto complete": "Auto Completer",
+    "boolean": "Boolean",
+    "currency": "Currency",
+    "file": "File",
+    "number": "Number",
+    "radio": "Radio",
+    "rating": "Rating",
+    "richtext": "RichText",
+    "rich text": "RichText",
+    "select": "Select",
+    "text": "Text",
+    "tab": "Tab",
+    "date": "Date",
+    "dashboard": "Dashboard",
+    "components": "Components",
+    "companies": "Companies",
+    "permissions": "Permissions",
+    "jobtitles": "Job Titles",
+    "jobtitlelists": "Job Title Lists",
+    "account": "Account",
+    "password": "Password",
+    "employees": "Employees",
+    "employee grades": "Employee Grades",
+    "employee-grades": "Employee Grades",
+    "departments": "Departments",
+    "failedlogins": "Failed Logins",
+    "reset password": "Reset Password",
+    "rest api": "REST API"
+  },
+  "v": {
+    "text": {
+      "required": "This field is required"
+    },
+    "email": {
+      "required": "E-mail field is required",
+      "invalid": "Invalid e-mail address"
+    },
+    "string": {
+      "required": "This field is required",
+      "alpha": "This field can only contains alphabetic characters",
+      "minLength": "This field must be a minimum of {min} characters",
+      "maxLength": "This field must be a maximum of {max} characters"
+    },
+    "number": {
+      "required": "This field is required",
+      "integer": "This field must contains an integer value",
+      "numeric": "This field must contains a numeric value",
+      "decimal": "This field must contains a decimal value"
+    },
+    "password": {
+      "required": "Password field is required",
+      "sameAs": "Password confirmation must be same as new password"
+    },
+    "captcha": {
+      "invalid" : "You need to pass the security verification stage"
+    }
+  },
+  "form": {
+    "saved" : "Saved sucessfully"
+  },
+  "messages": {
+    "welcome" : "Welcome to demo application" 
+  },
+  "routes": {
+    "home": "Home",
+    "login": "Login",
+    "exchangeRates": "Exchange Rates",
+    "account": "Account",
+    "password": "Password",
+    "dashboard": "Dashboard",
+    "notFound": "Not found",
+    "forgotPassword": "Forgotten Password",
+    "resetPassword": "Reset Password"
+  },
+  "error": {
+    "404": "Page not found",
+    "fileNotFound": "File not found"
+  },
+  "datatable": {
+    "search": "Search",
+    "default": "Default",
+    "selected_items": "1 item selected | {count} items selected",
+    "no_data_available" : "No data available",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "dataiterator": {
+    "displaying_page": "Displaying page {page} of {pageCount}",
+  },
+  "auth": {
+    "username": "E-mail Address",
+    "password": "Password",
+    "remember": "Remember Me",
+    "signIn": "Login",
+    "resetMyPassword": "Reset My Password",
+    "newPassword": "New Password",
+    "newPasswordConfirm": "New Password Confirmation",
+    "changeMyPassword": "Change My Password",
+    "setNewPassword": "Set your new password",
+    "passwordResetWrongCodeTitle": "Wrong Code",
+    "passwordResetWrongCode": "The password reset code cannot be worthless. Please make sure you come with the password reset code from the link sent to you.",
+    "passwordResetEmail": "Password reset information has been sent to your e-mail",
+    "forgotPassword": "Forgotten Password",
+    "tokenExpired": "Your session has expired please login again",
+    "backToLogin": "Back to Login Page"
+  },
+  "demo": {
+    "active": "Status",
+    "currencyId": "Currency",
+    "date": "Date",
+    "file": "File",
+    "number": "Number",
+    "currencies": "Currencies",
+    "amount": "Amount",
+    "rating": "Rating",
+    "richtext": "Rich Text",
+    "grades": "Grades",
+    "text": "Text"
+  },
+  "search": {
+    "q" : "Search"
+  },
+  "dialog": {
+    "addNew": "Add New",
+    "edit": "Edit",
+    "deleteConfirm": "Are you sure you want to delete?",
+    "docDeleteConfirm": "If you delete this column, the previous records will be destroyed. Are you sure?",
+    "closeDeleteButton": "No",
+    "confirmDeleteButton": "Delete",
+    "cancelButton": "Cancel",
+    "closeButton": "Close",
+    "addButton": "Add",
+    "saveButton": "Save",
+    "batchUpdateTitle": "Batch Update",
+    "batchUpdateButton": "Update",
+    "printWindow": "Print Window",
+    "print": "Print",
+    "importExcelButton" : "Import Excel",
+    "importExcelTitle" : "Import Excel",
+    "excelExportTitle": "Excel Export",
+    "getReportTitle": "Get Report"
+  },
+  "menu": {
+    "home": "Home",
+    "examples": "Examples",
+    "companies": "Companies",
+    "users": "Users",
+    "roles": "Roles",
+    "jobTitleList": "Job Titles List",
+    "dataTableServer": "Data Table Server",
+    "dataTableServerEditable": "Data Table Editable",
+    "dataTableServerGroup": "Data Table Group",
+    "permissions": "Permissions",
+    "dataGrids": "Data Grids",
+    "inputs": "Form Inputs",
+    "workplaces": "Workplaces",
+    "departments": "Departments",
+    "employees": "Employees",
+    "failedlogins": "Failed Logins",
+    "sheetInput": "Sheet Input",
+    "avatarInput": "Avatar Input",
+    "autoCompleteInput": "Auto Complete Input",
+    "colorPickerInput": "Color Picker Input",
+    "checkListInput": "Check List Input",
+    "layouts": "Layouts",
+    "buttons": "Buttons",
+    "numberInput": "Number Input",
+    "booleanInput": "Boolean Input",
+    "currencyInput": "Currency Input",
+    "passwordInput": "Password Input",
+    "radioGroupInput": "Radio Group Input",
+    "selectInput": "Select Input",
+    "textInput": "Text Input",
+    "fileInput": "File Input",
+    "arrayInput": "Array Table Input",
+    "richTextInput": "Rich Text Input",
+    "phoneInput": "Phone Input",
+    "ratingInput": "Rating Input",
+    "dateInput": "Date Input",
+    "listLayout": "List",
+    "createEditListShowLayout": "Create-Edit-List-Show",
+    "tab": "Tab",
+    "autocomplete": "AutoComplete",
+    "boolean": "Boolean",
+    "date": "Date",
+    "currency": "Currency",
+    "file": "File",
+    "number": "Number",
+    "radio": "Radio",
+    "rating": "Rating",
+    "richtext": "RichText",
+    "richText": "RichText",
+    "select": "Select",
+    "text": "Text",
+    "tabLayout": "Tab",
+    "asideLayout": "Aside",
+    "breadcrumb": "BreadCrumb",
+    "jobTitleList": "Job Title List",
+    "login": "Login",
+    "profile": "Profile",
+    "dashboard": "Dashboard",
+    "terms": "End User License Agreement (EULA)",
+    "api": "REST Api",
+  },
+  "crumbs": {
+    "list": "List",
+    "create": "Create",
+    "edit": "Edit",
+    "show": "Details",
+    "menu": { "tab": "Tab"},
+    "avatars": "Avatars",
+    "autocomplete": "Auto Completer",
+    "boolean": "Boolean",
+    "currency": "Currency",
+    "file": "File",
+    "number": "Number",
+    "radio": "Radio",
+    "rating": "Rating",
+    "richtext": "RichText",
+    "select": "Select",
+    "text": "Text",
+    "tab": "Tab",
+    "date": "Date",
+    "jobtitlelists": "Job Title List",
+    "employee grades": "Employee Grades",
+    "employee-grades": "Employee Grades",
+    "home": "Home",
+    "account": "My Account",
+    "breadcrumb": "Breadcrumb",
+    "settings": "Settings",
+    "password": "Password",
+    "companies": "Companies",
+    "jobtitles": "Job Titles",
+    "employees": "Employees",
+    "dashboard": "Dashboard",
+    "edit record": "Edit Record",
+    "new record": "New Record",
+    "detail": "Detail",
+    "roles": "Roles",
+    "users": "Users",
+    "permissions": "Permissions",
+    "departments": "Departments",
+    "failedlogins": "Failed Logins",
+    "rest api": "REST API"
+  },
+  "resources": {
+    "swagger": {
+      "rest_api": "REST API Documents",
+      "open_docs" : "Click to Read the Docs",
+    },
+    "companies": {
+      "fields": {
+        "q": "Search",
+        "companyName" : "Company Name",
+        "companyShortName" : "Short Name",
+        "taxOffice" : "Tax Office",
+        "taxNumber" : "Tax Number",
+        "address" : "Address",
+        "createdAt" : "Created At"
+      }
+    },
+    "employeegrades": {
+      "fields": {
+        "q": "Search",
+        "gradeName": "Grade"
+      }
+    },
+    "departments": {
+      "fields": {
+        "q": "Search",
+        "companyId": "Company",
+        "departmentName": "Department Name"
+      }
+    },
+    "jobtitles": {
+      "importDescription": "To create a new list, download the sample template with the download file button and upload the xlsx file you have prepared according to the template you downloaded in the next step.",
+      "newListName": "List Name",
+      "createNewList": "Create New List",
+      "saveList": "Save List",
+      "downloadXls": "Download File",
+      "fields": {
+        "q": "Search",
+        "yearId": "Year",
+        "companyId": "Company",
+        "listName": "List Name",
+        "jobTitleName": "Job Title",
+      }
+    },
+    "jobtitlelists": {
+      "fields": {
+        "q": "Search",
+        "yearId": "Year"
+      }
+    },
+    "roles": {
+      "rolePermissions" : "Role Permissions",
+      "addPermissionButton" : "Add Permission",
+      "fields": {
+        "q" : "Search",
+        "resource" : "Resource",
+        "roleKey" : "Rol Key",
+        "roleName" : "Rol Name",
+        "roleLevel" : "Rol Level",
+        "permissions" : "Yetkiler",
+        "moduleName" : "Module",
+        "route" : "Route",
+        "action" : "Action",
+        "method" : "Method"
+      }
+    },
+    "permissions": {
+      "fields": {
+        "q" : "Search",
+        "groupName" : "Module",
+        "moduleName" : "Module Name",
+        "resource" : "Resource",
+        "action" : "Action",
+        "route" : "Route",
+        "method" : "Method",
+        "actions" : "Actions"
+      },
+      "enums": {
+        "action": {
+          "create": "create",
+          "delete": "delete",
+          "edit": "edit",
+          "list": "list",
+          "show": "show"
+        },
+        "method": {
+          "POST": "POST",
+          "GET" : "GET",
+          "PUT" : "PUT",
+          "DELETE": "DELETE",
+          "PATCH" : "PATCH"
+        }
+      }
+    },
+    "users": {
+      "fields": {
+        "q": "Search",
+        "email": "E-Mail",
+        "firstname": "Firstname",
+        "lastname": "Lastname",
+        "password": "Password",
+        "userRoles": "User Roles",
+        "avatarImage": "Avatar Image",
+        "setPasswordButton": "Set Password",
+        "changePasswordButton": "Change Password",
+        "changePasswordTitle": "Password",
+        "newPassword": "Password",
+        "active": "Active",
+        "emailActivation": "E-Mail Activation",
+        "createdAt": "Created At",
+        "themeColor": "Theme Color"
+      },
+    },
+    "account": {
+      "title": "Account",
+      "passwordChange": "Password Change",
+      "passwordChanged": "Your password changed successfully",
+      "fields": {
+        "themeColor": "Theme Color",
+        "firstname": "First Name",
+        "lastname": "Last Name",
+        "email": "Email",
+        "locale": "Language",
+        "currentPassword": "Current Password",
+        "password": "New Password",
+        "passwordConfirmation": "Password Confirmation",
+        "newPassword": "New Password",
+        "newPasswordConfirmation": "New Password",
+        "avatar": {
+          "set": "Set Picture",
+          "delete": "Delete"
+        }
+      }
+    },
+    "avatars": {
+      "fields": {
+        "q": "Search",
+        "email": "E-Mail",
+        "firstname": "Firstname",
+        "lastname": "Lastname",
+        "password": "Password",
+        "userRoles": "User Roles",
+        "avatarImage": "Avatar Image",
+        "setPasswordButton": "Set Password",
+        "changePasswordButton": "Change Password",
+        "changePasswordTitle": "Password",
+        "newPassword": "Password",
+        "active": "Active",
+        "emailActivation": "E-Mail Activation",
+        "createdAt": "Created At",
+        "themeColor": "Theme Color"
+      }
+    },
+    "employees": {
+      "fields": {
+        "q": "Search",
+        "companyId": "Company",
+        "departmentId": "Department",
+        "employeeNumber": "No",
+        "jobTitleId": "Job Title",
+        "gradeId": "Grade",
+        "name": "Name",
+        "surname": "Surname",
+        "employmentStartDate": "Start Date",
+        "employmentEndDate": "End Date",
+        "createdAt": "Created At",
+        "employeeChildren": "Children",
+        "childName": "Fullname",
+        "childBirthdate": "Birthdate",
+        "actions": "Actions",
+        "employees": "Employees",
+        "autocompleterPlaceholder": "Please choose an employee"
+      },
+      "enums": {
+        "genderId": {
+          "m": "Male",
+          "f": "Female"
+        },
+        "currencyId": {
+          "TRY" : "Turkish Lira",
+          "USD" : "Dolar",
+          "EUR" : "Euro"
+        }
+      }
+    },
+    "failedlogins": {
+      "fields": {
+        "q": "Search",
+        "username": "Username",
+        "userAgent": "User Agent",
+        "ip": "Ip Address",
+        "attemptedAt": "Attempted At",
+        "attemptedAtStart" : "Attempt Date Start",
+        "attemptedAtEnd" : "Attempt Date End "
+      }
+    }
+
+  }
+}

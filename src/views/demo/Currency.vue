@@ -1,0 +1,140 @@
+<template>
+  <div>
+    <v-card variant="flat">
+      <v-card-text>
+        <v-row no-gutters>
+          <v-col lg="3" md="4" sm="6">
+            <va-select-input
+              :label="$t('demo.currencyId')"
+              reference="currencies"
+              v-model="model.currencyId"
+            >
+            </va-select-input>
+            <va-currency-input
+              clearable
+              :label="$t('demo.amount')"
+              v-model="model.amount"
+              :key="'amount_' + getCurrencyId"
+              :options="{ currency: getCurrencyId, precision: 2 }"
+            ></va-currency-input>
+          </v-col>
+        </v-row>
+
+        {{ model.amount }}
+
+      </v-card-text>
+    </v-card>
+
+    <v-tabs
+      class="mt-3"
+      v-model="tab"
+      variant="outlined"
+      bg-color="transparent"
+      color="primary"
+      align-tabs="left"
+    >
+      <v-tab value="1">Template</v-tab>
+      <v-tab value="2">Script</v-tab>
+    </v-tabs>
+
+    <v-window v-model="tab">
+      <v-window-item eager value="1">
+        <v-card>
+          <v-card-text>
+            <v-btn class="btn-copy">{{ $t("va.actions.copy") }}</v-btn>
+            <pre><code class="language-html">{{ template }}</code></pre>
+          </v-card-text>
+        </v-card>
+      </v-window-item>
+
+      <v-window-item eager value="2">
+        <v-card>
+          <v-card-text>
+            <v-btn class="btn-copy">{{ $t("va.actions.copy") }}</v-btn>
+            <pre><code class="language-js">{{ script }}</code></pre>
+          </v-card-text>
+        </v-card>
+      </v-window-item>
+    </v-window>
+  </div>
+</template>
+
+<script>
+import Clipboard from "olobase-admin/src/mixins/clipboard"
+
+export default {
+  mixins: [Clipboard],
+  created() {
+    this.template = `\<template>\
+<div>
+  <v-card variant="flat">
+    <v-card-text>
+      <va-select-input
+        :label="$t('demo.currencyId')"
+        reference="currencies"
+        v-model="model.currencyId"
+      >
+      </va-select-input>
+      <va-currency-input
+        clearable
+        :label="$t('demo.amount')"
+        v-model="model.amount"
+        :key="'amount_' + getCurrencyId"
+        :options="{ currency: getCurrencyId, precision: 2 }"
+      ></va-currency-input>
+    </v-card-text>
+  </v-card>
+</div>
+\</template\>`;
+  
+  this.script = `\<script\>
+export default {
+  data() {
+    return {
+      model: {
+        amount: 0,
+        currencyId: { id: "USD", name: "Usd" },
+      },
+    };
+  },
+  computed: {
+    getCurrencyId() {
+      if (this.model && this.model.currencyId && this.model.currencyId.id) {
+        return this.model.currencyId.id;
+      }
+      return "TRY";
+    },
+  }
+};
+\</script\>`;
+  },
+  data() {
+    return {
+      tab: null,
+      model: {
+        amount: 0,
+        currencyId: { id: "USD", name: "Usd" },
+      },
+      template: null,
+      script: null,
+    };
+  },
+  computed: {
+    getCurrencyId() {
+      if (this.model && this.model.currencyId && this.model.currencyId.id) {
+        return this.model.currencyId.id;
+      }
+      return "TRY";
+    },
+  },
+  watch: {
+    tab(value) {
+      if (value > 0) {
+        Prism.highlightAll(); // highlight code
+      }   
+    }
+  }
+};
+</script>
+
+

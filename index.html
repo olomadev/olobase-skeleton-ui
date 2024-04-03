@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="ol:key" content="79DWHX-JTC3W9-HZSCNV-1IR372LDOMV" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+  <style type="text/css">
+    /* 
+      olobase app.css 
+      v1.
+      last revision: 06.03.2024
+    */
+    #app {
+      width: 100%;
+      height: 100%;
+    }
+    .v-main {
+      background-color: #fafafa;
+    }
+    .v-breadcrumbs {
+      background-color: #fff;
+      font-size: 13px !important;
+    }
+    footer {
+      /* position: fixed; should not be fixed  */
+       left: 0;
+       bottom: 0;
+       width: 100%;
+    }
+    .v-footer a {
+      font-size: 0.825rem;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .v-tab--selected {
+      background-color: #fff !important;
+    }
+    .v-alert-title {
+      margin-bottom: 6px;
+    }
+    .v-alert__content {
+      margin-bottom: 6px;
+    }
+    .v-toolbar__content > .v-btn:first-child {
+        margin-inline-start: 5px !important;
+    }
+    .cursor-pointer {
+      cursor: pointer;
+    }
+    .v-selection-control__input .v-icon--size-default {
+      font-size: calc(var(--v-icon-size-multiplier) * 1.1em) !important;
+    }
+    .v-table {
+      font-size: inherit !important;
+    }
+    .v-table .item-actions .v-icon {
+      font-size: 1.1em !important;
+    }
+    .v-selection-control__input {
+      font-size: 1.3rem !important;
+    }
+    .v-list-item__prepend > .v-badge ~ .v-list-item__spacer, 
+    .v-list-item__prepend > .v-icon ~ .v-list-item__spacer, 
+    .v-list-item__prepend > .v-tooltip ~ .v-list-item__spacer {
+        width: 25px !important;
+    }
+    .v-list-group__items {
+      --indent-padding: calc(35px + var(--list-indent-size)) !important;
+    }
+    span.circle {
+      background: #e3e3e3;
+      border-radius: 50%;
+      -moz-border-radius: 50%;
+      -webkit-border-radius: 50%;
+      color: #6e6e6e;
+      display: inline-block;
+      font-weight: bold;
+      line-height: 20px;
+      margin-right: 5px;
+      text-align: center;
+      width: 20px;
+    }
+    .bg-blue.lighten-5 {
+      background-color: #e3f2fd!important;
+      border-color: #e3f2fd!important;
+      color: #000 !important;
+      padding-left: 25px;
+      padding-right: 25px;
+    }
+    /* input error messages */
+    .error {
+      color: #ed0505;
+    }
+    .v-input__details {
+      min-height: 0 !important;
+    }
+    .v-input__details .v-messages {
+      font-size: 11px !important;
+      padding-top: 2px;
+    }
+    /* input prepend append icon size */
+    .v-input .v-icon {
+      font-size: 20px !important;
+    }
+    /* global v-list icon right space width  */
+    .v-list-item__prepend > .v-icon {
+    /*        margin-inline-end: 28px !important;*/
+    }
+    .v-field {
+      font-size: 13px !important;
+    }
+    /* input prepend append icon layer size */
+    .v-input--horizontal .v-input__prepend {
+      margin-inline-end: 10px !important
+    }
+    .v-field--variant-underlined input {
+      flex: 1 1 auto !important;
+      line-height: 20px !important;
+      padding: 9px 0 9px !important;
+    }
+    /*.v-field--variant-outlined input {
+      flex: 1 1 auto !important;
+      line-height: 20px !important;
+      padding: 9px 9px 9px 12px !important;
+    }*/
+    /*    .v-select .v-field__clearable {
+      padding-top: 11px !important;
+    }*/
+    /* input global icons top  */
+    /*    .v-field__prepend-inner, .v-field__append-inner, .v-field__clearable {
+      padding-top: 10px !important;
+    }*/
+    /* global input height */     /* global input density-default */
+    .v-input--density-default .v-field--variant-plain, .v-input--density-default .v-field--variant-underlined {
+      --v-input-control-height: 0px !important; 
+    }
+    .v-input--density-default {
+      --v-input-padding-top: 12px !important;
+    }
+    /* global default label */
+    .v-label.v-field-label {
+      margin-inline-start: 12px !important;
+      margin-inline-end: 12px !important;
+    }
+    /* field variant underlined global label */
+    /*    .v-field--variant-underlined .v-label.v-field-label {
+      font-size: 11px !important;
+      margin-inline-start: 0px !important;
+      margin-inline-end: 0px !important;
+    }*/
+    /* global field */
+    .v-field--variant-outlined .v-field__input, .v-text-field__prefix, .v-text-field__suffix  {
+      min-height: 40px !important;
+      padding-top: 9px !important;
+      padding-bottom: 9px !important;
+      font-size: 12px;
+    }
+    .v-field--variant-underlined .v-field__input, .v-text-field__prefix, .v-text-field__suffix  {
+      min-height: 40px !important;
+      padding-top: 9px !important;
+      padding-bottom: 9px !important;
+      margin-inline-start: 0px !important;
+      margin-inline-end: 0px !important;
+      font-size: 12px;
+    }
+    /* we have height problems in select fields  */
+    .v-field--variant-filled  .v-field__input {
+      min-height: 47px !important;
+      font-size: 12px;
+    }
+    .v-file-input .v-field__input, .v-text-field__prefix, .v-text-field__suffix{
+      font-size: 12px;
+    }
+    /* fix the select input height bug */
+    .v-select .v-select__selection {
+      margin-top: 0px !important;
+      margin-bottom: 0px !important;
+    }
+    /* fixes show table td font size */
+    .v-table > .v-table__wrapper > table > tbody > tr > td {
+      font-size: 12px !important;
+    }
+    /*  .va-array-table-input .v-field__input {
+      min-height: 39px !important;
+    }*/
+    .va-array-table-input .v-table {
+      --v-table-header-height: 36px !important;
+    }
+    .va-array-table-input .v-table--density-default > .v-table__wrapper > table > tbody > tr > td, .v-table--density-default > .v-table__wrapper > table > thead > tr > td, .v-table--density-default > .v-table__wrapper > table > tfoot > tr > td {
+      height: 34px !important; 
+    }
+    .v-select--active-menu > label {
+      margin-left: 100px !important;
+      margin-right: 100px !important;
+    }
+    /* global switch height */
+    /*    .v-switch .v-selection-control {
+      min-height: 10px !important;
+    }*/
+    .v-label {
+      font-size: 11px !important;
+    }
+    .v-field__outline .v-label.v-field-label {
+      font-size: 11px !important;
+      top: 8px  !important;
+    }
+    /* text field global padding */
+    /* remove box shadow from buttons */
+    .v-btn--variant-elevated {
+    /*      box-shadow: none !important;*/
+        box-shadow: 0px 3px 1px -2px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 0px 0px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.10)), 0px 1px 5px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.10)) !important;
+    }
+    /*    .v-btn.v-btn--density-default {
+      height: calc(var(--v-btn-height) + 2px) !important;
+    }*/
+    .v-btn-group--density-default {
+      height: calc(var(--v-btn-height) + 10px) !important;
+    }
+    /* select option padding & height */
+    .v-list-item--density-default.v-list-item--one-line {
+        min-height: 0px !important;
+        /*padding-top: 4px;
+        padding-bottom: 4px;*/
+    }
+    /* select option item font size */
+    .v-list-item-title {
+      font-size: 13px !important;
+    }
+    /* select option item left padding */
+    .v-select__content .v-list .v-list-item-title {
+      padding-left: 10px !important;
+    }
+    .v-input--density-default .v-field--variant-outlined, 
+    .v-input--density-default .v-field--single-line, .v-input--density-default .v-field--no-label {
+        --v-field-padding-bottom: 12px !important;
+    }
+    .v-input--density-default {
+      --v-input-control-height: 0px !important;
+    }
+    .v-input--density-compact {
+      --v-input-padding-top: 10px !important;
+    }
+    .v-field__clearable {
+      margin-inline-end: 0px !important;
+    }
+    .v-selection-control__wrapper {
+      margin-right: 5px;
+      width: auto !important;
+    }
+    /* grid checkbox row height */
+    .v-selection-control--density-default {
+      --v-selection-control-size: 15px !important;
+    }
+    .v-selection-control-group .v-selection-control--density-default {
+      --v-selection-control-size: 25px !important;
+    }
+    /* font global size: data-table grid and all cards */
+    .v-container, .v-card-text {
+      font-size: 13px !important;
+    }
+    .v-chip.v-chip--size-small {
+      font-size: 11px !important; 
+    }
+    .v-chip.v-chip--density-default {
+      font-size: 11px !important;
+      height: 20px !important;
+      padding: 7px !important;
+      margin-right: 2px;
+    }
+    .v-switch__thumb {
+        height: 15px !important;
+        width: 20px !important;
+    }
+    .v-switch__track {
+        border-radius: 8px;
+        height: 13px !important;
+        width: 28px !important;
+    }
+    .h1 {
+        font-size: 1.75rem !important;
+        font-weight: 400;
+        line-height: 2.5rem;
+        font-family: "Roboto", sans-serif !important;
+    }
+    .h2 {
+        font-size: 1.55rem !important;
+        font-weight: 400;
+        font-family: "Roboto", sans-serif !important;
+    }
+    .h3 {
+        font-size: 1.40rem !important;
+        font-weight: 400;
+        font-family: "Roboto", sans-serif !important;
+    }
+    .h4 {
+        font-size: 1.20rem !important;
+        font-weight: 400;
+        font-family: "Roboto", sans-serif !important;
+    }
+    .h5 {
+        font-size: 1.10rem !important;
+        font-weight: 400;
+        font-family: "Roboto", sans-serif !important;
+    }
+    .h5 {
+        font-size: 1rem !important;
+        font-weight: 400;
+        font-family: "Roboto", sans-serif !important;
+    }
+    .v-card .v-card-title {
+        font-weight: 400;
+    }
+    /* datatable global row icon height */
+    .v-btn--icon {
+      border-radius: 0 !important; 
+    }
+    .v-btn--icon.v-btn--density-default {
+      height: 32px !important;
+    }
+    .sheet-input-datatable .v-data-table .v-table__wrapper {
+      font-size: 11px !important;
+    }
+    .sheet-input-datatable .v-table > .v-table__wrapper > table > tbody > tr > td, .v-table > .v-table__wrapper > table > tbody > tr > th, .v-table > .v-table__wrapper > table > thead > tr > td, .v-table > .v-table__wrapper > table > thead > tr > th, .v-table > .v-table__wrapper > table > tfoot > tr > td, .v-table > .v-table__wrapper > table > tfoot > tr > th {
+        padding: 0 5px !important;
+    }
+    .v-dialog > .v-overlay__content > .v-card > .v-card-text {
+        padding: 5px 16px 10px !important;
+        font-size: 14px !important;
+    }
+    /* datatable global row height */
+    .v-table--density-compact > .v-table__wrapper > table > tbody > tr > td, .v-table--density-compact > .v-table__wrapper > table > thead > tr > td, .v-table--density-compact > .v-table__wrapper > table > tfoot > tr > td {
+        height: 30px !important;
+    }
+    /* https://stackoverflow.com/questions/61541258/change-padding-of-vuetify-v-expansion-panel-content */
+    #va-expansion-panel > * {
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        border: 1px solid #d7d7d7;
+        border-radius: 4px;
+    }
+    .v-expansion-panel__shadow {
+      box-shadow: none !important;
+    }
+    /*  .v-btn-group--density-default.v-btn-group {
+       height: 35px !important;
+    }*/
+    .v-data-table-footer {
+        padding-top: 25px !important;
+        padding-right: 0px !important;
+        padding-bottom: 10px !important;
+        padding-left: 0px !important;
+    }
+    /* datatable row hover */
+    .v-theme--defaultTheme.v-data-table > .v-table__wrapper > table > tbody
+    > tr:hover:not(.v-data-table__expanded__content):not(.v-data-table__empty-wrapper) 
+    > td {
+      background: #eee;
+      cursor: pointer;
+    }
+    .v-text-field .v-input__details {
+      padding-top: 1px !important;
+      padding-bottom: 6px;
+      padding-inline-start: 0px !important;
+      padding-inline-end: 0px !important;
+    }
+    /* datatable checkbox padding */
+    .v-data-table .v-table__wrapper > table > thead > tr > td.v-data-table-column--no-padding, .v-data-table .v-table__wrapper > table > thead > tr th.v-data-table-column--no-padding, .v-data-table .v-table__wrapper > table tbody > tr > td.v-data-table-column--no-padding, .v-data-table .v-table__wrapper > table tbody > tr th.v-data-table-column--no-padding {
+        padding-left: 16px !important;
+        padding-top: 1px !important;
+        padding-right: 7px !important;
+    }
+    #va-list-filters {
+      border-top: 1px solid #d7d7d7;
+      border-left: 1px solid #d7d7d7;
+      border-right: 1px solid #d7d7d7;
+      border-bottom: 1px solid #d7d7d7;
+      border-radius: 4px;
+    }
+    .v-snackbar__wrapper {
+      margin: 0 !important;
+    }
+    .v-snackbar__content {
+      margin: 4px !important;
+    }
+    .v-snackbar--variant-elevated {
+      box-shadow: 0px 3px 1px -2px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 
+      0px 0px 0px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.10)), 
+      0px 1px 5px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.10)) !important;
+    }
+    /* v-snackbar transition start */
+    .slide-in {
+        animation: slide-in 0.5s forwards;
+        -webkit-animation: slide-in 0.5s forwards;
+    }
+    .slide-out {
+        animation: slide-out 0.5s forwards;
+        -webkit-animation: slide-out 0.5s forwards;
+    }   
+    @keyframes slide-in {
+        100% { transform: translateY(0%); }
+    }
+    .v-snackbar--active {
+      position: absolute;
+      transform: translateY(-100%);
+      -webkit-transform: translateY(-100%);  
+      display: block !important;
+    }
+    /* v-snackbar transition end */
+
+    /* Solid datatable  */
+    table th + th { border-left:1px solid #dddddd; }
+    table td + td { border-left:1px solid #dddddd; }
+    /* fixes the date picker hide-details margin bottom problem */
+/*    table td + td:has(.v-input) {
+      vertical-align: top;
+    }*/
+    /*.va-data-table > .section {
+      margin-top: -20px;
+    }*/
+    /* va-data-table solids */
+    .va-data-table .v-table__wrapper table {
+      border: 1px solid #dddddd;
+      border-radius: 4px;
+    }
+    .va-data-table .v-table__wrapper table th + th {
+      border-left: 0 !important;
+    }
+    .va-array-table-input .v-table__wrapper table {
+      border: 1px solid #dddddd;
+      border-radius: 4px;
+    }
+    .va-array-table-input .v-table__wrapper table th + th {
+      border-left: 0 !important;
+    }
+    .va-checklist-input .v-table__wrapper table {
+      border: 1px solid #dddddd;
+      border-radius: 4px;
+    }
+    .va-show, .va-table .v-table__wrapper table {
+      border: 1px solid #dddddd;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+    #toggleSettings .v-table__wrapper table {
+      border: 1px solid #dddddd;
+      border-radius: 4px;
+    }
+    /* Vue 3 updates end */
+    .noselect {
+      -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+         -khtml-user-select: none; /* Konqueror HTML */
+           -moz-user-select: none; /* Old versions of Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none; /* Non-prefixed version, currently
+                                      supported by Chrome, Edge, Opera and Firefox */
+    }
+    /* Vue date picker css override */
+    .dp__input {
+      font-family: Roboto,sans-serif !important;
+      font-size: 13px !important;
+    }
+    .dp__menu {
+      font-family: Roboto,sans-serif !important;
+      font-size: 13px !important;
+    }
+    /* Show list fields */
+    .sm-field, .md-field, .lg-field {
+      font-family: Roboto,sans-serif !important;
+      font-size: 13px !important; 
+    }
+    /**
+     * Sheet input preview component css
+     */
+    .bg-gray-100 { background-color: #f7fafc; }
+    .bg-green-300 { background-color: #eeffeb; }
+    .v-card--variant-outlined {
+       border: thin solid #d7d7d7 !important;
+    }
+    /**
+     * Prism js customizations
+     */
+    .language-html {
+      font-size: 14px !important;
+    }
+    .language-javascript {
+      font-size: 14px !important;
+    }
+    .language-js {
+      font-size: 14px !important;
+    }
+    .language-php {
+      font-size: 14px !important;
+    }
+    .language-bash {
+      font-size: 14px !important;
+    }
+    /* On screens that are 1600px or less, set data grid paddings more */
+    @media screen and (max-width: 1600px) {
+      .v-table > .v-table__wrapper > table > tbody > tr > td, .v-table > .v-table__wrapper > table > tbody > tr > th, .v-table > .v-table__wrapper > table > thead > tr > td, .v-table > .v-table__wrapper > table > thead > tr > th, .v-table > .v-table__wrapper > table > tfoot > tr > td, .v-table > .v-table__wrapper > table > tfoot > tr > th {
+        padding-top: 8px !important;
+        padding-bottom: 8px !important;
+      }
+      /* datatable checkbox padding */
+      .v-data-table .v-table__wrapper > table > thead > tr > td.v-data-table-column--no-padding, .v-data-table .v-table__wrapper > table > thead > tr th.v-data-table-column--no-padding, .v-data-table .v-table__wrapper > table tbody > tr > td.v-data-table-column--no-padding, .v-data-table .v-table__wrapper > table tbody > tr th.v-data-table-column--no-padding {
+          padding-left: 16px !important;
+          padding-top: 8px !important;
+          padding-right: 7px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

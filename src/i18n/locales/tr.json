@@ -1,0 +1,462 @@
+{
+  "locale": {
+    "en": "English",
+    "tr": "Türkçe"
+  },
+  "titles": {
+    "demo": "Demo",
+    "home": "Anasayfa",
+    "login": "Giriş",
+    "users": "Kullanıcılar",
+    "roles": "Roller",
+    "bread crumb": "Bread Crumb",
+    "forgotten password": "Şifremi Unuttum",
+    "avatars": "Avatarlar",
+    "auto complete": "Auto Completer",
+    "boolean": "Boolean",
+    "currency": "Currency",
+    "file": "File",
+    "number": "Number",
+    "radio": "Radio",
+    "rating": "Rating",
+    "richtext": "RichText",
+    "rich text": "RichText",
+    "select": "Select",
+    "text": "Text",
+    "tab": "Tab",
+    "date": "Date",
+    "dashboard": "Anasayfa",
+    "components": "Bileşenler",
+    "companies": "Şirketler",
+    "permissions": "Yetkiler",
+    "jobtitles": "Ünvanlar",
+    "jobtitlelists": "Ünvan Listesi",
+    "account": "Hesap",
+    "password": "Şifre",
+    "departments": "Departmanlar",
+    "employees": "Çalışanlar",
+    "employee grades": "Çalışan Seviyeleri",
+    "employee-grades": "Çalışan Seviyeleri",
+    "departments": "Departmanlar",
+    "failedlogins": "Başarısız Oturumlar",
+    "reset password": "Şifremi Sıfırla",
+    "rest api": "REST API"
+  },
+  "v": {
+    "text": {
+      "required": "Bu alan zorunludur"
+    },
+    "email": {
+      "required": "E-posta alanı zorunludur",
+      "invalid": "Geçersiz e-posta adresi"
+    },
+    "string": {
+      "required": "Bu alan zorunludur",
+      "alpha": "Bu alan sadece alfabetik karakterler içerebilir",
+      "minLength": "Bu alan minumum {min} karakter olmalıdır",
+      "maxLength": "Bu alan maksimum {max} karakter olmalıdır"
+    },
+    "number": {
+      "required": "Bu alan zorunludur",
+      "integer": "Bu alan bir tamsayı içermelidir",
+      "numeric": "Bu alan sayısal bir değer içermelidir",
+      "decimal": "Bu alan ondalık bir sayı içermelidir"
+    },
+    "password": {
+      "required": "Şifre alanı zorunludur",
+      "sameAs": "Şifre onay alanı yeni şifre ile aynı olmalıdır"
+    },
+    "captcha": {
+      "invalid" : "Güvenlik doğrulama aşamasını geçmeniz gerekiyor"
+    }
+  },
+  "form": {
+    "saved" : "Başarıyla kaydedildi"
+  },
+  "messages": {
+    "welcome" : "Demo uygulamasına hoşgeldiniz" 
+  },
+  "routes": {
+    "home": "Home",
+    "login": "Login",
+    "account": "Account",
+    "exchangeRates": "Exchange Rates",
+    "password": "Password",
+    "dashboard": "Dashboard",
+    "notFound": "Not found",
+    "forgotPassword": "Forgotten Password",
+    "resetPassword": "Reset Password"
+  },
+  "error": {
+    "404": "Böyle bir sayfa bulunamadı",
+    "fileNotFound": "Dosya bulunamadı"
+  },
+  "datatable": {
+    "search": "Ara",
+    "default": "Varsayılan",
+    "selected_items": "1 kayıt seçildi | {count} adet kayıt seçildi",
+    "no_data_available": "Kayıt Bulunamadı",
+    "yes": "Evet",
+    "no": "Hayır"
+  },
+  "dataiterator": {
+    "displaying_page": "Bulunan sayfa {pageCount}, şuan ki sayfa {page}",
+  },
+  "auth": {
+    "username": "E-posta Adresi",
+    "password": "Şifre",
+    "remember": "Beni Hatırla",
+    "resetMyPassword": "ŞİFREMİ SIFIRLA",
+    "newPassword": "Yeni Şifre",
+    "newPasswordConfirm": "Yeni Şifre Tekrar",
+    "changeMyPassword": "Şİfremİ Değİştİr",
+    "setNewPassword": "Yeni Şifrenizi Belirleyin",
+    "passwordResetWrongCodeTitle": "Yanlış Kod",
+    "passwordResetWrongCode": "Parola sıfırlama kodu değersiz olamaz. Lütfen size gönderilen bağlantıdan şifre sıfırlama kodu ile geldiğinizden emin olun",
+    "passwordResetEmail": "Şifre sıfırlama bilgileri e-posta adresinize gönderildi",
+    "signIn": "GİRİŞ YAP",
+    "forgotPassword": "Şifrenizi mi Unuttunuz ?",
+    "tokenExpired": "Oturumunuzun süresi doldu lütfen tekrar giriş yapın",
+    "backToLogin": "Giriş Sayfasına Geri Dön"
+  },
+  "demo": {
+    "active": "Durum",
+    "currencyId": "Para Birimi",
+    "date": "Tarih",
+    "file": "Dosya",
+    "number": "Numara",
+    "currencies": "Para Birimleri",
+    "rating": "Rating",
+    "richtext": "Zengin Metin",
+    "grades": "Dereceler",
+    "amount": "Amount",
+    "text": "Text"
+  },
+  "search": {
+    "q" : "Ara"
+  },
+  "dialog": {
+    "addNew" : "Yeni Ekle",
+    "edit" : "Düzenle",
+    "deleteConfirm": "Silmek istediğinizden emin misiniz?",
+    "docDeleteConfirm": "Eğer bu sütunu silerseniz, tüm çalışanların bu kaydı da yok olacak emin misiniz?",
+    "closeDeleteButton": "VAZGEÇ",
+    "confirmDeleteButton": "SİL",
+    "cancelButton": "VAZGEÇ",
+    "closeButton": "KAPAT",
+    "addButton": "EKLE",
+    "saveButton": "KAYDET",
+    "batchUpdateTitle": "Bulunan Kayıtları Güncelle",
+    "batchUpdateButton": "Güncelle",
+    "batchUpdateWhere": "Bu Hedefe Göre",
+    "batchUpdateValue": "Bu Değer İle",
+    "printWindow": "Yazdırma Ekranı",
+    "print": "Yazdır",
+    "importExcelButton" : "İÇERİ AL",
+    "importExcelTitle" : "Excel'den İçeri Al",
+    "excelExportTitle": "Excel'e Aktar",
+    "getReportTitle": "Rapor Al"
+  },
+  "menu": {
+    "home": "Anasayfa",
+    "examples": "Örnekler",
+    "companies": "Şirketler",
+    "roles": "Roller",
+    "users": "Kullanıcılar",
+    "dataTableServer": "Data Table Server",
+    "dataTableServerEditable": "Data Table Editable",
+    "dataTableServerGroup": "Data Table Group",
+    "permissions": "Yetkiler",
+    "dataGrids": "Data Gridler",
+    "inputs": "Form Girdileri",
+    "workplaces": "İş Yerleri",
+    "departments": "Departmanlar",
+    "employees": "Çalışanlar",
+    "failedlogins": "Başarısız Oturumlar",
+    "sheetInput": "Sheet Input",
+    "avatarInput": "Avatar Input",
+    "autoCompleteInput": "Auto Complete Input",
+    "checkListInput": "Check List Input",
+    "layouts": "Layout'lar",
+    "buttons": "Tuşlar",
+    "numberInput": "Number Input",
+    "booleanInput": "Boolean Input",
+    "currencyInput": "Currency Input",
+    "passwordInput": "Password Input",
+    "radioGroupInput": "Radio Group Input",
+    "selectInput": "Select Input",
+    "textInput": "Text Input",
+    "fileInput": "File Input",
+    "arrayInput": "Array Table Input",
+    "richTextInput": "Rich Text Input",
+    "phoneInput": "Phone Input",
+    "ratingInput": "Rating Input",
+    "dateInput": "Date Input",
+    "colorPickerInput": "Color Picker Input",
+    "createEditListShowLayout": "Create-Edit-List-Show",
+    "tab": "Tab",
+    "autocomplete": "AutoComplete",
+    "boolean": "Boolean",
+    "date": "Date",
+    "currency": "Currency",
+    "file": "File",
+    "number": "Number",
+    "radio": "Radio",
+    "rating": "Rating",
+    "richtext": "RichText",
+    "richText": "RichText",
+    "select": "Select",
+    "text": "Text",
+    "tabLayout": "Tab",
+    "asideLayout": "Aside",
+    "breadcrumb": "BreadCrumb",
+    "login": "Giriş",
+    "profile": "Profil",
+    "dashboard": "Anasayfa",
+    "terms": "Son Kullanıcı Lisans Anlaşması (SKLA)",
+    "api": "REST Api"
+  },
+  "crumbs": {
+    "list": "Liste",
+    "create": "Yeni Kayıt",
+    "edit": "Düzenle",
+    "show": "Detaylar",
+    "menu": { "tab": "Tab"},
+    "autocomplete": "AutoCompleter",
+    "avatars": "Avatarlar",
+    "autocompleter": "Auto Completer",
+    "boolean": "Boolean",
+    "currency": "Currency",
+    "file": "File",
+    "number": "Number",
+    "radio": "Radio",
+    "rating": "Rating",
+    "richtext": "RichText",
+    "select": "Select",
+    "text": "Text",
+    "tab": "Tab",
+    "date": "Date",
+    "jobtitlelists": "Ünvan Listeleri",
+    "employee grades": "Çalışan Seviyeleri",
+    "employee-grades": "Çalışan Seviyeleri",
+    "home": "Anasayfa",
+    "request": "Request",
+    "account": "Hesabım",
+    "breadcrumb": "Navigasyon",
+    "settings": "Ayarlar",
+    "password": "Şifre",
+    "companies": "Şirketler",
+    "jobtitles": "Görev Tanımları",
+    "employees": "Çalışanlar",
+    "dashboard": "Giriş Sayfası",
+    "kayıt düzenle": "Kayıt Güncelle",
+    "yeni kayıt": "Yeni Kayıt",
+    "detay": "Detay",
+    "roles": "Roller",
+    "users": "Kullanıcılar",
+    "permissions": "Yetkiler",
+    "departments": "Departmanlar",
+    "failedlogins": "Başarısız Oturumlar",
+    "rest api": "REST API"
+  },
+  "resources": {
+    "swagger": {
+      "rest_api": "REST API Dökümanları",
+      "open_docs" : "Dokümanları Okumak İçin Tıklayın",
+    },
+    "companies": {
+      "fields": {
+        "q": "Ara",
+        "companyName" : "Şirket İsmi",
+        "companyShortName" : "Kısa Ad",
+        "taxOffice" : "Vergi Dairesi",
+        "taxNumber" : "Vergi No",
+        "address" : "Adres",
+        "createdAt" : "Oluşturulma"
+      }
+    },
+    "employeegrades": {
+      "fields": {
+        "q": "Ara",
+        "gradeName": "Seviye"
+      }
+    },
+    "departments": {
+      "fields": {
+        "q": "Ara",
+        "companyId": "Şirket",
+        "departmentName": "Departman Adı"
+      }
+    },
+    "jobtitles": {
+      "importDescription" : "Yeni bir liste oluşturmak için şablonu indir tuşu ile örnek şablonu indirip, hazırladğınız xlsx dosyasını sonraki adımdaki alandan yükleyin",
+      "newListName": "Liste Adı",
+      "createNewList": "Yeni Liste Oluştur",
+      "saveList": "Lİsteyİ Kaydet",
+      "downloadXls": "Şablonu İndİr",
+      "fields": {
+        "q": "Ara",
+        "yearId": "Yıl",
+        "companyId": "Şirket",
+        "jobTitleName": "Ünvan",
+        "listName": "Liste"
+      }
+    },
+    "jobtitlelists": {
+      "fields": {
+        "q": "Search",
+        "yearId": "Year"          
+      }
+    },
+    "roles": {
+      "rolePermissions" : "Rol Yetkilileri",
+      "addPermissionButton" : "YETKİ EKLE",
+      "fields": {
+        "q" : "Ara",
+        "resource" : "Kaynak",
+        "roleKey" : "Rol Anahtarı",
+        "roleName" : "Rol Adı",
+        "roleLevel" : "Rol Seviyesi",
+        "permissions" : "Yetkiler",
+        "moduleName" : "Modül",
+        "route" : "Rota",
+        "action" : "Aksiyon",
+        "method" : "Metot"
+      }
+    },
+    "permissions": {
+      "fields":  {
+        "q" : "Ara",
+        "moduleName" : "Modül adı",
+        "groupName" : "Modül",
+        "resource" : "Kaynak",
+        "action" : "Aksiyon",
+        "route" : "Rota",
+        "method" : "Metot",
+        "actions" : "İşlemler"
+      },
+      "enums": {
+        "action": {
+            "create" : "create",
+            "delete" : "delete",
+            "edit" : "edit",
+            "list" : "list",
+            "show" : "show"
+        },
+        "method": {
+            "POST" : "POST",
+            "GET" : "GET",
+            "PUT" : "PUT",
+            "DELETE" : "DELETE",
+            "PATCH" : "PATCH"
+        }
+      }
+    },
+    "users": {
+      "fields": {
+        "q": "Ara",
+        "email": "E-Posta",
+        "firstname": "Ad",
+        "lastname": "Soyad",
+        "password": "Şifre",
+        "userRoles": "Roller",
+        "avatarImage": "Avatar",
+        "setPasswordButton": "ŞİFRE BELİRLE",
+        "changePasswordButton": "ŞİFRE DEĞİŞTİR",
+        "changePasswordTitle": "Şifre",
+        "newPassword": "Şifre",
+        "active": "Aktif Mi",
+        "createdAt": "Oluşturulma",
+        "themeColor": "Tema Rengi",
+        "emailActivation": "E-Posta Aktivasyonu"
+      }
+    },
+    "account": {
+      "title": "Hesabım",
+      "passwordChange": "Şifre Değiştirme",
+      "passwordChanged": "Şifreniz başarıyla değiştirildi",
+      "fields": {
+        "themeColor": "Tema Rengi",
+        "firstname": "Ad",
+        "lastname": "Soyad",
+        "email": "Email",
+        "locale": "Dil",
+        "currentPassword": "Geçerli Şifreniz",
+        "password": "Yeni Şifre",
+        "passwordConfirmation": "Şifre Onay (Tekrar Yeni Şifre)",
+        "newPassword": "Yeni Şifre",
+        "newPasswordConfirmation": "Tekrar Yeni Şifre",
+        "avatar": {
+          "set": "Resİm Yükle",
+          "delete": "Resmİ Sİl"
+        }
+      }
+    },
+    "avatars": {
+      "fields": {
+        "q": "Ara",
+        "id": "Id",
+        "uid": "Id",
+        "email": "E-Posta",
+        "firstname": "Ad",
+        "lastname": "Soyad",
+        "password": "Şifre",
+        "userRoles": "Roller",
+        "avatarImage": "Avatar",
+        "setPasswordButton": "ŞİFRE BELİRLE",
+        "changePasswordButton": "ŞİFRE DEĞİŞTİR",
+        "changePasswordTitle": "Şifre",
+        "newPassword": "Şifre",
+        "active": "Aktif Mi",
+        "createdAt": "Oluşturulma",
+        "themeColor": "Tema Rengi",
+        "emailActivation": "E-Posta Aktivasyonu"
+      }
+    },
+    "employees": {
+      "fields": {
+        "q": "Ara",
+        "companyId": "Şirket",
+        "departmentId": "Departman",
+        "employeeNumber": "No",
+        "jobTitleId": "Görev",
+        "gradeId": "Derece",
+        "name": "Ad",
+        "surname": "Soyad",
+        "employmentStartDate": "Başlangıç",
+        "employmentEndDate": "Bitiş",
+        "createdAt": "Oluşturulma",
+        "employeeChildren": "Çocuklar",
+        "childName": "Ad Soyad",
+        "childBirthdate": "Doğum Tarihi",
+        "actions": "İşlemler",
+        "employees": "Çalışanlar",
+        "autocompleterPlaceholder": "Lütfen bir çalışan seçin"
+      },
+      "enums": {
+        "genderId": {
+          "m": "Erkek",
+          "f": "Kadın"
+        },
+        "currencyId": {
+          "TRY" : "Türk Lirası",
+          "USD" : "Dolar",
+          "EUR" : "Euro"
+        }
+      }
+    },
+    "failedlogins": {
+      "fields": {
+        "q": "Ara",
+        "username": "Kullanıcı Adı",
+        "userAgent": "Tarayıcı",
+        "ip": "Ip Adresi",
+        "attemptedAt": "Girişim Tarihi",
+        "attemptedAtStart" : "Girişim Baş.Tarihi",
+        "attemptedAtEnd" : "Girişim Bit.Tarihi "
+      }
+    }
+
+
+  }
+}
