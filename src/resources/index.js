@@ -1,46 +1,6 @@
 export default [
   {
-    name: "companies",
-    label: "name",
-    permissions: [
-      { name: "admin", actions: ["create","list","edit", "delete", "show"] },
-    ],
-    actions: ["create", "list", "edit", "delete", "show"],
-  },
-  {
     name: "users",
-    label: "name",
-    permissions: [
-      { name: "admin", actions: ["create","list","edit", "delete", "show"] },
-    ],
-    actions: ["create", "list", "edit", "delete", "show"],
-  },
-  {
-    name: "employees",
-    label: "name",
-    permissions: [
-      { name: "admin", actions: ["create","list","edit", "delete", "show"] },
-    ],
-    actions: ["create", "list", "edit", "delete", "show"],
-  },
-  {
-    name: "employee-grades",
-    label: "name",
-    permissions: [
-      { name: "admin", actions: ["create","list","edit", "delete", "show"] },
-    ],
-    actions: ["create", "list", "edit", "delete", "show"],
-  },
-  {
-    name: "jobtitlelists",
-    label: "name",
-    permissions: [
-      { name: "admin", actions: ["create","list","edit", "delete", "show"] },
-    ],
-    actions: ["create", "list", "edit", "delete", "show"],
-  },
-  {
-    name: "jobtitles",
     label: "name",
     permissions: [
       { name: "admin", actions: ["create","list","edit", "delete", "show"] },
@@ -65,22 +25,6 @@ export default [
   },
   {
     name: "failedlogins",
-    label: "name",
-    permissions: [
-      { name: "admin", actions: ["create","list","edit", "delete", "show"] },
-    ],
-    actions: ["create", "list", "edit", "delete", "show"],
-  },
-  {
-    name: "avatars",
-    label: "name",
-    permissions: [
-      { name: "admin", actions: ["create","edit"] },
-    ],
-    actions: ["create", "edit"],
-  },
-  {
-    name: "departments",
     label: "name",
     permissions: [
       { name: "admin", actions: ["create","list","edit", "delete", "show"] },
