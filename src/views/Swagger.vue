@@ -13,7 +13,7 @@
           <v-btn
             block
             color="primary"
-            href="https://demo.oloma.dev/swagger/web/" target="_blank"
+            href="http://example.local/swagger/web/" target="_blank"
             prepend-icon="mdi-open-in-new"
             variant="flat"
           >

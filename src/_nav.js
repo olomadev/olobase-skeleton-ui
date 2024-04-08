@@ -13,22 +13,22 @@ export default  {
       },
       // { divider: true },
       {
-        icon: "circle",
+        icon: "mdi-account-multiple",
         text: t("menu.roles"),
         link: "/roles",
       },
       {
-        icon: "circle",
+        icon: "mdi-account-lock",
         text: t("menu.permissions"),
         link: "/permissions",
       },
       {
-        icon: "circle",
+        icon: "mdi-account-edit",
         text: t("menu.users"),
         link: "/users?sortBy=firstname&sortDesc=false",
       },
       {
-        icon: "circle",
+        icon: "mdi-account-alert",
         text: t("menu.failedlogins"),
         link: "/failedlogins?sortBy=attemptedAt&sortDesc=false",
       },
