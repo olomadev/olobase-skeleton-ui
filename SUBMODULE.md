@@ -16,8 +16,8 @@ Checkout to version.
 
 ```sh
 cd packages/admin
-git pull origin 1.0.6
-git checkout 1.0.6
+git pull origin 1.3.0
+git checkout 1.3.0
 ```
 
 ## If You Edited Submodule and You Want to Restore
@@ -25,7 +25,7 @@ git checkout 1.0.6
 ```sh
 git stash
 git restore .
-// HEAD detached at 1.0.4
+// HEAD detached at 1.2.0
 ```
 
 ## Updating Submodule
@@ -38,7 +38,7 @@ Pull the version you want
 
 ```sh
 cd packages/admin
-git checkout 1.0.6
+git checkout 1.3.0
 ```
 
 ## Adding/ReInstalling a Submodule - (olobase-admin)
