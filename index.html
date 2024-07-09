@@ -17,6 +17,13 @@
       width: 100%;
       height: 100%;
     }
+    .v-navigation-drawer__prepend, .v-navigation-drawer__append {
+      flex: auto !important;
+    }
+    .navbar-logo {
+      margin-top: 22px;
+      margin-bottom: 10px;
+    }
     .bordered {
       border: 1px solid #dddddd;
       border-radius: 4px;
@@ -26,7 +33,7 @@
     }
     .v-breadcrumbs {
       background-color: #fff;
-      font-size: 13px !important;
+      font-size: 14px !important;
     }
     footer {
        position: fixed;
@@ -156,7 +163,7 @@
       margin-inline-end: 0px !important;
     }*/
     /* global field */
-    .v-field--variant-outlined .v-field__input, .v-text-field__prefix, .v-text-field__suffix  {
+/*    .v-field--variant-outlined .v-field__input, .v-text-field__prefix, .v-text-field__suffix  {
       min-height: 40px !important;
       padding-top: 9px !important;
       padding-bottom: 9px !important;
@@ -169,12 +176,12 @@
       margin-inline-start: 0px !important;
       margin-inline-end: 0px !important;
       font-size: 12px;
-    }
+    }*/
     /* we have height problems in select fields  */
-    .v-field--variant-filled  .v-field__input {
+/*    .v-field--variant-filled  .v-field__input {
       min-height: 47px !important;
       font-size: 12px;
-    }
+    }*/
     .v-file-input .v-field__input, .v-text-field__prefix, .v-text-field__suffix{
       font-size: 12px;
     }
@@ -190,12 +197,12 @@
     /*  .va-array-table-input .v-field__input {
       min-height: 39px !important;
     }*/
-    .va-array-table-input .v-table {
+/*    .va-array-table-input .v-table {
       --v-table-header-height: 36px !important;
     }
     .va-array-table-input .v-table--density-default > .v-table__wrapper > table > tbody > tr > td, .v-table--density-default > .v-table__wrapper > table > thead > tr > td, .v-table--density-default > .v-table__wrapper > table > tfoot > tr > td {
       height: 34px !important; 
-    }
+    }*/
     .v-select--active-menu > label {
       margin-left: 100px !important;
       margin-right: 100px !important;
@@ -225,7 +232,7 @@
     }
     /* select option padding & height */
     .v-list-item--density-default.v-list-item--one-line {
-        min-height: 0px !important;
+        min-height: 38px !important;
         /*padding-top: 4px;
         padding-bottom: 4px;*/
     }
@@ -274,7 +281,7 @@
       padding: 7px !important;
       margin-right: 2px;
     }
-    .v-switch__thumb {
+/*    .v-switch__thumb {
         height: 15px !important;
         width: 20px !important;
     }
@@ -282,7 +289,7 @@
         border-radius: 8px;
         height: 13px !important;
         width: 28px !important;
-    }
+    }*/
     .h1 {
         font-size: 1.75rem !important;
         font-weight: 400;
@@ -412,7 +419,6 @@
       position: absolute;
       transform: translateY(-100%);
       -webkit-transform: translateY(-100%);  
-      display: block !important;
     }
     /* v-snackbar transition end */
 
@@ -440,6 +446,10 @@
     }
     .va-array-table-input .v-table__wrapper table th + th {
       border-left: 0 !important;
+    }
+    .va-array-table-input .v-table__wrapper td {
+      padding-top: 8px !important;
+      padding-bottom: 8px !important;
     }
     .va-checklist-input .v-table__wrapper table {
       border: 1px solid #dddddd;

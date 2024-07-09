@@ -1,4 +1,8 @@
 export default {
+  // 
+  // view settings
+  // 
+  density: "compact",
   //
   // va-app-bar layout default avatar
   // 

@@ -18,6 +18,7 @@ const cookieKey = JSON.parse(import.meta.env.VITE_COOKIE);
 let isRefreshing = false;
 let failedQueue = [];
 let logoutCodes = [ // do not change these values because it is related to your back end api
+    'authenticationRequired',
     'ipValidationFailed',
     'userAgentValidationFailed',
 ];
@@ -69,16 +70,14 @@ const useHttp = function (axios) {
         if (error.response.status === 401 
             && error.response.data.data.error == "Logout") {
             store.dispatch("auth/logout");
+            router.push({ name: "login" });
             return;
         }
         if (error.response.status === 401 
             && typeof error.response.data.data.code !== "undefined" 
             && logoutCodes.includes(error.response.data.data.code)
             ) {
-            setTimeout(function(){
-              store.commit("messages/show", { type: 'error', message: error.response.data.data.error });
-            }, 300);
-            store.dispatch("auth/logout");
+            router.push({ name: "login" });
             return;
         }
         if (error.response.status === 401 
@@ -180,7 +179,7 @@ const useHttp = function (axios) {
           // form validation errors & general errors
           //
           parseApiErrors(error)
-          return;
+          return error.response;
 
         } // end response status
 

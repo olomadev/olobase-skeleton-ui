@@ -13,12 +13,23 @@
 </template>
 
 <script>
+import Trans from "@/i18n/translation";
+
 export default {
   inject: ['vuetify'],
   data() {
     return {
       height: "100vh",
     };
+  },
+  async created() {
+    /**
+     * Set default locale
+     */
+    const lang = Trans.guessDefaultLocale();
+    if (lang && Trans.supportedLocales.includes(lang)) { // assign browser language
+      await Trans.switchLanguage(lang);
+    }
   },
   computed: {
     getHeight() {

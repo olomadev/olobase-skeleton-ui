@@ -22,18 +22,6 @@
         </v-list-item>
       </v-list>
     </v-menu>
-    <v-menu activator="#menu-activator">
-      <v-list>
-        <v-list-item
-          v-for="(lang, index) in lang"
-          :key="index"
-          :value="index"
-          @click="switchLanguage(lang)"
-        >
-          <v-list-item-title>{{ t(`locale.${lang}`) }}</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-menu>
   </div>
 </template>
 

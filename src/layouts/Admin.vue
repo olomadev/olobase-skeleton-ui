@@ -8,65 +8,75 @@
           :key="getCurrentLocale"
           color="primary"
           density="compact"
+          elevation="1"
           :header-menu="getHeaderMenu"
           sidebar-color="white"
         >
           <template v-slot:logo>
             <div class="mb-1" style="letter-spacing: 1px;">logo</div>
           </template>
-
-          <template v-slot:avatar>
-            <v-avatar v-if="avatarExists" size="24px">
-              <v-img 
-                :src="getAvatar"
-                alt="Avatar"
-              ></v-img>
-            </v-avatar>
-            <v-icon v-else>mdi-account-circle</v-icon>
-          </template>
-
+          
           <template v-slot:profile>
-            <v-card min-width="300">
-              <v-list nav>
-                <v-list-item 
-                   v-if="getFullname"
-                  :prepend-avatar="getAvatar"
-                >
-                  <div class="list-item-content">
-                    <v-list-item-title class="title">{{ getFullname }}</v-list-item-title>
-                    <v-list-item-subtitle v-if="getEmail">{{ getEmail }}</v-list-item-subtitle>
+            <v-menu offset-y v-if="$store.state.auth.user">
+              <template v-slot:activator="{ props }">
+                <v-btn icon small v-bind="props" class="mr-1">
+                 <div v-if="avatarExists" style="float:left;">
+                    <v-avatar size="24px">
+                      <v-img 
+                        :src="getAvatar"
+                        alt="Avatar"
+                      ></v-img>
+                    </v-avatar>
                   </div>
-                </v-list-item>
-                <v-divider></v-divider>
-                <v-card flat>
-                  <v-card-text style="padding:9px">
-                    <v-list-item
-                      v-for="(item, index) in getProfileMenu"
-                      :key="index"
-                      link
-                      :to="item.link"
-                      @click="item.logout ? logout() : null"
-                      class=" mt-2"
-                    >
-                      <template v-slot:prepend>
-                        <v-icon>{{ item.icon }}</v-icon>
-                      </template>
-                      <v-list-item-title>{{ item.text }}</v-list-item-title>
-                    </v-list-item>
-                  </v-card-text>
-                </v-card>
-              </v-list>
-            </v-card>
+                  <div v-else style="float:left;">
+                    <v-icon>mdi-account-circle</v-icon>
+                  </div>
+                </v-btn>
+              </template>
+              <v-card min-width="300">
+                <v-list nav>
+                  <v-list-item
+                    class="mb-2 mt-2" 
+                     v-if="getFullname"
+                    :prepend-avatar="getAvatar"
+                  >
+                    <div class="list-item-content">
+                      <v-list-item-title class="title">{{ getFullname }}</v-list-item-title>
+                      <v-list-item-subtitle v-if="getEmail">{{ getEmail }}</v-list-item-subtitle>
+                    </div>
+                  </v-list-item>
+                  <v-divider></v-divider>
+                  <v-card flat>
+                    <v-card-text style="padding:0px">
+                      <v-list-item
+                        v-for="(item, index) in getProfileMenu"
+                        :key="index"
+                        link
+                        :to="item.link"
+                        @click="item.logout ? logout() : null"
+                        class=" mt-2"
+                      >
+                        <template v-slot:prepend>
+                          <v-icon>{{ item.icon }}</v-icon>
+                        </template>
+                        <v-list-item-title>{{ item.text }}</v-list-item-title>
+                      </v-list-item>
+                    </v-card-text>
+                  </v-card>
+                </v-list>
+              </v-card>
+            </v-menu>
           </template>
+          
         </va-app-bar>
       </template>
 
       <template #header>
-        <va-breadcrumbs />
+        <va-breadcrumbs></va-breadcrumbs>
       </template>
 
       <template #aside>
-        <va-aside />
+        <va-aside></va-aside>
       </template>
 
       <template #footer>
@@ -74,7 +84,12 @@
           :key="getCurrentLocale" 
           :menu="getFooterMenu"
         >
-          <span style="font-size:13px">&copy; 2023</span>
+          <template v-slot:left>
+            <LanguageSwitcher></LanguageSwitcher>
+          </template>
+          <template v-slot:right>
+            <span style="font-size:13px">&copy; 2024</span>
+          </template>
         </va-footer>
       </template>
     </va-layout>
@@ -86,10 +101,12 @@ import isEmpty from "lodash/isEmpty"
 import { useDisplay } from "vuetify";
 import { mapActions } from "vuex";
 import Trans from "@/i18n/translation";
+import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
 
 export default {
   name: "App",
   inject: ["admin"],
+  components: { LanguageSwitcher },
   setup() {
     const { lgAndUp } = useDisplay();
     return { lgAndUp };

@@ -6,10 +6,10 @@
  * automatically loaed resources and external libs
  */
 import "./vuetify";
-import Trix from "trix";
-import "trix/dist/trix.css";
 import "@mdi/font/css/materialdesignicons.css";
 import PortalVue from "portal-vue";
+import RichTextEditorInput from "../components/RichTextEditorInput";
+import TinyMceEditorInput from "../components/TinyMceEditorInput";
 import NoExitWihoutSaveModal from "../components/NoExitWihoutSaveModal";
 import camelCase from "lodash/camelCase";
 import upperFirst from "lodash/upperFirst";
@@ -31,6 +31,11 @@ export default {
      * Register portal-vue
      */
     app.use(PortalVue);
+    /**
+     * Rich Text Editors
+     */
+    app.component('VaTinyMceEditor', TinyMceEditorInput);
+    app.component('VaRichTextEditor', RichTextEditorInput);
     /**
      * Register global modal
      */

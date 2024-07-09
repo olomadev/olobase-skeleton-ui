@@ -16,6 +16,8 @@
         disable-show
         disable-clone
         disable-create-redirect
+        disable-edit-redirect
+        disable-delete-redirect
       >
       </va-data-table-server>
     </va-list>
@@ -26,7 +28,7 @@
 import { required } from "@vuelidate/validators";
 
 export default {
-  props: ["resource"],
+  props: ["resource", "title"],
   inject: ["admin"],
   provide() {
     return {

@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  props: ["resource"],
+  props: ["resource", "title"],
   data() {
     return {
       filters: [
