@@ -11,6 +11,7 @@ import "vuetify/styles";
 // Translations provided by Vuetify
 import { en, tr } from "vuetify/locale";
 import Trans from "@/i18n/translation";
+import { aliases, mdi } from 'vuetify/iconsets/mdi'
 const defaultLang = Trans.guessDefaultLocale();
 
 // Composables
@@ -43,6 +44,13 @@ export default createVuetify({
     defaultTheme: "defaultTheme",
     themes: {
       defaultTheme,
+    },
+  },
+  icons: {
+    defaultSet: 'mdi',
+    aliases,
+    sets: {
+      mdi,
     },
   },
 });

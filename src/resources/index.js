@@ -40,6 +40,14 @@ export default [
     label: "name",
   },
   {
+    name: "actions",
+    label: "name",
+  },
+  {
+    name: "methods",
+    label: "name",
+  },
+  {
     name: "locales",
     label: "name",
   },

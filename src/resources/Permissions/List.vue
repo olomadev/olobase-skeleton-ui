@@ -16,8 +16,6 @@
         disable-show
         disable-clone
         disable-create-redirect
-        disable-edit-redirect
-        disable-delete-redirect
       >
       </va-data-table-server>
     </va-list>
@@ -112,6 +110,9 @@ export default {
         {
           source: "action",
           type: "select",
+          attributes: {
+            reference: "actions",
+          },
           sortable: true,
         },
         {
@@ -121,6 +122,9 @@ export default {
         {
           source: "method",
           type: "select",
+          attributes: {
+            reference: "methods",
+          },
           sortable: true,
         },
       ],

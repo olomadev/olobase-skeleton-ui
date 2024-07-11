@@ -12,8 +12,10 @@
           :header-menu="getHeaderMenu"
           sidebar-color="white"
         >
-          <template v-slot:logo>
-            <div class="mb-1" style="letter-spacing: 1px;">logo</div>
+          <template v-slot:navbar-logo>
+            <div class="text-center mt-12 mb-5 mr-6" style="font-family:'HankenGrotesk-Regular', 'Hanken Grotesk';font-size:24px; font-weight: bold; color: #0a7248;">
+              Logo
+            </div>
           </template>
           
           <template v-slot:profile>
@@ -205,6 +207,7 @@ export default {
     }),
     logout() {
       this.$store.dispatch("auth/logout");
+      this.$router.push({ name: "login" });
     },
   },
 };

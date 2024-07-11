@@ -1,103 +1,143 @@
 <template>
-  <div class="xs-12 sm-10 md-8 lg-6">
-
+  <div>
     <va-messages></va-messages>
 
-    <v-row>
-      <v-card width="350" class="noselect" style="margin-top: 200px">
-        <v-alert
-          v-if="resetPassword"
-          type="info"
-          :text="$t('auth.passwordResetEmail')"
-          variant="tonal"
-        ></v-alert>
+    <v-row no-gutters :style="smAndDown ? 'margin-top: 40px' : 'margin-top: 120px'">
+      <v-alert
+        v-if="resetPassword"
+        class="mb-4"      
+        color="primary"
+        :text="$t('auth.passwordResetEmail')"
+      ></v-alert>
+    </v-row>
 
-        <v-container>
-          <div class="text-center mb-9">
-            <img
-              id="profile-img"
-              src="../assets/avatar_2x.png"
-              class="profile-img-card"
-            />
-            <!-- <img src="../assets/logo-gray.png" width="80" height="80" /> -->
-          </div>
-          <v-form @submit.prevent="validate">
-            
-            <v-text-field
-              color="primary"
-              prepend-inner-icon="mdi-account"
-              v-model="username"
-              name="username"
-              :label="$t('auth.username')"
-              type="text"
-              variant="outlined"
-              class="mx-1"
-              clearable
-              autocomplete="username"
-              :error-messages="emailErrors"
-              @update:modelValue="v$.username.$touch()"
-            ></v-text-field>
+    <v-row no-gutters>
+      <v-card 
+        border
+        flat
+        class="noselect"
+        :min-width="getReponsiveWidth"
+      >
+        <v-sheet color="white">
+          <v-container>
+            <div class="text-center mt-5 mb-6">
+              <div style="letter-spacing: 1px;font-size:34px;" class="text-primary">logo</div>
+            </div>
+            <v-form @submit.prevent="validate">
+              <v-text-field
+                density="comfortable"
+                color="primary"
+                prepend-inner-icon="mdi-account"
+                v-model="username"
+                name="username"
+                :label="$t('auth.username')"
+                type="text"
+                variant="outlined"
+                class="mx-1"
+                clearable
+                autocomplete="username"
+                :error-messages="emailErrors"
+                @update:modelValue="v$.username.$touch()"
+              ></v-text-field>
 
-            <v-text-field
-              color="primary"
-              prepend-inner-icon="mdi-lock"
-              :append-inner-icon="showPass ? 'mdi-eye' : 'mdi-eye-off'"
-              :type="showPass ? 'text' : 'password'"
-              v-model="password"
-              name="password"
-              :label="$t('auth.password')"
-              variant="outlined"
-              class="mx-1"
-              autocomplete="password"
-              :error-messages="passwordErrors"
-              @click:append-inner="showPass = !showPass"
-              @update:modelValue="v$.password.$touch()"
-            ></v-text-field>
+              <v-text-field
+                density="comfortable"
+                color="primary"
+                prepend-inner-icon="mdi-lock"
+                :append-inner-icon="showPass ? 'mdi-eye' : 'mdi-eye-off'"
+                :type="showPass ? 'text' : 'password'"
+                v-model="password"
+                name="password"
+                :label="$t('auth.password')"
+                variant="outlined"
+                class="mx-1"
+                autocomplete="password"
+                :error-messages="passwordErrors"
+                @click:append-inner="showPass = !showPass"
+                @update:modelValue="v$.password.$touch()"
+              ></v-text-field>
 
-            <v-row class="mt-4 mb-1">
-              <v-col lg="6">
-                <div class="text-left">
-                  <LanguageSwitcher />
-                </div>
-              </v-col>
-              <v-col lg="6">
-                <div class="text-right">
-                  <v-btn
-                    :loading="loading"
-                    color="primary"
-                    large
-                    type="submit"
-                    text
-                    rounded
-                  >
-                    {{ $t("auth.signIn") }}
-                  </v-btn>
-                </div>
-              </v-col>
-            </v-row>
-          </v-form>
-        </v-container>
+              <v-row class="mt-4">
+                <v-col lg="6">
+                  <div class="text-left">
+                    <LanguageSwitcher></LanguageSwitcher>
+                  </div>
+                </v-col>
+                <v-col lg="6">
+                  <div class="text-right">
+                    <v-btn
+                      :loading="loading"
+                      color="primary"
+                      large
+                      type="submit"
+                      text
+                    >
+                      {{ $t("auth.signIn") }}
+                    </v-btn>
+                  </div>
+                </v-col>
+              </v-row>
+            </v-form>
+          </v-container>
+        </v-sheet>
       </v-card>
     </v-row>
 
-    <v-row class="pt-2">
-      <v-col sm="12">
-        <div class="text-center">
-          <router-link
-            :to="{ name: 'forgotPassword' }"
-            style="color: white; font-size: 13px"
-          >
-            {{ $t("auth.forgotPassword") }}
-          </router-link>
-        </div>
+    <v-row no-gutters v-if="countryId" class="mt-2" :min-width="getReponsiveWidth">
+      <v-col>        
+        <v-row class="mb-2" no-gutters>
+          <v-col>
+            <v-btn
+              block
+              variant="flat"
+              class="text-none"
+              prepend-icon="mdi-lock"
+              size="large"
+              text
+              :to="{ name: 'forgotPassword' }"
+            >
+              {{ $t("auth.forgotPassword") }}
+            </v-btn>
+          </v-col>
+        </v-row>
+        <v-row class="mb-2" no-gutters>
+          <v-col>
+            <v-btn
+              block
+              variant="flat"
+              class="text-none"
+              prepend-icon="mdi-plus"
+              size="large"
+              text
+              :to="{ name: 'register' }"
+            >
+              {{ $t("auth.createNewAccount") }}
+            </v-btn>
+          </v-col>
+        </v-row>
+        <v-row no-gutters>
+          <v-col>
+            <v-btn
+              block
+              variant="flat"
+              class="text-none"
+              prepend-icon="mdi-arrow-left"
+              size="large"
+              text
+            >
+              {{ $t("auth.backToHome") }}
+            </v-btn>
+          </v-col>
+        </v-row>
       </v-col>
     </v-row>
   </div>
 </template>
 
 <script>
-import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
+import { useDisplay } from "vuetify";
 import { useVuelidate } from "@vuelidate/core";
+import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
 import { mapActions } from "vuex";
 import i18n from "../i18n";
@@ -107,8 +147,9 @@ export default {
   inject: ['store'],
   components: { LanguageSwitcher },
   setup() {
+    const { smAndDown } = useDisplay();
     let resetPassword = useRoute().query.resetPassword;
-    return { v$: useVuelidate(), resetPassword };
+    return { v$: useVuelidate(), smAndDown, resetPassword };
   },
   validations() {
     return {
@@ -132,6 +173,12 @@ export default {
     };
   },
   computed: {
+    getReponsiveWidth() {
+      if (this.smAndDown) {
+        return 320;
+      }
+      return 360;
+    },
     emailErrors() {
       const errors = [];
       if (!this.v$.username.$dirty) return errors;
@@ -166,6 +213,7 @@ export default {
       this.loading = true;
       try {
         await this.login({ username: this.username, password: this.password });
+        this.$router.push({ name: "dashboard" });
       } catch (e) {
         this.loading = false;
       }

@@ -42,38 +42,6 @@
     </v-card>
   </v-form>
 
-  <v-tabs
-    class="mt-3"
-    v-model="tab"
-    variant="outlined"
-    bg-color="transparent"
-    color="primary"
-    align-tabs="left"
-  >
-    <v-tab value="1">Template</v-tab>
-    <v-tab value="2">Script</v-tab>
-  </v-tabs>
-
-  <v-window v-model="tab">
-    <v-window-item eager value="1">
-      <v-card>
-        <v-card-text>
-          <v-btn class="btn-copy">{{ $t("va.actions.copy") }}</v-btn>
-          <pre><code class="language-html">{{ template }}</code></pre>
-        </v-card-text>
-      </v-card>
-    </v-window-item>
-
-    <v-window-item eager value="2">
-      <v-card>
-        <v-card-text>
-          <v-btn class="btn-copy">{{ $t("va.actions.copy") }}</v-btn>
-          <pre><code class="language-js">{{ script }}</code></pre>
-        </v-card-text>
-      </v-card>
-    </v-window-item>
-  </v-window>
-
 </template>
 
 <script>
@@ -169,6 +137,7 @@ export default {
             response = await this.admin.http({ method: "GET", url: "/auth/logout" });
             if (response.status == 200) {
               this.$store.dispatch("auth/logout");
+              this.$router.push({ name: "login" });
             }
           }
         } catch (e) {

@@ -279,4 +279,4 @@ export default {
 };
 </script>
 
-<style lang="sass" scoped>@import '../src/sass/main.scss'</style>
+<style lang="sass" scoped>@import '../src/components/sass/main.scss'</style>
