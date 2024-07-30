@@ -1,6 +1,6 @@
 import i18n from "@/i18n";
 import { nextTick } from "vue";
-import store from "../store";
+import useStore from "../store";
 import cookies from "olobase-admin/src/utils/cookies";
 
 const Trans = {
@@ -22,7 +22,7 @@ const Trans = {
 
   async switchLanguage(newLocale) {
     Trans.currentLocale = newLocale;
-    store.commit('SET_LOCALE', newLocale);
+    useStore().setLocale(newLocale);
     cookies.set("lang", newLocale); // we user cookies
     document.querySelector("html").setAttribute("lang", newLocale);
   },

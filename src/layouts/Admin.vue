@@ -107,11 +107,11 @@ import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
 
 export default {
   name: "App",
-  inject: ["admin"],
+  inject: [''],
   components: { LanguageSwitcher },
   setup() {
     const { lgAndUp } = useDisplay();
-    return { lgAndUp };
+    return { auth, lgAndUp };
   },
   data() {
     return {
@@ -129,7 +129,7 @@ export default {
     /**
      * Check user is authenticated
      */
-    this.authenticatedUser = await this.checkAuth();
+    this.authenticatedUser = await this.$store.getModule("auth").checkAuth();
     if (! this.authenticatedUser) {
       this.$router.push({name: "login"});
     } else {
@@ -138,32 +138,32 @@ export default {
       // Thus, as long as the user's browser is open, the user logged in to the application,
       // otherwise the session will be closed when the ttl period expires.
       // 
-      this.admin.http.post('/auth/session', { update: 1 }); 
+      this.$admin.http.post('/auth/session', { update: 1 }); 
     }
   },
   computed: {
     avatarExists() {
-      let base64Image = this.$store.getters["auth/getAvatar"];
+      let base64Image = this.$store.getModule("auth").getAvatar();
       if (base64Image == "undefined" || base64Image == "null" || isEmpty(base64Image)) { 
         return false;
       }
       return true;
     },
     getAvatar() {
-      let base64Image = this.$store.getters["auth/getAvatar"]; 
+      let base64Image = this.$store.getModule("auth").getAvatar(); 
       if (base64Image == "undefined" || base64Image == "null" || isEmpty(base64Image)) { 
-        return this.admin.getConfig().avatar.base64; // default avatar image
+        return this.$admin.getConfig().avatar.base64; // default avatar image
       }
       return base64Image;
     },
     getEmail() {
-      return this.$store.getters["auth/getEmail"];
+      return this.$store.getModule("auth").getEmail();
     },
     getFullname() {
-      return this.$store.getters["auth/getFullname"];
+      return this.$store.getModule("auth").getFullname();
     },
     getCurrentLocale() {
-      return this.$store.getters[`getLocale`];
+      return this.$store.getLocale();
     },
     getHeaderMenu() {
       return [];
@@ -202,11 +202,8 @@ export default {
     }
   },
   methods: {
-    ...mapActions({
-      checkAuth: "auth/checkAuth",
-    }),
     logout() {
-      this.$store.dispatch("auth/logout");
+      this.$store.getModule("auth").logout();
       this.$router.push({ name: "login" });
     },
   },

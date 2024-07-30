@@ -22,13 +22,7 @@ export default defineConfig({
     // eslintPlugin(),
     vue({ 
       template: { 
-        transformAssetUrls, 
-        compilerOptions: {
-          // trix editor support
-          // tell Vite that all components starting with "trix-" are webcomponents
-          // https://stackoverflow.com/questions/72660014/how-to-make-vue-and-vite-work-with-web-components
-          isCustomElement: (tag) => tag.startsWith('trix-')
-        }
+        transformAssetUrls,
       }
     }),
     // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin

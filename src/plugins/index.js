@@ -11,7 +11,7 @@ import router from "../router";
 import i18n from "../i18n";
 import admin from "./admin";
 import loader from "./loader";
-import store from "../store";
+import useStore from "../store";
 import resources from "@/resources";
 import { useHttp } from "../plugins/useHttp";
 import axios from "axios";
@@ -20,7 +20,8 @@ import cookies from "olobase-admin/src/utils/cookies";
  * Get cookie constants object
  */
 const cookieKey = JSON.parse(import.meta.env.VITE_COOKIE);
-
+import { createPinia } from 'pinia';
+const pinia = createPinia();
 /**
  * Set default global http configuration
  */
@@ -46,13 +47,16 @@ useHttp(axios); // global instance
  * Main register function
  */
 export function registerPlugins(app) {
+  const store = useStore(pinia);
   loadFonts();
   loader.install(app);
-  admin.install(app, axios, resources);
+  admin.install(app, store, axios, resources);
   app.provide("vuetify", vuetify);
+  app.config.globalProperties.$store = store;
   app
+    .use(pinia)
+    .use(store)
     .use(vuetify)
     .use(i18n)
-    .use(store)
     .use(router);
 }

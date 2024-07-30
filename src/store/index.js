@@ -1,56 +1,57 @@
-import { createStore } from "vuex";
+import { defineStore } from "pinia";
 import axios from 'axios';
 
-const store = createStore({
-  state: {
-    locale: "en",
-    showDialog: false,
-    confirm: false,
-    resolve: null,
-    reject: null,
+const store = defineStore('index', {
+  state: () => {
+    return { 
+      locale: "en",
+      modules: [],
+      dialog: false,
+      confirm: false,
+      resolve: null,
+      reject: null,
+    }
   },
   actions: {
-    setLocale({ commit }, locale) {
-      commit("SET_LOCALE", locale);
+    registerModule(storeName, useStore) {
+      console.error(storeName);
+      this.modules[storeName] = useStore();
+      return this.modules[storeName];
     },
-    openDialog({ commit, state }) {
-      commit("TOGGLE_DIALOG", true);
+    getModule(moduleName) {
+      return this.modules[moduleName];
+    },
+    setLocale(locale) {
+      this.locale = locale;
+      axios.defaults.headers.common['X-Client-Locale'] = locale;
+    },
+    openDialog() {
+      this.dialog = true;
       return new Promise((resolve, reject) => {
-        state.resolve = resolve;
-        state.reject = reject;
+        this.resolve = resolve;
+        this.reject = reject;
       });
+    },
+    closeDialog() {
+      this.dialog = false;
+    },
+    agreeDialog() {
+      this.resolve(true);
+      this.dialog = false;
+    },
+    cancelDialog() {
+      this.resolve(false);
+      this.dialog = false;
     },
   },
   getters: {
-    dialog(state) {
-      return state.showDialog;
+    getDialog(state) {
+      return state.dialog;
     },
     getLocale(state) {
       return state.locale
     }
-  },
-  mutations: {
-    // do not remove these methods
-    SET_LOCALE(state, locale) {
-      state.locale = locale;
-      axios.defaults.headers.common['X-Client-Locale'] = locale;
-    },
-    TOGGLE_DIALOG(state, bool) {
-      state.showDialog = bool;
-    },
-    TOGGLE_DIALOG(state, bool) {
-      state.showDialog = bool;
-    },
-    TOGGLE_AGREE(state) {
-      state.resolve(true);
-      state.showDialog = false;
-    },
-    TOGGLE_CANCEL(state) {
-      state.resolve(false);
-      state.showDialog = false;
-    },
-  },
-  modules: {},
+  }
 });
 
 export default store;

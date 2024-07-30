@@ -3,6 +3,7 @@ lib
 dist
 /node_modules/
 packages/
+/.github/
 
 # Log files
 npm-debug.log*

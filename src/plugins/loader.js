@@ -16,7 +16,7 @@ import upperFirst from "lodash/upperFirst";
 /**
  * Autoload resources
  */
-const modules = import.meta.glob('@/resources/*/*.vue', { eager: true })
+const resources = import.meta.glob('@/resources/*/*.vue', { eager: true })
 /**
  * Dynamic vuetify components
  */
@@ -48,8 +48,8 @@ export default {
     /**
      * Register application resources automatically
      */
-    for (let fileName in modules) {
-      const componentConfig = modules[fileName];
+    for (let fileName in resources) {
+      const componentConfig = resources[fileName];
       fileName = fileName
         .replace(/^\.\//, "")
         .replace(/\//, "")

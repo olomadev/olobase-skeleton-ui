@@ -10,7 +10,6 @@
 import OlobaseAdmin from "olobase-admin";
 import router from "@/router";
 import i18n from "../i18n";
-import store from "@/store";
 import config from "@/_config";
 import routes from "@/router/admin";
 import PageNotFound from "@/views/Error404.vue";
@@ -29,7 +28,7 @@ let admin = new OlobaseAdmin(import.meta.env);
  * Install admin plugin
  */
 export default {
-  install: (app, http, resources) => {
+  install: (app, store, http, resources) => {
     // console.error(app.config.globalProperties)
     admin.setOptions({
       app,
@@ -58,8 +57,7 @@ export default {
     admin.init();
     OlobaseAdmin.install(app); // install layouts & components
     app.provide("i18n", i18n);
-    app.provide("router", router);
-    app.provide("admin", admin); // make injectable
+    app.config.globalProperties.$admin = admin;
     app.component("PageNotFound", PageNotFound);
   },
 };
