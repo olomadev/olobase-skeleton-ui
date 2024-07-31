@@ -16,7 +16,7 @@
 import Trans from "@/i18n/translation";
 
 export default {
-  inject: ['vuetify'],
+  inject: [],
   data() {
     return {
       height: "100vh",
@@ -36,7 +36,7 @@ export default {
       return this.height;
     },
     getThemeColor() {
-      return this.vuetify.theme.themes.value.defaultTheme.colors.primary;
+      return this.$vuetify.theme.themes.defaultTheme.colors.primary;
     }
   }
 };

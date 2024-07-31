@@ -20,16 +20,11 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-
 export default {
   computed: {
-    ...mapGetters({
-      dialogValue: "dialog",
-    }),
     dialog: {
       get() {
-        return this.dialogValue;
+        return this.$store.dialog;
       },
       set(bool) {
         this.cancel();
@@ -39,10 +34,10 @@ export default {
   },
   methods: {
     agree() {
-      this.$store.commit("TOGGLE_AGREE");
+      this.$store.agreeDialog();
     },
     cancel() {
-      this.$store.commit("TOGGLE_CANCEL");
+      this.$store.cancelDialog();
     },
   },
 };

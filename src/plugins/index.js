@@ -47,16 +47,16 @@ useHttp(axios); // global instance
  * Main register function
  */
 export function registerPlugins(app) {
-  const store = useStore(pinia);
   loadFonts();
   loader.install(app);
-  admin.install(app, store, axios, resources);
-  app.provide("vuetify", vuetify);
-  app.config.globalProperties.$store = store;
   app
     .use(pinia)
-    .use(store)
     .use(vuetify)
     .use(i18n)
     .use(router);
+  const store = useStore();
+  app.use(store);
+  app.config.globalProperties.$store = store;
+  app.config.globalProperties.$vuetify = vuetify;
+  admin.install(app, store, axios, resources);
 }

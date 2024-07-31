@@ -45,7 +45,6 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
 import { useVuelidate } from "@vuelidate/core";
 import { required, email, sameAs, minLength, maxLength } from "@vuelidate/validators";
 import { provide } from 'vue'
@@ -121,22 +120,19 @@ export default {
     },
   },
   methods: {
-    ...mapActions({
-      checkAuth: "auth/checkAuth",
-    }),
     async changePassword() {
       this.v$.$touch();
       if (this.v$.$invalid) {
         return false;
       }
-      if (await this.checkAuth()) {
+      if (await this.$store.getModule("auth").checkAuth()) {
         this.loading = true;
         try {
-          let response = await this.admin.http({ method: "PUT", url: "/account/updatePassword", data: this.model });
+          let response = await this.$admin.http({ method: "PUT", url: "/account/updatePassword", data: this.model });
           if (response && response.status == 200) {
-            response = await this.admin.http({ method: "GET", url: "/auth/logout" });
+            response = await this.$admin.http({ method: "GET", url: "/auth/logout" });
             if (response.status == 200) {
-              this.$store.dispatch("auth/logout");
+              this.$store.getModule("auth").logout();
               this.$router.push({ name: "login" });
             }
           }

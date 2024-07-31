@@ -19,7 +19,7 @@
           </template>
           
           <template v-slot:profile>
-            <v-menu offset-y v-if="$store.state.auth.user">
+            <v-menu offset-y v-if="userIsAuthenticated">
               <template v-slot:activator="{ props }">
                 <v-btn icon small v-bind="props" class="mr-1">
                  <div v-if="avatarExists" style="float:left;">
@@ -101,20 +101,22 @@
 <script>
 import isEmpty from "lodash/isEmpty"
 import { useDisplay } from "vuetify";
-import { mapActions } from "vuex";
 import Trans from "@/i18n/translation";
 import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
+import { storeToRefs } from 'pinia'
 
 export default {
   name: "App",
-  inject: [''],
+  inject: [],
   components: { LanguageSwitcher },
   setup() {
     const { lgAndUp } = useDisplay();
-    return { auth, lgAndUp };
+    return { lgAndUp };
   },
   data() {
     return {
+      avatar: null,
+      avatarExists: false,
       authenticatedUser: null,
     };
   },
@@ -140,30 +142,34 @@ export default {
       // 
       this.$admin.http.post('/auth/session', { update: 1 }); 
     }
+    /**
+     * Check avatar
+     */
+    let base64Image = this.$store.getModule("auth").getAvatar();
+    if (base64Image == "undefined" || base64Image == "null" || isEmpty(base64Image)) { 
+      this.avatar = this.$admin.getConfig().avatar.base64; // default avatar image
+      this.avatarExists = false;
+    } else {
+      this.avatarExists = true;
+      this.avatar = base64Image;
+    }
   },
   computed: {
+    getCurrentLocale() {
+      const { locale } = storeToRefs(this.$store);
+      return locale;
+    },
     avatarExists() {
-      let base64Image = this.$store.getModule("auth").getAvatar();
-      if (base64Image == "undefined" || base64Image == "null" || isEmpty(base64Image)) { 
-        return false;
-      }
-      return true;
+      return this.avatarExists;
     },
     getAvatar() {
-      let base64Image = this.$store.getModule("auth").getAvatar(); 
-      if (base64Image == "undefined" || base64Image == "null" || isEmpty(base64Image)) { 
-        return this.$admin.getConfig().avatar.base64; // default avatar image
-      }
-      return base64Image;
+      return this.avatar;
     },
     getEmail() {
       return this.$store.getModule("auth").getEmail();
     },
     getFullname() {
       return this.$store.getModule("auth").getFullname();
-    },
-    getCurrentLocale() {
-      return this.$store.getLocale();
     },
     getHeaderMenu() {
       return [];
@@ -202,6 +208,9 @@ export default {
     }
   },
   methods: {
+    userIsAuthenticated() {
+      return this.$store.getModule("auth").user;
+    },
     logout() {
       this.$store.getModule("auth").logout();
       this.$router.push({ name: "login" });

@@ -7,14 +7,22 @@ const store = defineStore('index', {
       locale: "en",
       modules: [],
       dialog: false,
+      drawer: true,
       confirm: false,
       resolve: null,
       reject: null,
     }
   },
+  getters: {
+    getDialog(state) {
+      return state.dialog;
+    },
+    getLocale(state) {
+      return state.locale
+    },
+  },
   actions: {
-    registerModule(storeName, useStore) {
-      console.error(storeName);
+    setModule(storeName, useStore) {
       this.modules[storeName] = useStore();
       return this.modules[storeName];
     },
@@ -24,6 +32,12 @@ const store = defineStore('index', {
     setLocale(locale) {
       this.locale = locale;
       axios.defaults.headers.common['X-Client-Locale'] = locale;
+    },
+    getDrawer() {
+      return this.drawer;
+    },
+    setDrawer(drawer) {
+      this.drawer = drawer;
     },
     openDialog() {
       this.dialog = true;
@@ -43,14 +57,6 @@ const store = defineStore('index', {
       this.resolve(false);
       this.dialog = false;
     },
-  },
-  getters: {
-    getDialog(state) {
-      return state.dialog;
-    },
-    getLocale(state) {
-      return state.locale
-    }
   }
 });
 

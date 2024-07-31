@@ -33,7 +33,6 @@
     "vue-plugin-load-script": "^2.1.1",
     "vue-router": "^4.2.5",
     "vuedraggable": "^4.1.0",
-    "vuex": "^4.1.0",
     "webfontloader": "^1.0.0"
   },
   "devDependencies": {

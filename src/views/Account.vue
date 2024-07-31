@@ -76,7 +76,6 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
 import { useVuelidate } from "@vuelidate/core";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
 import Trans from "@/i18n/translation";
@@ -177,11 +176,8 @@ export default {
     },
   },
   methods: {
-    ...mapActions({
-      checkAuth: "auth/checkAuth",
-    }),
     async initializeAccount() {
-      let response = await this.admin.http.get("/account/findMe");
+      let response = await this.$admin.http.get("/account/findMe");
       if (response && response.status == 200) {
         let data = response.data.data;
         this.firstname = data.firstname;
@@ -189,7 +185,7 @@ export default {
         this.email = data.email;
         this.locale = data.locale;
         this.avatar.image = data.avatar.image;
-        this.themeColor = data.themeColor ? data.themeColor : this.vuetify.theme.themes.value.defaultTheme.colors.primary;
+        this.themeColor = data.themeColor ? data.themeColor : this.$vuetify.theme.themes.defaultTheme.colors.primary;
       }
     },
     async updateAccount() {
@@ -210,9 +206,9 @@ export default {
           themeColor: this.themeColor
         };
         let Self = this;
-        let user = await this.checkAuth();
+        let user = await this.$store.getModule("auth").checkAuth();
         if (user) {
-          this.admin.http({ method: "PUT", url: "/account/update", data: data }).then(async function(response){
+          this.$admin.http({ method: "PUT", url: "/account/update", data: data }).then(async function(response){
             if (response && response.status == 200) {
               //
               // switch language
@@ -224,11 +220,11 @@ export default {
                 ) {
                 await Trans.switchLanguage(Self.locale.id);
               }
-              Self.vuetify.theme.themes.value.defaultTheme.colors.primary = Self.themeColor;
+              Self.$vuetify.theme.themes.defaultTheme.colors.primary = Self.themeColor;
               localStorage.setItem("themeColor", Self.themeColor);
               Self.$router.push({ name: "dashboard"});
               setTimeout(function(){
-                Self.admin.message("success", Self.$t("form.saved"));
+                Self.$admin.message("success", Self.$t("form.saved"));
               }, 1);
             }
           });

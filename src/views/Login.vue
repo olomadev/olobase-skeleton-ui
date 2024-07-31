@@ -139,7 +139,6 @@ import { useDisplay } from "vuetify";
 import { useVuelidate } from "@vuelidate/core";
 import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
-import { mapActions } from "vuex";
 import i18n from "../i18n";
 import { useRoute } from 'vue-router';
 
@@ -201,9 +200,6 @@ export default {
     },
   },
   methods: {
-    ...mapActions({
-      login: "auth/login",
-    }),
     async validate() {
       this.v$.$touch();
       this.loading = false;
@@ -212,7 +208,7 @@ export default {
       }
       this.loading = true;
       try {
-        await this.login({ username: this.username, password: this.password });
+        await this.$store.getModule("auth").login({ username: this.username, password: this.password });
         this.$router.push({ name: "dashboard" });
       } catch (e) {
         this.loading = false;
