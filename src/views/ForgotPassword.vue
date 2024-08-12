@@ -6,6 +6,7 @@
         <v-container>
           <v-form @submit.prevent="validate">
             <v-text-field
+              color="primary"
               class="mx-1 mt-3"
               prepend-icon="mdi-account"
               v-model="email"
@@ -81,7 +82,7 @@ import { useVuelidate } from "@vuelidate/core";
 import { required, email } from "@vuelidate/validators";
 
 export default {
-  inject: ['admin'],
+  inject: [],
   setup() {
     return { v$: useVuelidate() };
   },

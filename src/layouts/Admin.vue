@@ -22,7 +22,7 @@
             <v-menu offset-y v-if="userIsAuthenticated">
               <template v-slot:activator="{ props }">
                 <v-btn icon small v-bind="props" class="mr-1">
-                 <div v-if="avatarExists" style="float:left;">
+                 <div v-if="isAvatarExists" style="float:left;">
                     <v-avatar size="24px">
                       <v-img 
                         :src="getAvatar"
@@ -159,7 +159,7 @@ export default {
       const { locale } = storeToRefs(this.$store);
       return locale;
     },
-    avatarExists() {
+    isAvatarExists() {
       return this.avatarExists;
     },
     getAvatar() {

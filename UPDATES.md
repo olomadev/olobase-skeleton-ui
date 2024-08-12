@@ -24,6 +24,8 @@
 * providers/auth/jwt.js
 * providers/auth/actions.js
 
+* mixins/resource.js  (currentResource() relaced this.admin as this.$admin)
+
 * store/api.js
 * store/auth.js
 * store/guest.js

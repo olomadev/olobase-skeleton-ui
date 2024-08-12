@@ -1,5 +1,5 @@
 /**
- * @oloma.dev (c) 2022-2024
+ * @oloma.dev (c) 2023-2025
  *
  * - plugins/index.js
  * 
@@ -42,7 +42,6 @@ axios.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-useHttp(axios); // global instance
 /**
  * Main register function
  */
@@ -52,11 +51,17 @@ export function registerPlugins(app) {
   app
     .use(pinia)
     .use(vuetify)
-    .use(i18n)
-    .use(router);
+    .use(i18n);
   const store = useStore();
   app.use(store);
+  useHttp(axios, store); // global http instance
   app.config.globalProperties.$store = store;
   app.config.globalProperties.$vuetify = vuetify;
   admin.install(app, store, axios, resources);
+  //
+  // Router must be defined at the bottom !!
+  //
+  // https://stackoverflow.com/questions/78844518/vue-router-gives-a-warning-when-adding-dynamic-route-no-match-found-for-locatio
+  // 
+  app.use(router);
 }

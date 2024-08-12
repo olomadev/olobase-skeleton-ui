@@ -1,5 +1,5 @@
 /**
- * @oloma.dev (c) 2023-2024
+ * @oloma.dev (c) 2023-2025
  *
  * - plugins/vuetify.js
  * 

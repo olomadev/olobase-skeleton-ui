@@ -18,7 +18,7 @@
         }"
       >
         <template v-slot:default="{ items }">
-          <v-row no-gutters class="bordered pt-1 pb-1 justify-center" v-if="$store.state.api.loading">
+          <v-row no-gutters class="bordered pt-1 pb-1 justify-center" v-if="$store.getModule('api').getLoading()">
             <v-progress-circular
               color="primary"
               indeterminate
@@ -92,7 +92,7 @@
         </template>
 
         <template v-slot:no-data>
-          <v-row no-gutters class="bordered pt-1 pb-1 justify-center" v-if="$store.state.api.loading">
+          <v-row no-gutters class="bordered pt-1 pb-1 justify-center" v-if="$store.getModule('api').getLoading()">
             <v-progress-circular
               color="primary"
               indeterminate

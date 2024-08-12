@@ -7,8 +7,8 @@ import Login from "@/views/Login.vue";
 import ForgotPassword from "@/views/ForgotPassword";
 import ResetPassword from "@/views/ResetPassword";
 
-// import Dashboard from "@/views/Dashboard"
-// import AdminLayout from "@/layouts/Admin"
+import Dashboard from "@/views/Dashboard"
+import AdminLayout from "@/layouts/Admin"
 
 const routes = [
   // {
@@ -25,6 +25,20 @@ const routes = [
   //     },
   //   ],
   // },
+  {
+    path: "",
+    component: AdminLayout,
+    children: [
+      {
+        path: "/dashboard",
+        name: "dashboard",
+        component: Dashboard,
+        meta: {
+          title: i18n.global.t("routes.dashboard"),
+        },
+      },
+    ],
+  },
   {
     path: "/",
     redirect: "/login/:locale?",

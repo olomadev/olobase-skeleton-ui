@@ -1,4 +1,4 @@
-import { defineStore } from "pinia";
+import { defineStore, createPinia } from "pinia";
 import axios from 'axios';
 
 const store = defineStore('index', {
@@ -28,6 +28,10 @@ const store = defineStore('index', {
     },
     getModule(moduleName) {
       return this.modules[moduleName];
+    },
+    getResource(name) {
+      this.modules["resource"].setResource(name);
+      return this.modules["resource"];
     },
     setLocale(locale) {
       this.locale = locale;

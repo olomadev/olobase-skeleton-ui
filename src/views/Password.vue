@@ -50,7 +50,7 @@ import { required, email, sameAs, minLength, maxLength } from "@vuelidate/valida
 import { provide } from 'vue'
 
 export default {
-  inject: ['admin'],
+  inject: [],
   setup() {
     let vuelidate = useVuelidate();
     provide('v$', vuelidate)

@@ -92,7 +92,7 @@ import Utils from "olobase-admin/src/mixins/utils";
 
 export default {
   mixins: [Utils],
-  inject: ['admin'],
+  inject: [],
   setup() {
     return { v$: useVuelidate() };
   },
@@ -159,7 +159,7 @@ export default {
         newPasswordConfirm: this.newPasswordConfirm,
       });
       if (result) {
-        this.$store.commit("messages/show", { type: "success", message: this.$t("auth.passwordResetEmail") });
+        this.$store.getModule("messages").show({ type: "success", message: this.$t("auth.passwordResetEmail") });
         this.$router.push({ name: "login" });
       }
     },
@@ -170,7 +170,7 @@ export default {
     async http(method, url, data) {
       try {
         this.loading = true;
-        let result = await this.admin.http({ method, url, data });
+        let result = await this.$admin.http({ method, url, data });
         if (typeof result === 'object' && result !== null
             && result["status"] 
             && result.status == 200) {

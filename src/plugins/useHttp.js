@@ -1,12 +1,11 @@
 /**
- * @oloma.dev (c) 2023-2024
+ * @oloma.dev (c) 2023-2025
  * 
  * - plugins/useHttp.js
  *
  * Defines useHttp() method to configure global http settings
  */
 import i18n from "../i18n";
-import store from "@/store";
 import router from "@/router";
 import cookies from "olobase-admin/src/utils/cookies";
 import eventBus from "olobase-admin/src/utils/eventBus";
@@ -38,7 +37,7 @@ const processQueue = (error, token = null) => {
 /**
  * Http global response settings
  */
-const useHttp = function (axios) {
+const useHttp = function (axios, store) {
   let axiosInstance = axios;  
   axiosInstance.interceptors.response.use(
     (response) => {
@@ -69,7 +68,7 @@ const useHttp = function (axios) {
       if (error.response) {
         if (error.response.status === 401 
             && error.response.data.data.error == "Logout") {
-            store.dispatch("auth/logout");
+            store.getModule("auth").logout();
             router.push({ name: "login" });
             return;
         }
@@ -128,7 +127,7 @@ const useHttp = function (axios) {
             if (_error.response 
              && _error.response["status"] 
              && _error.response.status == 401) { // Token expired
-              store.dispatch("auth/logout");
+              store.getModule("auth").logout();
               return;
             }
             if (_error.response && _error.response.data) {
@@ -146,9 +145,9 @@ const useHttp = function (axios) {
             && error.response["data"]["data"] 
             && typeof error.response.data.data.error !== "undefined" 
             && typeof error.response.data.data.error === "string"
-            && store.getters["messages/getHideApiErrors"] == false
+            && store.getModule("messages").getHideApiErrors() == false
             ) {
-          store.commit("messages/show", { type: 'error', message: error.response.data.data.error });
+          store.getModule("messages").show({ type: 'error', message: error.response.data.data.error });
           return;
         }
         //
@@ -156,14 +155,14 @@ const useHttp = function (axios) {
         // 
         if (error.response["status"]
             && error.response.status == 400
-            && store.getters["messages/getHideApiErrors"] == false
+            && store.getModule("messages").getHideApiErrors() == false
             ) {
           //
           // mezzio native errors
           //
           if (error.response["data"] 
             && error.response["data"]["error"]) {
-            store.commit("messages/show", { type: 'error', message: error.response["data"]["error"] })
+            store.getModule("messages").show({ type: 'error', message: error.response["data"]["error"] });
             return;
           }
           //
@@ -172,7 +171,7 @@ const useHttp = function (axios) {
           if (error.response["data"] 
             && error.response["data"]["data"] 
             && typeof error.response.data.data.info !== "undefined") {
-            store.commit("messages/show", { type: 'info', message: error.response.data.data.info });
+            store.getModule("messages").show({ type: 'info', message: error.response.data.data.info });
             return;
           }
           //
@@ -228,13 +227,13 @@ function parseApiErrors(error) {
     } else if (typeof errorObject === "string") {
       errorHtml = errorObject
       if (errorObject == "Token Expired") {
-        store.dispatch("auth/logout");
+        store.getModule("auth").logout();
       } else {
         hasError = true
       }
     }
     if (hasError) {
-      store.commit("messages/show", { type: 'error', message: errorHtml })
+      store.getModule("messages").show({ type: 'error', message: errorHtml });
     }
     return error;
   }

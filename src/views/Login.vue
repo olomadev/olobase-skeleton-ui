@@ -83,7 +83,7 @@
       </v-card>
     </v-row>
 
-    <v-row no-gutters v-if="countryId" class="mt-2" :min-width="getReponsiveWidth">
+    <v-row no-gutters class="mt-2" :min-width="getReponsiveWidth">
       <v-col>        
         <v-row class="mb-2" no-gutters>
           <v-col>
@@ -102,7 +102,7 @@
         </v-row>
         <v-row class="mb-2" no-gutters>
           <v-col>
-            <v-btn
+<!--             <v-btn
               block
               variant="flat"
               class="text-none"
@@ -112,7 +112,7 @@
               :to="{ name: 'register' }"
             >
               {{ $t("auth.createNewAccount") }}
-            </v-btn>
+            </v-btn> -->
           </v-col>
         </v-row>
         <v-row no-gutters>
@@ -143,7 +143,6 @@ import i18n from "../i18n";
 import { useRoute } from 'vue-router';
 
 export default {
-  inject: ['store'],
   components: { LanguageSwitcher },
   setup() {
     const { smAndDown } = useDisplay();
@@ -163,6 +162,10 @@ export default {
       },
     }
   },
+  // async created() {
+  //  const result = await this.$store.getModule("auth").checkAuth();
+  //  console.error(result);
+  // },
   data() {
     return {
       showPass: false,

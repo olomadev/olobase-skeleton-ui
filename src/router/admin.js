@@ -13,14 +13,14 @@ export default {
     title: i18n.global.t("routes.home"),
   },
   children: [
-    {
-      path: "/dashboard",
-      name: "dashboard",
-      component: Dashboard,
-      meta: {
-        title: i18n.global.t("routes.dashboard"),
-      },
-    },
+    // {
+    //   path: "/dashboard",
+    //   name: "dashboard",
+    //   component: Dashboard,
+    //   meta: {
+    //     title: i18n.global.t("routes.dashboard"),
+    //   },
+    // },
     {
       path: "/swagger",
       name: "swagger",

@@ -27,7 +27,7 @@ import { required } from "@vuelidate/validators";
 
 export default {
   props: ["resource", "title"],
-  inject: ["admin"],
+  inject: [],
   provide() {
     return {
       validations: {
