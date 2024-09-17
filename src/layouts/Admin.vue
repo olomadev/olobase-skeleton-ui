@@ -19,7 +19,7 @@
           </template>
           
           <template v-slot:profile>
-            <v-menu offset-y v-if="userIsAuthenticated">
+            <v-menu offset-y>
               <template v-slot:activator="{ props }">
                 <v-btn icon small v-bind="props" class="mr-1">
                  <div v-if="isAvatarExists" style="float:left;">
@@ -104,6 +104,7 @@ import { useDisplay } from "vuetify";
 import Trans from "@/i18n/translation";
 import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
 import { storeToRefs } from 'pinia'
+import useAuth from "olobase-admin/src/store/auth";
 
 export default {
   name: "App",
@@ -117,6 +118,8 @@ export default {
     return {
       avatar: null,
       avatarExists: false,
+      email: null,
+      fullname: null,
       authenticatedUser: null,
     };
   },
@@ -135,6 +138,8 @@ export default {
     if (! this.authenticatedUser) {
       this.$router.push({name: "login"});
     } else {
+      this.email = this.$store.getModule("auth").getEmail;
+      this.fullname = this.$store.getModule("auth").getFullname;
       // 
       // Please do not remove it, it periodically updates the session lifetime.
       // Thus, as long as the user's browser is open, the user logged in to the application,
@@ -145,7 +150,7 @@ export default {
     /**
      * Check avatar
      */
-    let base64Image = this.$store.getModule("auth").getAvatar();
+    let base64Image = this.$store.getModule("auth").getAvatar;
     if (base64Image == "undefined" || base64Image == "null" || isEmpty(base64Image)) { 
       this.avatar = this.$admin.getConfig().avatar.base64; // default avatar image
       this.avatarExists = false;
@@ -166,10 +171,10 @@ export default {
       return this.avatar;
     },
     getEmail() {
-      return this.$store.getModule("auth").getEmail();
+      return this.email;
     },
     getFullname() {
-      return this.$store.getModule("auth").getFullname();
+      return this.fullname;
     },
     getHeaderMenu() {
       return [];
@@ -208,9 +213,6 @@ export default {
     }
   },
   methods: {
-    userIsAuthenticated() {
-      return this.$store.getModule("auth").user;
-    },
     logout() {
       this.$store.getModule("auth").logout();
       this.$router.push({ name: "login" });

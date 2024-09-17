@@ -14,11 +14,25 @@ const store = defineStore('index', {
     }
   },
   getters: {
-    getDialog(state) {
-      return state.dialog;
+    getDialog() {
+      return this.dialog;
     },
-    getLocale(state) {
-      return state.locale
+    getLocale() {
+      return this.locale
+    },
+    getResource: (state) => {
+      return function (name) {
+        this.modules["resource"].setResource(name);
+        return this.modules["resource"];
+      }
+    },
+    getModule: (state) => {
+      return function (name) {
+        return this.modules[name];
+      }
+    },
+    getDrawer() {
+      return this.drawer;
     },
   },
   actions: {
@@ -26,19 +40,9 @@ const store = defineStore('index', {
       this.modules[storeName] = useStore();
       return this.modules[storeName];
     },
-    getModule(moduleName) {
-      return this.modules[moduleName];
-    },
-    getResource(name) {
-      this.modules["resource"].setResource(name);
-      return this.modules["resource"];
-    },
     setLocale(locale) {
       this.locale = locale;
       axios.defaults.headers.common['X-Client-Locale'] = locale;
-    },
-    getDrawer() {
-      return this.drawer;
     },
     setDrawer(drawer) {
       this.drawer = drawer;
