@@ -7,6 +7,7 @@
  */
 import i18n from "../i18n";
 import router from "@/router";
+import { storeToRefs } from 'pinia'
 import cookies from "olobase-admin/src/utils/cookies";
 import eventBus from "olobase-admin/src/utils/eventBus";
 /**
@@ -38,6 +39,7 @@ const processQueue = (error, token = null) => {
  * Http global response settings
  */
 const useHttp = function (axios, store) {
+
   let axiosInstance = axios;  
   axiosInstance.interceptors.response.use(
     (response) => {
@@ -138,6 +140,8 @@ const useHttp = function (axios, store) {
 
         } // 401 end       
 
+        // console.error(error.response["data"]);
+
         //
         // php string errors
         // 
@@ -145,7 +149,7 @@ const useHttp = function (axios, store) {
             && error.response["data"]["data"] 
             && typeof error.response.data.data.error !== "undefined" 
             && typeof error.response.data.data.error === "string"
-            && store.getModule("messages").getHideApiErrors() == false
+            && store.getModule("messages").getHideApiErrors == false
             ) {
           store.getModule("messages").show({ type: 'error', message: error.response.data.data.error });
           return;
@@ -155,7 +159,7 @@ const useHttp = function (axios, store) {
         // 
         if (error.response["status"]
             && error.response.status == 400
-            && store.getModule("messages").getHideApiErrors() == false
+            && store.getModule("messages").getHideApiErrors == false
             ) {
           //
           // mezzio native errors
@@ -177,7 +181,7 @@ const useHttp = function (axios, store) {
           //
           // form validation errors & general errors
           //
-          parseApiErrors(error)
+          parseApiErrors(error, store)
           return error.response;
 
         } // end response status
@@ -193,7 +197,7 @@ const useHttp = function (axios, store) {
 /**
  * parse validation errors
  */
-function parseApiErrors(error) {
+function parseApiErrors(error, store) {
   if (error.response["data"] 
     && error.response["data"]["data"] 
     && error.response["data"]["data"]["error"]) {

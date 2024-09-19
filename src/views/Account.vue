@@ -81,7 +81,7 @@ import { required, email, minLength, maxLength } from "@vuelidate/validators";
 import Trans from "@/i18n/translation";
 
 export default {
-  inject: ['admin', 'vuetify'],
+  inject: [],
   setup() {
     return { v$: useVuelidate() };
   },

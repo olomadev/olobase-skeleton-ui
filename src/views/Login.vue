@@ -115,20 +115,6 @@
             </v-btn> -->
           </v-col>
         </v-row>
-        <v-row no-gutters>
-          <v-col>
-            <v-btn
-              block
-              variant="flat"
-              class="text-none"
-              prepend-icon="mdi-arrow-left"
-              size="large"
-              text
-            >
-              {{ $t("auth.backToHome") }}
-            </v-btn>
-          </v-col>
-        </v-row>
       </v-col>
     </v-row>
   </div>

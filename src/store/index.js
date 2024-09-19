@@ -1,4 +1,4 @@
-import { defineStore, createPinia } from "pinia";
+import { defineStore } from "pinia";
 import axios from 'axios';
 
 const store = defineStore('index', {
