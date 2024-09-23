@@ -38,12 +38,10 @@
         <va-boolean-input
           source="active"
           hide-details
-          class="mb-2"
         ></va-boolean-input>
-
+        
         <va-boolean-input 
           source="emailActivation"
-          class="mb-1"
         >  
         </va-boolean-input>
       </v-col>

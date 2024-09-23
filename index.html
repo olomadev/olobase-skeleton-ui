@@ -5,7 +5,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="icon" href="/favicon.ico" />
-  <meta name="ol:key" content="79DWHX-JTC3W9-HZSCNV-1IR372LDOMV" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
   <style type="text/css">
     /* 
@@ -132,18 +131,6 @@
       line-height: 20px !important;
       padding: 9px 0 9px !important;
     }
-    /*.v-field--variant-outlined input {
-      flex: 1 1 auto !important;
-      line-height: 20px !important;
-      padding: 9px 9px 9px 12px !important;
-    }*/
-    /*    .v-select .v-field__clearable {
-      padding-top: 11px !important;
-    }*/
-    /* input global icons top  */
-    /*    .v-field__prepend-inner, .v-field__append-inner, .v-field__clearable {
-      padding-top: 10px !important;
-    }*/
     /* global input height */     /* global input density-default */
     .v-input--density-default .v-field--variant-plain, .v-input--density-default .v-field--variant-underlined {
       --v-input-control-height: 0px !important; 
@@ -156,33 +143,7 @@
       margin-inline-start: 12px !important;
       margin-inline-end: 12px !important;
     }
-    /* field variant underlined global label */
-    /*    .v-field--variant-underlined .v-label.v-field-label {
-      font-size: 11px !important;
-      margin-inline-start: 0px !important;
-      margin-inline-end: 0px !important;
-    }*/
-    /* global field */
-/*    .v-field--variant-outlined .v-field__input, .v-text-field__prefix, .v-text-field__suffix  {
-      min-height: 40px !important;
-      padding-top: 9px !important;
-      padding-bottom: 9px !important;
-      font-size: 12px;
-    }
-    .v-field--variant-underlined .v-field__input, .v-text-field__prefix, .v-text-field__suffix  {
-      min-height: 40px !important;
-      padding-top: 9px !important;
-      padding-bottom: 9px !important;
-      margin-inline-start: 0px !important;
-      margin-inline-end: 0px !important;
-      font-size: 12px;
-    }*/
-    /* we have height problems in select fields  */
-/*    .v-field--variant-filled  .v-field__input {
-      min-height: 47px !important;
-      font-size: 12px;
-    }*/
-    .v-file-input .v-field__input, .v-text-field__prefix, .v-text-field__suffix{
+   .v-file-input .v-field__input, .v-text-field__prefix, .v-text-field__suffix{
       font-size: 12px;
     }
     /* fix the select input height bug */
@@ -194,23 +155,10 @@
     .v-table > .v-table__wrapper > table > tbody > tr > td {
       font-size: 12px !important;
     }
-    /*  .va-array-table-input .v-field__input {
-      min-height: 39px !important;
-    }*/
-/*    .va-array-table-input .v-table {
-      --v-table-header-height: 36px !important;
-    }
-    .va-array-table-input .v-table--density-default > .v-table__wrapper > table > tbody > tr > td, .v-table--density-default > .v-table__wrapper > table > thead > tr > td, .v-table--density-default > .v-table__wrapper > table > tfoot > tr > td {
-      height: 34px !important; 
-    }*/
     .v-select--active-menu > label {
       margin-left: 100px !important;
       margin-right: 100px !important;
     }
-    /* global switch height */
-    /*    .v-switch .v-selection-control {
-      min-height: 10px !important;
-    }*/
     .v-label {
       font-size: 11px !important;
     }
@@ -224,9 +172,6 @@
     /*      box-shadow: none !important;*/
         box-shadow: 0px 3px 1px -2px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 0px 0px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.10)), 0px 1px 5px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.10)) !important;
     }
-    /*    .v-btn.v-btn--density-default {
-      height: calc(var(--v-btn-height) + 2px) !important;
-    }*/
     .v-btn-group--density-default {
       height: calc(var(--v-btn-height) + 10px) !important;
     }
@@ -257,16 +202,18 @@
     .v-field__clearable {
       margin-inline-end: 0px !important;
     }
-    .v-selection-control__wrapper {
-      margin-right: 5px;
-      width: auto !important;
+    /* font global size: data-table grid and all cards */
+    .v-container, .v-card-text {
+      font-size: 13px !important;
     }
-    /* grid checkbox row height */
-    .v-selection-control--density-default {
-      --v-selection-control-size: 15px !important;
+    .v-chip.v-chip--size-small {
+      font-size: 11px !important; 
     }
-    .v-selection-control-group .v-selection-control--density-default {
-      --v-selection-control-size: 25px !important;
+    .v-chip.v-chip--density-default {
+      font-size: 11px !important;
+      height: 20px !important;
+      padding: 7px !important;
+      margin-right: 2px;
     }
     /* font global size: data-table grid and all cards */
     .v-container, .v-card-text {
@@ -281,15 +228,6 @@
       padding: 7px !important;
       margin-right: 2px;
     }
-/*    .v-switch__thumb {
-        height: 15px !important;
-        width: 20px !important;
-    }
-    .v-switch__track {
-        border-radius: 8px;
-        height: 13px !important;
-        width: 28px !important;
-    }*/
     .h1 {
         font-size: 1.75rem !important;
         font-weight: 400;
@@ -347,12 +285,12 @@
     }
     /* https://stackoverflow.com/questions/61541258/change-padding-of-vuetify-v-expansion-panel-content */
     #va-expansion-panel > * {
-        padding-top: 0px;
-        padding-right: 0px;
-        padding-bottom: 0px;
-        padding-left: 0px;
-        border: 1px solid #d7d7d7;
-        border-radius: 4px;
+      padding-top: 0px;
+      padding-right: 0px;
+      padding-bottom: 0px;
+      padding-left: 0px;
+      border: 1px solid #d7d7d7;
+      border-radius: 4px;
     }
     .v-expansion-panel__shadow {
       box-shadow: none !important;
@@ -361,10 +299,10 @@
        height: 35px !important;
     }*/
     .v-data-table-footer {
-        padding-top: 25px !important;
-        padding-right: 0px !important;
-        padding-bottom: 10px !important;
-        padding-left: 0px !important;
+      padding-top: 25px !important;
+      padding-right: 0px !important;
+      padding-bottom: 10px !important;
+      padding-left: 0px !important;
     }
     /* datatable row hover */
     .v-theme--defaultTheme.v-data-table > .v-table__wrapper > table > tbody
@@ -495,24 +433,6 @@
     .bg-green-300 { background-color: #eeffeb; }
     .v-card--variant-outlined {
        border: thin solid #d7d7d7 !important;
-    }
-    /**
-     * Prism js customizations
-     */
-    .language-html {
-      font-size: 14px !important;
-    }
-    .language-javascript {
-      font-size: 14px !important;
-    }
-    .language-js {
-      font-size: 14px !important;
-    }
-    .language-php {
-      font-size: 14px !important;
-    }
-    .language-bash {
-      font-size: 14px !important;
     }
     /* On screens that are 1600px or less, set data grid paddings more */
     @media screen and (max-width: 1600px) {

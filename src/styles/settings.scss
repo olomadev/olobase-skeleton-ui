@@ -2,9 +2,10 @@
  * src/styles/settings.scss
  *
  * Configures SASS variables and Vuetify overwrites
+ *
+ * https://vuetifyjs.com/en/features/sass-variables/
  */
-
-// https://next.vuetifyjs.com/features/sass-variables/`
-// @use 'vuetify' with (
-//   $color-pack: false
-// );
+@use 'vuetify/settings' with (
+	$selection-control-density: ('default': 0, 'comfortable': 0, 'compact': 0),
+	$selection-control-size: none,
+);
