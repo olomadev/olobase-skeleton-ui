@@ -29,6 +29,7 @@
     "components": "Bileşenler",
     "companies": "Şirketler",
     "permissions": "Yetkiler",
+    "categories": "Kategoriler",
     "jobtitles": "Ünvanlar",
     "jobtitlelists": "Ünvan Listesi",
     "account": "Hesap",
@@ -159,6 +160,7 @@
   },
   "menu": {
     "home": "Anasayfa",
+    "categories": "Kategoriler",
     "examples": "Örnekler",
     "companies": "Şirketler",
     "roles": "Roller",
@@ -255,6 +257,7 @@
     "roles": "Roller",
     "users": "Kullanıcılar",
     "permissions": "Yetkiler",
+    "categories": "Kategoriler",
     "departments": "Departmanlar",
     "failedlogins": "Başarısız Oturumlar",
     "rest api": "REST API"
@@ -264,48 +267,11 @@
       "rest_api": "REST API Dökümanları",
       "open_docs" : "Dokümanları Okumak İçin Tıklayın",
     },
-    "companies": {
+    "categories": {
       "fields": {
         "q": "Ara",
-        "companyName" : "Şirket İsmi",
-        "companyShortName" : "Kısa Ad",
-        "taxOffice" : "Vergi Dairesi",
-        "taxNumber" : "Vergi No",
-        "address" : "Adres",
-        "createdAt" : "Oluşturulma"
-      }
-    },
-    "employeegrades": {
-      "fields": {
-        "q": "Ara",
-        "gradeName": "Seviye"
-      }
-    },
-    "departments": {
-      "fields": {
-        "q": "Ara",
-        "companyId": "Şirket",
-        "departmentName": "Departman Adı"
-      }
-    },
-    "jobtitles": {
-      "importDescription" : "Yeni bir liste oluşturmak için şablonu indir tuşu ile örnek şablonu indirip, hazırladğınız xlsx dosyasını sonraki adımdaki alandan yükleyin",
-      "newListName": "Liste Adı",
-      "createNewList": "Yeni Liste Oluştur",
-      "saveList": "Lİsteyİ Kaydet",
-      "downloadXls": "Şablonu İndİr",
-      "fields": {
-        "q": "Ara",
-        "yearId": "Yıl",
-        "companyId": "Şirket",
-        "jobTitleName": "Ünvan",
-        "listName": "Liste"
-      }
-    },
-    "jobtitlelists": {
-      "fields": {
-        "q": "Search",
-        "yearId": "Year"          
+        "name" : "Kategori Adı",
+        "parentId" : "Üst Kategori"
       }
     },
     "roles": {

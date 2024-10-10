@@ -12,6 +12,7 @@ import "vuetify/styles";
 import { en, tr } from "vuetify/locale";
 import Trans from "@/i18n/translation";
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
+import { VTreeview } from 'vuetify/labs/VTreeview'
 const defaultLang = Trans.guessDefaultLocale();
 
 // Composables
@@ -35,6 +36,9 @@ const defaultTheme = {
 
 // Vuetify 
 export default createVuetify({
+  components: {
+    VTreeview,
+  },
   locale: {
     locale: Trans.supportedLocales.includes(defaultLang) ? defaultLang : import.meta.env.VITE_DEFAULT_LOCALE,
     fallback: "en",

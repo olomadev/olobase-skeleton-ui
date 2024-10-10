@@ -29,6 +29,7 @@
     "components": "Components",
     "companies": "Companies",
     "permissions": "Permissions",
+    "categories": "Categories",
     "jobtitles": "Job Titles",
     "jobtitlelists": "Job Title Lists",
     "account": "Account",
@@ -156,6 +157,7 @@
   },
   "menu": {
     "home": "Home",
+    "categories": "Categories",
     "examples": "Examples",
     "companies": "Companies",
     "users": "Users",
@@ -253,6 +255,7 @@
     "roles": "Roles",
     "users": "Users",
     "permissions": "Permissions",
+    "categories": "Categories",
     "departments": "Departments",
     "failedlogins": "Failed Logins",
     "rest api": "REST API"
@@ -262,48 +265,11 @@
       "rest_api": "REST API Documents",
       "open_docs" : "Click to Read the Docs",
     },
-    "companies": {
+    "categories": {
       "fields": {
         "q": "Search",
-        "companyName" : "Company Name",
-        "companyShortName" : "Short Name",
-        "taxOffice" : "Tax Office",
-        "taxNumber" : "Tax Number",
-        "address" : "Address",
-        "createdAt" : "Created At"
-      }
-    },
-    "employeegrades": {
-      "fields": {
-        "q": "Search",
-        "gradeName": "Grade"
-      }
-    },
-    "departments": {
-      "fields": {
-        "q": "Search",
-        "companyId": "Company",
-        "departmentName": "Department Name"
-      }
-    },
-    "jobtitles": {
-      "importDescription": "To create a new list, download the sample template with the download file button and upload the xlsx file you have prepared according to the template you downloaded in the next step.",
-      "newListName": "List Name",
-      "createNewList": "Create New List",
-      "saveList": "Save List",
-      "downloadXls": "Download File",
-      "fields": {
-        "q": "Search",
-        "yearId": "Year",
-        "companyId": "Company",
-        "listName": "List Name",
-        "jobTitleName": "Job Title",
-      }
-    },
-    "jobtitlelists": {
-      "fields": {
-        "q": "Search",
-        "yearId": "Year"
+        "name" : "Category Name",
+        "parentId" : "Parent Category"
       }
     },
     "roles": {

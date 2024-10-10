@@ -24,6 +24,14 @@ export default [
     actions: ["create", "list", "edit", "delete", "show"],
   },
   {
+    name: "categories",
+    label: "name",
+    permissions: [
+      { name: "admin", actions: ["create","list","edit", "delete", "show"] },
+    ],
+    actions: ["create", "list", "edit", "delete", "show"],
+  },
+  {
     name: "failedlogins",
     label: "name",
     permissions: [

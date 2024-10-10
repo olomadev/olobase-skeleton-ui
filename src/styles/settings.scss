@@ -7,5 +7,5 @@
  */
 @use 'vuetify/settings' with (
 	$selection-control-density: ('default': 0, 'comfortable': 0, 'compact': 0),
-	$selection-control-size: none,
+	$selection-control-size: 35px,
 );

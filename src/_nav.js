@@ -28,6 +28,11 @@ export default  {
         link: "/users?sortBy=firstname&sortDesc=false",
       },
       {
+        icon: "mdi-file-tree-outline",
+        text: t("menu.categories"),
+        link: "/categories",
+      },
+      {
         icon: "mdi-account-alert",
         text: t("menu.failedlogins"),
         link: "/failedlogins?sortBy=attemptedAt&sortDesc=false",
