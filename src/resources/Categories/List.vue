@@ -112,6 +112,7 @@ export default {
         parentId: item.parentId,
         lft: item.lft,
         rgt: item.rgt,
+        move: item.move
       };
       this.$admin.http({ method: "PUT", url: "/categories/update/" + item.id, data: data }).then(async function(response) {
         if (response && response.status == 200) {
