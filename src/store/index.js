@@ -11,9 +11,13 @@ const store = defineStore('index', {
       confirm: false,
       resolve: null,
       reject: null,
+      navbarKey: 0,
     }
   },
   getters: {
+    getNavbarKey() {
+      return this.navbarKey;
+    },
     getDialog() {
       return this.dialog;
     },
@@ -36,6 +40,9 @@ const store = defineStore('index', {
     },
   },
   actions: {
+    setNavbarKey() {
+      this.navbarKey = this.navbarKey + 1;
+    },
     setModule(storeName, useStore) {
       this.modules[storeName] = useStore();
       return this.modules[storeName];

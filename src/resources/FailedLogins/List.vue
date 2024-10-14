@@ -31,7 +31,7 @@
               lg="6" md="6" sm="12"
               class="mb-3"
             >
-              <v-sheet border rounded :class="(isOdd(i)) ? '' : 'mr-lg-5 mr-md-5 mr-sm-0'">
+              <v-sheet border :class="(isOdd(i)) ? '' : 'mr-lg-5 mr-md-5 mr-sm-0'">
                 <v-list-item
                   :title="item.raw.username"
                   :subtitle="item.raw.id"
@@ -42,9 +42,9 @@
                     <v-row>
                       <v-col>
                         <strong class="text-h6">
-                          <table>
+                          <table border="0" style="border:none;">
                             <tr>
-                              <td style="border: none;" width="35px;" align="left"><v-icon icon="mdi-account-outline" size="small" ></v-icon></td>
+                              <td style="border:none;" width="35px;" align="left"><v-icon icon="mdi-account-outline" size="small" ></v-icon></td>
                               <td style="border:none;">{{ item.raw.username }}</td>
                             </tr>
                           </table>
@@ -54,14 +54,14 @@
                         <va-delete-button
                           block
                           :resource="resource"
-                          :item="item.raw"
+                          :item="item"
                         ></va-delete-button>
                       </v-col>
                     </v-row>
                   </template>
                 </v-list-item>
                 <v-table 
-                  style="padding-left:10px;"
+                  style="padding-left:10px;border:none;"
                   density="compact" 
                   class="text-caption"
                 >
@@ -102,6 +102,7 @@
             {{ $t("va.datatable.nodata")}}
           </v-row>
         </template>
+        
       </va-data-iterator-server>
     </va-list>
   </div>

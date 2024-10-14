@@ -5,7 +5,7 @@
     >
       <template #appbar>
         <va-app-bar
-          :key="getCurrentLocale"
+          :key="getNavbarKey"
           color="primary"
           density="compact"
           elevation="1"
@@ -22,7 +22,7 @@
             <v-menu offset-y>
               <template v-slot:activator="{ props }">
                 <v-btn icon small v-bind="props" class="mr-1">
-                 <div v-if="isAvatarExists" style="float:left;">
+                 <div v-if="avatarExists" style="float:left;">
                     <v-avatar size="24px">
                       <v-img 
                         :src="getAvatar"
@@ -160,12 +160,12 @@ export default {
     }
   },
   computed: {
+    getNavbarKey() {
+      return this.$store.navbarKey + '_' + this.$store.getLocale;
+    },
     getCurrentLocale() {
       const { locale } = storeToRefs(this.$store);
       return locale;
-    },
-    isAvatarExists() {
-      return this.avatarExists;
     },
     getAvatar() {
       return this.avatar;
