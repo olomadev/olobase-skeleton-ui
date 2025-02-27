@@ -8,8 +8,6 @@
 import "./vuetify";
 import "@mdi/font/css/materialdesignicons.css";
 import PortalVue from "portal-vue";
-import RichTextEditorInput from "../components/RichTextEditorInput";
-import TinyMceEditorInput from "../components/TinyMceEditorInput";
 import UnsavedFormDialog from "../components/UnsavedFormDialog";
 import camelCase from "lodash/camelCase";
 import upperFirst from "lodash/upperFirst";
@@ -31,11 +29,6 @@ export default {
      * Register portal-vue
      */
     app.use(PortalVue);
-    /**
-     * Rich Text Editors
-     */
-    app.component('VaTinyMceEditor', TinyMceEditorInput);
-    app.component('VaRichTextEditor', RichTextEditorInput);
     /**
      * Register global modal
      */

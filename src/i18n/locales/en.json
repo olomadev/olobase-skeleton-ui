@@ -375,38 +375,6 @@
         "themeColor": "Theme Color"
       }
     },
-    "employees": {
-      "fields": {
-        "q": "Search",
-        "companyId": "Company",
-        "departmentId": "Department",
-        "employeeNumber": "No",
-        "jobTitleId": "Job Title",
-        "gradeId": "Grade",
-        "name": "Name",
-        "surname": "Surname",
-        "employmentStartDate": "Start Date",
-        "employmentEndDate": "End Date",
-        "createdAt": "Created At",
-        "employeeChildren": "Children",
-        "childName": "Fullname",
-        "childBirthdate": "Birthdate",
-        "actions": "Actions",
-        "employees": "Employees",
-        "autocompleterPlaceholder": "Please choose an employee"
-      },
-      "enums": {
-        "genderId": {
-          "m": "Male",
-          "f": "Female"
-        },
-        "currencyId": {
-          "TRY" : "Turkish Lira",
-          "USD" : "Dolar",
-          "EUR" : "Euro"
-        }
-      }
-    },
     "failedlogins": {
       "fields": {
         "q": "Search",

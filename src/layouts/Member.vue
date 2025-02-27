@@ -36,7 +36,7 @@ export default {
       return this.height;
     },
     getThemeColor() {
-      return this.$vuetify.theme.themes.defaultTheme.colors.primary;
+      return this.$vuetify.theme.themes.light.colors.primary;
     }
   }
 };

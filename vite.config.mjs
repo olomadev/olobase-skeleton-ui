@@ -18,6 +18,9 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 3000
   },
+  optimizeDeps: {
+    exclude: ["vuetify"]  // fixes optimized deps warnings...
+  },
   // fixes sass 2.0 deprecation bug
   // https://stackoverflow.com/questions/78997907/the-legacy-js-api-is-deprecated-and-will-be-removed-in-dart-sass-2-0-0
   css: {

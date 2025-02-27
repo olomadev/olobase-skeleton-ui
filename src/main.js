@@ -8,11 +8,14 @@ import App from "./App.vue";
 
 // Composables
 import { createApp } from "vue";
+// import './assets/css/style.css'; // Tailwind and other styles, put here
 
 // Plugins
 import { registerPlugins } from "@/plugins";
 const app = createApp(App);
 
-registerPlugins(app);
-
-app.mount("#app");
+async function init() {
+  await registerPlugins(app);
+  app.mount("#app");
+}
+init()

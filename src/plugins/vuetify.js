@@ -18,22 +18,6 @@ const defaultLang = Trans.guessDefaultLocale();
 // Composables
 import { createVuetify } from "vuetify";
 
-const defaultTheme = {
-  dark: false,
-  colors: {
-    background: "#FFFFFF",
-    surface: "#FFFFFF",
-    primary: localStorage.getItem("themeColor")
-      ? localStorage.getItem("themeColor")
-      : "#0a7248",
-    secondary: "#eeeeee",
-    error: "#ed0505",
-    info: "#00CAE3",
-    // success: '#4CAF50',
-    // warning: '#FB8C00',
-  },
-};
-
 // Vuetify 
 export default createVuetify({
   components: {
@@ -45,9 +29,37 @@ export default createVuetify({
     messages: { tr, en },
   },
   theme: {
-    defaultTheme: "defaultTheme",
+    defaultTheme: 'light',
     themes: {
-      defaultTheme,
+      light: {
+        dark: false,
+        colors: {
+          background: "#f0f0f1",
+          surface: "#FFFFFF",
+          primary: localStorage.getItem("themeColor")
+            ? localStorage.getItem("themeColor")
+            : "#0a7248",
+          secondary: "#eeeeee",
+          error: "#ed0505",
+          info: "#00CAE3",
+          // success: '#4CAF50',
+          // warning: '#FB8C00',
+        },
+      },
+      dark: {
+        dark: true,
+        colors: {
+          background: '#121212',  // background
+          surface: '#1E1E1E',      // cards vb.
+          primary: '#121212',      // main color in gray tone
+          secondary: '#494b4d',    // lighter gray
+          accent: '#7a7c7d',       // accent gray
+          error: '#CF6679',
+          info: '#607D8B',         // blue-gray
+          success: '#4CAF50',
+          warning: '#FB8C00'
+        }
+      }
     },
   },
   icons: {

@@ -13,7 +13,7 @@
           sidebar-color="white"
         >
           <template v-slot:navbar-logo>
-            <div class="text-center mt-12 mb-5 mr-6" style="font-family:'HankenGrotesk-Regular', 'Hanken Grotesk';font-size:24px; font-weight: bold; color: #0a7248;">
+            <div class="text-center mt-12 mb-5 mr-6 text-primary" style="font-size: 26px;">
               Logo
             </div>
           </template>
@@ -198,16 +198,11 @@ export default {
       ];
     },
     getFooterMenu() {
-      const lang = Trans.guessDefaultLocale();
-      let link = "https://oloma.dev/end-user-license-agreement";
-      if (lang != "en") {
-        link = "https://" + lang + ".oloma.dev/end-user-license-agreement";
-      }
       return [
-        {
-          href: link,
-          text: this.$t("menu.terms"),
-        },
+        // {
+        //   href: link,
+        //   text: this.$t("menu.terms"),
+        // },
       ]
     }
   },

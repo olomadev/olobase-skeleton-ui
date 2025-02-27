@@ -50,7 +50,7 @@ export default {
       variant: "elevated",
       rounded: true,
       timeout: 7500,
-      title: "va.messages.error",
+      title: false, // "va.messages.error",
       visible: true 
     },
     info: {
@@ -61,7 +61,7 @@ export default {
       variant: "elevated",
       rounded: true,
       timeout: 7500,
-      title: "va.messages.info",
+      title: false, // "va.messages.info",
       visible: true
     },
     success: {
@@ -72,7 +72,7 @@ export default {
       variant: "elevated",
       rounded: true,
       timeout: 7500,
-      title: "va.messages.success",
+      title: false, // "va.messages.success",
       visible: true
     },
     warning: {
@@ -83,7 +83,7 @@ export default {
       variant: "elevated",
       rounded: true,
       timeout: 7500,
-      title: "va.messages.warning",
+      title: false, // "va.messages.warning",
       visible: true
     }
   },

@@ -30,7 +30,6 @@ p code {
 
 - added sass loader "sass-loader": "^16.0.2", to package.json
 
-
 ## Submodule Fixes
 
 - Removed packages/admin from .giginore file
@@ -145,3 +144,11 @@ this.$store.getModule("auth").logout()
 - logout()
 
 **Added disableTitle prop to ActionPage.vue Layout**
+- disableTitle
+
+**Changed date format in date field**
+
+** Added disableSubmit prop and feature to ui/providers/Form.vue
+- disableSubmit
+
+** Added CategoryTree List component

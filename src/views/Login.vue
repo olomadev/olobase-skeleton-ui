@@ -85,34 +85,16 @@
 
     <v-row no-gutters class="mt-2" :min-width="getReponsiveWidth">
       <v-col>        
-        <v-row class="mb-2" no-gutters>
-          <v-col>
-            <v-btn
-              block
-              variant="flat"
-              class="text-none"
-              prepend-icon="mdi-lock"
-              size="large"
-              text
-              :to="{ name: 'forgotPassword' }"
-            >
-              {{ $t("auth.forgotPassword") }}
-            </v-btn>
-          </v-col>
-        </v-row>
-        <v-row class="mb-2" no-gutters>
-          <v-col>
-<!--             <v-btn
-              block
-              variant="flat"
-              class="text-none"
-              prepend-icon="mdi-plus"
-              size="large"
-              text
-              :to="{ name: 'register' }"
-            >
-              {{ $t("auth.createNewAccount") }}
-            </v-btn> -->
+        <v-row class="pt-2">
+          <v-col sm="12">
+            <div class="text-center">
+              <router-link
+                :to="{ name: 'forgotPassword' }"
+                style="color: white; font-size: 13px"
+              >
+                {{ $t("auth.forgotPassword") }}
+              </router-link>
+            </div>
           </v-col>
         </v-row>
       </v-col>
@@ -148,10 +130,6 @@ export default {
       },
     }
   },
-  // async created() {
-  //  const result = await this.$store.getModule("auth").checkAuth();
-  //  console.error(result);
-  // },
   data() {
     return {
       showPass: false,

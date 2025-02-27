@@ -42,10 +42,11 @@ axios.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+
 /**
  * Main register function
  */
-export function registerPlugins(app) {
+export async function registerPlugins(app) {
   loadFonts();
   loader.install(app);
   app

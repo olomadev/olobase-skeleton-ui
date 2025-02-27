@@ -5,8 +5,8 @@ import datetimeFormats from "./rules/datetime.js";
 /**
  * app messages
  */
-import _en from "./locales/en.json" assert { type: "json" };
-import _tr from "./locales/tr.json" assert { type: "json" };
+import _en from "./locales/en.json";
+import _tr from "./locales/tr.json";
 
 const i18n = createI18n({
   locale: import.meta.env.VITE_DEFAULT_LOCALE,

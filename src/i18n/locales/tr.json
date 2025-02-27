@@ -379,38 +379,6 @@
         "emailActivation": "E-Posta Aktivasyonu"
       }
     },
-    "employees": {
-      "fields": {
-        "q": "Ara",
-        "companyId": "Şirket",
-        "departmentId": "Departman",
-        "employeeNumber": "No",
-        "jobTitleId": "Görev",
-        "gradeId": "Derece",
-        "name": "Ad",
-        "surname": "Soyad",
-        "employmentStartDate": "Başlangıç",
-        "employmentEndDate": "Bitiş",
-        "createdAt": "Oluşturulma",
-        "employeeChildren": "Çocuklar",
-        "childName": "Ad Soyad",
-        "childBirthdate": "Doğum Tarihi",
-        "actions": "İşlemler",
-        "employees": "Çalışanlar",
-        "autocompleterPlaceholder": "Lütfen bir çalışan seçin"
-      },
-      "enums": {
-        "genderId": {
-          "m": "Erkek",
-          "f": "Kadın"
-        },
-        "currencyId": {
-          "TRY" : "Türk Lirası",
-          "USD" : "Dolar",
-          "EUR" : "Euro"
-        }
-      }
-    },
     "failedlogins": {
       "fields": {
         "q": "Ara",

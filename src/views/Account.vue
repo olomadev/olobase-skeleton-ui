@@ -185,7 +185,7 @@ export default {
         this.email = data.email;
         this.locale = data.locale;
         this.avatar.image = data.avatar.image;
-        this.themeColor = data.themeColor ? data.themeColor : this.$vuetify.theme.themes.defaultTheme.colors.primary;
+        this.themeColor = data.themeColor ? data.themeColor : this.$vuetify.theme.themes.light.colors.primary;
       }
     },
     async updateAccount() {
@@ -220,7 +220,7 @@ export default {
                 ) {
                 await Trans.switchLanguage(Self.locale.id);
               }
-              Self.$vuetify.theme.themes.defaultTheme.colors.primary = Self.themeColor;
+              Self.$vuetify.theme.themes.light.colors.primary = Self.themeColor;
               localStorage.setItem("themeColor", Self.themeColor);
               Self.$router.push({ name: "dashboard"});
               setTimeout(function(){

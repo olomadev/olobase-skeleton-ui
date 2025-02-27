@@ -5,20 +5,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="icon" href="/favicon.ico" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
   <style type="text/css">
     /* 
       olobase app.css 
-      v2.
-      last revision: 30.12.2024
+      v3.
+      last revision: 27.02.2025
     */
+    * {
+      font-family: 'Hanken Grotesk', sans-serif !important;
+    }   
     #app {
       width: 100%;
       height: 100%;
-    }
-    .navbar-logo {
-      margin-top: 22px;
-      margin-bottom: 10px;
     }
     .bordered {
       border: 1px solid #dddddd;
@@ -108,10 +107,6 @@
     .v-input .v-icon {
       font-size: 20px !important;
     }
-    /* global v-list icon right space width  */
-    .v-list-item__prepend > .v-icon {
-    /*        margin-inline-end: 28px !important;*/
-    }
     .v-field {
       font-size: 13px !important;
     }
@@ -144,7 +139,7 @@
       margin-top: 0px !important;
       margin-bottom: 0px !important;
     }
-    /* fixes show table td font size */
+    /* fixes show table td font size and dropdown fontsize */
     .v-table > .v-table__wrapper > table > tbody > tr > td {
       font-size: 12px !important;
     }
@@ -154,9 +149,6 @@
     }
     .v-label {
       font-size: 11px !important;
-    }
-    .v-field__outline {
-      color: #7b7b7b !important;
     }
     .v-field__outline .v-label.v-field-label {
       font-size: 11px !important;
@@ -177,20 +169,6 @@
         /*padding-top: 4px;
         padding-bottom: 4px;*/
     }
-    /* select option item font size */
-    .v-list-item-title {
-      font-size: 13px !important;
-    }
-/*    .v-field--variant-outlined .v-field__outline__start, .v-field--variant-outlined .v-field__outline__notch::before, .v-field--variant-outlined .v-field__outline__notch::after, .v-field--variant-outlined .v-field__outline__end {
-        border: 1 solid #7b7b7b !important;
-    }
-*/
-    .v-field--variant-outlined {
-      color: #7b7b7b !important;
-    }
-/*    .v-field__outline {
-      color: #7b7b7b !important;
-    }*/
     /* select option item left padding */
     .v-select__content .v-list .v-list-item-title {
       padding-left: 10px !important;
@@ -215,55 +193,41 @@
     .v-chip.v-chip--size-small {
       font-size: 11px !important; 
     }
-    .v-chip.v-chip--density-default {
-      font-size: 11px !important;
-      height: 20px !important;
-      padding: 7px !important;
-      margin-right: 2px;
+    /* select option item font size */
+    .v-list-item-title {
+      font-size: 14px !important;
+    }
+    .v-field--variant-outlined {
+      color: #7b7b7b !important;
     }
     /* font global size: data-table grid and all cards */
     .v-container, .v-card-text {
       font-size: 13px !important;
     }
-    .v-chip.v-chip--size-small {
-      font-size: 11px !important; 
-    }
-    .v-chip.v-chip--density-default {
-      font-size: 11px !important;
-      height: 20px !important;
-      padding: 7px !important;
-      margin-right: 2px;
-    }
     .h1 {
         font-size: 1.75rem !important;
         font-weight: 400;
         line-height: 2.5rem;
-        font-family: "Roboto", sans-serif !important;
     }
     .h2 {
         font-size: 1.55rem !important;
         font-weight: 400;
-        font-family: "Roboto", sans-serif !important;
     }
     .h3 {
         font-size: 1.40rem !important;
         font-weight: 400;
-        font-family: "Roboto", sans-serif !important;
     }
     .h4 {
         font-size: 1.20rem !important;
         font-weight: 400;
-        font-family: "Roboto", sans-serif !important;
     }
     .h5 {
         font-size: 1.10rem !important;
         font-weight: 400;
-        font-family: "Roboto", sans-serif !important;
     }
     .h5 {
         font-size: 1rem !important;
         font-weight: 400;
-        font-family: "Roboto", sans-serif !important;
     }
     .v-card .v-card-title {
         font-weight: 400;
@@ -301,17 +265,42 @@
     .v-expansion-panel__shadow {
       box-shadow: none !important;
     }
-    /*  .v-btn-group--density-default.v-btn-group {
-       height: 35px !important;
-    }*/
+    table {
+      border-collapse: separate;
+      border-spacing: 0;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .va-data-table table th {
+      background-color: none !important;
+    }
+    .va-data-table table th, .va-data-table table td {
+      border: 0 !important;
+      border-top: 1px solid #e5e7eb !important;
+    }
+    .va-data-table table th:first-child {
+      border-left: 1px solid #e5e7eb !important;
+    }
+    .va-data-table table td {
+      border-left: 1px solid #e5e7eb !important;
+    }
+    .va-data-table table tr:last-child td {
+      border-bottom: none !important;
+    }
     .v-data-table-footer {
       padding-top: 25px !important;
       padding-right: 0px !important;
       padding-bottom: 10px !important;
       padding-left: 0px !important;
     }
+    #toggleSettings table tr th:first-child {
+      border-bottom: 1px solid #e5e7eb !important;
+    }
+    #toggleSettings table tr td:first-child {
+      border-right: 1px solid #e5e7eb;
+    }
     /* datatable row hover */
-    .v-theme--defaultTheme.v-data-table > .v-table__wrapper > table > tbody
+    .v-theme--light.v-data-table > .v-table__wrapper > table > tbody
     > tr:hover:not(.v-data-table__expanded__content):not(.v-data-table__empty-wrapper) 
     > td {
       background: #eee;
@@ -343,6 +332,9 @@
     }
     .v-snackbar__content {
       margin: 4px !important;
+      padding: 0 !important;
+      padding-top: 2px !important;
+      padding-left: 20px !important;
     }
     .v-snackbar--variant-elevated {
       box-shadow: 0px 3px 1px -2px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 
@@ -367,25 +359,6 @@
       -webkit-transform: translateY(-100%);  
     }
     /* v-snackbar transition end */
-
-    /* Solid datatable  */
-    table th + th { border-left:1px solid #dddddd; }
-    table td + td { border-left:1px solid #dddddd; }
-    /* fixes the date picker hide-details margin bottom problem */
-/*    table td + td:has(.v-input) {
-      vertical-align: top;
-    }*/
-    /*.va-data-table > .section {
-      margin-top: -20px;
-    }*/
-    /* va-data-table solids */
-    .va-data-table .v-table__wrapper table {
-      border: 1px solid #dddddd;
-      border-radius: 4px;
-    }
-    .va-data-table .v-table__wrapper table th + th {
-      border-left: 0 !important;
-    }
     .va-array-table-input .v-table__wrapper table {
       border: 1px solid #dddddd;
       border-radius: 4px;
@@ -402,7 +375,6 @@
       border-radius: 4px;
     }
     .va-show, .va-table .v-table__wrapper table {
-      border: 1px solid #dddddd;
       border-radius: 4px;
       font-size: 12px;
     }
@@ -422,16 +394,13 @@
     }
     /* Vue date picker css override */
     .dp__input {
-      font-family: Roboto,sans-serif !important;
       font-size: 13px !important;
     }
     .dp__menu {
-      font-family: Roboto,sans-serif !important;
       font-size: 13px !important;
     }
     /* Show list fields */
     .sm-field, .md-field, .lg-field {
-      font-family: Roboto,sans-serif !important;
       font-size: 13px !important; 
     }
     /**
@@ -449,6 +418,7 @@
         padding-bottom: 8px !important;
       }
     }
+
   </style>
 </head>
 <body>
