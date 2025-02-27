@@ -17,12 +17,14 @@ export default {
     disableUnsavedFormDialog: false,
   },
   i18n: {
-    dateFormat: "shortFormat",  
+    dateFormat: "shortFormat",
     en: {
-      dateFieldDisplayFormat: "YYYY-mm-dd" // YYYY.mm.dd, YYYY\mm\dd or YYYY/mm/dd
+      dateFormat: "Y-m-d", // Y.m.d, Y\m\d or Y/m/d
+      dateTimeFormat: "Y-m-d H:i:s",
     },
     tr: {
-      dateFieldDisplayFormat: "dd-mm-YYYY"
+      dateFormat: "d-m-Y",
+      dateTimeFormat: "d-m-Y H:i:s",
     },
   },
   //

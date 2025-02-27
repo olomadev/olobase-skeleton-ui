@@ -1,7 +1,7 @@
 /**
  * @oloma.dev (c) 2023-2025
  * 
- * - plugins/useHttp.js
+ * - plugins/use-http.js
  *
  * Defines useHttp() method to configure global http settings
  */

@@ -36,7 +36,6 @@ export default {
       resources,
       store,
       i18n,
-      dashboard: "dashboard",
       downloadUrl: "/files/findOneById/",
       readFileUrl: "/files/readOneById/",
       title: "demo",

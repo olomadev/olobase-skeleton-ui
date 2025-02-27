@@ -13,7 +13,7 @@ import admin from "./admin";
 import loader from "./loader";
 import useStore from "../store";
 import resources from "@/resources";
-import { useHttp } from "../plugins/useHttp";
+import { useHttp } from "../plugins/use-http";
 import axios from "axios";
 import cookies from "olobase-admin/src/utils/cookies";
 /**

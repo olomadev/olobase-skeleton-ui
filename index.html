@@ -31,6 +31,9 @@
       background-color: #fff;
       font-size: 14px !important;
     }
+    .v-divider {
+      border-color: #000 !important;
+    }
     footer {
        position: fixed;
        left: 0;
@@ -64,7 +67,8 @@
       font-size: 1.3rem !important;
     }
     .v-list-item--variant-outlined {
-      border: thin solid #f1f4f8 !important; /* fixes tree-view default boder color */
+      border: none !important;
+      border-bottom: 1px solid #f1f4f8 !important; /* fixes tree-view default boder color */
     }
     .v-list .v-list-item--nav:not(:only-child) {
       margin-bottom: 0 !important; /* fixes the my account list item margin bottom problem */
@@ -151,6 +155,9 @@
     .v-label {
       font-size: 11px !important;
     }
+    .v-field__outline {
+      color: #7b7b7b !important;
+    }
     .v-field__outline .v-label.v-field-label {
       font-size: 11px !important;
       top: 8px  !important;
@@ -174,6 +181,16 @@
     .v-list-item-title {
       font-size: 13px !important;
     }
+/*    .v-field--variant-outlined .v-field__outline__start, .v-field--variant-outlined .v-field__outline__notch::before, .v-field--variant-outlined .v-field__outline__notch::after, .v-field--variant-outlined .v-field__outline__end {
+        border: 1 solid #7b7b7b !important;
+    }
+*/
+    .v-field--variant-outlined {
+      color: #7b7b7b !important;
+    }
+/*    .v-field__outline {
+      color: #7b7b7b !important;
+    }*/
     /* select option item left padding */
     .v-select__content .v-list .v-list-item-title {
       padding-left: 10px !important;
