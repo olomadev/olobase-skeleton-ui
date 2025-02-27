@@ -4,11 +4,6 @@ dist
 /node_modules/
 /.github/
 
-.gitmodules
-
-packages/
-/packages/
-
 # Log files
 npm-debug.log*
 yarn-debug.log*
