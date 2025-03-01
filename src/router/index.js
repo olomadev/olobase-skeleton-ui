@@ -23,7 +23,7 @@ const routes = [
   {
     path: "/",
     redirect: "/login/:locale?",
-    component: import('@/layouts/Member.bue'),
+    component: import('@/layouts/Member.vue'),
     children: [
       {
         path: "/login/:locale?",

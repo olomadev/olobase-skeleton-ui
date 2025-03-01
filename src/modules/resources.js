@@ -1,70 +1,37 @@
 export default [
-  // {
-  //   name: "roles",
-  //   label: "name",
-  //   permissions: [
-  //     { name: "admin", actions: ["create","list","edit", "delete", "show"] },
-  //   ],
-  //   actions: ["create", "list", "edit", "delete", "show"],
-  // },
-  // {
-  //   name: "permissions",
-  //   label: "name",
-  //   permissions: [
-  //     { name: "admin", actions: ["create","list","edit", "delete", "show"] },
-  //   ],
-  //   actions: ["create", "list", "edit", "delete", "show"],
-  // },
-  // {
-  //   name: "categories",
-  //   label: "name",
-  //   permissions: [
-  //     { name: "admin", actions: ["create","list","edit", "delete", "show"] },
-  //   ],
-  //   actions: ["create", "list", "edit", "delete", "show"],
-  // },
   {
-    name: "failedlogins",
-    label: "name",
-    permissions: [
-      { name: "admin", actions: ["create","list","edit", "delete", "show"] },
-    ],
-    actions: ["create", "list", "edit", "delete", "show"],
-  },
-  {
-    name: "failedloginips",
+    module: "common",
+    name: "common_actions",
     label: "name",
   },
   {
-    name: "failedloginusernames",
+    module: "common",
+    name: "common_methods",
     label: "name",
   },
   {
-    name: "actions",
+    module: "common",
+    name: "common_locales",
     label: "name",
   },
   {
-    name: "methods",
+    module: "common",
+    name: "common_years",
     label: "name",
   },
   {
-    name: "locales",
+    module: "common",
+    name: "common_months",
     label: "name",
   },
   {
-    name: "years",
+    module: "common",
+    name: "common_currencies",
     label: "name",
   },
   {
-    name: "months",
-    label: "name",
-  },
-  {
-    name: "currencies",
-    label: "name",
-  },
-  {
-    name: "countries",
+    module: "common",
+    name: "common_countries",
     label: "name",
   },
 ];

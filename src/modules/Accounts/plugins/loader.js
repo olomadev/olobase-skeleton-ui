@@ -1,6 +1,3 @@
-/**
- * put your plugins here ..
- */
 export default {
   install: (app) => {
 

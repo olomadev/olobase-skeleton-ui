@@ -8,7 +8,7 @@ import App from "./App.vue";
 
 // Composables
 import { createApp } from "vue";
-// import './assets/css/style.css'; // Tailwind and other styles, put here
+import './styles/app.css'; // Put your styles here
 
 // Plugins
 import { registerPlugins } from "@/plugins";

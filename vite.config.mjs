@@ -42,7 +42,7 @@ export default defineConfig({
     vuetify({
       autoImport: true,
       styles: {
-        configFile: 'src/styles/settings.scss',
+        configFile: 'src/styles/vuetify.scss',
       },
     }),
     // https://github.com/lokalise/lokalise-tutorials/blob/main/vue-3-i18n/vite.config.js

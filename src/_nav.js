@@ -1,4 +1,4 @@
-const moduleNavs = import.meta.glob("../modules/**/_nav.js");
+const moduleNavs = import.meta.glob("./modules/**/_nav.js", { eager: true });
 
 export default  {
 
@@ -15,24 +15,9 @@ export default  {
       },
       // { divider: true },
       {
-        icon: "mdi-account-multiple",
-        text: t("menu.roles"),
-        link: "/roles",
-      },
-      {
-        icon: "mdi-account-lock",
-        text: t("menu.permissions"),
-        link: "/permissions",
-      },
-      {
         icon: "mdi-file-tree-outline",
         text: t("menu.categories"),
         link: "/categories",
-      },
-      {
-        icon: "mdi-account-alert",
-        text: t("menu.failedlogins"),
-        link: "/failedlogins?sortBy=attemptedAt&sortDesc=false",
       },
       {
         icon: "mdi-api",
@@ -41,11 +26,15 @@ export default  {
       },
     ];
 
-    // Load all modules _nav.js files
+    // Load all modules _nav.js files and merge menuItems
     for (const path in moduleNavs) {
-      const module = await moduleNavs[path]();
-      const items = await module.default.build(t, admin);
-      menuItems = menuItems.concat(items);
+      const module = moduleNavs[path];
+      if (module && module.default && typeof module.default.build === "function") {
+        const items = await module.default.build(t, admin);
+        if (Array.isArray(items)) {
+          menuItems = [...menuItems, ...items];
+        }
+      }
     }
 
     return menuItems;

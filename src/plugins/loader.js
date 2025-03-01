@@ -20,7 +20,7 @@ import {
 } from "vuetify/components";
 
 export default {
-  install: (app) => {
+  install: async (app) => {
     /**
      * Register portal-vue
      */

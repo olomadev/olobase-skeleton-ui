@@ -53,7 +53,18 @@ const components = import.meta.glob("../modules/**/components/*.vue", { eager: t
 const stores = import.meta.glob("../modules/**/store.js", { eager: true });
 const moduleResources = import.meta.glob('../modules/**/resources/*/*.vue', { eager: true })
 const moduleResourceIndexes = import.meta.glob('../modules/**/resources/index.js', { eager: true });
-const mergedResources = [...resources, ...moduleResourceIndexes];
+const formattedModules = Object.entries(moduleResourceIndexes).map(([path, { default: resources }]) => {
+    const moduleName = path.split('/')[2];
+    return resources.map(resource => ({
+        module: moduleName, // add module name
+        ...resource
+    }));
+}).flat();
+const mergedResources = [...resources, ...formattedModules];
+
+console.error(mergedResources);
+
+
 /**
  * Main register function
  */
@@ -61,7 +72,7 @@ export async function registerPlugins(app) {
   loadFonts();
 
   // Register plugin loaders
-  loader.install(app);
+  await loader.install(app);
 
   // Global plugins
   app
@@ -83,14 +94,26 @@ export async function registerPlugins(app) {
   // Register resources automatically for each module
   for (let fileName in moduleResources) {
     const componentConfig = moduleResources[fileName];
-    fileName = fileName
-      .replace(/^\.\//, "")
-      .replace(/\//, "")
-      .replace(/\.\w+$/, "");
-    const pathArray = fileName.split("/").slice(-2);
-    const componentName = upperFirst(camelCase(pathArray[0].toLowerCase() + pathArray[1]));
 
-    // register resource component
+    // Normalize the fileName to remove leading ./ and split path by /
+    fileName = fileName.replace(/^\.\//, "");
+
+    // Get the parts of the path that represent module, resource, and action
+    const pathArray = fileName.split("/");
+
+    // console.error(pathArray);
+
+    // Assuming the path is like: 'modules/ModuleName/resources/ResourceName/Action.vue'
+    const moduleName = pathArray[2]; // ModuleName
+    const resourceName = pathArray[4]; // ResourceName
+    const action = pathArray[5].replace(/\.\w+$/, ""); // Action without file extension
+
+    // Combine to form the new component name (ModuleName/ResourceName/Action)
+    const componentName = `${upperFirst(camelCase(moduleName))}${upperFirst(camelCase(resourceName))}${upperFirst(camelCase(action))}`;
+
+    // console.error(componentName);
+
+    // Register resource component
     app.component(
       componentName,
       componentConfig.default || componentConfig
