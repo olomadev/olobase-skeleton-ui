@@ -1,38 +1,19 @@
 // Composables
 import { createRouter, createWebHistory } from "vue-router";
-
 import i18n from "../i18n";
-import Member from "@/layouts/Member.vue";
-import Login from "@/views/Login.vue";
-import ForgotPassword from "@/views/ForgotPassword";
-import ResetPassword from "@/views/ResetPassword";
 
-import Dashboard from "@/views/Dashboard"
-import AdminLayout from "@/layouts/Admin"
+// loading modules dynamically
+const modules = import.meta.glob("../modules/**/routes.js");
 
 const routes = [
-  // {
-  //   path: '/',
-  //   component: () => import('@/layouts/default/Default.vue'),
-  //   children: [
-  //     {
-  //       path: '',
-  //       name: 'Home',
-  //       // route level code-splitting
-  //       // this generates a separate chunk (about.[hash].js) for this route
-  //       // which is lazy-loaded when the route is visited.
-  //       component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue'),
-  //     },
-  //   ],
-  // },
   {
     path: "",
-    component: AdminLayout,
+    component: import('@/layouts/Admin.vue'),
     children: [
       {
         path: "/dashboard",
         name: "dashboard",
-        component: Dashboard,
+        component: import('@/views/Dashboard.vue'),
         meta: {
           title: i18n.global.t("routes.dashboard"),
         },
@@ -42,12 +23,12 @@ const routes = [
   {
     path: "/",
     redirect: "/login/:locale?",
-    component: Member,
+    component: import('@/layouts/Member.bue'),
     children: [
       {
         path: "/login/:locale?",
         name: "login",
-        component: Login,
+        component: import('@/views/Login.vue'),
         meta: {
           title: i18n.global.t("routes.login"),
         },
@@ -55,7 +36,7 @@ const routes = [
       {
         path: "/forgotPassword",
         name: "forgotPassword",
-        component: ForgotPassword,
+        component: import('@/views/ForgotPassword.vue'),
         meta: {
           title: i18n.global.t("routes.forgotPassword"),
         },
@@ -63,31 +44,19 @@ const routes = [
       {
         path: "/resetPassword",
         name: "resetPassword",
-        component: ResetPassword,
+        component: import('@/views/ResetPassword.vue'),
         meta: {
           title: i18n.global.t("routes.resetPassword"),
         },
       },
     ],
-  },
-  // {
-  //   path: "/admin",
-  //   component: AdminLayout,
-  //   meta: {
-  //       title: i18n.global.t("routes.home")
-  //   },
-  //   children: [
-  //       {
-  //         path: "/dashboard",
-  //         name: "dashboard",
-  //         component: Dashboard,
-  //         meta: {
-  //           title: i18n.global.t("routes.dashboard"),
-  //         },
-  //       },
-  //   ]
-  // }
+  }
 ];
+
+for (const path in modules) {
+  const module = await modules[path]();
+  routes.push(...module.default);
+}
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

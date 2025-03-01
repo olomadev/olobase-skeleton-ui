@@ -1,3 +1,5 @@
+const moduleNavs = import.meta.glob("../modules/**/_nav.js");
+
 export default  {
 
   build: async function(t, admin) {
@@ -5,7 +7,7 @@ export default  {
     const userRole = await admin.can(["user"]);
     const adminRole = await admin.can(["admin"]);
 
-    return [
+    let menuItems = [
       {
         icon: "mdi-view-dashboard-outline",
         text: t("menu.dashboard"),
@@ -23,11 +25,6 @@ export default  {
         link: "/permissions",
       },
       {
-        icon: "mdi-account-edit",
-        text: t("menu.users"),
-        link: "/users?sortBy=firstname&sortDesc=false",
-      },
-      {
         icon: "mdi-file-tree-outline",
         text: t("menu.categories"),
         link: "/categories",
@@ -42,7 +39,16 @@ export default  {
         text: t("menu.api"),
         link: "/swagger",
       },
-    ]; // end array
+    ];
+
+    // Load all modules _nav.js files
+    for (const path in moduleNavs) {
+      const module = await moduleNavs[path]();
+      const items = await module.default.build(t, admin);
+      menuItems = menuItems.concat(items);
+    }
+
+    return menuItems;
 
   } // end func
 

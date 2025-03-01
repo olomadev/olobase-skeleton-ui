@@ -316,25 +316,6 @@
         }
       }
     },
-    "users": {
-      "fields": {
-        "q": "Search",
-        "email": "E-Mail",
-        "firstname": "Firstname",
-        "lastname": "Lastname",
-        "password": "Password",
-        "userRoles": "User Roles",
-        "avatarImage": "Avatar Image",
-        "setPasswordButton": "Set Password",
-        "changePasswordButton": "Change Password",
-        "changePasswordTitle": "Password",
-        "newPassword": "Password",
-        "active": "Active",
-        "emailActivation": "E-Mail Activation",
-        "createdAt": "Created At",
-        "themeColor": "Theme Color"
-      },
-    },
     "account": {
       "title": "Account",
       "passwordChange": "Password Change",
