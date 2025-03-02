@@ -1,6 +1,6 @@
 export default [
   {
-    name: "categories_view",
+    name: "tree",
     label: "name",
     permissions: [
       { name: "admin", actions: ["create","list","edit", "delete", "show"] },

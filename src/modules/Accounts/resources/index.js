@@ -1,42 +1,42 @@
 export default [
   {
-    name: "accounts_users",
+    name: "users",
     label: "name",
     permissions: [
-      { name: "admin", actions: ["create","list","edit", "delete", "show"] },
+      { name: "admin", actions: ["create", "list", "edit", "delete", "show"] },
     ],
     actions: ["create", "list", "edit", "delete", "show"],
   },
   {
-    name: "accounts_roles",
+    name: "roles",
     label: "name",
     permissions: [
-      { name: "admin", actions: ["create","list","edit", "delete", "show"] },
+      { name: "admin", actions: ["create", "list", "edit", "delete", "show"] },
     ],
     actions: ["create", "list", "edit", "delete", "show"],
   },
   {
-    name: "accounts_permissions",
+    name: "permissions",
     label: "name",
     permissions: [
-      { name: "admin", actions: ["create","list","edit", "delete", "show"] },
+      { name: "admin", actions: ["create", "list", "edit", "delete", "show"] },
     ],
     actions: ["create", "list", "edit", "delete", "show"],
   },
   {
-    name: "accounts_failedlogins",
+    name: "failedLogins",
     label: "name",
     permissions: [
-      { name: "admin", actions: ["create","list","edit", "delete", "show"] },
+      { name: "admin", actions: ["create", "list", "edit", "delete", "show"] },
     ],
     actions: ["create", "list", "edit", "delete", "show"],
   },
   {
-    name: "accounts_failedloginips",
+    name: "failedLoginIps",
     label: "name",
   },
   {
-    name: "accounts_failedloginusernames",
+    name: "failedLoginUsernames",
     label: "name",
   },
 ];

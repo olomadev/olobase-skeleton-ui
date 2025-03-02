@@ -1,7 +1,5 @@
 import get from "lodash/get"
-import camelCase from "lodash/camelCase";
-import kebabCase from "lodash/kebabCase";
-import upperFirst from "lodash/upperFirst";
+import { camelCase, kebabCase, upperFirst } from "lodash";
 import config from "@/_config";
 
 // https://stackoverflow.com/questions/66342500/vuejs-3-how-to-render-router-view-router-view-from-vue-router
@@ -12,11 +10,8 @@ export default ({ app, admin, store, i18n, resource, title }) => {
   let { name, module, include, routes, translatable, getTitle, pluralName } = resource
   const parts = name.split("_");
   const resourceName = parts[1];
-  const resourcePath = `${module.toLowerCase()}/${kebabCase(resourceName)}`;
-
-  console.error(resourcePath);
-
-  let isSameErrors = []
+  const camelCaseModuleName = camelCase(module.toLowerCase());
+  const resourcePath = `${camelCaseModuleName}/${camelCase(resourceName)}`;
 
   const setTitle = (to, action, item = null) => {
     to.meta.title = getTitle(action, item);
@@ -26,18 +21,19 @@ export default ({ app, admin, store, i18n, resource, title }) => {
     // document.title = `${to.meta.title} | ${title}`;
     return title;
   }
+
   /**
    * Action route builder
    */
   const buildRoute = (action, path) => {
     return {
       path,
-      name: `${module.toLowerCase()}_${resourceName}_${action}`, // module_resource_action format
+      name: `${camelCaseModuleName}_${camelCase(resourceName)}_${action}`, // module_resource_action format
       props: true,
       component: {
         props: ["id"],
         render() {
-          let componentName = `${upperFirst(module.toLowerCase())}${upperFirst(resourceName)}${upperFirst(action)}`;
+          let componentName = `${upperFirst(camelCaseModuleName)}${upperFirst(camelCase(resourceName))}${upperFirst(action)}`;
           let props = {
             id: this.id,
             title: this.$route.meta.title,
@@ -45,8 +41,7 @@ export default ({ app, admin, store, i18n, resource, title }) => {
             item: store.getResource(name).item,
             roles: store.getModule("auth").getPermissions,
           }
-
-          console.error(componentName);
+          // console.error(componentName);
 
           //
           // https://stackoverflow.com/questions/72975779/vuejs-3-see-all-globally-registered-components-this-options-components-is-empt

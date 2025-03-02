@@ -32,7 +32,10 @@ export default {
     return {
       validations: {
         form: {
-          moduleName: {
+          module: {
+            required
+          },
+          name: {
             required
           },
           resource: {
@@ -50,10 +53,17 @@ export default {
         }
       },
       errors: {
-        moduleNameErrors: (v$) => {
+        moduleErrors: (v$) => {
           const errors = [];
-          if (!v$['form'].moduleName.$dirty) return errors;
-          v$['form'].moduleName.required.$invalid &&
+          if (!v$['form'].module.$dirty) return errors;
+          v$['form'].module.required.$invalid &&
+            errors.push(this.$t("v.text.required"));
+          return errors;
+        },
+        nameErrors: (v$) => {
+          const errors = [];
+          if (!v$['form'].name.$dirty) return errors;
+          v$['form'].name.required.$invalid &&
             errors.push(this.$t("v.text.required"));
           return errors;
         },
@@ -90,7 +100,7 @@ export default {
   },
   data() {
     return {
-      groupBy: [{ key: 'moduleName' }],
+      groupBy: [{ key: 'module' }],
       selected: [],
       filters: [],
       fields: [
@@ -100,7 +110,11 @@ export default {
           sortable: false,
         },
         {
-          source: "moduleName",
+          source: "module",
+          sortable: true,
+        },
+        {
+          source: "name",
           sortable: true,
         },
         {

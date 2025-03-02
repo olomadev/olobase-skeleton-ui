@@ -26,7 +26,7 @@ export default {
               {
                 icon: "mdi-account-alert",
                 text: t("modules.accounts.menu.failedlogins"),
-                link: "/accounts/failedlogins?sortBy=attemptedAt&sortDesc=false",
+                link: "/accounts/failedLogins?sortBy=attemptedAt&sortDesc=false",
               },
             ]
           }

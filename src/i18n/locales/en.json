@@ -74,7 +74,7 @@
     "saved" : "Saved sucessfully"
   },
   "messages": {
-    "welcome" : "Welcome to demo application" 
+    "welcome" : "Welcome to olobase admin.." 
   },
   "routes": {
     "home": "Home",

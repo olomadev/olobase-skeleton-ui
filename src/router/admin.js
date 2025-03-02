@@ -1,30 +1,16 @@
-import AdminLayout from "@/layouts/Admin";
-import Dashboard from "@/views/Dashboard";
-import Account from "@/views/Account";
-import Password from "@/views/Password";
-import Error404 from "@/views/Error404";
-import Swagger from "@/views/Swagger";
 import i18n from "../i18n";
 
 export default {
   path: "",
-  component: AdminLayout,
+  component: import('@/layouts/Admin.vue'),
   meta: {
     title: i18n.global.t("routes.home"),
   },
   children: [
-    // {
-    //   path: "/dashboard",
-    //   name: "dashboard",
-    //   component: Dashboard,
-    //   meta: {
-    //     title: i18n.global.t("routes.dashboard"),
-    //   },
-    // },
     {
       path: "/swagger",
       name: "swagger",
-      component: Swagger,
+      component: import('@/views/Swagger'),
       meta: {
         title: i18n.global.t("menu.api"),
       },
@@ -32,7 +18,7 @@ export default {
     {
       path: "/account",
       name: "account",
-      component: Account,
+      component: import('@/views/Account'),
       meta: {
         title: i18n.global.t("routes.account"),
       },
@@ -40,14 +26,14 @@ export default {
     {
       path: "/password",
       name: "password",
-      component: Password,
+      component: import('@/views/Password'),
       meta: {
         title: i18n.global.t("routes.password"),
       },
     },
     {
       path: "*",
-      component: Error404,
+      component: import('@/views/Error404'),
       meta: {
         title: i18n.global.t("routes.notFound"),
       },

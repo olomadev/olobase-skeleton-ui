@@ -17,12 +17,7 @@ export default  {
       {
         icon: "mdi-file-tree-outline",
         text: t("menu.categories"),
-        link: "/categories",
-      },
-      {
-        icon: "mdi-api",
-        text: t("menu.api"),
-        link: "/swagger",
+        link: "/categories/tree",
       },
     ];
 
@@ -36,6 +31,12 @@ export default  {
         }
       }
     }
+    
+    menuItems.push({
+      icon: "mdi-api",
+      text: t("menu.api"),
+      link: "/swagger",
+    });
 
     return menuItems;
 

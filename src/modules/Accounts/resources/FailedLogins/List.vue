@@ -120,7 +120,7 @@ export default {
           source: "username",
           type: "select",
           attributes: {
-            reference: "failedloginusernames",
+            reference: "accounts_failedLoginUsernames",
             multiple: true,  
           }
         },
@@ -128,7 +128,7 @@ export default {
           source: "ip",
           type: "select",
           attributes: {
-            reference: "failedloginips",
+            reference: "accounts_failedLoginIps",
             multiple: true,  
           }
         },

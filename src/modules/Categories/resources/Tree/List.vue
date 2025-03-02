@@ -6,7 +6,7 @@
     hide-bulk-copy
     @refresh="refresh()"
   >
-    <va-category-tree :key="key" open-all @save="saveNode" @delete="deleteNode" />
+    <va-category-tree url="/categories/tree/findAllByPaging" :key="key" open-all @save="saveNode" @delete="deleteNode" />
     <v-row no-gutters class="mt-2">
       <v-col cols="12" lg="2" md="3" sm="6">
         <va-text-input
@@ -22,7 +22,7 @@
           :key="key"
           source="parentId"
           v-model="parentId"
-          reference="categories"
+          reference="categories_tree"
           variant="outlined"
           clearable
           :error-messages="parentIdErrors"
@@ -94,7 +94,7 @@ export default {
       ++this.key;
     },
     async deleteNode(item) {
-      await this.$admin.http({ method: "DELETE", url: "/categories/delete/" + item.id }).then((response) => {
+      await this.$admin.http({ method: "DELETE", url: "/categories/tree/delete/" + item.id }).then((response) => {
         if (response && response.status === 200) {
           ++this.key;
           this.$admin.refresh();
@@ -103,7 +103,7 @@ export default {
     },
     async saveNode(item) {
       const data = { name: item.name, parentId: item.parentId, lft: item.lft, rgt: item.rgt, move: item.move };
-      await this.$admin.http({ method: "PUT", url: "/categories/update/" + item.id, data: data }).then((response) => {
+      await this.$admin.http({ method: "PUT", url: "/categories/tree/update/" + item.id, data: data }).then((response) => {
         if (response && response.status === 200) {
           ++this.key;
         }
@@ -116,7 +116,7 @@ export default {
         return false;
       }
       const data = { id: this.generateUid(), name: this.name, parentId: this.parentId.id, lft: this.parentId.lft, rgt: this.parentId.rgt };
-      await this.$admin.http({ method: "POST", url: "/categories/create", data: data }).then((response) => {
+      await this.$admin.http({ method: "POST", url: "/categories/tree/create", data: data }).then((response) => {
         if (response && response.status === 200) {
           ++this.key;
         }

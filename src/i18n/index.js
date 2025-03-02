@@ -48,4 +48,4 @@ for (const path in modules) {
   });
 }
 
-export default i18n
+export default i18n;

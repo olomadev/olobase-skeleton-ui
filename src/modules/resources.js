@@ -1,37 +1,37 @@
 export default [
   {
     module: "common",
-    name: "common_actions",
+    name: "actions",
     label: "name",
   },
   {
     module: "common",
-    name: "common_methods",
+    name: "methods",
     label: "name",
   },
   {
     module: "common",
-    name: "common_locales",
+    name: "locales",
     label: "name",
   },
   {
     module: "common",
-    name: "common_years",
+    name: "years",
     label: "name",
   },
   {
     module: "common",
-    name: "common_months",
+    name: "months",
     label: "name",
   },
   {
     module: "common",
-    name: "common_currencies",
+    name: "currencies",
     label: "name",
   },
   {
     module: "common",
-    name: "common_countries",
+    name: "countries",
     label: "name",
   },
 ];
