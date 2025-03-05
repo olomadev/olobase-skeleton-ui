@@ -2,7 +2,7 @@ import i18n from "../i18n";
 
 export default {
   path: "",
-  component: import('@/layouts/Admin.vue'),
+  component: () => import('@/layouts/Admin.vue'),
   meta: {
     title: i18n.global.t("routes.home"),
   },
@@ -10,7 +10,7 @@ export default {
     {
       path: "/swagger",
       name: "swagger",
-      component: import('@/views/Swagger'),
+      component: () => import('@/views/Swagger'),
       meta: {
         title: i18n.global.t("menu.api"),
       },
@@ -18,7 +18,7 @@ export default {
     {
       path: "/account",
       name: "account",
-      component: import('@/views/Account'),
+      component: () => import('@/views/Account'),
       meta: {
         title: i18n.global.t("routes.account"),
       },
@@ -26,14 +26,14 @@ export default {
     {
       path: "/password",
       name: "password",
-      component: import('@/views/Password'),
+      component: () => import('@/views/Password'),
       meta: {
         title: i18n.global.t("routes.password"),
       },
     },
     {
       path: "*",
-      component: import('@/views/Error404'),
+      component: () => import('@/views/Error404'),
       meta: {
         title: i18n.global.t("routes.notFound"),
       },

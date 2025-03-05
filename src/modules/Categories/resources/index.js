@@ -1,6 +1,6 @@
 export default [
   {
-    name: "tree",
+    name: "list",
     label: "name",
     permissions: [
       { name: "admin", actions: ["create","list","edit", "delete", "show"] },

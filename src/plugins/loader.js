@@ -9,7 +9,7 @@ import "./vuetify";
 import "@mdi/font/css/materialdesignicons.css";
 import PortalVue from "portal-vue";
 import UnsavedFormDialog from "../components/UnsavedFormDialog";
-const modules = import.meta.glob("../modules/**/plugins/loader.js");
+// const modules = import.meta.glob("../modules/**/plugins/loader.js");
 
 /**
  * Dynamic vuetify components
@@ -38,10 +38,10 @@ export default {
     /**
      * Load all module loaders dynamically
      */
-    for (const path in modules) {
-      const module = await modules[path]();
-      app.use(module.default);
-    }
+    // for (const path in modules) {
+    //   const module = await modules[path]();
+    //   app.use(module.default);
+    // }
     // end app resources
   },
 };

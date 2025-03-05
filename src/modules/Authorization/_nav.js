@@ -9,11 +9,6 @@ export default {
             text: t("modules.accounts.menu.label"),
             children: [
               {
-                icon: "mdi-account-edit",
-                text: t("modules.accounts.menu.users"),
-                link: "/accounts/users?sortBy=firstname&sortDesc=false",
-              },
-              {
                 icon: "",
                 text: t("modules.accounts.menu.roles"),
                 link: "/accounts/roles",
@@ -22,12 +17,7 @@ export default {
                 icon: "mdi-account-lock",
                 text: t("modules.accounts.menu.permissions"),
                 link: "/accounts/permissions",
-              },
-              {
-                icon: "mdi-account-alert",
-                text: t("modules.accounts.menu.failedlogins"),
-                link: "/accounts/failedLogins?sortBy=attemptedAt&sortDesc=false",
-              },
+              }
             ]
           }
         ]

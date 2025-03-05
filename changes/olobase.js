@@ -5,9 +5,7 @@
  *
  * Copyright (c) 2022-2025, Oloma Software.
  */
-import upperFirst from "lodash/upperFirst"
-import lowerCase from "lodash/lowerCase"
-import isEmpty from "lodash/isEmpty"
+import { upperFirst, lowerCase, isEmpty } from "lodash"
 import cookies from "olobase-admin/src/utils/cookies"
 import messages from "olobase-admin/src/store/messages"
 import auth from "olobase-admin/src/store/auth"
@@ -225,6 +223,7 @@ export default class Olobase {
         provider: this.dataProvider,       
       });
     }
+
     /**
      * Add resources routes dynamically
      */
@@ -236,7 +235,7 @@ export default class Olobase {
           store: this.store,
           i18: this.i18n,
           resource,
-          title: this.i18n.global.t("titles." + this.title),
+          title: this.i18n.global.t("titles." + this.title), 
         })
       )
       .concat(

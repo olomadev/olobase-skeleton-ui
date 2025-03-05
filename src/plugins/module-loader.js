@@ -7,9 +7,20 @@
  */
 import { defineAsyncComponent } from "vue";
 import { camelCase, upperFirst } from "lodash";
+import moduleConfigs from "@/modules/config";
 import globalResources from "@/modules/resources";
+import useStore from "@/store";
 
 export default class ModuleLoader {
+
+  constructor() {
+    this.routes = [];
+    this.stores = [];
+    this.resources = [];
+    this.navigations = [];
+    this.resourceComponents = {};
+    this.components = {};
+  }
 
   /**
    * Installs module loader plugin.
@@ -17,41 +28,57 @@ export default class ModuleLoader {
   async install(app, pinia) {
     this.app = app;
     this.pinia = pinia;
-    // 
-    // Loading of each "components", "stores" and "resources" for each module
-    // 
-    this.components = import.meta.glob("../modules/**/components/*.vue", { eager: false });
-    this.stores = import.meta.glob("../modules/**/store.js", { eager: false });
-    this.moduleResources = import.meta.glob('../modules/**/resources/*/*.vue', { eager: false });
-    this.moduleResourceIndexes = import.meta.glob('../modules/**/resources/index.js', { eager: true }); // top level resources must be eager
-    this.formattedModules = this.formatResources();
+    const defaultStore = useStore();
+
+    // Install all modules
+    for (const [moduleName, loader] of Object.entries(moduleConfigs)) {
+      const module = await loader();
+      if (module.default.install) {
+        const { routes, stores, components, navigation, resources, resourceComponents } = await module.default.install(app);
+
+        if (typeof navigation.build === 'function') {
+          defaultStore.navigations.push(navigation)
+        } else {
+          console.error(`Invalid navigation function in module ${moduleName}`);
+        }
+        if (routes && Array.isArray(routes)) {
+          this.routes.push(...routes);
+        }
+        if (stores && Array.isArray(stores)) {
+          this.stores.push(...stores);
+        }
+        if (components && typeof components === 'object') {
+          Object.assign(this.components, components);
+        }
+        if (resources && Array.isArray(resources)) {
+          const resourcesWithModule = resources.map(resource => ({
+            ...resource,
+            module: moduleName,
+            name: resource['standalone'] ? resource.name.toLowerCase() : `${moduleName.toLowerCase()}_${resource.name}`,
+          }));
+          this.resources.push(...resourcesWithModule);
+        }
+        if (resourceComponents) {
+          Object.assign(this.resourceComponents, resourceComponents);
+        }
+      }
+    }
   }
 
   getResources() {
-    return [...globalResources, ...this.formattedModules];
-  }
-
-  /**
-   * Converts resources to the appropriate format.
-   */
-  formatResources() {
-    return Object.entries(this.moduleResourceIndexes).map(([path, { default: resources }]) => {
-      const moduleName = path.split('/')[2]; // get module name
-      return resources.map(resource => ({
-        ...resource,
-        name: `${moduleName.toLowerCase()}_${resource.name}`, // resource name new format  module + "_" + resource_name
-        module: moduleName,
-      }));
-    }).flat();
+    return [...globalResources, ...this.resources];
   }
 
   /**
    * Dynamically registers components in the Vue application.
    */
   registerComponents() {
-    for (const path in this.components) {
-      const name = path.split("/").pop().replace(".vue", "");
-      this.app.component(name, defineAsyncComponent(() => this.components[path]()));
+    for (const [key, componentConfig] of Object.entries(this.components)) {
+      const componentName = upperFirst(camelCase(key));
+      this.app.component(
+        componentName,
+        defineAsyncComponent(() => componentConfig())
+      );
     }
   }
 
@@ -59,19 +86,11 @@ export default class ModuleLoader {
    * Dynamically registers source components in the Vue application.
    */
   registerResourceComponents() {
-    for (let fileName in this.moduleResources) {
-      const componentConfig = this.moduleResources[fileName];
+    for (const [key, componentConfig] of Object.entries(this.resourceComponents)) {
+      const componentName = upperFirst(camelCase(key));
 
-      fileName = fileName.replace(/^\.\//, "");
-      const pathArray = fileName.split("/");
-
-      const moduleName = pathArray[2]; // ModuleName
-      const resourceName = pathArray[4]; // ResourceName
-      const action = pathArray[5].replace(/\.\w+$/, ""); // Action without file extension
-
-      // Combine to form the new component name (ModuleName/ResourceName/Action)
-      const componentName = `${upperFirst(camelCase(moduleName))}${upperFirst(camelCase(resourceName))}${upperFirst(camelCase(action))}`;
-
+      console.error(componentName);
+      
       this.app.component(
         componentName,
         defineAsyncComponent(() => componentConfig())
@@ -82,9 +101,14 @@ export default class ModuleLoader {
   /**
    * Register pinia stores for each module
    */
-  registerStores() {
+  async registerStores() {
     for (const path in this.stores) {
-      this.pinia.use(this.stores[path].default);
+      try {
+        const store = await this.stores[path]();  // load store dynmacially
+        this.pinia.use(store.default);  // add the loaded Store to Pinia
+      } catch (error) {
+        console.error(`Store loading failed for ${path}:`, error);
+      }
     }
   }
 

@@ -1,11 +1,13 @@
 import { defineStore } from "pinia";
 import axios from 'axios';
+import mainNavigation from "@/_nav";
 
 const store = defineStore('index', {
   state: () => {
     return { 
       locale: "en",
       modules: [],
+      navigations: [],
       drawer: true,
       navbarKey: 0,
     }
@@ -33,6 +35,21 @@ const store = defineStore('index', {
     },
   },
   actions: {
+    async buildNavs(t, admin) {
+      // build module navigations
+      let navigations = [];
+      for (let i = 0; i < this.navigations.length; i++) {
+        const navItems = await this.navigations[i].build(t, admin);
+        navigations.push(...navItems);
+      }
+      // build main navigations
+      const mainNav = await mainNavigation.build(t, admin);
+      let fullNav = [...mainNav, ...navigations]; // merge with module navigations
+
+      // sort navs..
+      fullNav = fullNav.sort((a, b) => a.order - b.order);
+      return fullNav;
+    },
     setNavbarKey() {
       this.navbarKey = this.navbarKey + 1;
     },

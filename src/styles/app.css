@@ -288,10 +288,20 @@ table {
   padding-bottom: 10px !important;
   padding-left: 0px !important;
 }
-#toggleSettings table tr th:first-child {
+#toggleSettings .v-table__wrapper table {
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+}
+#toggleSettings .table-settings tr th:first-child {
   border-bottom: 1px solid #e5e7eb !important;
 }
-#toggleSettings table tr td:first-child {
+#toggleSettings .table-draggable tr th {
+  border-right: 1px solid #e5e7eb !important;
+}
+#toggleSettings .table-draggable tr th:first-child {
+  border-bottom: none !important;
+}
+#toggleSettings .table-settings tr td:first-child {
   border-right: 1px solid #e5e7eb;
 }
 /* datatable row hover */
@@ -372,10 +382,6 @@ table {
 .va-show, .va-table .v-table__wrapper table {
   border-radius: 4px;
   font-size: 12px;
-}
-#toggleSettings .v-table__wrapper table {
-  border: 1px solid #dddddd;
-  border-radius: 4px;
 }
 /* Vue 3 updates end */
 .noselect {

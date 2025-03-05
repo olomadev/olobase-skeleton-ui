@@ -2,18 +2,15 @@
 import { createRouter, createWebHistory } from "vue-router";
 import i18n from "../i18n";
 
-// loading modules dynamically
-const modules = import.meta.glob("../modules/**/routes.js");
-
 const routes = [
   {
     path: "",
-    component: import('@/layouts/Admin.vue'),
+    component: () => import('@/layouts/Admin.vue'),
     children: [
       {
         path: "/dashboard",
         name: "dashboard",
-        component: import('@/views/Dashboard.vue'),
+        component: () => import('@/views/Dashboard.vue'),
         meta: {
           title: i18n.global.t("routes.dashboard"),
         },
@@ -23,12 +20,12 @@ const routes = [
   {
     path: "/",
     redirect: "/login/:locale?",
-    component: import('@/layouts/Member.vue'),
+    component: () => import('@/layouts/Member.vue'),
     children: [
       {
         path: "/login/:locale?",
         name: "login",
-        component: import('@/views/Login.vue'),
+        component: () => import('@/views/Login.vue'),
         meta: {
           title: i18n.global.t("routes.login"),
         },
@@ -36,7 +33,7 @@ const routes = [
       {
         path: "/forgotPassword",
         name: "forgotPassword",
-        component: import('@/views/ForgotPassword.vue'),
+        component: () => import('@/views/ForgotPassword.vue'),
         meta: {
           title: i18n.global.t("routes.forgotPassword"),
         },
@@ -44,7 +41,7 @@ const routes = [
       {
         path: "/resetPassword",
         name: "resetPassword",
-        component: import('@/views/ResetPassword.vue'),
+        component: () => import('@/views/ResetPassword.vue'),
         meta: {
           title: i18n.global.t("routes.resetPassword"),
         },
@@ -52,11 +49,6 @@ const routes = [
     ],
   }
 ];
-
-for (const path in modules) {
-  const module = await modules[path]();
-  routes.push(...module.default);
-}
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

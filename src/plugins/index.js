@@ -56,7 +56,6 @@ export async function registerPlugins(app) {
 
   // Register plugin loaders
   await loader.install(app);
-  await moduleLoader.install(app, pinia);
 
   // Global plugins
   app.use(vuetify).use(i18n);
@@ -66,13 +65,18 @@ export async function registerPlugins(app) {
   app.config.globalProperties.$store = store;
   app.config.globalProperties.$vuetify = vuetify;
   
+  await moduleLoader.install(app, pinia);
+
   // Register olobase admin plugin
   admin.install(app, store, axios, moduleLoader.getResources());
 
-  // Register resources automatically for each module
+  // Register components automatically for each module
+  await moduleLoader.registerStores();
   moduleLoader.registerComponents();
   moduleLoader.registerResourceComponents();
-  moduleLoader.registerStores();
+
+  // Register navigation builder function globally
+  // app.config.globalProperties.$_navs = moduleLoader.buildNavs;
 
   // Router must be defined at the bottom !!
   //

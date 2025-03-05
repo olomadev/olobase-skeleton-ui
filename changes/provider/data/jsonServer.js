@@ -67,9 +67,6 @@ export default (httpClient) => {
               ...params.defaultQueryString
             }
         }
-        
-        // console.log(params)
-        // console.log(params)
 
         if (pagination) {
         let { page, perPage } = pagination;
@@ -89,9 +86,10 @@ export default (httpClient) => {
               "_order[]": sort.map((item) => (item.desc ? "desc" : "asc")),
             }
         }
-        let response = await httpClient.get(
-            `${module}/${resource}/findAllByPaging?${qs.stringify(query, { arrayFormat: "repeat" })}`
-        );
+        let url = module ? `${module}/${resource}/findAllByPaging?${qs.stringify(query, { arrayFormat: "repeat" })}` 
+                         : `${resource}/findAllByPaging?${qs.stringify(query, { arrayFormat: "repeat" })}`;
+                         
+        let response = await httpClient.get(url);
         if (response && response["data"]) {
           let { data, headers } = response;
           return {
@@ -117,9 +115,11 @@ export default (httpClient) => {
         ...withInclude(params),
         ...filter,
       };
-      let response = await httpClient.get(
-        `${module}/${resource}/findAll?${qs.stringify(query, { arrayFormat: "repeat" })}`
-      );
+      let url = module 
+         ? `${module}/${resource}/findAll?${qs.stringify(query, { arrayFormat: "repeat" })}` 
+         : `${resource}/findAll?${qs.stringify(query, { arrayFormat: "repeat" })}`;
+
+      let response = await httpClient.get(url);
       if (response && response["data"]) {
         let { data, headers } = response;
         return {
@@ -152,10 +152,11 @@ export default (httpClient) => {
           ...withInclude(params),
           ...newFilter,
       }
+      let url = module 
+         ? `${module}/${resource}/findAll?${qs.stringify(query, { arrayFormat: "repeat" })}` 
+         : `${resource}/findAll?${qs.stringify(query, { arrayFormat: "repeat" })}`;
 
-      return httpClient.get(
-          `${module}/${resource}/findAll?${qs.stringify(query, { arrayFormat: "repeat" })}`
-      )
+      return httpClient.get(url)
 
       // const { filter } = params;
 
@@ -168,44 +169,96 @@ export default (httpClient) => {
         // )
     },
     [GET_ONE]: async (module, resource, params) => {
-      let response = await httpClient.get(
-        `${module}/${resource}/findOneById/${params.id}?${qs.stringify(withInclude(params))}`
-      )
+      let url = module 
+         ? `${module}/${resource}/findOneById/${params.id}?${qs.stringify(withInclude(params))}`
+         : `${resource}/findOneById/${params.id}?${qs.stringify(withInclude(params))}`
+
+      let response = await httpClient.get(url)
       if (response && response["data"]) {
         let { data } = response;
         return data;
       }
     },
-    [CREATE]: (module, resource, params) => httpClient.post(`${module}/${resource}/create`, params.data),
-    [UPDATE]: (module, resource, params) =>
-      httpClient.put(`${module}/${resource}/update/${params.id}`, params.data),
-    [UPDATE_ROW]: (module, resource, params) =>
-      httpClient.put(`${module}/${resource}/updateRow/${params.id}`, params.data),
-    [UPDATE_MANY]: (module, resource, params) =>
-      Promise.all(
-        params.ids.map((id) => httpClient.put(`${module}/${resource}/update/${id}`, params.data))
-      ).then(() => Promise.resolve()),
+    [CREATE]: (module, resource, params) => { 
+      let url = module 
+        ? `${module}/${resource}/create`
+        : `${resource}/create`;
 
+      return httpClient.post(url, params.data)
+    },
+    [UPDATE]: (module, resource, params) => {
+      let url = module 
+        ? `${module}/${resource}/update/${params.id}` 
+        : `${resource}/update/${params.id}`;
+
+      return httpClient.put(url, params.data);
+    },
+    [UPDATE_ROW]: (module, resource, params) => {
+      let url = module 
+        ? `${module}/${resource}/updateRow/${params.id}`
+        : `${resource}/updateRow/${params.id}`;
+
+      return httpClient.put(url, params.data);
+    },
+    [UPDATE_MANY]: (module, resource, params) => {
+      const updatePromises = params.ids.map((id) => {
+        let url = module ? `${module}/${resource}/update/${id}` : `${resource}/update/${id}`;
+
+        return httpClient.put(url, params.data);
+      });
+      return Promise.all(updatePromises)
+       .then(() => {
+         return Promise.resolve();
+       });
+    },
     [DELETE]: (module, resource, params) => {
       if (params['query'] && typeof params['query'] === 'object') {
         const queryString = Object.entries(params['query']).map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join("&");
-        httpClient.delete(`${module}/${resource}/delete/${params.id}?` + queryString);
+
+        let url = module 
+          ? `${module}/${resource}/delete/${params.id}?` 
+          : `${resource}/delete/${params.id}?`;
+
+        httpClient.delete(url + queryString);
+
       } else {
-        httpClient.delete(`${module}/${resource}/delete/${params.id}`);  
+
+        let url = module 
+          ? `${module}/${resource}/delete/${params.id}` 
+          : `${resource}/delete/${params.id}`;
+
+        httpClient.delete(url);
       }
     },
+    [DELETE_MANY]: (module, resource, params) => {
+      const deletePromises = params.ids.map((id) => {
+        let url = module 
+          ? `${module}/${resource}/delete/${id}` 
+          : `${resource}/delete/${id}`;
 
-    [DELETE_MANY]: (module, resource, params) =>
-      Promise.all(
-        params.ids.map((id) => httpClient.delete(`${module}/${resource}/delete/${id}`))
-      ).then(() => Promise.resolve()),
+        return httpClient.delete(url);
+      });
+      return Promise.all(deletePromises)
+        .then(() => {
+          return Promise.resolve();
+      });
+    },
+    [COPY]: (module, resource, params) => {
+      let url = module ? `${module}/${resource}/copy/${params.id}` : `${resource}/copy/${params.id}`;
 
-    [COPY]: (module, resource, params) =>
-      httpClient.post(`${module}/${resource}/copy/${params.id}`, params.data),
-    [COPY_MANY]: (module, resource, params) =>
-      Promise.all(
-        params.ids.map((id) => httpClient.post(`${module}/${resource}/copy/${id}`, params.data))
-      ).then(() => Promise.resolve()),
-      
+      return httpClient.post(url, params.data);
+    },
+    [COPY_MANY]: (module, resource, params) => {
+      const copyPromises = params.ids.map((id) => {
+        let url = module ? `${module}/${resource}/copy/${id}` : `${resource}/copy/${id}`;
+
+        return httpClient.post(url, params.data);
+      });
+      return Promise.all(copyPromises)
+        .then(() => {
+          return Promise.resolve();
+      });
+    },
+
   };
 };

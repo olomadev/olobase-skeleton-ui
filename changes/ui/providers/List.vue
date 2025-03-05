@@ -72,7 +72,7 @@
             <div class="align-center">
               <v-row>
                 <v-col cols="12">
-                  <v-table density="compact">
+                  <v-table class="table-settings" density="compact">
                     <thead>
                       <tr>
                         <th style="border: none"></th>
@@ -116,16 +116,18 @@
                       <tr v-if="!disablePositioning">
                         <td>{{ $t('va.datatable.positioning') }}</td>
                         <td :colspan="selectItems.length" style="border-bottom: none">
-                          <v-table v-if="selectItems.length > 0" density="compact" class="mt-6 mb-6" width="%100">
-                            <draggable v-model="selectedHeaders" tag="tr" :item-key="key => key">
-                              <template #item="item">
-                                <th style="cursor:pointer;padding:4px;" scope="col">
-                                  {{ item.element.title }}
-                                  <span class="circle">{{ item.index + 1 }}</span>
-                                </th>
-                              </template>
-                            </draggable>
-                          </v-table>
+                          <div class="table-draggable">
+                            <v-table v-if="selectItems.length > 0" density="compact" class="mt-6 mb-6" width="%100">
+                              <draggable v-model="selectedHeaders" tag="tr" :item-key="key => key">
+                                <template #item="item">
+                                  <th style="cursor:pointer;padding:4px;" scope="col">
+                                    {{ item.element.title }}
+                                    <span class="circle">{{ item.index + 1 }}</span>
+                                  </th>
+                                </template>
+                              </draggable>
+                            </v-table>
+                          </div>
                         </td>
                       </tr>
                       <tr>
