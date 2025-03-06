@@ -17,7 +17,7 @@ export default  {
         icon: "mdi-api",
         text: t("menu.api"),
         link: "/swagger",
-        order: 10,
+        order: 99,
        }
     ];
 

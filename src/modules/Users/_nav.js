@@ -6,8 +6,9 @@ export default {
       ? [
           {
             icon: "mdi-account-edit",
-            text: t("modules.users.menu.users"),
+            text: t("users.menu.label"),
             link: "/users?sortBy=firstname&sortDesc=false",
+            order: 1,
           }
         ]
       : [];

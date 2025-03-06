@@ -88,6 +88,11 @@
     "forgotPassword": "Forgotten Password",
     "resetPassword": "Reset Password"
   },
+  "swagger": {
+    "menu": {
+      "label": "Open API"
+    }
+  },  
   "error": {
     "404": "Böyle bir sayfa bulunamadı",
     "fileNotFound": "Dosya bulunamadı"

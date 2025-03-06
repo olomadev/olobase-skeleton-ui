@@ -6,11 +6,12 @@ export default {
       ? [
           {
             icon: "mdi-account-multiple",
-            text: t("modules.authentication.menu.label"),
+            text: t("authentication.menu.label"),
+            order: 98,
             children: [
               {
                 icon: "mdi-account-alert",
-                text: t("modules.accounts.menu.failedlogins"),
+                text: t("authentication.failedLogins.menu.label"),
                 link: "/authentication/failedLogins?sortBy=attemptedAt&sortDesc=false",
               },
             ]

@@ -1,4 +1,3 @@
-import get from "lodash/get"
 import { camelCase, kebabCase, upperFirst } from "lodash";
 import config from "@/_config";
 
@@ -7,11 +6,15 @@ import config from "@/_config";
 import { h, resolveComponent } from 'vue' // vue 3.0 support
 
 export default ({ app, admin, store, i18n, resource, title }) => {
-  let { name, module, include, routes, translatable, getTitle, pluralName } = resource
-  const parts = name.split("_");
+  let { name, module, standalone, include, routes, translatable, getTitle, pluralName } = resource
+
+  const parts = name.includes("_") ? name.split("_") : [null, name];
   const resourceName = parts[1];
-  const camelCaseModuleName = camelCase(module.toLowerCase());
-  const resourcePath = `${camelCaseModuleName}/${camelCase(resourceName)}`;
+
+  const camelCaseModuleName = standalone ? camelCase(name) : camelCase(module.toLowerCase());
+  const resourcePath = standalone 
+    ? `${camelCase(resourceName)}` 
+    : `${camelCaseModuleName}/${camelCase(resourceName)}`;
 
   const setTitle = (to, action, item = null) => {
     to.meta.title = getTitle(action, item);
@@ -26,17 +29,26 @@ export default ({ app, admin, store, i18n, resource, title }) => {
    * Action route builder
    */
   const buildRoute = (action, path) => {
+
+    const routeName = standalone 
+      ? `${camelCase(resourceName)}_${action}` 
+      : `${camelCaseModuleName}_${camelCase(resourceName)}_${action}`
+
     return {
       path,
-      name: `${camelCaseModuleName}_${camelCase(resourceName)}_${action}`, // module_resource_action format
+      name: routeName,
       props: true,
       component: {
         props: ["id"],
         render() {
-          let componentName = `${upperFirst(camelCaseModuleName)}${upperFirst(camelCase(resourceName))}${upperFirst(action)}`;
+          let componentName = standalone 
+            ? `${upperFirst(camelCase(resourceName))}${upperFirst(action)}` 
+            : `${upperFirst(camelCaseModuleName)}${upperFirst(camelCase(resourceName))}${upperFirst(action)}`;
+
           let props = {
             id: this.id,
             title: this.$route.meta.title,
+            module: camelCaseModuleName, 
             resource: name,
             item: store.getResource(name).item,
             roles: store.getModule("auth").getPermissions,
@@ -53,7 +65,7 @@ export default ({ app, admin, store, i18n, resource, title }) => {
           // }
           //
           // vue 3.0
-          // 
+          //
           if (app.component(componentName)) { // check component is exists
             return h(resolveComponent(componentName), props)  
           } else {
@@ -62,7 +74,6 @@ export default ({ app, admin, store, i18n, resource, title }) => {
           }
         },
         async beforeRouteEnter(to, from, next) {
-          
           /**
            * Initialize from query if available
            */

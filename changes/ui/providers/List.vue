@@ -434,15 +434,18 @@ export default {
     await this.initFiltersFromQuery();
     this.loaded = true;
     if (! this.disableFetch) {
-      this.fetchData();  
+      this.fetchData();
     }
   },
   computed: {
     getTitle() {
-      const parts = this.resource.split("_");
+      const parts = this.resource.includes("_") ? this.resource.split("_") : [null, this.resource];
       const module = parts[0];
-      const resource = parts[1];
-      return (this.title) ? this.title : this.$t("modules." + module + "." + resource + ".title");
+      const resourceName = parts[1];
+      let key = module 
+        ? `${module}.${resourceName}.title` 
+        : `${resourceName}.${resourceName}.title` ;
+      return (this.title) ? this.title : this.$t(key);
     },
     getHideHeaderValue() {
       if (this.hideHeader == null) {

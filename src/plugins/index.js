@@ -12,7 +12,6 @@ import router from "../router";
 import i18n from "../i18n";
 import admin from "./admin";
 import loader from "./loader";
-import ModuleLoader from "./module-loader";
 import useStore from "../store";
 import { useHttp } from "../plugins/use-http";
 import { camelCase, upperFirst } from "lodash";
@@ -51,9 +50,6 @@ export async function registerPlugins(app) {
   const pinia = createPinia(); // must be at the top level
   app.use(pinia); // must be at the top level
 
-  // Create module loader instance
-  const moduleLoader = new ModuleLoader();
-
   // Register plugin loaders
   await loader.install(app);
 
@@ -64,19 +60,9 @@ export async function registerPlugins(app) {
   useHttp(axios, store); // global http instance
   app.config.globalProperties.$store = store;
   app.config.globalProperties.$vuetify = vuetify;
-  
-  await moduleLoader.install(app, pinia);
 
-  // Register olobase admin plugin
-  admin.install(app, store, axios, moduleLoader.getResources());
-
-  // Register components automatically for each module
-  await moduleLoader.registerStores();
-  moduleLoader.registerComponents();
-  moduleLoader.registerResourceComponents();
-
-  // Register navigation builder function globally
-  // app.config.globalProperties.$_navs = moduleLoader.buildNavs;
+  // Register install admin & modules
+  await admin.install(app, { i18n, pinia, store, http: axios });
 
   // Router must be defined at the bottom !!
   //

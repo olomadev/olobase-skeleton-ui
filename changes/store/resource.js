@@ -60,7 +60,7 @@ const resource = defineStore('resource', {
       this.dialogItem = item;
     },
     setResource(name) {
-      const parts = name.split("_");
+      const parts = name.includes("_") ? name.split("_") : [null, name];
       const moduleName = parts[0];
       const resourceName = parts[1];
       this.resource = { module: moduleName, name: resourceName };

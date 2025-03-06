@@ -35,17 +35,4 @@ Object.keys(vaMessages).forEach((locale) => {
   i18n.global.mergeLocaleMessage(locale, { va: vaMessages[locale] });
 })
 
-// modules messages
-const messages = { en: {}, tr: {} };
-
-// loading modules dynamically
-const modules = import.meta.glob("../modules/**/i18n.js");
-
-for (const path in modules) {
-  const module = await modules[path]();
-  Object.keys(module.default).forEach((lang) => {
-    i18n.global.mergeLocaleMessage(lang, module.default[lang]);
-  });
-}
-
 export default i18n;

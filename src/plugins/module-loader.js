@@ -9,7 +9,7 @@ import { defineAsyncComponent } from "vue";
 import { camelCase, upperFirst } from "lodash";
 import moduleConfigs from "@/modules/config";
 import globalResources from "@/modules/resources";
-import useStore from "@/store";
+import router from "@/router";
 
 export default class ModuleLoader {
 
@@ -25,18 +25,23 @@ export default class ModuleLoader {
   /**
    * Installs module loader plugin.
    */
-  async install(app, pinia) {
+  async install(app, i18nInstance, defaultStore, pinia) {
     this.app = app;
     this.pinia = pinia;
-    const defaultStore = useStore();
 
     // Install all modules
+    let messages = {};
     for (const [moduleName, loader] of Object.entries(moduleConfigs)) {
       const module = await loader();
       if (module.default.install) {
-        const { routes, stores, components, navigation, resources, resourceComponents } = await module.default.install(app);
+        const { i18n, routes, stores, components, navigation, resources, resourceComponents } = await module.default.install(app);
 
-        if (typeof navigation.build === 'function') {
+        if (i18n && i18n['messages']) { // add i18n messages to Vue I18n
+          Object.keys(i18n['messages']).forEach((lang) => {
+            i18nInstance.global.mergeLocaleMessage(lang, i18n['messages'][lang]);
+          });
+        }
+        if (typeof navigation.build === 'function') { // build navigation array
           defaultStore.navigations.push(navigation)
         } else {
           console.error(`Invalid navigation function in module ${moduleName}`);
@@ -63,6 +68,9 @@ export default class ModuleLoader {
         }
       }
     }
+    //
+    // add dynamic module routes to router
+    this.routes.forEach(route => router.addRoute(route));
   }
 
   getResources() {
@@ -88,9 +96,6 @@ export default class ModuleLoader {
   registerResourceComponents() {
     for (const [key, componentConfig] of Object.entries(this.resourceComponents)) {
       const componentName = upperFirst(camelCase(key));
-
-      console.error(componentName);
-      
       this.app.component(
         componentName,
         defineAsyncComponent(() => componentConfig())

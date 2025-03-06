@@ -117,8 +117,8 @@ export default class Olobase {
 
         //---- module changes start --------------------------
 
-        let moduleName = r.module || "default"; // default module name
-        let resourcePath = `${moduleName}/${r.name}`;
+        let moduleName = r.module || null; // default null
+        let resourcePath = r['standalone'] ? `${r.name}` :  `${moduleName}/${r.name}`;
 
         //---- module changes end --------------------------
 
@@ -259,15 +259,29 @@ export default class Olobase {
       /**
        * Set main and document title
        */
-      document.title = to.meta.title
-        ? `${this.i18n.global.t("titles." + lowerCase(to.meta.title))} | ${this.i18n.global.t("titles." + lowerCase(this.title))}`
-        : this.i18n.global.t("titles." + lowerCase(this.title))
+      document.title = this.getPageTitle(to)
       next();
     })
 
-    // this.router.push({ "name": "roles_list" });
-
   } // end init function
+
+  getPageTitle(to) {
+    if (to.meta.resource) {
+      const parts = to.meta.resource.includes("_") ? to.meta.resource.split("_") : [null, to.meta.resource];
+      const module = parts[0];
+      const resourceName = parts[1];
+      let key = module 
+        ? `${module}.${resourceName}.title` 
+        : `${resourceName}.${resourceName}.title`;
+      return this.i18n.global.t(key);
+    }
+    if (to.meta.title) {
+      return to.meta.title
+          ? `${this.i18n.global.t("titles." + lowerCase(to.meta.title))} | ${this.i18n.global.t("titles." + lowerCase(this.title))}`
+          : this.i18n.global.t("titles." + lowerCase(this.title))
+    }
+    return "undefined";
+  }
 
   /**
   * Permissions helper & directive
@@ -318,71 +332,21 @@ export default class Olobase {
   * Get label source, humanize it if not found
   */
   getSourceLabel(resource, source)  {
-    if (resource && source) {
-        let key = `resources.${resource}.fields.${source}`;
-        return this.i18n.global.te(key)
-          ? this.i18n.global.t(key)
-          : upperFirst(lowerCase(source.replace(".", " ")));    
+    const parts = resource.includes("_") ? resource.split("_") : [null, resource];
+    const module = parts[0];
+    const resourceName = parts[1];
+
+    if (resourceName && source) {
+      let key = module 
+        ? `${module}.${resourceName}.fields.${source}` 
+        : `${resourceName}.fields.${source}`;
+
+      let translatedValue = this.i18n.global.te(key)
+        ? this.i18n.global.t(key)
+        : upperFirst(lowerCase(source.replace(".", " ")));
+      return translatedValue
     }
     return null
-  }
-
-  /**
-  * Resource link helper with action permission test
-  */
-  getResourceLink(link) {
-    let getLink = ({ name, icon, text, action }) => {
-      action = action || "list";
-      let resource = this.getResource(name);
-
-      if (!resource) {
-        return false;
-      }
-
-      let { routes, canAction, singularName, pluralName } = resource
-
-      /**
-       * Route must exist
-       */
-      if (!routes.includes(action)) {
-        return false;
-      }
-
-      /**
-       * Current user must have permission for this action
-       */
-      if (!canAction(action)) {
-        return false;
-      }
-
-      return {
-        icon: icon || resource.icon,
-        text: text || (action === "list" ? pluralName : singularName),
-        link: { name: `${name}_${action}` },
-      };
-    }
-    if (typeof link === "object") {
-      return getLink(link);
-    }
-    return getLink({ name: link });
-  }
-
-  /**
-  * Resource links list helper
-  */
-  getResourceLinks(links) {
-    return links
-      .map((link) => {
-        if (typeof link === "object") {
-          if (link.children) {
-            return link;
-          }
-
-          return this.getResourceLink(link);
-        }
-        return this.getResourceLink({ name: link })
-      })
-      .filter((r) => r)
   }
 
   /**

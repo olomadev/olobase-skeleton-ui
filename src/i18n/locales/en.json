@@ -87,6 +87,11 @@
     "forgotPassword": "Forgotten Password",
     "resetPassword": "Reset Password"
   },
+  "swagger": {
+    "menu": {
+      "label": "Open API"
+    }
+  },
   "error": {
     "404": "Page not found",
     "fileNotFound": "File not found"

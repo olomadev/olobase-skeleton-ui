@@ -1,68 +1,48 @@
 export default {
-  en: {
-    modules: {
-      accounts: {
+  messages: {
+    en: {
+      authentication: {
         menu: {
-          label: "Accounts",
-          users: "Users",
-          roles: "Roles",
-          permissions: "Permissions",
-          failedlogins: "Failed Logins",
+          label: "Authentication"
         },
-        users: {
-          title: "Users",
-          fields: {
-            "q": "Search",
-            "email": "E-Mail",
-            "firstname": "Firstname",
-            "lastname": "Lastname",
-            "password": "Password",
-            "userRoles": "User Roles",
-            "avatarImage": "Avatar Image",
-            "setPasswordButton": "Set Password",
-            "changePasswordButton": "Change Password",
-            "changePasswordTitle": "Password",
-            "newPassword": "Password",
-            "active": "Active",
-            "emailActivation": "E-Mail Activation",
-            "createdAt": "Created At",
-            "themeColor": "Theme Color"
+        failedLogins: {
+          menu: {
+            label: "Failed Logins",
           },
+          title: "Failed Logins",
+          fields: {
+            q: "Search",
+            username: "Username",
+            userAgent: "User Agent",
+            ip: "Ip Address",
+            attemptedAt: "Attempted At",
+            attemptedAtStart: "Attempt Date Start",
+            attemptedAtEnd: "Attempt Date End "
+          }
         }
       }
-    }
-  },
-  tr: {
-    modules: {
-      accounts: {
+    },
+    tr: {
+      authentication: {
         menu: {
-          label: "Hesaplar",
-          users: "Kullanıcılar",
-          roles: "Roller",
-          permissions: "Yetkiler",
-          failedlogins: "Başarısız Girişler",
+          label: "Oturumlar"
         },
-        users: {
-          title: "Kullanıcılar",
+        failedLogins: {
+          menu: {
+            label: "Başarısız Girişler",
+          },
+          title: "Başarısız Girişler",
           fields: {
-            "q": "Ara",
-            "email": "E-Posta",
-            "firstname": "Ad",
-            "lastname": "Soyad",
-            "password": "Şifre",
-            "userRoles": "Roller",
-            "avatarImage": "Avatar",
-            "setPasswordButton": "ŞİFRE BELİRLE",
-            "changePasswordButton": "ŞİFRE DEĞİŞTİR",
-            "changePasswordTitle": "Şifre",
-            "newPassword": "Şifre",
-            "active": "Aktif Mi",
-            "createdAt": "Oluşturulma",
-            "themeColor": "Tema Rengi",
-            "emailActivation": "E-Posta Aktivasyonu"
+            q: "Ara",
+            username: "Kullanıcı Adı",
+            userAgent: "Tarayıcı",
+            ip: "Ip Adresi",
+            attemptedAt: "Girişim Tarihi",
+            attemptedAtStart: "Girişim Baş.Tarihi",
+            attemptedAtEnd: "Girişim Bit.Tarihi "
           }
         }
       }
     }
-  },
+  }
 };
