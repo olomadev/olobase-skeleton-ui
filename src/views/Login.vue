@@ -2,7 +2,7 @@
   <div>
     <va-messages></va-messages>
 
-    <v-row no-gutters :style="smAndDown ? 'margin-top: 40px' : 'margin-top: 120px'">
+    <v-row no-gutters :style="smAndDown ? 'margin-top: 40px' : 'margin-top: 180px'">
       <v-alert
         v-if="resetPassword"
         class="mb-4"      

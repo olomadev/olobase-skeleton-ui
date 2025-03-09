@@ -5,18 +5,19 @@ export default {
     return adminRole
       ? [
           {
-            icon: "mdi-account-multiple",
-            text: t("modules.accounts.menu.label"),
+            icon: "mdi-account-key-outline",
+            text: t("authorization.menu.label"),
+            order: 2,
             children: [
               {
-                icon: "",
-                text: t("modules.accounts.menu.roles"),
-                link: "/accounts/roles",
+                icon: "mdi-account-group-outline",
+                text: t("authorization.roles.menu.label"),
+                link: "/authorization/roles",
               },
               {
-                icon: "mdi-account-lock",
-                text: t("modules.accounts.menu.permissions"),
-                link: "/accounts/permissions",
+                icon: "mdi-key-star",
+                text: t("authorization.permissions.menu.label"),
+                link: "/authorization/permissions",
               }
             ]
           }

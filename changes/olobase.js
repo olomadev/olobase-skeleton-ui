@@ -28,7 +28,6 @@ export default class Olobase {
     i18n,
     downloadUrl,
     readFileUrl,
-    title,
     routes,
     locales,
     authProvider,
@@ -61,7 +60,6 @@ export default class Olobase {
     this.apiUrl = this.env.VITE_API_URL
     this.downloadUrl = downloadUrl
     this.readFileUrl = readFileUrl
-    this.title = title
     this.routes = routes
     this.locales = locales
     this.translations = translations
@@ -133,14 +131,18 @@ export default class Olobase {
           singularName: getName(1),
           pluralName: getName(10),
           getTitle: (action, item = null) => {
-            let titleKey = `resources.${r.name}.titles.${action}`
+            const module = r.module ? r.module.toLowerCase() : null;
+            const resourceName = r.name;
+            let key = module 
+              ? `${module}.${resourceName}.title` 
+              : `${resourceName}.${resourceName}.title`;
             if (item) {
-              return this.i18n.global.te(titleKey)
-                  ? this.i18n.global.t(titleKey, item.raw)
+              return this.i18n.global.te(key)
+                  ? this.i18n.global.t(key, item.raw)
                   : this.i18n.global.t(`va.pages.${action}`);
             }
-            return this.i18n.global.te(titleKey)
-              ? this.i18n.global.t(titleKey)
+            return this.i18n.global.te(key)
+              ? this.i18n.global.t(key)
               : this.i18n.global.t(`va.pages.${action}`, {
                   resource: getName(action === "list" ? 10 : 1).toLowerCase(),
                 })
@@ -235,7 +237,7 @@ export default class Olobase {
           store: this.store,
           i18: this.i18n,
           resource,
-          title: this.i18n.global.t("titles." + this.title), 
+          title: null, 
         })
       )
       .concat(
@@ -277,8 +279,8 @@ export default class Olobase {
     }
     if (to.meta.title) {
       return to.meta.title
-          ? `${this.i18n.global.t("titles." + lowerCase(to.meta.title))} | ${this.i18n.global.t("titles." + lowerCase(this.title))}`
-          : this.i18n.global.t("titles." + lowerCase(this.title))
+          ? `${this.i18n.global.t("titles." + lowerCase(to.meta.title))}`
+          : null;
     }
     return "undefined";
   }

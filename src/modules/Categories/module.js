@@ -1,5 +1,5 @@
 export default {
-  name: "Users",
+  name: "Categories",
   install: async (app) => {
 
     // Install pinia stores
@@ -27,11 +27,7 @@ export default {
 
     // Install resource components
     const resourceComponents = {
-      "UsersCreate": () => import("./resources/Users/Create.vue"),
-      "UsersEdit": () => import("./resources/Users/Edit.vue"),
-      "UsersForm": () => import("./resources/Users/Form.vue"),
-      "UsersList": () => import("./resources/Users/List.vue"),
-      "UsersShow": () => import("./resources/Users/Show.vue"),
+      "CategoriesList": () => import("./resources/Categories/List.vue"),
     };
 
     return {

@@ -36,7 +36,7 @@
                 </v-btn>
               </template>
               <v-card min-width="300">
-                <v-list nav>
+                <v-list nav class="mb-2">
                   <v-list-item
                     class="mb-2 mt-2" 
                      v-if="getFullname"
@@ -47,7 +47,7 @@
                       <v-list-item-subtitle v-if="getEmail">{{ getEmail }}</v-list-item-subtitle>
                     </div>
                   </v-list-item>
-                  <v-divider></v-divider>
+                  <v-divider class="mt-2"></v-divider>
                   <v-card flat class="mt-2">
                     <v-card-text style="padding:0px;">
                       <v-list-item
@@ -186,7 +186,7 @@ export default {
           link: "/account",
         },
         {
-          icon: "mdi-key-variant",
+          icon: "mdi-key",
           text: this.$t("va.changePassword"),
           link: "/password",
         },

@@ -6,9 +6,9 @@ export default {
       ? [
           {
             icon: "mdi-file-tree-outline",
-            text: t("menu.categories"),
+            text: t("categories.menu.label"),
             link: "/categories",
-            order: 1,
+            order: 3,
           },
         ]
       : [];

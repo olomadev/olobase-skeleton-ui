@@ -26,15 +26,15 @@
       </v-col>
     </v-row>
     <h2 class="h2 mb-4">
-      {{ $t("menu.permissions") }}
+      {{ $t("authorization.permissions.menu.label") }}
     </h2>
     <v-row>  
       <v-col cols="8">
         <va-check-list-input
           variant="outlined"
           source="rolePermissions"
-          group-by="moduleName"
-          init-url="/permissions/findAll"
+          group-by="module"
+          init-url="/authorization/permissions/findAll"
           :headers="headers"
           :fields="fields"
           primary-key="permId"
@@ -73,7 +73,8 @@ export default {
         rolePermissions: null,
       },
       fields: [
-        { source: "moduleName" },
+        { source: "module" },
+        { source: "name" },
         { source: "action" },
         { source: "route" },
         { source: "method"},
@@ -103,7 +104,11 @@ export default {
     headers() {
       return [
         {
-          key: "moduleName",
+          key: "module",
+          sortable: false,
+        },
+        {
+          key: "name",
           sortable: false,
         },
         {

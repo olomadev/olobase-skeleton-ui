@@ -56,7 +56,7 @@ export default {
         if (Array.isArray(actionArray) && actionArray.length > 0) {  // do not repeat index list
 
           if (i == 0) {
-            text = this.$t("crumbs." + actionArray[actionArray.length - 1]);
+            text = this.$t("routes." + actionArray[actionArray.length - 1]);
             items.push(
               {
                 title: text,
@@ -88,7 +88,7 @@ export default {
                 }
               );
             }
-            text = this.$t("crumbs." + actionArray[actionArray.length - 1]);
+            text = this.$t("routes." + actionArray[actionArray.length - 1]);
             items.push(
               {
                 title: text,

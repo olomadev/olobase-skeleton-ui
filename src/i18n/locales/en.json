@@ -3,44 +3,30 @@
     "en": "English",
     "tr": "Türkçe"
   },
-  "titles": {
-    "demo": "Demo",
+  "routes": {
     "home": "Home",
+    "list": "List",
+    "create": "Create",
+    "edit": "Edit",
+    "delete": "Delete",
     "login": "Login",
-    "users": "Users",
-    "roles": "Roles",
-    "bread crumb": "Bread Crumb",
-    "forgotten password": "Forgotten Password",
-    "avatars": "Avatars",
-    "auto complete": "Auto Completer",
-    "boolean": "Boolean",
-    "currency": "Currency",
-    "file": "File",
-    "number": "Number",
-    "radio": "Radio",
-    "rating": "Rating",
-    "richtext": "RichText",
-    "rich text": "RichText",
-    "select": "Select",
-    "text": "Text",
-    "tab": "Tab",
-    "date": "Date",
     "dashboard": "Dashboard",
-    "components": "Components",
-    "companies": "Companies",
-    "permissions": "Permissions",
-    "categories": "Categories",
-    "jobtitles": "Job Titles",
-    "jobtitlelists": "Job Title Lists",
     "account": "Account",
     "password": "Password",
-    "employees": "Employees",
-    "employee grades": "Employee Grades",
-    "employee-grades": "Employee Grades",
-    "departments": "Departments",
-    "failedlogins": "Failed Logins",
-    "reset password": "Reset Password",
-    "rest api": "REST API"
+    "forgotPassword": "Forgot Password",
+    "resetPassword": "Reset Password",
+    "notFound": "Page Not Found",
+    "rest api": "rest api",
+  },
+  "titles": {
+    "login": "Login",
+    "dashboard": "Dashboard",
+    "account": "My Account",
+    "password": "Change Password",
+    "forgot password": "Forgot Password",
+    "resetPassword": "Reset Password",
+    "notFound": "Page Not Found",
+    "rest api": "Rest API",
   },
   "v": {
     "text": {
@@ -76,17 +62,11 @@
   "messages": {
     "welcome" : "Welcome to olobase admin.." 
   },
-  "routes": {
-    "home": "Home",
-    "login": "Login",
-    "exchangeRates": "Exchange Rates",
-    "account": "Account",
-    "password": "Password",
-    "dashboard": "Dashboard",
-    "notFound": "Not found",
-    "forgotPassword": "Forgotten Password",
-    "resetPassword": "Reset Password"
-  },
+  "dashboard": {
+    "menu": {
+      "label": "Dashboard"
+    }
+  }, 
   "swagger": {
     "menu": {
       "label": "Open API"
@@ -124,19 +104,6 @@
     "tokenExpired": "Your session has expired please login again",
     "backToLogin": "Back to Login Page"
   },
-  "demo": {
-    "active": "Status",
-    "currencyId": "Currency",
-    "date": "Date",
-    "file": "File",
-    "number": "Number",
-    "currencies": "Currencies",
-    "amount": "Amount",
-    "rating": "Rating",
-    "richtext": "Rich Text",
-    "grades": "Grades",
-    "text": "Text"
-  },
   "search": {
     "q" : "Search"
   },
@@ -150,77 +117,11 @@
     "cancelButton": "Cancel",
     "closeButton": "Close",
     "addButton": "Add",
-    "saveButton": "Save",
-    "batchUpdateTitle": "Batch Update",
-    "batchUpdateButton": "Update",
-    "printWindow": "Print Window",
-    "print": "Print",
-    "importExcelButton" : "Import Excel",
-    "importExcelTitle" : "Import Excel",
-    "excelExportTitle": "Excel Export",
-    "getReportTitle": "Get Report"
+    "saveButton": "Save"
   },
   "menu": {
     "home": "Home",
-    "categories": "Categories",
-    "examples": "Examples",
-    "companies": "Companies",
-    "users": "Users",
-    "roles": "Roles",
-    "jobTitleList": "Job Titles List",
-    "dataTableServer": "Data Table Server",
-    "dataTableServerEditable": "Data Table Editable",
-    "dataTableServerGroup": "Data Table Group",
-    "permissions": "Permissions",
-    "dataGrids": "Data Grids",
-    "inputs": "Form Inputs",
-    "workplaces": "Workplaces",
-    "departments": "Departments",
-    "employees": "Employees",
-    "failedlogins": "Failed Logins",
-    "sheetInput": "Sheet Input",
-    "avatarInput": "Avatar Input",
-    "autoCompleteInput": "Auto Complete Input",
-    "colorPickerInput": "Color Picker Input",
-    "checkListInput": "Check List Input",
-    "layouts": "Layouts",
-    "buttons": "Buttons",
-    "numberInput": "Number Input",
-    "booleanInput": "Boolean Input",
-    "currencyInput": "Currency Input",
-    "passwordInput": "Password Input",
-    "radioGroupInput": "Radio Group Input",
-    "selectInput": "Select Input",
-    "textInput": "Text Input",
-    "fileInput": "File Input",
-    "arrayInput": "Array Table Input",
-    "richTextInput": "Rich Text Input",
-    "phoneInput": "Phone Input",
-    "ratingInput": "Rating Input",
-    "dateInput": "Date Input",
-    "listLayout": "List",
-    "createEditListShowLayout": "Create-Edit-List-Show",
-    "tab": "Tab",
-    "autocomplete": "AutoComplete",
-    "boolean": "Boolean",
-    "date": "Date",
-    "currency": "Currency",
-    "file": "File",
-    "number": "Number",
-    "radio": "Radio",
-    "rating": "Rating",
-    "richtext": "RichText",
-    "richText": "RichText",
-    "select": "Select",
-    "text": "Text",
-    "tabLayout": "Tab",
-    "asideLayout": "Aside",
-    "breadcrumb": "BreadCrumb",
-    "jobTitleList": "Job Title List",
-    "login": "Login",
-    "profile": "Profile",
     "dashboard": "Dashboard",
-    "terms": "End User License Agreement (EULA)",
     "api": "REST Api",
   },
   "crumbs": {
@@ -228,42 +129,9 @@
     "create": "Create",
     "edit": "Edit",
     "show": "Details",
-    "menu": { "tab": "Tab"},
-    "avatars": "Avatars",
-    "autocomplete": "Auto Completer",
-    "boolean": "Boolean",
-    "currency": "Currency",
-    "file": "File",
-    "number": "Number",
-    "radio": "Radio",
-    "rating": "Rating",
-    "richtext": "RichText",
-    "select": "Select",
-    "text": "Text",
-    "tab": "Tab",
-    "date": "Date",
-    "jobtitlelists": "Job Title List",
-    "employee grades": "Employee Grades",
-    "employee-grades": "Employee Grades",
-    "home": "Home",
-    "account": "My Account",
-    "breadcrumb": "Breadcrumb",
-    "settings": "Settings",
-    "password": "Password",
-    "companies": "Companies",
-    "jobtitles": "Job Titles",
-    "employees": "Employees",
-    "dashboard": "Dashboard",
-    "edit record": "Edit Record",
-    "new record": "New Record",
-    "detail": "Detail",
-    "roles": "Roles",
-    "users": "Users",
-    "permissions": "Permissions",
-    "categories": "Categories",
-    "departments": "Departments",
-    "failedlogins": "Failed Logins",
-    "rest api": "REST API"
+    "routes": {
+      "home": "Home"
+    }
   },
   "resources": {
     "swagger": {
@@ -275,50 +143,6 @@
         "q": "Search",
         "name" : "Category Name",
         "parentId" : "Parent Category"
-      }
-    },
-    "roles": {
-      "rolePermissions" : "Role Permissions",
-      "addPermissionButton" : "Add Permission",
-      "fields": {
-        "q" : "Search",
-        "resource" : "Resource",
-        "roleKey" : "Rol Key",
-        "roleName" : "Rol Name",
-        "roleLevel" : "Rol Level",
-        "permissions" : "Yetkiler",
-        "moduleName" : "Module",
-        "route" : "Route",
-        "action" : "Action",
-        "method" : "Method"
-      }
-    },
-    "permissions": {
-      "fields": {
-        "q" : "Search",
-        "groupName" : "Module",
-        "moduleName" : "Module Name",
-        "resource" : "Resource",
-        "action" : "Action",
-        "route" : "Route",
-        "method" : "Method",
-        "actions" : "Actions"
-      },
-      "enums": {
-        "action": {
-          "create": "create",
-          "delete": "delete",
-          "edit": "edit",
-          "list": "list",
-          "show": "show"
-        },
-        "method": {
-          "POST": "POST",
-          "GET" : "GET",
-          "PUT" : "PUT",
-          "DELETE": "DELETE",
-          "PATCH" : "PATCH"
-        }
       }
     },
     "account": {

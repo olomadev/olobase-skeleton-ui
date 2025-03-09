@@ -1,7 +1,7 @@
 export default [
   {
-    name: "list",
-    label: "name",
+    name: "categories",
+    standalone: true, // single resource
     permissions: [
       { name: "admin", actions: ["create","list","edit", "delete", "show"] },
     ],

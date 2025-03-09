@@ -27,13 +27,13 @@
           :error-messages="passwordErrors"
         ></va-text-input>
 
-        <va-select-input
+<!--         <va-select-input
           source="userRoles"
-          reference="accounts_roles"
+          reference="authorization_roles"
           :error-messages="userRoleErrors"
           multiple
           clearable
-        ></va-select-input>
+        ></va-select-input> -->
 
         <va-boolean-input
           source="active"

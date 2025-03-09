@@ -1,18 +1,10 @@
-/**
- * @oloma.dev (c) 2023-2025
- *
- * - plugins/module-loader.js
- * 
- * module loader
- */
 import { defineAsyncComponent } from "vue";
-import { camelCase, upperFirst } from "lodash";
-import moduleConfigs from "@/modules/config";
+import { camelCase, upperFirst, merge } from "lodash";
+import globalModuleConfigs from "@/modules/config";
 import globalResources from "@/modules/resources";
 import router from "@/router";
 
 export default class ModuleLoader {
-
   constructor() {
     this.routes = [];
     this.stores = [];
@@ -23,56 +15,74 @@ export default class ModuleLoader {
   }
 
   /**
-   * Installs module loader plugin.
+   * Installs the module loader plugin.
    */
   async install(app, i18nInstance, defaultStore, pinia) {
     this.app = app;
     this.pinia = pinia;
 
-    // Install all modules
-    let messages = {};
-    for (const [moduleName, loader] of Object.entries(moduleConfigs)) {
+    for (const [moduleName, loader] of Object.entries(globalModuleConfigs)) {
       const module = await loader();
-      if (module.default.install) {
-        const { i18n, routes, stores, components, navigation, resources, resourceComponents } = await module.default.install(app);
 
-        if (i18n && i18n['messages']) { // add i18n messages to Vue I18n
-          Object.keys(i18n['messages']).forEach((lang) => {
-            i18nInstance.global.mergeLocaleMessage(lang, i18n['messages'][lang]);
+      if (module.default.install) {
+        const { i18n, routes, stores, components, navigation, resources, resourceComponents } =
+          await module.default.install(app);
+
+        // 📌 **Add i18n Messages**
+        if (i18n && i18n.messages) {
+          Object.keys(i18n.messages).forEach((lang) => {
+            i18nInstance.global.mergeLocaleMessage(lang, i18n.messages[lang]);
           });
         }
-        if (typeof navigation.build === 'function') { // build navigation array
-          defaultStore.navigations.push(navigation)
+
+        // 📌 **Store Navigations**
+        if (typeof navigation.build === "function") {
+          defaultStore.navigations.push(navigation);
         } else {
           console.error(`Invalid navigation function in module ${moduleName}`);
         }
+
+        // 📌 **Load Routes**
         if (routes && Array.isArray(routes)) {
           this.routes.push(...routes);
         }
+
+        // 📌 **Load Stores**
         if (stores && Array.isArray(stores)) {
           this.stores.push(...stores);
         }
-        if (components && typeof components === 'object') {
+
+        // 📌 **Load Components**
+        if (components && typeof components === "object") {
           Object.assign(this.components, components);
         }
+
+        // 📌 **Load Resources**
         if (resources && Array.isArray(resources)) {
-          const resourcesWithModule = resources.map(resource => ({
+          const resourcesWithModule = resources.map((resource) => ({
             ...resource,
             module: moduleName,
-            name: resource['standalone'] ? resource.name.toLowerCase() : `${moduleName.toLowerCase()}_${resource.name}`,
+            name: resource.standalone
+              ? resource.name.toLowerCase()
+              : `${moduleName.toLowerCase()}_${resource.name}`,
           }));
           this.resources.push(...resourcesWithModule);
         }
+
+        // 📌 **Load Resource Components**
         if (resourceComponents) {
           Object.assign(this.resourceComponents, resourceComponents);
         }
       }
     }
-    //
-    // add dynamic module routes to router
-    this.routes.forEach(route => router.addRoute(route));
+
+    // 📌 **Add Dynamic Routes to Router**
+    this.routes.forEach((route) => router.addRoute(route));
   }
 
+  /**
+   * Returns to all resources for olobase admin plugin
+   */
   getResources() {
     return [...globalResources, ...this.resources];
   }
@@ -91,7 +101,7 @@ export default class ModuleLoader {
   }
 
   /**
-   * Dynamically registers source components in the Vue application.
+   * Dynamically registers resource components in the Vue application.
    */
   registerResourceComponents() {
     for (const [key, componentConfig] of Object.entries(this.resourceComponents)) {
@@ -104,17 +114,16 @@ export default class ModuleLoader {
   }
 
   /**
-   * Register pinia stores for each module
+   * Registers Pinia stores for each module.
    */
   async registerStores() {
     for (const path in this.stores) {
       try {
-        const store = await this.stores[path]();  // load store dynmacially
-        this.pinia.use(store.default);  // add the loaded Store to Pinia
+        const store = await this.stores[path]();
+        this.pinia.use(store.default);
       } catch (error) {
         console.error(`Store loading failed for ${path}:`, error);
       }
     }
   }
-
 }

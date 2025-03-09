@@ -2,7 +2,7 @@
   <div class="xs-12 sm-10 md-8 lg-6">
     <va-messages></va-messages>
     <v-row>
-      <v-card  style="margin-top: 200px">
+      <v-card style="margin-top: 200px">
         <v-container>
           <v-form @submit.prevent="validate">
             <v-text-field

@@ -5,7 +5,7 @@ export default {
     return adminRole
       ? [
           {
-            icon: "mdi-account-multiple",
+            icon: "mdi-shield-key-outline",
             text: t("authentication.menu.label"),
             order: 98,
             children: [

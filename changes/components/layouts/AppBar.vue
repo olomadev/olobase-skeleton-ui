@@ -109,21 +109,20 @@
               :key="'vlist-item_' + i"
               link
               :to="child.link"
-              >
-                <v-list-item-action v-if="child.icon">
-                  <!-- <v-icon>{{ child.icon }}</v-icon> -->
-                </v-list-item-action>
-                <div class="list-item-content">
-                  <v-list-item-title>
-                    <div v-if="child.href">
-                      <a :href="child.href" target="_blank" style="text-decoration: none;">{{ child.text }}</a>
-                    </div>
-                    <div v-else>
-                      {{ child.text }}
-                    </div>
-                  </v-list-item-title>
+            >
+              <template v-slot:prepend>
+                <v-icon size="small">{{ child.icon }}</v-icon>
+              </template>            
+              <v-list-item-title>
+                <div v-if="child.href">
+                  <a :href="child.href" target="_blank" style="text-decoration: none;">{{ child.text }}</a>
                 </div>
+                <div v-else>
+                  {{ child.text }}
+                </div>
+              </v-list-item-title>
             </v-list-item>
+
           </v-list-group>
 
           <v-list-item 

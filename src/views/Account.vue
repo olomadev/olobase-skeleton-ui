@@ -45,7 +45,7 @@
                   source="locale"
                   resource="account"
                   v-model="locale"
-                  reference="locales"
+                  reference="common_locales"
                   variant="outlined"
                   clearable
                   :error-messages="localeErrors"

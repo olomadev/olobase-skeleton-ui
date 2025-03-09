@@ -1,6 +1,6 @@
 <template>
   <va-create-layout :title="title">
-    <roles-form :item="item"></roles-form>
+    <authorization-roles-form :item="item"></authorization-roles-form>
   </va-create-layout>
 </template>
 

@@ -4,7 +4,6 @@ export default {
       users: {
         menu: {
           label: "Users",
-          users: "Users",
         },
         users: {
           title: "Users",
@@ -32,7 +31,6 @@ export default {
       users: {
         menu: {
           label: "Kullanıcılar",
-          users: "Kullanıcılar",
         },
         users: {
           title: "Kullanıcılar",

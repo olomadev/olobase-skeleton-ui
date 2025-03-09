@@ -125,7 +125,7 @@ export default {
           source: "action",
           type: "select",
           attributes: {
-            reference: "actions",
+            reference: "authorization_actions",
           },
           sortable: true,
         },
@@ -137,7 +137,7 @@ export default {
           source: "method",
           type: "select",
           attributes: {
-            reference: "methods",
+            reference: "authorization_methods",
           },
           sortable: true,
         },

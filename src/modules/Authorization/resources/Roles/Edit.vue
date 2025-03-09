@@ -1,6 +1,6 @@
 <template>
   <va-edit-layout :title="title">
-    <roles-form :id="id" :item="item"></roles-form>
+    <authorization-roles-form :id="id" :item="item"></authorization-roles-form>
   </va-edit-layout>
 </template>
 

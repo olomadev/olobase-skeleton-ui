@@ -1,6 +1,7 @@
 // modules/config.js
 export default {
-  Authentication: () => import("@/modules/Authentication/module"),
   Users: () => import("@/modules/Users/module"),
-  // Dashboard: () => import("@/modules/Authorization/module"),
+  // Authentication: () => import("@/modules/Authentication/module"),
+  Authorization: () => import("@/modules/Authorization/module"),
+  Categories: () => import("@/modules/Categories/module"),
 };
