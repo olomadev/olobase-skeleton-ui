@@ -36,18 +36,8 @@ export default class Olobase {
     canAction,
     http
   }) {
-    if (typeof this.env.VITE_SUPPORTED_LOCALES == "undefined") {
-      throw new Error("Configuration error: .env.local or .env.prod environment file missed in your project !");
-    }
-    const supportedLocales = this.env.VITE_SUPPORTED_LOCALES;
-    let translations = [];
-    if (supportedLocales 
-      && Object.prototype.toString.call(supportedLocales) === "[object String]") 
-    {
-      const split = supportedLocales.split(",");
-      if (Array.isArray(split)) {
-        translations = split;
-      }
+    if (typeof this.env.VITE_COOKIE == "undefined") {
+      throw new Error("Configuration error: VITE_COOKIE settings in your project's environment file are missing !");
     }
     this.cookieKey = JSON.parse(this.env.VITE_COOKIE);
     /**
@@ -192,7 +182,6 @@ export default class Olobase {
             let result = permissions.length && await this.can(permissions)
             
             // console.error(result)
-        
             // Test if current user can access
             return result
           },
@@ -268,21 +257,28 @@ export default class Olobase {
   } // end init function
 
   getPageTitle(to) {
+    let parts = [];
     if (to.meta.resource) {
-      const parts = to.meta.resource.includes("_") ? to.meta.resource.split("_") : [null, to.meta.resource];
+      parts = to.meta.resource.includes("_") ? to.meta.resource.split("_") : [null, to.meta.resource];
+      return this.getPageTitleValue(parts);
+    }
+    if (to.name) {
+      parts = to.name.includes("_") ? to.name.split("_") : [null, to.name];
+      return this.getPageTitleValue(parts);
+    }
+    return "undefined"
+  }
+
+  getPageTitleValue(parts) {
+    if (Array.isArray(parts) && parts.length > 0) {
       const module = parts[0];
       const resourceName = parts[1];
-      let key = module 
+      const key = module 
         ? `${module}.${resourceName}.title` 
         : `${resourceName}.${resourceName}.title`;
       return this.i18n.global.t(key);
     }
-    if (to.meta.title) {
-      return to.meta.title
-          ? `${this.i18n.global.t("titles." + lowerCase(to.meta.title))}`
-          : null;
-    }
-    return "undefined";
+    return "undefined"
   }
 
   /**

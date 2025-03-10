@@ -5,7 +5,7 @@ import i18n from "../i18n";
 const routes = [
   {
     path: "",
-    component: () => import('@/layouts/Admin.vue'),
+    component: () => import('../modules/Users/layouts/Admin.vue'),
     children: [
       {
         path: "/dashboard",
@@ -13,37 +13,6 @@ const routes = [
         component: () => import('@/views/Dashboard.vue'),
         meta: {
           title: i18n.global.t("routes.dashboard"),
-        },
-      },
-    ],
-  },
-  {
-    path: "/",
-    redirect: "/login/:locale?",
-    component: () => import('@/layouts/Member.vue'),
-    children: [
-      {
-        path: "/login/:locale?",
-        name: "login",
-        component: () => import('@/views/Login.vue'),
-        meta: {
-          title: i18n.global.t("routes.login"),
-        },
-      },
-      {
-        path: "/forgotPassword",
-        name: "forgotPassword",
-        component: () => import('@/views/ForgotPassword.vue'),
-        meta: {
-          title: i18n.global.t("routes.forgotPassword"),
-        },
-      },
-      {
-        path: "/resetPassword",
-        name: "resetPassword",
-        component: () => import('@/views/ResetPassword.vue'),
-        meta: {
-          title: i18n.global.t("routes.resetPassword"),
         },
       },
     ],

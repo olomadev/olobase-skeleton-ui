@@ -28,36 +28,36 @@ export default class ModuleLoader {
         const { i18n, routes, stores, components, navigation, resources, resourceComponents } =
           await module.default.install(app);
 
-        // 📌 **Add i18n Messages**
+        // **Add i18n Messages**
         if (i18n && i18n.messages) {
           Object.keys(i18n.messages).forEach((lang) => {
             i18nInstance.global.mergeLocaleMessage(lang, i18n.messages[lang]);
           });
         }
 
-        // 📌 **Store Navigations**
+        // **Store Navigations**
         if (typeof navigation.build === "function") {
           defaultStore.navigations.push(navigation);
         } else {
           console.error(`Invalid navigation function in module ${moduleName}`);
         }
 
-        // 📌 **Load Routes**
+        // **Load Routes**
         if (routes && Array.isArray(routes)) {
           this.routes.push(...routes);
         }
 
-        // 📌 **Load Stores**
+        // **Load Stores**
         if (stores && Array.isArray(stores)) {
           this.stores.push(...stores);
         }
 
-        // 📌 **Load Components**
+        // **Load Components**
         if (components && typeof components === "object") {
           Object.assign(this.components, components);
         }
 
-        // 📌 **Load Resources**
+        // **Load Resources**
         if (resources && Array.isArray(resources)) {
           const resourcesWithModule = resources.map((resource) => ({
             ...resource,
@@ -69,14 +69,14 @@ export default class ModuleLoader {
           this.resources.push(...resourcesWithModule);
         }
 
-        // 📌 **Load Resource Components**
+        // **Load Resource Components**
         if (resourceComponents) {
           Object.assign(this.resourceComponents, resourceComponents);
         }
       }
     }
 
-    // 📌 **Add Dynamic Routes to Router**
+    // **Add Dynamic Routes to Router**
     this.routes.forEach((route) => router.addRoute(route));
   }
 

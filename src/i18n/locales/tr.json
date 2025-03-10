@@ -11,8 +11,6 @@
     "delete": "Sil",
     "login": "Login",
     "dashboard": "Dashboard",
-    "account": "Account",
-    "password": "Password",
     "forgotPassword": "Forgot Password",
     "rest api": "rest api",
   },

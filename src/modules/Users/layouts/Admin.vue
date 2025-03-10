@@ -72,10 +72,6 @@
         </va-app-bar>
       </template>
 
-      <template #header>
-        <va-breadcrumbs></va-breadcrumbs>
-      </template>
-
       <template #aside>
         <va-aside></va-aside>
       </template>
@@ -135,7 +131,7 @@ export default {
      */
     this.authenticatedUser = await this.$store.getModule("auth").checkAuth();
     if (! this.authenticatedUser) {
-      this.$router.push({name: "login"});
+      this.$router.push({name: "users_login"});
     } else {
       this.email = this.$store.getModule("auth").getEmail;
       this.fullname = this.$store.getModule("auth").getFullname;
@@ -182,17 +178,17 @@ export default {
       return [
         {
           icon: "mdi-account",
-          text:  this.$t("va.account"),
-          link: "/account",
+          text:  this.$t("users.myAccount.menu.label"),
+          link: "/users/myAccount",
         },
         {
           icon: "mdi-key",
-          text: this.$t("va.changePassword"),
-          link: "/password",
+          text: this.$t("users.changePassword.menu.label"),
+          link: "/users/changePassword",
         },
         {
           icon: "mdi-logout",
-          text: this.$t("va.logout"),
+          text: this.$t("users.logout.menu.label"),
           logout: true,
         },
       ];
@@ -209,7 +205,7 @@ export default {
   methods: {
     logout() {
       this.$store.getModule("auth").logout();
-      this.$router.push({ name: "login" });
+      this.$router.push({ name: "users_login" });
     },
   },
 };

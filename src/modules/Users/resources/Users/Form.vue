@@ -27,14 +27,6 @@
           :error-messages="passwordErrors"
         ></va-text-input>
 
-<!--         <va-select-input
-          source="userRoles"
-          reference="authorization_roles"
-          :error-messages="userRoleErrors"
-          multiple
-          clearable
-        ></va-select-input> -->
-
         <va-boolean-input
           source="active"
           hide-details
@@ -65,28 +57,27 @@ export default {
     provide('v$', vuelidate)
     return { v$: vuelidate }
   },
-  validations: {
-    model: {
-      firstname: {
-        required,
-        minLength: minLength(2),
-      },
-      lastname: {
-        required,
-        minLength: minLength(2),
-        maxLength: maxLength(120),
-      },
-      userRoles: {
-        required,
-      },
-      email: {
-        required,
-        email,
-      },
-      password: {
-        minLength: minLength(8),
-        maxLength: maxLength(16),
-      },
+  validations() {
+    return {
+      model: {
+        firstname: {
+          required,
+          minLength: minLength(2),
+        },
+        lastname: {
+          required,
+          minLength: minLength(2),
+          maxLength: maxLength(120),
+        },
+        email: {
+          required,
+          email,
+        },
+        password: {
+          minLength: minLength(8),
+          maxLength: maxLength(16),
+        },
+      }
     }
   },
   data() {
@@ -99,7 +90,6 @@ export default {
         password: null,
         active: 0,
         emailActivation: 0,
-        userRoles: null,
         avatar: {
           image: null
         }
@@ -108,7 +98,11 @@ export default {
   },
   created() {
     this.model.id = this.generateId(this);
-    if (!this.id) {
+    const action = this.$route.name.split('_').pop();
+    if (this.item) { // for cloned user
+      this.item.password = this.generatePassword(8);
+    }
+    if (action === "create") { // for new user
       this.model.password = this.generatePassword(8);
     }
   },
@@ -150,14 +144,7 @@ export default {
       this.v$["model"].password.maxLength.$invalid &&
         errors.push(this.$t("v.string.maxLength", { max: "16" }));
       return errors;
-    },
-    userRoleErrors() {
-      const errors = [];
-      if (!this.v$["model"].userRoles.$dirty) return errors;
-      this.v$["model"].userRoles.required.$invalid &&
-        errors.push(this.$t("v.text.required"));
-      return errors;
-    },
+    }
   },
 }
 </script>

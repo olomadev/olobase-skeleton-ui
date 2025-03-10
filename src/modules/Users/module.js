@@ -6,7 +6,7 @@ export default {
     // const { default: stores } = await import("./store.js");
 
     // Install routes
-    // const { default: routes } = await import("./routes.js");
+    const { default: routes } = await import("./routes.js");
 
     // Install plugins
     // const { default: plugins } = await import("./plugins.js");
@@ -37,7 +37,7 @@ export default {
     return {
       i18n,
       // stores,
-      // routes,
+      routes,
       // plugins,
       navigation,
       resources,

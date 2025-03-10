@@ -11,8 +11,6 @@
     "delete": "Delete",
     "login": "Login",
     "dashboard": "Dashboard",
-    "account": "Account",
-    "password": "Password",
     "forgotPassword": "Forgot Password",
     "resetPassword": "Reset Password",
     "notFound": "Page Not Found",
