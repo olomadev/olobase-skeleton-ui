@@ -107,7 +107,6 @@ import { useDisplay } from "vuetify";
 import { useVuelidate } from "@vuelidate/core";
 import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
-import i18n from "../i18n";
 import { useRoute } from 'vue-router';
 
 export default {

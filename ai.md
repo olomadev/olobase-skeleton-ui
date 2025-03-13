@@ -14,6 +14,22 @@ Wordpress benzeri olobase-skeleton-ui adındaki vue 3 ve vuetify ile yapılmış
 
 ```sh
 ├── node-modules
+├── src
+│   ├── modules
+│   │   ├── Users
+│   │   ├── src
+│   │   │   ├── resources
+│   │   │   ├── views
+│   │   │   ├── _nav.js
+│   │   │   ├── index.js
+│   │   │   ├── routes.js
+│   │   ├── package.json
+│   │   ├── rollup.config.js
+│   ├── index.js
+```
+
+```sh
+├── node-modules
 ├── public
 ├── src
 │   ├── components

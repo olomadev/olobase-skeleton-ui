@@ -1,8 +1,8 @@
 .DS_Store
 lib
 dist
-/node_modules/
-/.github/
+node_modules
+.github
 
 # Log files
 npm-debug.log*

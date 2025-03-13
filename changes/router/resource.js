@@ -1,4 +1,4 @@
-import { camelCase, kebabCase, upperFirst } from "lodash";
+import { camelCase, kebabCase, upperFirst } from '@/helpers/lodash';
 import config from "@/_config";
 
 // https://stackoverflow.com/questions/66342500/vuejs-3-how-to-render-router-view-router-view-from-vue-router

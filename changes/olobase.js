@@ -5,7 +5,7 @@
  *
  * Copyright (c) 2022-2025, Oloma Software.
  */
-import { upperFirst, lowerCase, isEmpty } from "lodash"
+import { upperFirst, lowerCase, isEmpty } from '@/helpers/lodash'
 import cookies from "olobase-admin/src/utils/cookies"
 import messages from "olobase-admin/src/store/messages"
 import auth from "olobase-admin/src/store/auth"
@@ -52,7 +52,6 @@ export default class Olobase {
     this.readFileUrl = readFileUrl
     this.routes = routes
     this.locales = locales
-    this.translations = translations
     this.authProvider = authProvider
     this.dataProvider = dataProvider
     this.config = config || {}

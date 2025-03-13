@@ -6,8 +6,8 @@
 </template>
 
 <script>
+import { set } from '@/helpers/lodash';
 import Resource from "../../../mixins/resource"
-import { set, isEmpty } from "lodash"
 
 // import {required} from "vuelidate/lib/validators"
 // 

@@ -1,6 +1,4 @@
-
-import isObject from "lodash/isObject"
-
+import { isObject } from '@/helpers/lodash';
 import {
   GET_LIST,
   GET_LIST_ALL,

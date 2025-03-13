@@ -69,14 +69,14 @@ const useHttp = function (axios, store) {
         if (error.response.status === 401 
             && error.response.data.data.error == "Logout") {
             store.getModule("auth").logout();
-            router.push({ name: "login" });
+            router.push({ name: "users_login" });
             return;
         }
         if (error.response.status === 401 
             && typeof error.response.data.data.code !== "undefined" 
             && logoutCodes.includes(error.response.data.data.code)
             ) {
-            router.push({ name: "login" });
+            router.push({ name: "users_login" });
             return;
         }
         if (error.response.status === 401 

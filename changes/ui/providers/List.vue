@@ -209,14 +209,13 @@
 
 <script>
 import { useDisplay } from 'vuetify'
+import { isEmpty } from '@/helpers/lodash';
 import Resource from "../../../mixins/resource";
 import eventBus from "olobase-admin/src/utils/eventBus";
 import Search from "../../../mixins/search";
 import FormFilter from "../../internal/FormFilter";
 import Draggable from 'vuedraggable'
-import isEmpty from "lodash/isEmpty";
 import config from "@/_config";
-import get from "lodash/get";
 import useResource from "../../../store/resource";
 /**
  * List data iterator component, perfect for list CRUD page as well as any resource browsing standalone component.

@@ -1,11 +1,11 @@
 // Composables
-import { createRouter, createWebHistory } from "vue-router";
 import i18n from "../i18n";
+import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
   {
     path: "",
-    component: () => import('../modules/Users/layouts/Admin.vue'),
+    component: () => import("@/modules/Users/src/layouts/Admin.vue"),
     children: [
       {
         path: "/dashboard",

@@ -6,16 +6,16 @@
  * automatically included in `./src/main.js`
  */
 import axios from "axios";
-import { loadFonts } from "./webfontloader";
 import vuetify from "./vuetify";
 import router from "../router";
 import i18n from "../i18n";
 import admin from "./admin";
 import loader from "./loader";
 import useStore from "../store";
-import { useHttp } from "../plugins/use-http";
-import { camelCase, upperFirst } from "lodash";
+import { useHttp } from "./usehttp";
 import { createPinia } from 'pinia';
+import { loadFonts } from "./webfontloader";
+import { loadModules } from "./moduleloader";
 import cookies from "olobase-admin/src/utils/cookies";
 /**
  * Get cookie constants object
@@ -45,24 +45,33 @@ axios.interceptors.request.use(
  * Register app plugins
  */
 export async function registerPlugins(app) {
-  loadFonts();
+  await loadFonts();
 
-  const pinia = createPinia(); // must be at the top level
-  app.use(pinia); // must be at the top level
+  const pinia = createPinia();
+  app.use(pinia);
+
+  const store = useStore();
+  app.config.globalProperties.$axios = axios;
+  app.config.globalProperties.$store = store;
+
+  const moduleLoader = await loadModules(app);
+  const resources = await moduleLoader.install(app, i18n, store, pinia);
+  app.config.globalProperties.$resources = resources;
+
+  // Global plugins
+  app.use(vuetify).use(i18n);
+  useHttp(axios, store); // global http instance
+  app.config.globalProperties.$vuetify = vuetify;
 
   // Register plugin loaders
   await loader.install(app);
 
-  // Global plugins
-  app.use(vuetify).use(i18n);
-
-  const store = useStore();
-  useHttp(axios, store); // global http instance
-  app.config.globalProperties.$store = store;
-  app.config.globalProperties.$vuetify = vuetify;
-
   // Register install admin & modules
-  await admin.install(app, { i18n, pinia, store, http: axios });
+  await admin.install(app, { i18n, store, http: axios });
+
+  await moduleLoader.registerStores();
+  moduleLoader.registerComponents();
+  moduleLoader.registerResourceComponents();
 
   // Router must be defined at the bottom !!
   //

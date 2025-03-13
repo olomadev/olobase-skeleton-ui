@@ -1,8 +1,6 @@
 import Source from "./source"
 import InputWrapper from "./input-wrapper"
-import get from "lodash/get"
-import isEmpty from "lodash/isEmpty"
-
+import { get, isEmpty } from '@/helpers/lodash';
 /**
  * Main input mixin for all inputs used for resource property edition or creation.
  * Auto update the model of the parent form.

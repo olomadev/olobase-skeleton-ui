@@ -94,7 +94,7 @@
 </template>
 
 <script>
-import isEmpty from "lodash/isEmpty"
+import { isEmpty} from '@/helpers/lodash';
 import { useDisplay } from "vuetify";
 import Trans from "@/i18n/translation";
 import LanguageSwitcher from "@/components/LanguageSwitcher.vue";

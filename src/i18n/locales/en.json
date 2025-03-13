@@ -14,7 +14,7 @@
     "forgotPassword": "Forgot Password",
     "resetPassword": "Reset Password",
     "notFound": "Page Not Found",
-    "rest api": "rest api",
+    "rest api": "rest api"
   },
   "titles": {
     "login": "Login",
@@ -24,7 +24,7 @@
     "forgot password": "Forgot Password",
     "resetPassword": "Reset Password",
     "notFound": "Page Not Found",
-    "rest api": "Rest API",
+    "rest api": "Rest API"
   },
   "v": {
     "text": {
@@ -83,7 +83,7 @@
     "no": "No"
   },
   "dataiterator": {
-    "displaying_page": "Displaying page {page} of {pageCount}",
+    "displaying_page": "Displaying page {page} of {pageCount}"
   },
   "auth": {
     "username": "E-mail Address",
@@ -120,7 +120,7 @@
   "menu": {
     "home": "Home",
     "dashboard": "Dashboard",
-    "api": "REST Api",
+    "api": "REST Api"
   },
   "crumbs": {
     "list": "List",
@@ -134,7 +134,7 @@
   "resources": {
     "swagger": {
       "rest_api": "REST API Documents",
-      "open_docs" : "Click to Read the Docs",
+      "open_docs" : "Click to Read the Docs"
     },
     "categories": {
       "fields": {

@@ -1,11 +1,20 @@
+/**
+ * @oloma.dev (c) 2023-2025
+ *
+ * - plugins/moduleloader.js
+ * 
+ * load application modules dynamically using backend api
+ */
 import { defineAsyncComponent } from "vue";
-import { camelCase, upperFirst, merge } from "lodash";
-import globalModuleConfigs from "@/modules/config";
+import { capitalize, camelCase, upperFirst } from '@/helpers/lodash';
 import globalResources from "@/modules/resources";
 import router from "@/router";
 
-export default class ModuleLoader {
-  constructor() {
+class ModuleLoader {
+
+  constructor(modules) {
+    this.modules = modules;
+    this.moduleCache = {};
     this.routes = [];
     this.stores = [];
     this.resources = [];
@@ -21,12 +30,17 @@ export default class ModuleLoader {
     this.app = app;
     this.pinia = pinia;
 
-    for (const [moduleName, loader] of Object.entries(globalModuleConfigs)) {
-      const module = await loader();
+    // for (const module of this.modules) {
+    //   const moduleInstance = await this.loadModule(module); // wait for modules ..
+    //   if (moduleInstance.default.install) {
 
-      if (module.default.install) {
+    const moduleInstances = await Promise.all(this.modules.map(m => this.loadModule(m)));
+
+    for (const [index, moduleInstance] of moduleInstances.entries()) {
+      const module = this.modules[index];
+      if (moduleInstance.default.install) {
         const { i18n, routes, stores, components, navigation, resources, resourceComponents } =
-          await module.default.install(app);
+          await moduleInstance.default.install(app);
 
         // **Add i18n Messages**
         if (i18n && i18n.messages) {
@@ -39,7 +53,7 @@ export default class ModuleLoader {
         if (typeof navigation.build === "function") {
           defaultStore.navigations.push(navigation);
         } else {
-          console.error(`Invalid navigation function in module ${moduleName}`);
+          console.error(`Invalid navigation function in module ${module.name}`);
         }
 
         // **Load Routes**
@@ -61,10 +75,10 @@ export default class ModuleLoader {
         if (resources && Array.isArray(resources)) {
           const resourcesWithModule = resources.map((resource) => ({
             ...resource,
-            module: moduleName,
+            module: module.name,
             name: resource.standalone
               ? resource.name.toLowerCase()
-              : `${moduleName.toLowerCase()}_${resource.name}`,
+              : `${module.name.toLowerCase()}_${resource.name}`,
           }));
           this.resources.push(...resourcesWithModule);
         }
@@ -73,11 +87,36 @@ export default class ModuleLoader {
         if (resourceComponents) {
           Object.assign(this.resourceComponents, resourceComponents);
         }
-      }
-    }
+
+      } // module is installed end
+
+    } // end for
 
     // **Add Dynamic Routes to Router**
     this.routes.forEach((route) => router.addRoute(route));
+
+    return this.getResources();
+  }
+
+  /**
+   * Dynamic module loading function.
+   */
+  async loadModule(module) {
+    try {
+      const moduleName = capitalize(module.name);
+      if (this.moduleCache[moduleName]) {
+        return this.moduleCache[moduleName];
+      }
+      const moduleInstance = await import(`@/modules/${moduleName}/src/index.js`);
+      if (moduleInstance.version && this.isVersionOlder(moduleInstance.version, module.version)) {
+        console.log(`New version available: ${moduleName} - ${module.version}`);
+      }
+      this.moduleCache[moduleName] = moduleInstance;
+      return moduleInstance;
+    } catch (error) {
+      console.error(`Failed to load module: ${module.name}`, error);
+      return null;
+    }
   }
 
   /**
@@ -117,13 +156,42 @@ export default class ModuleLoader {
    * Registers Pinia stores for each module.
    */
   async registerStores() {
-    for (const path in this.stores) {
+    for (const storeFn of this.stores) {
       try {
-        const store = await this.stores[path]();
+        const store = await storeFn();
         this.pinia.use(store.default);
       } catch (error) {
-        console.error(`Store loading failed for ${path}:`, error);
+        console.error(`Store loading failed:`, error);
       }
     }
   }
+
+  /**
+   * Check module version is older
+   */
+  isVersionOlder(current, target) {
+    const currentParts = current.split('.').map(Number);
+    const targetParts = target.split('.').map(Number);
+    for (let i = 0; i < 3; i++) {
+      if ((currentParts[i] || 0) < (targetParts[i] || 0)) return true;
+      if ((currentParts[i] || 0) > (targetParts[i] || 0)) return false;
+    }
+    return false;
+  }
+
+}
+
+/**
+ * Loade modules - create db request for active modules
+ */
+export async function loadModules(app) {
+  const axios = app.config.globalProperties.$axios;
+  const response = await axios.get("/common/modules/findAll");
+  if (!response || response.status !== 200) {
+    console.error('Modules could not be loaded. Error:', response ? response.status : 'No response');
+    return;
+  }
+  // Create module loader instance
+  const moduleLoader = new ModuleLoader(response.data.data);
+  return moduleLoader;
 }

@@ -1,5 +1,6 @@
 export default {
   name: "Categories",
+  version: "1.0.0",
   install: async (app) => {
 
     // Install pinia stores

@@ -1,5 +1,6 @@
 export default {
   name: "Authorization",
+  version: "1.0.0",
   install: async (app) => {
 
     // Install pinia stores

@@ -1,5 +1,6 @@
 export default {
-  name: "Users",
+  name: "Authentication",
+  version: "1.0.0",
   install: async (app) => {
 
     // Install pinia stores
@@ -9,7 +10,7 @@ export default {
     const { default: routes } = await import("./routes.js");
 
     // Install plugins
-    // const { default: plugins } = await import("./plugins.js");
+    // const { default: routes } = await import("./plugins.js");
 
     // Install i18n messages
     const { default: i18n } = await import("./i18n.js");
@@ -22,16 +23,11 @@ export default {
     //   ComponentName: () => import("./components/ComponentName.vue")
     // };
 
-    // Install navigation menu object
     const { default: navigation } = await import("./_nav.js");
 
     // Install resource components
     const resourceComponents = {
-      "UsersCreate": () => import("./resources/Users/Create.vue"),
-      "UsersEdit": () => import("./resources/Users/Edit.vue"),
-      "UsersForm": () => import("./resources/Users/Form.vue"),
-      "UsersList": () => import("./resources/Users/List.vue"),
-      "UsersShow": () => import("./resources/Users/Show.vue"),
+      "AuthenticationFailedLoginsList": () => import("./resources/FailedLogins/List.vue"),
     };
 
     return {

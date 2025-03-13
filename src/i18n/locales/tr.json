@@ -12,7 +12,7 @@
     "login": "Login",
     "dashboard": "Dashboard",
     "forgotPassword": "Forgot Password",
-    "rest api": "rest api",
+    "rest api": "rest api"
   },
   "titles": {
     "login": "Oturum Aç",
@@ -20,7 +20,7 @@
     "account": "Hesabım",
     "password": "Şifre Değiştir",
     "forgot password": "Şifremi Unutttum",
-    "rest api": "Rest API",
+    "rest api": "Rest API"
   },
   "v": {
     "text": {
@@ -79,7 +79,7 @@
     "no": "Hayır"
   },
   "dataiterator": {
-    "displaying_page": "Bulunan sayfa {pageCount}, şuan ki sayfa {page}",
+    "displaying_page": "Bulunan sayfa {pageCount}, şuan ki sayfa {page}"
   },
   "auth": {
     "username": "E-posta Adresi",
@@ -116,7 +116,7 @@
   "menu": {
     "home": "Anasayfa",
     "dashboard": "Gösterge Paneli",
-    "api": "REST Api",
+    "api": "REST Api"
   },
   "crumbs": {
     "list": "Liste",
@@ -130,7 +130,7 @@
   "resources": {
     "swagger": {
       "rest_api": "REST API Dökümanları",
-      "open_docs" : "Dokümanları Okumak İçin Tıklayın",
+      "open_docs" : "Dokümanları Okumak İçin Tıklayın"
     },
     "categories": {
       "fields": {
@@ -208,7 +208,6 @@
         "attemptedAtEnd" : "Girişim Bit.Tarihi "
       }
     }
-
 
   }
 }

@@ -1,0 +1,22 @@
+{
+  "name": "users-module",
+  "version": "1.0.0",
+  "main": "dist/users-module.js",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-commonjs": "^25.0.0",
+    "@rollup/plugin-babel": "^6.0.0",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-alias": "^5.1.1", 
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-replace": "^6.0.2",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-vue": "^6.0.0",
+    "rollup-plugin-polyfill-node": "0.13.0",
+    "vue": "^3.5.13",
+    "rollup": "^3.0.0"
+  }
+}

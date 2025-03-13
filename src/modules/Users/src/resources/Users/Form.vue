@@ -99,11 +99,12 @@ export default {
   created() {
     this.model.id = this.generateId(this);
     const action = this.$route.name.split('_').pop();
-    if (this.item) { // for cloned user
-      this.item.password = this.generatePassword(8);
-    }
     if (action === "create") { // for new user
-      this.model.password = this.generatePassword(8);
+      if (this.item) { // for cloned user
+        this.item.password = this.generatePassword(8);
+      } else {
+        this.model.password = this.generatePassword(8);  
+      }
     }
   },
   computed: {
