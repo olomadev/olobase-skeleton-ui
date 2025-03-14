@@ -7,24 +7,8 @@
  *
  * https://oloma.dev/end-user-license-agreement
  */
-/**
- * Dynamic import only for layout and ui components
- */
-async function registerComponents(app) {
-  const modules = import.meta.glob([
-    './components/layout/**/*.vue',
-    './components/ui/**/*.vue'
-  ]);
-  for (const path in modules) {
-    const component = await modules[path]();
-    const name = path
-      .split('/')
-      .pop()
-      .replace(/\.\w+$/, ''); // Dosya adını bileşen adı olarak kullan
-
-    app.component(`Va${name}`, component.default);
-  }
-}
+import * as layouts from "./components/layout";
+import * as ui from "./components/ui";
 /**
  * Main JS App
  */
@@ -40,11 +24,15 @@ new Olobase(import.meta);
 /**
  * Vue install plugin
  */
-Olobase.install = async (app) => {
+Olobase.install = (app) => {
   /**
    * Register Admin UI components
    */
-  await registerComponents(app);
+  [layouts, ui].forEach((c) => {
+    Object.keys(c).forEach((name) => {
+      app.component(`Va${name}`, c[name])
+    })
+  })
   // /**
   //  * Inject global admin conf
   //  */

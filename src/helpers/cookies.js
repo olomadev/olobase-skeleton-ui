@@ -1,50 +1,61 @@
+/**
+ * @oloma.dev (c) 2023-2025
+ *
+ * - helpers/cookies.js
+ * 
+ * Cookie helper for production and dev environment
+ */
 import cookies from "js-cookie";
-import { join } from '@/helpers/lodash';
+import { join } from './lodash';
 import { parseDomain, ParseResultType } from "parse-domain";
 
-/**
- * Global cookie object
- */
-export default {
-  set: function(key, value, overrideAttributes = {}) {
+class Cookies {
+
+  constructor() {
+    this.cookieKey = JSON.parse(process.env.COOKIE);
+  }
+
+  getCookieKey(key) {
+    return this.cookieKey?.[key] ?? key;
+  }
+
+  get(key) {
+    return cookies.get(this.getCookieKey(key));
+  }
+
+  set(key, value, overrideAttributes = {}) {
     let secure = this.getSecure();
     let defaultAttributes = { 
       expires: 1, 
       path: "/", 
       domain: this.getBaseHost(),
       secure: secure
-    }
+    };
     if (secure) { // add sameSite = "none" attribute if secure connection available
       defaultAttributes['sameSite'] = 'None';  
     }
-    const attributes = {...defaultAttributes, ...overrideAttributes};
-    cookies.set(
-      key,
-      value, 
-      attributes
-    );
-  },
-  get: function(key) {
-    return cookies.get(key)
-  },
-  remove: function(key) {
-    cookies.remove(
-      key, 
-      { 
-        expires: -1, 
-        path: "/", 
-        domain: this.getBaseHost(), 
-        secure: this.getSecure()
-      }
-    );
-  },
-  getSecure: function() {
-    return (window.location.protocol == 'https:') ? true : false;
-  },
-  getBaseHost: function() {
-    //
-    // https://www.npmjs.com/package/parse-domain
-    // 
+    const attributes = { ...defaultAttributes, ...overrideAttributes };
+    cookies.set(this.getCookieKey(key), value, attributes);
+  }
+
+  get(key) {
+    return cookies.get(this.getCookieKey(key));
+  }
+
+  remove(key) {
+    cookies.remove(this.getCookieKey(key), { 
+      expires: -1, 
+      path: "/", 
+      domain: this.getBaseHost(), 
+      secure: this.getSecure()
+    });
+  }
+
+  getSecure() {
+    return window.location.protocol === 'https:';
+  }
+
+  getBaseHost() {
     const parseResult = parseDomain(window.location.hostname);
     if (parseResult.type === ParseResultType.Invalid) {
       alert("Invalid domain name: Your cookie set() and get() methods will not work as expected");
@@ -53,12 +64,9 @@ export default {
     if (parseResult.type === ParseResultType.Ip) {
       baseHost = window.location.hostname;
     }
-    //
-    // your local domains part: it should be sub.example.local or example.local
-    // 
     if (parseResult.type === ParseResultType.Reserved) {
       baseHost = join(parseResult.labels, ".");
-      if (parseResult.labels.length == 3) { // unset subdomain
+      if (parseResult.labels.length === 3) { // unset subdomain
         parseResult.labels.shift();
       }
       baseHost = join(parseResult.labels, ".");
@@ -67,9 +75,12 @@ export default {
       baseHost = join(parseResult.labels, ".");
     }
     if (parseResult.type === ParseResultType.Listed) {
-      const { subDomains, domain, topLevelDomains } = parseResult;
-      baseHost = domain + "." + join(parseResult.topLevelDomains, ".");
+      const { domain, topLevelDomains } = parseResult;
+      baseHost = domain + "." + join(topLevelDomains, ".");
     }
     return baseHost;
   }
 }
+
+export default new Cookies();
+

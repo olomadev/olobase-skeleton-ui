@@ -100,6 +100,7 @@ import Trans from "@/i18n/translation";
 import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
 import { storeToRefs } from 'pinia'
 import useAuth from "olobase-admin/src/store/auth";
+import config from "@/_config";
 
 export default {
   name: "App",
@@ -147,7 +148,7 @@ export default {
      */
     let base64Image = this.$store.getModule("auth").getAvatar;
     if (base64Image == "undefined" || base64Image == "null" || isEmpty(base64Image)) { 
-      this.avatar = this.$admin.getConfig().avatar.base64; // default avatar image
+      this.avatar = config.avatar.base64; // default avatar image
       this.avatarExists = false;
     } else {
       this.avatarExists = true;

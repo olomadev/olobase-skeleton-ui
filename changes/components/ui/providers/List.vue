@@ -211,10 +211,10 @@
 import { useDisplay } from 'vuetify'
 import { isEmpty } from '@/helpers/lodash';
 import Resource from "../../../mixins/resource";
-import eventBus from "olobase-admin/src/utils/eventBus";
+import eventBus from "@/helpers/eventbus";
 import Search from "../../../mixins/search";
-import FormFilter from "../../internal/FormFilter";
-import Draggable from 'vuedraggable'
+import FormFilter from "../../internal/FormFilter.vue";
+import * as Draggable from 'vuedraggable';
 import config from "@/_config";
 import useResource from "../../../store/resource";
 /**

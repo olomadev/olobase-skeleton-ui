@@ -1,15 +1,16 @@
 import i18n from "@/i18n";
+import config from "@/_config";
 import { nextTick } from "vue";
 import useStore from "../store";
-import cookies from "olobase-admin/src/utils/cookies";
+import cookies from "@/helpers/cookies";
 
 const Trans = {
   get defaultLocale() {
-    return import.meta.env.VITE_DEFAULT_LOCALE;
+    return config.i18n.defaultLocale;
   },
 
   get supportedLocales() {
-    return import.meta.env.VITE_SUPPORTED_LOCALES.split(",");
+    return config.i18n.locales;
   },
 
   get currentLocale() {

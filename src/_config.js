@@ -17,6 +17,9 @@ export default {
     disableUnsavedFormDialog: false,
   },
   i18n: {
+    defaultLocale: "en",
+    fallbackLocale: "en",
+    locales: ["en", "tr"], // supported locales
     dateFormat: "shortFormat",
     en: {
       dateFormat: "Y-m-d", // Y.m.d, Y\m\d or Y/m/d

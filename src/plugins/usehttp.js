@@ -7,12 +7,11 @@
  */
 import i18n from "../i18n";
 import router from "@/router";
-import cookies from "olobase-admin/src/utils/cookies";
-import eventBus from "olobase-admin/src/utils/eventBus";
+import cookies from "@/helpers/cookies";
+import eventBus from "@/helpers/eventbus";
 /**
  * Get cookie constants object
  */
-const cookieKey = JSON.parse(import.meta.env.VITE_COOKIE);
 let isRefreshing = false;
 let failedQueue = [];
 let logoutCodes = [ // do not change these values because it is related to your back end api
@@ -50,14 +49,14 @@ const useHttp = function (axios, store) {
         eventBus.emit("last-dialog", false)  // close edit modal window if it's opened
       }
       if (statusOk &&
-       cookies.get(cookieKey.token) && 
+       cookies.get("token") && 
        response.config.url == "/auth/session") {
         let config = response.config;
         config._retry = false; // retry value every must be false
         const delayRetryRequest = new Promise((resolve) => {
           setTimeout(() => {
             resolve();
-          }, import.meta.env.VITE_SESSION_UPDATE_TIME * 60 * 1000); // every x minutes 
+          }, process.env.SESSION_UPDATE_TIME * 60 * 1000); // every x minutes 
         });
         return delayRetryRequest.then(() => axiosInstance(config));
       }
@@ -101,7 +100,7 @@ const useHttp = function (axios, store) {
             //
             isRefreshing = true;
             originalRequest._retry = true;
-            let localToken = cookies.get(cookieKey.token);
+            let localToken = cookies.get("token");
             return new Promise(function (resolve, reject) {
               axios.post("auth/refresh", { token: localToken })
                 .then((res) => {
@@ -110,7 +109,7 @@ const useHttp = function (axios, store) {
                     && res["data"]["data"]
                     && res["data"]["data"]["token"]) {
                     let newToken = res["data"]["data"]["token"];
-                    cookies.set(cookieKey.token, newToken);
+                    cookies.set("token", newToken);
                     axios.defaults.headers.common['Authorization'] = 'Bearer ' + newToken;
                     originalRequest.headers['Authorization'] = 'Bearer ' + newToken;
                     processQueue(null, newToken);

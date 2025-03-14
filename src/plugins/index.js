@@ -5,7 +5,6 @@
  * 
  * automatically included in `./src/main.js`
  */
-import axios from "axios";
 import vuetify from "./vuetify";
 import router from "../router";
 import i18n from "../i18n";
@@ -16,21 +15,17 @@ import { useHttp } from "./usehttp";
 import { createPinia } from 'pinia';
 import { loadFonts } from "./webfontloader";
 import { loadModules } from "./moduleloader";
-import cookies from "olobase-admin/src/utils/cookies";
-/**
- * Get cookie constants object
- */
-const cookieKey = JSON.parse(import.meta.env.VITE_COOKIE);
+import cookies from "@/helpers/cookies";
 /**
  * Set default global http configuration
  */
 axios.defaults.timeout = 20000;
-axios.defaults.baseURL = import.meta.env.VITE_API_URL;
+axios.defaults.baseURL = process.env.API_URL;
 axios.defaults.headers.common['Content-Type'] = "application/json";
 axios.defaults.headers.common['X-Client-Locale'] = i18n.global.locale.value;
 axios.interceptors.request.use(
   function (config) {
-    let token = cookies.get(cookieKey.token);
+    let token = cookies.get("token");
     if (typeof token == "undefined" || token == "undefined" || token == "") {
       return config;
     }

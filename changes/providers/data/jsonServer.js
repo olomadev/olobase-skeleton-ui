@@ -1,4 +1,5 @@
 import { isObject } from '@/helpers/lodash';
+import qs from '@/helpers/qs';
 import {
   GET_LIST,
   GET_LIST_ALL,
@@ -15,7 +16,6 @@ import {
 } from "./actions";
 
 import FetchJson from "../utils/fetchJson";
-import qs from "qs";
 
 export default (httpClient) => {
   if (typeof httpClient === "string") {

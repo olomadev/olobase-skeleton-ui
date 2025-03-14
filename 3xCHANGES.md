@@ -5,6 +5,7 @@
 - Deprecated olobase admin title option.
 - Deprecated layouts/Breadcrumbs.vue.
 - Deprecated SheetInput.vue removed 
+- Deprecated ExcelExportButton.vue removed 
 - SheetInput removed from components/index.js
 - Removed Breadcrumbs from layouts/index.js file.
 - Added groupByArray prop to CheckListInput component.

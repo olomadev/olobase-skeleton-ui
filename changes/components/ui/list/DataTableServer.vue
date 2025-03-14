@@ -318,7 +318,7 @@ import Resource from "../../../mixins/resource"
 import Search from "../../../mixins/search"
 import Utils from "../../../mixins/utils"
 import { useDisplay } from 'vuetify'
-import eventBus from "olobase-admin/src/utils/eventBus";
+import eventBus from "@/helpers/eventbus";
 import { useVuelidate } from "@vuelidate/core";
 import config from "@/_config";
 import useResource from "../../../store/resource";

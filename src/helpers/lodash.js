@@ -3,7 +3,7 @@
  *
  * - helpers/lodash.js
  * 
- * load text helpers from here instead of using external libraries
+ * An Es7 clone of lodash: load text helpers from here instead of using external libraries
  */
 // capitalize: "hello world" -> "Hello world"
 function capitalize(s) {
@@ -124,6 +124,27 @@ function join(array, separator = ',') {
   return array.join(separator);
 }
 
+
+function stringify(obj, options = {}) {
+  const pairs = [];
+  const { prefix, arrayFormat = "none" } = options;
+  for (const key in obj) {
+    if (!Object.prototype.hasOwnProperty.call(obj, key)) continue;
+    const value = obj[key];
+    const prefixedKey = prefix ? `${prefix}[${key}]` : key;
+    if (Array.isArray(value) && arrayFormat === "repeat") {
+      value.forEach(val => {
+        pairs.push(`${encodeURIComponent(prefixedKey)}=${encodeURIComponent(val)}`);
+      });
+    } else if (value !== null && typeof value === 'object') {
+      pairs.push(stringify(value, { prefix: prefixedKey, arrayFormat }));
+    } else {
+      pairs.push(`${encodeURIComponent(prefixedKey)}=${encodeURIComponent(value)}`);
+    }
+  }
+  return pairs.join('&');
+}
+
 export {
   capitalize,
   camelCase,
@@ -140,5 +161,6 @@ export {
   remove,
   trimEnd,
   join,
+  stringify
 };
 

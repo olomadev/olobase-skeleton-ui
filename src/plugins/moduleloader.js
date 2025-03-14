@@ -29,11 +29,7 @@ class ModuleLoader {
   async install(app, i18nInstance, defaultStore, pinia) {
     this.app = app;
     this.pinia = pinia;
-
-    // for (const module of this.modules) {
-    //   const moduleInstance = await this.loadModule(module); // wait for modules ..
-    //   if (moduleInstance.default.install) {
-
+    
     const moduleInstances = await Promise.all(this.modules.map(m => this.loadModule(m)));
 
     for (const [index, moduleInstance] of moduleInstances.entries()) {

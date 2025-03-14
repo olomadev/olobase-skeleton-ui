@@ -30,7 +30,7 @@
 export default {
   computed: {
     getRestAPILink() {
-      let baseUrl = import.meta.env.VITE_API_URL;
+      let baseUrl = process.env.API_URL;
       const regex = /\/api$/;
       baseUrl = baseUrl.replace(regex, "");
       return baseUrl + "/swagger/web/";

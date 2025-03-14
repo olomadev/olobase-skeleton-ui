@@ -97,7 +97,7 @@ export default {
       eKey: null,
       error: null,
       email: null,
-      siteKey: import.meta.env.VITE_HCAPTCHA_SITE_KEY,
+      siteKey: process.env.HCAPTCHA_SITE_KEY,
       loading: false,
     };
   },

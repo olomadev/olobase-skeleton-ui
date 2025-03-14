@@ -6,7 +6,7 @@
  * Copyright (c) 2022-2025, Oloma Software.
  */
 import { upperFirst, lowerCase, isEmpty } from '@/helpers/lodash'
-import cookies from "olobase-admin/src/utils/cookies"
+import cookies from '@/helpers/cookies'
 import messages from "olobase-admin/src/store/messages"
 import auth from "olobase-admin/src/store/auth"
 import guest from "olobase-admin/src/store/guest"
@@ -15,10 +15,6 @@ import storeResource from "olobase-admin/src/store/resource"
 import routeResource from "olobase-admin/src/router/resource"
 
 export default class Olobase {
-
-  constructor(env) {
-    this.env = env
-  }
 
   setOptions({
     app,
@@ -36,10 +32,9 @@ export default class Olobase {
     canAction,
     http
   }) {
-    if (typeof this.env.VITE_COOKIE == "undefined") {
-      throw new Error("Configuration error: VITE_COOKIE settings in your project's environment file are missing !");
+    if (typeof process.env.COOKIE == "undefined") {
+      throw new Error("Configuration error: ENV_COOKIE value is undefined in your project or .env file is missing.");
     }
-    this.cookieKey = JSON.parse(this.env.VITE_COOKIE);
     /**
      * Options properties
      */
@@ -47,7 +42,7 @@ export default class Olobase {
     this.router = router
     this.store = store
     this.i18n = i18n
-    this.apiUrl = this.env.VITE_API_URL
+    this.apiUrl = process.env.API_URL
     this.downloadUrl = downloadUrl
     this.readFileUrl = readFileUrl
     this.routes = routes
@@ -290,7 +285,7 @@ export default class Olobase {
     const Self = this;
     let result = false;
     let user = await new Promise(function (resolve) {
-      let res = cookies.get(Self.cookieKey.user) 
+      let res = cookies.get("user") 
       if (res) {
         res = JSON.parse(res)    
         return resolve(res)
@@ -307,15 +302,6 @@ export default class Olobase {
       })
     }
     return result
-  }
-
-  /**
-   * Get global admin config object
-   * 
-   * @return 
-   */
-  getConfig() {
-    return this.config;
   }
 
   /**

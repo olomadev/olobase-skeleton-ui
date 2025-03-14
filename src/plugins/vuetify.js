@@ -9,6 +9,7 @@
 import "vuetify/styles";
 
 // Translations provided by Vuetify
+import config from "@/_config";
 import { en, tr } from "vuetify/locale";
 import Trans from "@/i18n/translation";
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
@@ -24,7 +25,7 @@ export default createVuetify({
     VTreeview,
   },
   locale: {
-    locale: Trans.supportedLocales.includes(defaultLang) ? defaultLang : import.meta.env.VITE_DEFAULT_LOCALE,
+    locale: Trans.supportedLocales.includes(defaultLang) ? defaultLang : config.i18n.defaultLocale,
     fallback: "en",
     messages: { tr, en },
   },
