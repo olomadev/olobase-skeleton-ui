@@ -9,6 +9,8 @@ import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
 import { resolve, dirname } from 'node:path'
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 // https://vitejs.dev/config/
 // https://vitejs.dev/guide/env-and-mode.html#env-files
 // 
@@ -19,21 +21,41 @@ export default defineConfig({
     host: '0.0.0.0',
     port: 3000
   },
-  root: resolve(__dirname, 'src'), // Kök dizini src/ olarak ayarlıyoruz.
-  // build: {
-  //   outDir: 'dist',
-  //   emptyOutDir: false, // Warning !! -- prevents the distributed computer from being deleted when creating modules
-  //   chunkSizeWarningLimit: 800,
-  //   minify: true,
-  //   rollupOptions: {
-  //     external: ['assert', 'tty', 'os', 'zlib', 'util', 'path', 'fs', 'crypto', 'http', 'https', 'url', 'stream', 'events'],
-  //     output: {
-  //       manualChunks: {
-  //         vendor: ['vue-i18n', 'vuetify', 'vue', 'pinia', 'vue-router'],
-  //       }
-  //     }
-  //   }
-  // },  
+  root: 'src',
+  publicDir: 'src',
+  build: {
+    outDir: '../dist',
+    emptyOutDir: false,
+    chunkSizeWarningLimit: 800,
+    minify: false,
+    rollupOptions: {
+      input: [
+        resolve(__dirname, 'src/index.html'),
+        resolve(__dirname, 'src/favicon.ico'),
+      ],
+      // external: (id) => id.includes('src/modules/'),    
+      // external: (id) => [
+      //   'assert', 'tty', 'os', 'zlib', 'util', 'path', 'fs', 'crypto', 'http', 'https', 'url', 'stream', 'events'
+      // ].includes(id) || id.startsWith('src/modules/'),
+      output: {
+        globals: {
+          vue: 'Vue', // Vue.js global değişkenini tanımla
+        },
+        format: 'es',
+        chunkFileNames: 'chunks/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]',
+        manualChunks(id) {
+          if (id.includes('src/modules/')) {
+            const moduleName = id.split('src/modules/')[1].split('/')[0]; // 'Users', 'Authentication' gibi
+            return `modules/${moduleName}/src/[name]`; // Chunkları modül adına göre grupla
+          }
+          if (id.includes('node_modules')) {
+            return 'vendor'; // Üçüncü parti kütüphaneler için vendor chunk'ı
+          }
+        },
+      }
+    }
+  },
   optimizeDeps: {
     exclude: ['vuetify', 'util', 'path', 'fs', 'crypto', 'http', 'https', 'url', 'stream']  // fixes optimized deps warnings...
   },

@@ -1,0 +1,7 @@
+  "scripts": {
+    "build:modules": "cross-env ENV=production rollup -c",
+    "dev": "cross-env ENV=development VITE_CJS_IGNORE_WARNING=true vite --host --mode dev",
+    "build": "cross-env ENV=production VITE_CJS_IGNORE_WARNING=true vite build --mode prod",
+    "preview": "VITE_CJS_IGNORE_WARNING=true vite preview",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src"
+  },

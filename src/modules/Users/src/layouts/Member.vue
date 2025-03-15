@@ -3,9 +3,7 @@
     <v-container fluid :style="{ height: getHeight, backgroundColor: getThemeColor }">
       <v-layout class="align-center justify-center">
         <router-view v-slot="{ Component }">
-          <transition name="fade" mode="out-in">
-            <component :is="Component" />
-          </transition>
+          <component :is="Component" />
         </router-view>
       </v-layout>
     </v-container>

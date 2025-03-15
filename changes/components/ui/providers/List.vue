@@ -113,7 +113,7 @@
                           </td>
                         </template>
                       </tr>
-                      <tr v-if="!disablePositioning">
+<!--                       <tr v-if="'false'">
                         <td>{{ $t('va.datatable.positioning') }}</td>
                         <td :colspan="selectItems.length" style="border-bottom: none">
                           <div class="table-draggable">
@@ -121,7 +121,7 @@
                               <draggable v-model="selectedHeaders" tag="tr" :item-key="key => key">
                                 <template #item="item">
                                   <th style="cursor:pointer;padding:4px;" scope="col">
-                                    {{ item.element.title }}
+                                    {{ item.title }}
                                     <span class="circle">{{ item.index + 1 }}</span>
                                   </th>
                                 </template>
@@ -129,7 +129,7 @@
                             </v-table>
                           </div>
                         </td>
-                      </tr>
+                      </tr> -->
                       <tr>
                         <td></td>
                         <td :colspan="selectItems.length" class="pt-2 pb-2">
@@ -214,7 +214,6 @@ import Resource from "../../../mixins/resource";
 import eventBus from "@/helpers/eventbus";
 import Search from "../../../mixins/search";
 import FormFilter from "../../internal/FormFilter.vue";
-import * as Draggable from 'vuedraggable';
 import config from "@/_config";
 import useResource from "../../../store/resource";
 /**
@@ -232,7 +231,6 @@ export default {
   },
   components: {
     FormFilter,
-    Draggable
   },
   provide() {
     return {

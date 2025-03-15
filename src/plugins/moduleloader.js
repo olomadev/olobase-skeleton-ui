@@ -7,8 +7,8 @@
  */
 import { defineAsyncComponent } from "vue";
 import { capitalize, camelCase, upperFirst } from '@/helpers/lodash';
-import globalResources from "@/modules/resources";
 import router from "@/router";
+// import moduleResources from "@/modules/resources";
 
 class ModuleLoader {
 
@@ -29,7 +29,7 @@ class ModuleLoader {
   async install(app, i18nInstance, defaultStore, pinia) {
     this.app = app;
     this.pinia = pinia;
-    
+
     const moduleInstances = await Promise.all(this.modules.map(m => this.loadModule(m)));
 
     for (const [index, moduleInstance] of moduleInstances.entries()) {
@@ -95,20 +95,36 @@ class ModuleLoader {
   }
 
   /**
+   * Check module is available
+   */
+  async isModuleAvailable(moduleName) {
+    try {
+      const modulePath = `/modules/${moduleName}/src/index.js`;
+      const response = await fetch(modulePath, { method: 'HEAD' });
+      return response.ok;
+    } catch (error) {
+      return false;
+    }
+  };
+
+  /**
    * Dynamic module loading function.
    */
   async loadModule(module) {
     try {
       const moduleName = capitalize(module.name);
-      if (this.moduleCache[moduleName]) {
-        return this.moduleCache[moduleName];
-      }
-      const moduleInstance = await import(`@/modules/${moduleName}/src/index.js`);
-      if (moduleInstance.version && this.isVersionOlder(moduleInstance.version, module.version)) {
-        console.log(`New version available: ${moduleName} - ${module.version}`);
-      }
-      this.moduleCache[moduleName] = moduleInstance;
-      return moduleInstance;
+      // if (this.moduleCache[moduleName]) {
+      //   return this.moduleCache[moduleName];
+      // }
+      let moduleInstance = null;
+      if (await this.isModuleAvailable(moduleName)) {
+        moduleInstance = await import(`@/modules/${moduleName}/src/index.js`);  
+        if (moduleInstance.version && this.isVersionOlder(moduleInstance.version, module.version)) {
+          console.log(`New version available: ${moduleName} - ${module.version}`);
+        }
+        // this.moduleCache[moduleName] = moduleInstance;
+        return moduleInstance;
+      } 
     } catch (error) {
       console.error(`Failed to load module: ${module.name}`, error);
       return null;
@@ -119,7 +135,7 @@ class ModuleLoader {
    * Returns to all resources for olobase admin plugin
    */
   getResources() {
-    return [...globalResources, ...this.resources];
+    return [...this.resources]; // moduleResources
   }
 
   /**

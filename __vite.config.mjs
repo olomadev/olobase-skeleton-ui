@@ -2,6 +2,7 @@
 import vue from '@vitejs/plugin-vue'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
+import env from './src/env.mjs';
 
 // Utilities
 import { defineConfig } from 'vite'
@@ -32,6 +33,7 @@ modules.forEach(module => {
 
 // ⚙️ Vite Config
 export default defineConfig({
+  define: env.getVariables(),
   transpileDependencies: ["vuetify"],
   server: {
     host: '0.0.0.0',
@@ -76,10 +78,6 @@ export default defineConfig({
       include: resolve(__dirname, './src/i18n/locales/**'),
     }),
   ],
-  define: {
-    'process.env': {},
-    __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'true',
-  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
