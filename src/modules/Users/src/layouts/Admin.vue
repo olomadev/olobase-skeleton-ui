@@ -82,7 +82,6 @@
           :menu="getFooterMenu"
         >
           <template v-slot:left>
-            <LanguageSwitcher></LanguageSwitcher>
           </template>
           <template v-slot:right>
             <span style="font-size:13px">&copy; 2024</span>
@@ -97,7 +96,6 @@
 import { isEmpty} from '@/helpers/lodash';
 import { useDisplay } from "vuetify";
 import Trans from "@/i18n/translation";
-import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
 import { storeToRefs } from 'pinia'
 import useAuth from "olobase-admin/src/store/auth";
 import config from "@/_config";
@@ -105,7 +103,6 @@ import config from "@/_config";
 export default {
   name: "App",
   inject: [],
-  components: { LanguageSwitcher },
   setup() {
     const { lgAndUp } = useDisplay();
     return { lgAndUp };

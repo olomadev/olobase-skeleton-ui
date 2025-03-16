@@ -69,12 +69,6 @@
       :color="sidebarColor"
       v-model="drawer"
     >
-      <!--
-        Apply a specific background image to the component.
-      <template v-slot:img="props">
-        <slot name="img" v-bind="props"></slot>
-      </template> -->
-
       <template v-slot:prepend>
         <slot name="navbar-logo"></slot>
       </template>
@@ -111,7 +105,7 @@
               :to="child.link"
             >
               <template v-slot:prepend>
-                <v-icon size="small">{{ child.icon }}</v-icon>
+                <v-icon size="small" :icon="child.icon"></v-icon>
               </template>            
               <v-list-item-title>
                 <div v-if="child.href">
@@ -134,7 +128,7 @@
             :to="item.link"
           >
             <template v-slot:prepend>
-              <v-icon>{{ item.icon }}</v-icon>
+              <v-icon :icon="item.icon"></v-icon>
             </template>
             <v-list-item-title v-text="item.text"></v-list-item-title>
           </v-list-item>
@@ -147,6 +141,7 @@
 <script>
 import { useDisplay } from 'vuetify';
 import { storeToRefs } from 'pinia';
+
 /**
  * Default customizable admin VAppBar.
  * Contains main app title, header menus, direct resource creation links, global refresh action, profile menu.

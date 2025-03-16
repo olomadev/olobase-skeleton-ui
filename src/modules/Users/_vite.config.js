@@ -1,7 +1,6 @@
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
-import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite'
 import env from '../../env.mjs';
 import { fileURLToPath } from 'node:url'
 import { resolve, dirname } from 'node:path'
@@ -18,21 +17,17 @@ export default defineConfig({
     vuetify({
       autoImport: true,
     }),
-    VueI18nPlugin({
-      runtimeOnly: false,
-      include: resolve(__dirname, '../../i18n/locales/**'),
-    }),
   ],
   root: 'src',
-  build: {
-    outDir: '../../../../dist/modules/Users',
-    emptyOutDir: true, // Önceki build dosyalarını temizler
-    lib: {
-      entry: resolve(__dirname, 'src/index.js'),  // Giriş dosyasını belirtiriz
-      name: "Users",  // Modülün ismini belirliyoruz
-      fileName: 'index',  // Çıktı dosyasının adı sabit
-    }
-  },
+  // build: {
+  //   outDir: '../../../../dist/modules/Users/src',
+  //   emptyOutDir: true, // Önceki build dosyalarını temizler
+  //   lib: {
+  //     entry: resolve(__dirname, 'src/index.js'),  // Giriş dosyasını belirtiriz
+  //     name: "Users",  // Modülün ismini belirliyoruz
+  //     fileName: 'index',  // Çıktı dosyasının adı sabit
+  //   }
+  // },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('../../', import.meta.url)),

@@ -8,6 +8,7 @@
     <va-data-table-server
       :disable-actions="false"
       :disable-show="false"
+      show-select
     >
     </va-data-table-server>
   </va-list>

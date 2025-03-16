@@ -69,5 +69,5 @@ export default createVuetify({
     sets: {
       mdi,
     },
-  },
+  }
 });

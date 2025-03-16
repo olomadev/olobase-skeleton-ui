@@ -6,9 +6,16 @@
           class="text-capitalize" 
           variant="text"
           v-bind="props">
-          <v-icon left>mdi-translate</v-icon>
-          {{ t(`locale.${locale}`) }}
-          <v-icon small right> mdi-menu-down </v-icon>
+          <v-avatar v-if="locale" color="primary" class="mr-2" size="x-small">
+            <v-img
+              v-if="locale"
+              alt="Flag"
+            >
+              <Flag :name="locale"></Flag>
+            </v-img>
+          </v-avatar>
+          <v-spacer>{{ t(`locale.${locale}`) }}</v-spacer>
+          <v-icon small right>mdi-menu-down</v-icon>
         </v-btn>
       </template>
       <v-list>
@@ -18,7 +25,17 @@
           :value="index"
           @click="switchLanguage(lang)"
         >
-          <v-list-item-title>{{ t(`locale.${lang}`) }}</v-list-item-title>
+          <v-list-item-title>
+            <v-avatar v-if="lang" color="primary" class="mr-2" size="x-small">
+              <v-img
+                v-if="lang"
+                alt="Flag"
+              >
+                <Flag :name="lang"></Flag>
+              </v-img>
+            </v-avatar>
+            {{ t(`locale.${lang}`) }}
+          </v-list-item-title>
         </v-list-item>
       </v-list>
     </v-menu>
@@ -29,8 +46,12 @@
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
 import Trans from "@/i18n/translation";
+import Flag from '@/components/Flag.vue';
 
 export default {
+  components: {
+    Flag,
+  },
   setup() {
     const { t, locale } = useI18n();
     const supportedLocales = Trans.supportedLocales;

@@ -6,7 +6,6 @@
  * automatically load resources and external libs
  */
 import "./vuetify";
-import "@mdi/font/css/materialdesignicons.css";
 import PortalVue from "portal-vue";
 import UnsavedFormDialog from "../components/UnsavedFormDialog.vue";
 // const modules = import.meta.glob("../modules/**/plugins/loader.js");

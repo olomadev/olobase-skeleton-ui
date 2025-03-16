@@ -13,37 +13,43 @@
             <v-table density="compact">
               <tbody>
                 <tr>
-                  <td><b>{{ $t('resources.users.fields.firstname') }}</b></td>
+                  <td><b>{{ $t('users.users.fields.firstname') }}</b></td>
                   <td>
                     <va-field source="firstname"></va-field>
                   </td>
                 </tr>
                 <tr>
-                  <td><b>{{ $t('resources.users.fields.lastname') }}</b></td>
+                  <td><b>{{ $t('users.users.fields.lastname') }}</b></td>
                   <td>
                     <va-field source="lastname"></va-field>
                   </td>
                 </tr>
                 <tr>
-                  <td><b>{{ $t('resources.users.fields.email') }}</b></td>
+                  <td><b>{{ $t('users.users.fields.email') }}</b></td>
                   <td>
                     <va-field source="email"></va-field>
                   </td>
                 </tr>
                 <tr>
-                  <td><b>{{ $t('resources.users.fields.active') }}</b></td>
+                  <td><b>{{ $t('users.users.fields.active') }}</b></td>
                   <td>
                     <va-field source="active" type="boolean"></va-field>
                   </td>
                 </tr>
                 <tr>
-                  <td><b>{{ $t('resources.users.fields.createdAt') }}</b></td>
+                  <td><b>{{ $t('users.users.fields.createdAt') }}</b></td>
                   <td>
                     <va-field source="createdAt" type="date"></va-field>
                   </td>
                 </tr>
               </tbody>
             </v-table>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
           </div>
         </v-col>
       </v-row>

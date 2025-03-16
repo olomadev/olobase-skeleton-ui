@@ -27,6 +27,19 @@ function kebabCase(str) {
     .toLowerCase();
 }
 
+// kebabToCamel: "hello-world" -> "helloWorld"
+function kebabToCamel(kebabCase) {
+  return kebabCase
+    .split('-')  // Kebab case'i ayır
+    .map((word, index) => {
+      if (index === 0) {
+        return word; // İlk kelimeyi olduğu gibi bırak
+      }
+      return word.charAt(0).toUpperCase() + word.slice(1); // Diğer kelimeleri büyük harfle başlat
+    })
+    .join(''); // Kelimeleri birleştir
+}
+
 // lowerCase: converts all words in the text to lowercase and separates them with spaces
 function lowerCase(str) {
   return str
@@ -149,6 +162,7 @@ export {
   capitalize,
   camelCase,
   kebabCase,
+  kebabToCamel,
   lowerCase,
   upperFirst,
   get,

@@ -25,6 +25,7 @@ export default defineConfig({
   publicDir: 'src',
   build: {
     outDir: '../dist',
+    cssCodeSplit: true,
     emptyOutDir: false,
     chunkSizeWarningLimit: 800,
     minify: false,
@@ -42,12 +43,12 @@ export default defineConfig({
           vue: 'Vue', // Vue.js global değişkenini tanımla
         },
         format: 'es',
-        chunkFileNames: 'chunks/[name]-[hash].js',
-        assetFileNames: 'assets/[name]-[hash].[ext]',
+        chunkFileNames: 'chunks/[name].js',
+        assetFileNames: 'assets/[name].[ext]',
         manualChunks(id) {
           if (id.includes('src/modules/')) {
             const moduleName = id.split('src/modules/')[1].split('/')[0]; // 'Users', 'Authentication' gibi
-            return `modules/${moduleName}/src/[name]`; // Chunkları modül adına göre grupla
+            return `modules/${moduleName}/src/index`; // Chunkları modül adına göre grupla
           }
           if (id.includes('node_modules')) {
             return 'vendor'; // Üçüncü parti kütüphaneler için vendor chunk'ı

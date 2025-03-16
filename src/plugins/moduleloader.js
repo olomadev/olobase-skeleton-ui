@@ -8,7 +8,6 @@
 import { defineAsyncComponent } from "vue";
 import { capitalize, camelCase, upperFirst } from '@/helpers/lodash';
 import router from "@/router";
-// import moduleResources from "@/modules/resources";
 
 class ModuleLoader {
 
@@ -95,19 +94,6 @@ class ModuleLoader {
   }
 
   /**
-   * Check module is available
-   */
-  async isModuleAvailable(moduleName) {
-    try {
-      const modulePath = `/modules/${moduleName}/src/index.js`;
-      const response = await fetch(modulePath, { method: 'HEAD' });
-      return response.ok;
-    } catch (error) {
-      return false;
-    }
-  };
-
-  /**
    * Dynamic module loading function.
    */
   async loadModule(module) {
@@ -117,14 +103,12 @@ class ModuleLoader {
       //   return this.moduleCache[moduleName];
       // }
       let moduleInstance = null;
-      if (await this.isModuleAvailable(moduleName)) {
-        moduleInstance = await import(`@/modules/${moduleName}/src/index.js`);  
-        if (moduleInstance.version && this.isVersionOlder(moduleInstance.version, module.version)) {
-          console.log(`New version available: ${moduleName} - ${module.version}`);
-        }
-        // this.moduleCache[moduleName] = moduleInstance;
-        return moduleInstance;
-      } 
+      moduleInstance = await import(`@/modules/${moduleName}/src/index.js`);  
+      if (moduleInstance.version && this.isVersionOlder(moduleInstance.version, module.version)) {
+        console.log(`New version available: ${moduleName} - ${module.version}`);
+      }
+      // this.moduleCache[moduleName] = moduleInstance;
+      return moduleInstance;
     } catch (error) {
       console.error(`Failed to load module: ${module.name}`, error);
       return null;

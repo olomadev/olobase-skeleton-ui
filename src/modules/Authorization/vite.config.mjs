@@ -25,21 +25,13 @@ export default defineConfig({
   ],
   root: 'src',
   build: {
-    outDir: '../../../../dist/modules/Authorization',
+    outDir: '../../../../dist/modules/Authorization/src',
     emptyOutDir: true, // Önceki build dosyalarını temizler
     lib: {
       entry: resolve(__dirname, 'src/index.js'),  // Giriş dosyasını belirtiriz
       name: "Authorization",  // Modülün ismini belirliyoruz
       fileName: 'index',  // Çıktı dosyasının adı sabit
     }
-    // rollupOptions: {
-    //   external: ['vue'],  // Vue dışarıda bırakılır, çünkü projede mevcut
-    //   output: {
-    //     globals: {
-    //       vue: 'Vue',  // Vue'yu global olarak tanımlıyoruz
-    //     },
-    //   },
-    // },
   },
   resolve: {
     alias: {

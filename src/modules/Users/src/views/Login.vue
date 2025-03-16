@@ -103,7 +103,6 @@
 </template>
 
 <script>
-import isObject from 'lodash-es/isObject'; // ES module import
 import { useDisplay } from "vuetify";
 import { useVuelidate } from "@vuelidate/core";
 import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
@@ -170,10 +169,6 @@ export default {
     async validate() {
       this.v$.$touch();
       this.loading = false;
-
-      // console.error(isObject({}))
-      // return;
-
       if (this.v$.$invalid) {
         return;
       }
