@@ -106,7 +106,7 @@ import Input from "../../../mixins/input"
 import { Cropper } from "vue-advanced-cropper";
 import "vue-advanced-cropper/dist/style.css";
 import Stencil from "../utils/Stencil.vue";
-import AvatarDefaultSvg from '@/assets/avatar_default.svg';
+import AvatarDefaultSvg from '@/assets/svg/avatar_default.svg';
 
 export default {
   mixins: [Input],

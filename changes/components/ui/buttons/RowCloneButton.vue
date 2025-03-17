@@ -5,7 +5,6 @@
     :item="item"
     :label="$t('va.actions.clone')"
     icon="mdi-content-duplicate"
-    icon-size="x-small"    
     :color="color"
     text
     exact

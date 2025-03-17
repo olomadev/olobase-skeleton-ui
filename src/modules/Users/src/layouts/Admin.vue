@@ -98,7 +98,7 @@ import { useDisplay } from "vuetify";
 import Trans from "@/i18n/translation";
 import { storeToRefs } from 'pinia'
 import useAuth from "olobase-admin/src/store/auth";
-import config from "@/_config";
+import config from "../_config";
 
 export default {
   name: "App",

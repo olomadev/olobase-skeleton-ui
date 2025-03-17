@@ -4,18 +4,16 @@
     :hide-label="icon"
     :item="item"
     :label="$t('va.actions.edit')"
-    icon="mdi-pencil"
-    icon-size="x-small"
+    icon="mdi-table-edit"
     :color="color"
-    variant="text"
+    text
     exact
-    :to="getRoute('edit', { params: { id: item.id } })"
     @click="onClick"
   ></va-action-button>
 </template>
 
 <script>
-import RedirectButton from "../../../mixins/redirect-button"
+import RedirectButton from "../../../mixins/redirect-button";
 
 /**
  * Button for all edit resource action. Redirect to edit page by default.
@@ -28,13 +26,6 @@ export default {
     }
   },
   async created() {
-    //  
-    //  store list redirect query params we will use it for save
-    //  operations which is located
-    //  in form provider / this.formState.submit(redirect?querParams)
-    //  
-    localStorage.setItem("listQuery", JSON.stringify(this.$route.query));
-
     this.visible = await this.canShow('edit')
   },
 };

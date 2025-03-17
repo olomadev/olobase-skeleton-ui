@@ -83,7 +83,7 @@
                 :options="getOptions(field)"
                 v-bind="field.attributes"
                 :error-messages="getErrorMessages(field.source)"
-                class="mt-6"
+                :class="(field.type == 'boolean') ? '' : 'mt-6'"
                 @click.stop
               ></component>
            </div>
@@ -160,7 +160,7 @@
                 <template v-slot:activator="{ props }">
                   <v-btn
                     variant="text"
-                    color="success"
+                    color="primary"
                     icon
                     v-bind="props"
                     :loading="saving"

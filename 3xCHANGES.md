@@ -24,3 +24,27 @@ groupByArray: {
 - Mixins: choices.js changes: Getting input refrerence from i18n enums changed as:  "{module}_{action}"   e.g. "authorization_methods", "common_locales".
 - Added no data available translation to CheckListInput component for search operations.
 - rEMOVEcomponents()
+
+- For Php backend add input filter "id" details to documentation input filter section. We convert "id" to "moduleId" if we have "id" field in the input filter.
+
+  $this->add([
+      'name' => 'id',
+      'required' => true,
+      'validators' => [
+          ['name' => Uuid::class],
+          [
+              'name' => $this->request->getMethod() == 'POST' ? NoRecordExists::class : RecordExists::class,
+              'options' => [
+                  'table'   => 'modules',
+                  'field'   => 'moduleId',
+                  'adapter' => $this->adapter,
+              ]
+          ]
+      ],
+  ]);
+
+  $data = $this->dataManager->getSaveData(ModuleSave::class, 'modules');
+  print_r($data);
+  die;
+
+  // Array ( [modules] => Array ( [moduleName] => Users [moduleVersion] => 1.0.0 [isActive] => 1 ) [id] => 38a05004-172c-4a06-99cb-2b7808d54fe3 )

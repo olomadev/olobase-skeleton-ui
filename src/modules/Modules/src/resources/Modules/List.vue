@@ -8,7 +8,6 @@
       :items-per-page="200"
     >
       <va-data-table-server
-        :group-by="groupBy"
         row-create
         row-clone
         row-edit
@@ -30,25 +29,20 @@ export default {
   inject: [],
   data() {
     return {
-      groupBy: [{ key: 'name' }],
       selected: [],
       filters: [],
       fields: [
         {
-          source: "data-table-group",
-          label: this.$t("va.datatable.group"),
-          sortable: false,
-        },
-        {
-          source: "name",
+          source: "moduleName",
           sortable: true,
         },
         {
-          source: "version",
+          source: "moduleVersion",
           sortable: true,
         },
         {
           source: "isActive",
+          type: "boolean",
           sortable: true,
         }
       ],

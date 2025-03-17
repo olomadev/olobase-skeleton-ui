@@ -99,15 +99,15 @@ class ModuleLoader {
   async loadModule(module) {
     try {
       const moduleName = capitalize(module.name);
-      // if (this.moduleCache[moduleName]) {
-      //   return this.moduleCache[moduleName];
-      // }
+      if (this.moduleCache[moduleName]) {
+        return this.moduleCache[moduleName];
+      }
       let moduleInstance = null;
       moduleInstance = await import(`@/modules/${moduleName}/src/index.js`);  
       if (moduleInstance.version && this.isVersionOlder(moduleInstance.version, module.version)) {
         console.log(`New version available: ${moduleName} - ${module.version}`);
       }
-      // this.moduleCache[moduleName] = moduleInstance;
+      this.moduleCache[moduleName] = moduleInstance;
       return moduleInstance;
     } catch (error) {
       console.error(`Failed to load module: ${module.name}`, error);
@@ -119,7 +119,7 @@ class ModuleLoader {
    * Returns to all resources for olobase admin plugin
    */
   getResources() {
-    return [...this.resources]; // moduleResources
+    return [...this.resources];
   }
 
   /**
@@ -182,7 +182,7 @@ class ModuleLoader {
  */
 export async function loadModules(app) {
   const axios = app.config.globalProperties.$axios;
-  const response = await axios.get("/common/modules/findAll");
+  const response = await axios.get("/modules/findAll");
   if (!response || response.status !== 200) {
     console.error('Modules could not be loaded. Error:', response ? response.status : 'No response');
     return;
