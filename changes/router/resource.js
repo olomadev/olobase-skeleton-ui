@@ -143,6 +143,8 @@ export default ({ app, admin, store, i18n, resource, title }) => {
       },
       meta: {
         authenticated: true,
+        module,
+        standalone,
         resource: name,
         translatable
       },

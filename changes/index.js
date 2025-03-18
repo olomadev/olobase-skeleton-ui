@@ -28,11 +28,13 @@ Olobase.install = (app) => {
   /**
    * Register Admin UI components
    */
-  [layouts, ui].forEach((c) => {
-    Object.keys(c).forEach((name) => {
-      app.component(`Va${name}`, c[name])
-    })
-  })
+    [layouts, ui].forEach((c) => {
+      Object.keys(c).forEach((name) => {
+        const componentName = `Va${name}`;
+        app.component(componentName, c[name]);
+      });
+    });
+
   // /**
   //  * Inject global admin conf
   //  */

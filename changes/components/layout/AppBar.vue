@@ -140,7 +140,6 @@
 
 <script>
 import { useDisplay } from 'vuetify';
-import { storeToRefs } from 'pinia';
 
 /**
  * Default customizable admin VAppBar.

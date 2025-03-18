@@ -1,4 +1,7 @@
+import module from "./index.js";
+
 export default {
+  name: module.name,
   build: async function (t, admin) {
     const adminRole = await admin.can(["admin"]);
 

@@ -275,6 +275,10 @@ export default class Olobase {
     return "undefined"
   }
 
+  getAppInstance() {
+    return this.app;
+  }
+
   /**
   * Permissions helper & directive
   */
@@ -322,7 +326,7 @@ export default class Olobase {
     if (resourceName && source) {
       let key = module 
         ? `${module}.${resourceName}.fields.${source}` 
-        : `${resourceName}.fields.${source}`;
+        : `${resourceName}.${resourceName}.fields.${source}`;
 
       let translatedValue = this.i18n.global.te(key)
         ? this.i18n.global.t(key)

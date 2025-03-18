@@ -14,7 +14,7 @@ import useStore from "../store";
 import { useHttp } from "./usehttp";
 import { createPinia } from 'pinia';
 import { loadFonts } from "./webfontloader";
-import { loadModules } from "./moduleloader";
+import { loadModules, ModuleLoader } from "./moduleloader";
 import cookies from "@/helpers/cookies";
 /**
  * Set default global http configuration
@@ -48,13 +48,17 @@ export async function registerPlugins(app) {
   const store = useStore();
   app.config.globalProperties.$axios = axios;
   app.config.globalProperties.$store = store;
+  app.config.globalProperties.$pinia = pinia;
 
-  const moduleLoader = await loadModules(app);
-  const resources = await moduleLoader.install(app, i18n, store, pinia);
+  const modules = await loadModules(app);
+  const moduleLoader = new ModuleLoader(modules);
+  const resources = await moduleLoader.install(app);
+
   app.config.globalProperties.$resources = resources;
 
   // Global plugins
   app.use(vuetify).use(i18n);
+  app.provide('i18n', i18n)
   useHttp(axios, store); // global http instance
   app.config.globalProperties.$vuetify = vuetify;
 

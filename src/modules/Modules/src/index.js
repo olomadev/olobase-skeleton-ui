@@ -1,5 +1,5 @@
 export default {
-  name: "Users",
+  name: "Modules",
   version: "1.0.0",
   install: async (app) => {
 

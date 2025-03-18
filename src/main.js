@@ -1,15 +1,17 @@
 /**
- * main.js
+ * @oloma.dev (c) 2023-2025
  *
- * Bootstraps Vuetify and other plugins then mounts the App`
+ * - main.js
+ * 
+ * bootstraps Vuetify and other plugins then mounts the App`
  */
 // Components
 import App from "./App.vue";
 
 // Composables
 import { createApp } from "vue";
-import '@/assets/styles/app.css'; // Put your styles here
-import '@/assets/styles/materialdesignicons.css';
+import '@/assets/styles/app.css'; // put your styles here
+import '@/assets/styles/materialdesignicons.css'; // https://pictogrammers.com/library/mdi/
 
 // Plugins
 import { registerPlugins } from "@/plugins";

@@ -53,7 +53,6 @@ export default {
     });
     OlobaseAdmin.install(app); // install layouts & components
     admin.init();
-    app.provide("i18n", i18n);
     app.config.globalProperties.$admin = admin;
   },
 };

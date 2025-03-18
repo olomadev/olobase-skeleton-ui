@@ -48,3 +48,9 @@ groupByArray: {
   die;
 
   // Array ( [modules] => Array ( [moduleName] => Users [moduleVersion] => 1.0.0 [isActive] => 1 ) [id] => 38a05004-172c-4a06-99cb-2b7808d54fe3 )
+
+
+  - Added currentModule method to mixins/resource.js
+  - Add resource.js API to documentation
+  - va-data-table-server  @save @saved gibi emit eventları dökümentasyona yaz.
+  - add store.setNavbarKey feature to ui doc (vAppBar layout).

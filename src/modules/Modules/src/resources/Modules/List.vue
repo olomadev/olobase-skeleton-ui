@@ -15,6 +15,7 @@
         disable-show
         disable-clone
         disable-create-redirect
+        @saved="afterSave"
       >
       </va-data-table-server>
     </va-list>
@@ -29,15 +30,16 @@ export default {
   inject: [],
   data() {
     return {
+      app: null,
       selected: [],
       filters: [],
       fields: [
         {
-          source: "moduleName",
+          source: "name",
           sortable: true,
         },
         {
-          source: "moduleVersion",
+          source: "version",
           sortable: true,
         },
         {
@@ -47,6 +49,16 @@ export default {
         }
       ],
     };
+  },
+  created() {
+    this.app = this.$admin.getAppInstance();
+  },
+  methods: {
+    async afterSave(event) {
+      if (event.response && event.response?.data?.data?.oldRecord?.isActive != event.form.isActive) {
+        window.location.reload(); // reload application for module changes 
+      }
+    }
   }
 };
 </script>

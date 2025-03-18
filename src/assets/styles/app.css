@@ -6,9 +6,9 @@
 * {
   font-family: 'Hanken Grotesk', sans-serif !important;
 }
-.v-table__wrapper table td {
-  border: 0 !important; /* reset v-table borders */
-}
+/*.v-table__wrapper table td {
+  border: 0 !important;
+}*/
 #app {
   width: 100%;
   height: 100%;
@@ -399,12 +399,12 @@ table {
   border-bottom: none !important;
 }
 /* va-show layout */
-.va-show table th:first-child {
-  border-top: 1px solid #e5e7eb !important;
+.va-show .v-table__wrapper table {
+  border-top: 1px solid #dddddd;
+  border-radius: 4px;
 }
 .va-show table td {
   border-left: 1px solid #e5e7eb !important;
-  border-top: 1px solid #e5e7eb !important;
 }
 .va-show table td:last-child {
   border-right: 1px solid #e5e7eb !important;

@@ -9,8 +9,8 @@ export default {
           title: "Modules",
           fields: {
             q: "Search",
-            moduleName: "Module",
-            moduleVersion: "Version",
+            name: "Module",
+            version: "Version",
             isActive: "Status"
           },
         }
@@ -25,8 +25,8 @@ export default {
           title: "Modüller",
           fields: {
             q: "Ara",
-            moduleName: "Modül",
-            moduleVersion: "Versiyon",
+            name: "Modül",
+            version: "Versiyon",
             isActive: "Durum"
           }
         }

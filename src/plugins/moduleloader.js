@@ -8,6 +8,7 @@
 import { defineAsyncComponent } from "vue";
 import { capitalize, camelCase, upperFirst } from '@/helpers/lodash';
 import router from "@/router";
+import i18n from "../i18n";
 
 class ModuleLoader {
 
@@ -25,10 +26,11 @@ class ModuleLoader {
   /**
    * Installs the module loader plugin.
    */
-  async install(app, i18nInstance, defaultStore, pinia) {
+  async install(app) {
     this.app = app;
-    this.pinia = pinia;
-
+    this.pinia = app.config.globalProperties.$pinia;
+    const i18nInstance = i18n;
+    const defaultStore = app.config.globalProperties.$store;
     const moduleInstances = await Promise.all(this.modules.map(m => this.loadModule(m)));
 
     for (const [index, moduleInstance] of moduleInstances.entries()) {
@@ -180,14 +182,14 @@ class ModuleLoader {
 /**
  * Loade modules - create db request for active modules
  */
-export async function loadModules(app) {
+async function loadModules(app) {
   const axios = app.config.globalProperties.$axios;
   const response = await axios.get("/modules/findAll");
   if (!response || response.status !== 200) {
     console.error('Modules could not be loaded. Error:', response ? response.status : 'No response');
     return;
   }
-  // Create module loader instance
-  const moduleLoader = new ModuleLoader(response.data.data);
-  return moduleLoader;
+  return response.data.data;
 }
+
+export { ModuleLoader, loadModules }
