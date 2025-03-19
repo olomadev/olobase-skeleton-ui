@@ -24,13 +24,19 @@
       </template>
 
       <template v-if="!disableSearch" v-slot:top>
-        <v-text-field
-          v-model="search"
-          :color="color"
-          :variant="variant"
-          clearable
-          :label="$t('va.actions.q')"
-        ></v-text-field>
+        <v-row no-gutters>
+          <v-col cols="12" sm="12" md="12" lg="6">
+            <v-text-field
+              :density="density"
+              v-model="search"
+              append-inner-icon="mdi-magnify"
+              :color="color"
+              :variant="variant"
+              clearable
+              :label="$t('va.actions.q')"
+            ></v-text-field>
+          </v-col>
+        </v-row>
       </template>
 <!-- 
       <template v-slot:column.data-table-select>
@@ -52,13 +58,12 @@
         <tr>
           <template v-for="column in columns" :key="column.key">
             <th v-if="column.key != 'data-table-group'">
-              <span v-if="column.key == 'data-table-select'">
+              <div v-if="column.key == 'data-table-select'">
                 <v-checkbox
-                  class="pl-5 pt-5 pr-5"
                   v-model="selectAll"
                   @click.native.stop="toggleAllSelection"
                 ></v-checkbox>
-              </span>
+              </div>
               <span v-else class="ml-3">{{ getTitleLabel(column) }}</span>
             </th>
           </template>
@@ -119,7 +124,7 @@
 <script>
 import Input from "../../../mixins/input"
 import Utils from "../../../mixins/utils"
-import remove from "lodash/remove";
+import { remove } from '@/helpers/lodash';
 
 export default {
   inject: [],
@@ -256,24 +261,11 @@ export default {
       );
     },
     isSelected(item) { 
-      let Self = this
-      let id = item[this.primaryKey]
-      if (! Array.isArray(this.selected)) {
-        return false
+      const id = item[this.primaryKey];
+      if (!Array.isArray(this.selected) || this.selected.length === 0) {
+        return false;
       }
-      if (this.selected.length == 0) {
-        return false
-      }
-      let result = false
-      if (this.selected.filter(function(item) {
-        if (typeof item[Self.primaryKey] === 'undefined') {
-          return false
-        }
-        return item[Self.primaryKey] === id
-      }).length > 0) {
-        result = true
-      }
-      return result
+      return this.selected.some(selectedItem => selectedItem[this.primaryKey] === id);
     },
     async initializeItems() {
       let response = await this.$admin.http.get(this.initUrl)

@@ -25,6 +25,8 @@ groupByArray: {
 - Added no data available translation to CheckListInput component for search operations.
 - rEMOVEcomponents()
 
+- Add SelectInput Reference format to docs. modules.resource.enums.{source}.{value}
+
 - For Php backend add input filter "id" details to documentation input filter section. We convert "id" to "moduleId" if we have "id" field in the input filter.
 
   $this->add([
@@ -54,3 +56,15 @@ groupByArray: {
   - Add resource.js API to documentation
   - va-data-table-server  @save @saved gibi emit eventları dökümentasyona yaz.
   - add store.setNavbarKey feature to ui doc (vAppBar layout).
+
+
+  - add data table server validations to doc.
+  - add supported translation for default validations like v.text.required
+
+          nameErrors: (v$) => {
+          const errors = [];
+          if (!v$['form'].name.$dirty) return errors;
+          v$['form'].name.required.$invalid &&
+            errors.push(this.$t("v.text.required"));
+          return errors;
+        },

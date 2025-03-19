@@ -97,7 +97,32 @@ export default {
               del: "Sil"
             }
           }
+        },
+        changePassword: {
+          title: "Şifrem",
+          menu: {
+            label: "Şifre Değiştir"
+          },
+          fields: {
+
+          }
+        },
+        login: {
+          title: "Oturum Aç"          
+        },
+        logout: {
+          title: "Çıkış Yap",
+          menu: {
+            label: "Çıkış Yap"
+          }
+        },
+        forgotPassword: {
+          title: "Şifremi Unuttum"
+        },
+        resetPassword: {
+          title: "Şifre Sıfırla"
         }
+
       }
     },
   }

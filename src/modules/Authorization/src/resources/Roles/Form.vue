@@ -25,25 +25,69 @@
         ></va-text-input>
       </v-col>
     </v-row>
-    <h2 class="h2 mb-4">
-      {{ $t("authorization.permissions.menu.label") }}
-    </h2>
-    <v-row>  
-      <v-col cols="8">
-        <va-check-list-input
-          variant="outlined"
-          source="rolePermissions"
-          group-by="module"
-          init-url="/authorization/permissions/findAll"
-          :headers="headers"
-          :fields="fields"
-          primary-key="permId"
-          items-per-page="25"
-          :group-header="$t('resources.roles.fields.moduleName')"
-        >
-        </va-check-list-input>
-      </v-col>
-    </v-row>
+
+    <v-tabs
+      v-model="tab"
+      variant="outlined"
+      bg-color="transparent"
+      color="primary"
+      align-tabs="left"
+    >
+      <v-tab value="1">{{ $t("authorization.permissions.menu.label") }}</v-tab>
+      <v-tab value="2">{{ $t("authorization.users.menu.label") }}</v-tab>
+    </v-tabs>
+
+    <v-window v-model="tab">
+      <v-window-item eager value="1">
+        <v-row class="mt-2">
+          <v-col cols="12" sm="12" md="12" lg="6">
+            <va-check-list-input
+              variant="outlined"
+              source="rolePermissions"
+              group-by="module"
+              init-url="/authorization/permissions/findAll"
+              :headers="headers"
+              :fields="fields"
+              primary-key="permId"
+              items-per-page="25"
+              :group-header="$t('resources.roles.fields.moduleName')"
+            >
+            </va-check-list-input>
+          </v-col>
+        </v-row>
+      </v-window-item>
+
+      <v-window-item eager value="2">
+        <v-row class="mt-2">
+          <v-col cols="12" sm="12" md="12" lg="6">
+            <v-data-table 
+              :density="density"
+              v-if="tab == 2" 
+              :items="model.roleUsers" 
+              :headers="userHeaders"
+              :search="search"
+              :custom-filter="filterText"
+            >
+              <template v-slot:top>
+                <v-text-field 
+                  density="compact"
+                  variant="outlined" 
+                  append-inner-icon="mdi-magnify"
+                  v-model="search" 
+                  class="mt-2" 
+                  color="primary"
+                  :label="$t('va.actions.q')"
+                  hide-details
+                  clearable
+                >
+                </v-text-field>
+              </template>
+            </v-data-table>
+          </v-col>
+        </v-row>
+      </v-window-item>
+    </v-window>
+
     <va-save-button></va-save-button>
   </va-form>
 </template>
@@ -53,6 +97,7 @@ import { useVuelidate } from "@vuelidate/core";
 import { required, maxLength, numeric } from "@vuelidate/validators";
 import utils from "olobase-admin/src/mixins/utils";
 import { provide } from 'vue'
+import config from '@/_config';
 
 export default {
   props: ["id", "item"],
@@ -64,13 +109,16 @@ export default {
   },
   data() {
     return {
-      rolePermissions: [],
+      search: "",
+      tab: null,
+      itemsPerPage: 10,
       model: {
         id: null,
         roleKey: null,
         roleName: null,
         roleLevel: null,
         rolePermissions: null,
+        roleUsers: [],
       },
       fields: [
         { source: "module" },
@@ -78,6 +126,12 @@ export default {
         { source: "action" },
         { source: "route" },
         { source: "method"},
+      ],
+      userHeaders: [
+        { text: 'Ad', value: 'firstname' },
+        { text: 'Soyad', value: 'lastname' },
+        { text: 'E-Posta', value: 'email' },
+        { text: 'İşlem', value: 'action', sortable: false }
       ],
     };
   },
@@ -101,6 +155,9 @@ export default {
     }
   },
   computed: {
+    density() {
+      return config.density
+    },
     headers() {
       return [
         {
@@ -124,7 +181,7 @@ export default {
           sortable: false,
         },
       ];
-    },
+    },   
     roleKeyErrors() {
       const errors = [];
       const field = "roleKey";
@@ -160,6 +217,20 @@ export default {
   },
   created() {
     this.model.id = this.generateId(this);
+    if (this.item) {
+      this.model.roleUsers = this.item.roleUsers;
+    }
+  },
+  methods: {
+    filterText(value, search, item) {
+      return ( // search in other fields
+        value != null &&
+        search != null &&
+        typeof value === "string" &&
+        value.toString().toLocaleLowerCase().indexOf(search) !== -1
+      );
+    },
   }
+
 }
 </script>

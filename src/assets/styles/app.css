@@ -378,26 +378,6 @@ table {
   padding-top: 8px !important;
   padding-bottom: 8px !important;
 }
-.va-checklist-input table th {
-  background-color: none !important;
-}
-.va-checklist-input table th, .va-checklist-input table td {
-  border: 0 !important;
-  border-top: 1px solid #e5e7eb !important;
-}
-.va-checklist-input table th:first-child {
-  border-left: 1px solid #e5e7eb !important;
-}
-.va-checklist-input table td {
-  border-left: 1px solid #e5e7eb !important;
-}
-.va-checklist-input table th:last-child,
-.va-checklist-input table td:last-child {
-  border-right: 1px solid #e5e7eb !important;
-}
-.va-checklist-input table tr:last-child td {
-  border-bottom: none !important;
-}
 /* va-show layout */
 .va-show .v-table__wrapper table {
   border-top: 1px solid #dddddd;

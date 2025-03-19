@@ -28,6 +28,36 @@ import { required } from "@vuelidate/validators";
 export default {
   props: ["resource", "title"],
   inject: [],
+  provide() {
+    return {
+      validations: {
+        form: {
+          name: {
+            required
+          },
+          version: {
+            required
+          }
+        }
+      },
+      errors: {
+        nameErrors: (v$) => {
+          const errors = [];
+          if (!v$['form'].name.$dirty) return errors;
+          v$['form'].name.required.$invalid &&
+            errors.push(this.$t("v.text.required"));
+          return errors;
+        },
+        versionErrors: (v$) => {
+          const errors = [];
+          if (!v$['form'].version.$dirty) return errors;
+          v$['form'].version.required.$invalid &&
+            errors.push(this.$t("v.text.required"));
+          return errors;
+        },
+      }
+    };
+  },
   data() {
     return {
       app: null,

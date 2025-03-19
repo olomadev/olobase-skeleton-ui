@@ -32,6 +32,7 @@ export default {
       "AuthorizationRolesEdit": () => import("./resources/Roles/Edit.vue"),
       "AuthorizationRolesForm": () => import("./resources/Roles/Form.vue"),
       "AuthorizationRolesList": () => import("./resources/Roles/List.vue"),
+      "AuthorizationUserRolesList": () => import("./resources/UserRoles/List.vue"),
       "AuthorizationPermissionsList": () => import("./resources/Permissions/List.vue"),
     };
 

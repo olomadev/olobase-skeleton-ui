@@ -55,6 +55,11 @@ export default {
             method: "Method",
             actions: "Actions"
           }
+        },
+        users: {
+          menu: {
+            label: "Users",
+          }
         }
       }
     },
@@ -116,6 +121,11 @@ export default {
             actions: "İşlemler"
           }
         },
+        users: {
+          menu: {
+            label: "Kullanıcılar",
+          }
+        }
       }
     },
 
