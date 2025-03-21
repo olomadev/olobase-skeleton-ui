@@ -145,7 +145,7 @@ export default {
       });
       if (result) {
         this.clear();
-        this.$router.push({ name: "login", query: { resetPassword: true } });
+        this.$router.push({ name: "users_login", query: { resetPassword: true } });
       }
     },
     clear() {
@@ -160,7 +160,7 @@ export default {
         return true;
       } catch (e) {
         this.loading = false;
-        console.log(e.message);
+        console.error(e.message);
       }
       return false;
     },

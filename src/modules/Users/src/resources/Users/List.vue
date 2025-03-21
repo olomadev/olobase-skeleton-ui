@@ -10,6 +10,20 @@
       :disable-show="false"
       show-select
     >
+      <template v-slot:[`field.userRoles`]="{ item }">
+        <div class="d-flex flex-wrap ga-2">
+          <v-chip
+            size="small"
+            v-for="(role, index) in item.userRoles"
+            :key="index"
+            label
+            color="primary"
+          >
+            <v-icon icon="mdi-label" start></v-icon>
+            {{ role.name }}
+          </v-chip>
+        </div>
+      </template>
     </va-data-table-server>
   </va-list>
 </template>
@@ -37,6 +51,10 @@ export default {
         },
         {
           source: "email",
+          sortable: true,
+        },
+        {
+          source: "userRoles",
           sortable: true,
         },
         {

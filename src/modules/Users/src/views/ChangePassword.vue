@@ -3,34 +3,33 @@
     <v-card flat>
       <v-card-text>
         <div class="d-flex align-center mb-2">
-          <h1 class="h1">{{ $t("resources.account.passwordChange") }}</h1>
+          <h1 class="h1">{{ $t("users.changePassword.title") }}</h1>
         </div>
         <v-row>
           <v-col sm="3">
             <va-password-input
               source="currentPassword"
-              resource="account"
+              :label="$t('users.changePassword.fields.currentPassword')"
               v-model="model.currentPassword"
               :error-messages="currentPasswordErrors"
             >
             </va-password-input>
             <va-password-input
               source="password"
-              resource="account"
+             :label="$t('users.changePassword.fields.newPassword')"
              v-model="model.newPassword"
              :error-messages="newPasswordErrors"
             >
             </va-password-input>
             <va-password-input
               source="passwordConfirmation"
-              resource="account"
+             :label="$t('users.changePassword.fields.confirmPassword')"
              v-model="model.confirmPassword"
              :error-messages="confirmPasswordErrors"
             >
             </va-password-input>
           </v-col>
         </v-row>
-
         <v-btn
           color="primary"
           :loading="loading"

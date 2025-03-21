@@ -60,27 +60,20 @@
       <v-window-item eager value="2">
         <v-row class="mt-2">
           <v-col cols="12" sm="12" md="12" lg="6">
-            <v-data-table 
-              :density="density"
-              v-if="tab == 2" 
-              :items="model.roleUsers" 
-              :headers="userHeaders"
-              :search="search"
-              :custom-filter="filterText"
-            >
+            <v-data-table v-if="tab == 2" :items="model.roleUsers" :headers="userHeaders">
               <template v-slot:top>
-                <v-text-field 
-                  density="compact"
-                  variant="outlined" 
-                  append-inner-icon="mdi-magnify"
-                  v-model="search" 
-                  class="mt-2" 
-                  color="primary"
-                  :label="$t('va.actions.q')"
-                  hide-details
-                  clearable
-                >
-                </v-text-field>
+                <v-row>
+                  <v-col class="d-flex justify-end">
+                    <v-btn color="primary" @click="showAddUserDialog = true" icon>
+                      <v-icon>mdi-plus</v-icon>
+                    </v-btn>
+                  </v-col>
+                </v-row>
+              </template>
+              <template v-slot:item.action="{ item }">
+                <v-btn icon variant="text" @click="removeUser(item.id)">
+                  <v-icon size="xsmall">mdi-delete</v-icon>
+                </v-btn>
               </template>
             </v-data-table>
           </v-col>
@@ -90,6 +83,49 @@
 
     <va-save-button></va-save-button>
   </va-form>
+
+  <v-dialog v-model="showAddUserDialog" max-width="600px">
+    <v-card>
+      <v-card-title>Kullanıcı Seç</v-card-title>
+      <v-card-text>
+        <v-data-table-server
+          v-model:items-per-page="itemsPerPage"
+          :headers="userHeaders"
+          :items="serverItems"
+          :items-length="totalItems"
+          :loading="loading"
+          :search="q"
+          item-value="name"
+          @update:options="loadUsers"
+        >
+          <template v-slot:item.action="{ item }">
+            <v-btn icon variant="text" color="primary" @click="addUser(item)">
+              <v-icon>mdi-plus</v-icon>
+            </v-btn>
+          </template>        
+          <template v-slot:top>
+            <v-text-field 
+              density="compact"
+              variant="outlined" 
+              append-inner-icon="mdi-magnify"
+              v-model="q" 
+              class="mt-2" 
+              color="primary"
+              :label="$t('va.actions.q')"
+              hide-details
+              clearable
+            >
+            </v-text-field>
+          </template>
+        </v-data-table-server>
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn color="grey" @click="showAddUserDialog = false">Kapat</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+
 </template>
 
 <script>
@@ -97,7 +133,6 @@ import { useVuelidate } from "@vuelidate/core";
 import { required, maxLength, numeric } from "@vuelidate/validators";
 import utils from "olobase-admin/src/mixins/utils";
 import { provide } from 'vue'
-import config from '@/_config';
 
 export default {
   props: ["id", "item"],
@@ -109,8 +144,14 @@ export default {
   },
   data() {
     return {
-      search: "",
+      q: null,
       tab: null,
+      serverItems: [],
+      totalItems: 0,
+      loadingUsers: false,
+      loadingRoleUsers: false,
+      search: null,
+      showAddUserDialog: false,
       itemsPerPage: 10,
       model: {
         id: null,
@@ -155,9 +196,6 @@ export default {
     }
   },
   computed: {
-    density() {
-      return config.density
-    },
     headers() {
       return [
         {
@@ -221,15 +259,91 @@ export default {
       this.model.roleUsers = this.item.roleUsers;
     }
   },
-  methods: {
-    filterText(value, search, item) {
-      return ( // search in other fields
-        value != null &&
-        search != null &&
-        typeof value === "string" &&
-        value.toString().toLocaleLowerCase().indexOf(search) !== -1
-      );
+  mounted() {
+
+  },
+  watch: {
+    tab(val) {
+      (async () => {
+        if (val == 2) {
+          await this.loadRoleUsers({ page: 1, itemsPerPage: this.itemsPerPage, search: { q: this.q } });
+        }
+      })();
     },
+    q(val) {
+      this.q = val;
+    }
+  },
+  methods: {
+    async loadUsers ({ page, itemsPerPage, sortBy }) {
+      this.loadingUsers = "primary";
+      this.fetchAllUsers({ page, itemsPerPage, sortBy, search: { q: this.q } }).then(({ items, total }) => {
+        this.serverItems = items
+        this.totalItems = total
+        this.loadingUsers = false
+      })
+    },
+    async loadRoleUsers ({ page, itemsPerPage, sortBy }) {
+      this.loadingRoleUsers = "primary";
+      this.fetchRoleUsers({ page, itemsPerPage, sortBy, search: { q: this.q } }).then(({ items, total }) => {
+        this.model.roleUsers = items
+        this.loadingRoleUsers = false
+      })
+    },
+    async fetchRoleUsers ({ page, itemsPerPage, sortBy, search }) {
+      let response = null;
+      const start = (page - 1) * itemsPerPage;
+      const end = start + itemsPerPage;
+      if (! search.q) {
+        response = await this.$admin.http.get('/authorization/userRoles/findAllByPaging/' + this.model.id);
+      } else {
+        response = await this.$admin.http.get('/authorization/userRoles/findAllByPaging/' + this.model.id + '?q=' + search.q);
+      }
+      const items = response?.data?.data;
+      if (sortBy && sortBy.length) {
+        const sortKey = sortBy[0].key
+        const sortOrder = sortBy[0].order
+        items.sort((a, b) => {
+          const aValue = a[sortKey]
+          const bValue = b[sortKey]
+          return sortOrder === 'desc' ? bValue - aValue : aValue - bValue
+        })
+      }
+      const paginated = items.slice(start, end === -1 ? undefined : end);
+      return { items: paginated, total: items.length }
+    },
+    async fetchAllUsers ({ page, itemsPerPage, sortBy, search }) {
+      let response = null;
+      const start = (page - 1) * itemsPerPage;
+      const end = start + itemsPerPage;
+      if (! search.q) {
+        response = await this.$admin.http.get('/users/findAllByPaging');
+      } else {
+        response = await this.$admin.http.get('/users/findAllByPaging?q=' + search.q);
+      }
+      const items = response?.data?.data;
+      if (sortBy && sortBy.length) {
+        const sortKey = sortBy[0].key
+        const sortOrder = sortBy[0].order
+        items.sort((a, b) => {
+          const aValue = a[sortKey]
+          const bValue = b[sortKey]
+          return sortOrder === 'desc' ? bValue - aValue : aValue - bValue
+        })
+      }
+      const paginated = items.slice(start, end === -1 ? undefined : end);
+      return { items: paginated, total: items.length }
+    },
+    async addUser(user) {
+      const data = { userId: user.id, roleId: this.model.id };
+      await this.$admin.http({ method: "PUT", url: '/authorization/userRoles/assign', data: data });
+      this.loadRoleUsers({ page: 1, itemsPerPage: this.itemsPerPage, search: { q: this.q } })
+    },
+    async removeUser(userId) {
+      const data = { userId: userId, roleId: this.model.id };
+      await this.$admin.http({ method: "PUT", url: '/authorization/userRoles/unassign', data: data });
+      this.loadRoleUsers({ page: 1, itemsPerPage: this.itemsPerPage, search: { q: this.q } })
+    }
   }
 
 }

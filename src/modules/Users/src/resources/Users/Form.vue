@@ -27,13 +27,10 @@
           :error-messages="passwordErrors"
         ></va-text-input>
 
-        <va-select-input
-          source="userRoles"
-          reference="authorization_roles"
-          :error-messages="userRoleErrors"
-          multiple
-          clearable
-        ></va-select-input>
+        <v-btn block class="mb-5"
+          :to="{ name: 'authorization_roles_list' }">
+          {{ $t('users.buttons.editRoles.label') }}
+        </v-btn>
 
         <va-boolean-input
           source="active"
@@ -84,10 +81,7 @@ export default {
         password: {
           minLength: minLength(8),
           maxLength: maxLength(16),
-        },
-        userRoles: {
-          required,
-        },
+        }
       }
     }
   },
@@ -103,8 +97,7 @@ export default {
         emailActivation: 0,
         avatar: {
           image: null
-        },
-        userRoles: null,
+        }
       },
     };
   },
@@ -157,14 +150,7 @@ export default {
       this.v$["model"].password.maxLength.$invalid &&
         errors.push(this.$t("v.string.maxLength", { max: "16" }));
       return errors;
-    },
-    userRoleErrors() {
-      const errors = [];
-      if (!this.v$["model"].userRoles.$dirty) return errors;
-      this.v$["model"].userRoles.required.$invalid &&
-        errors.push(this.$t("v.text.required"));
-      return errors;
-    },
+    }
   },
 }
 </script>

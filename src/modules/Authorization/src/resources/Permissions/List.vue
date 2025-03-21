@@ -38,9 +38,6 @@ export default {
           name: {
             required
           },
-          resource: {
-            required
-          },
           route: {
             required
           },
@@ -64,13 +61,6 @@ export default {
           const errors = [];
           if (!v$['form'].name.$dirty) return errors;
           v$['form'].name.required.$invalid &&
-            errors.push(this.$t("v.text.required"));
-          return errors;
-        },
-        resourceErrors: (v$) => {
-          const errors = [];
-          if (!v$['form'].resource.$dirty) return errors;
-          v$['form'].resource.required.$invalid &&
             errors.push(this.$t("v.text.required"));
           return errors;
         },
@@ -115,10 +105,6 @@ export default {
         },
         {
           source: "name",
-          sortable: true,
-        },
-        {
-          source: "resource",
           sortable: true,
         },
         {

@@ -68,3 +68,26 @@ groupByArray: {
             errors.push(this.$t("v.text.required"));
           return errors;
         },
+
+ - Add Users/List.vue field templating example to https://olobase.oloma.dev/2.0/ui/layouts/list/data-table-server.html.
+
+    <va-data-table-server
+      :disable-actions="false"
+      :disable-show="false"
+      show-select
+    >
+      <template v-slot:[`field.userRoles`]="{ item }">
+        <div class="d-flex flex-wrap ga-2">
+          <v-chip
+            size="small"
+            v-for="(role, index) in item.userRoles"
+            :key="index"
+            label
+            color="primary"
+          >
+            <v-icon icon="mdi-label" start></v-icon>
+            {{ role.name }}
+          </v-chip>
+        </div>
+      </template>
+    </va-data-table-server>

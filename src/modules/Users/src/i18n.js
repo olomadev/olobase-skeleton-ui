@@ -5,6 +5,9 @@ export default {
         menu: {
           label: "Users",
         },
+        buttons: {
+          editRoles: { label: "Edit Roles" }
+        },        
         users: {
           title: "Users",
           fields: {
@@ -14,10 +17,6 @@ export default {
             lastname: "Lastname",
             password: "Password",
             avatarImage: "Avatar Image",
-            setPasswordButton: "Set Password",
-            changePasswordButton: "Change Password",
-            changePasswordTitle: "Password",
-            newPassword: "Password",
             active: "Active",
             emailActivation: "E-Mail Activation",
             createdAt: "Created At",
@@ -42,7 +41,9 @@ export default {
             label: "Change Password"
           },
           fields: {
-
+            currentPassword: "Current Password",
+            newPassword: "New Password",
+            confirmPassword: "Confirm Password"
           }
         },
         login: {
@@ -67,6 +68,9 @@ export default {
         menu: {
           label: "Kullanıcılar",
         },
+        buttons: {
+          editRoles: { label: "Rolleri Düzenle" }
+        },
         users: {
           title: "Kullanıcılar",
           fields: {
@@ -76,10 +80,6 @@ export default {
             lastname: "Soyad",
             password: "Şifre",
             avatarImage: "Avatar",
-            setPasswordButton: "ŞİFRE BELİRLE",
-            changePasswordButton: "ŞİFRE DEĞİŞTİR",
-            changePasswordTitle: "Şifre",
-            newPassword: "Şifre",
             active: "Aktif Mi",
             createdAt: "Oluşturulma",
             themeColor: "Tema Rengi",
@@ -104,7 +104,9 @@ export default {
             label: "Şifre Değiştir"
           },
           fields: {
-
+            currentPassword: "Geçerli Şifre",
+            newPassword: "Yeni Şifre",
+            confirmPassword: "Şifreyi Doğrula"
           }
         },
         login: {
@@ -122,7 +124,6 @@ export default {
         resetPassword: {
           title: "Şifre Sıfırla"
         }
-
       }
     },
   }
