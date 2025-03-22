@@ -13,8 +13,8 @@ export default {
       const module = parts[0];
       const resourceName = parts[1];
       const enumKey = module 
-        ? `${module}.${resourceName}.enums.${this.source}` 
-        : `${resourceName}.${resourceName}.enums.${this.source}`;
+        ? `${module}.enums.${this.source}` 
+        : `${resourceName}.enums.${this.source}`;
       results = this.$admin.i18n.global.tm(enumKey);
     }
     if (!results) {

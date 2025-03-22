@@ -13,7 +13,7 @@ export default {
     // const { default: routes } = await import("./plugins.js");
 
     // Install i18n messages
-    const { default: i18n } = await import("./i18n.js");
+    // const { default: i18n } = await import("./i18n.js");
 
     // Install resources
     const { default: resources } = await import("./resources/index.js");
@@ -31,7 +31,7 @@ export default {
     };
 
     return {
-      i18n,
+      // i18n,
       // stores,
       routes,
       // plugins,

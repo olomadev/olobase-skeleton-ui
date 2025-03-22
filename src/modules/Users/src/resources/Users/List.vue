@@ -34,9 +34,14 @@ export default {
   data() {
     return {
       filters: [
-        { source: "firstname", col: 2 },
-        { source: "lastname" },
-        { source: "email" },
+        { 
+          source: "userRoles",
+          type: "select",
+          attributes: { 
+            reference: "authorization_roles",
+            multiple: true,
+          }
+        },
         { source: "createdAt", type: "date" },
         { source: "active", type: "boolean" },
       ],
@@ -55,6 +60,10 @@ export default {
         },
         {
           source: "userRoles",
+          sortable: true,
+        },
+        {
+          source: "createdAt",
           sortable: true,
         },
         {

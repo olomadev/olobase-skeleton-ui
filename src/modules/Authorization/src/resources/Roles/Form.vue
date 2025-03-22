@@ -33,8 +33,8 @@
       color="primary"
       align-tabs="left"
     >
-      <v-tab value="1">{{ $t("authorization.permissions.menu.label") }}</v-tab>
-      <v-tab value="2">{{ $t("authorization.users.menu.label") }}</v-tab>
+      <v-tab value="1">{{ $t("authorization.roles.tabs.permissions.label") }}</v-tab>
+      <v-tab value="2">{{ $t("authorization.roles.tabs.users.label") }}</v-tab>
     </v-tabs>
 
     <v-window v-model="tab">
@@ -50,7 +50,7 @@
               :fields="fields"
               primary-key="permId"
               items-per-page="25"
-              :group-header="$t('resources.roles.fields.moduleName')"
+              :group-header="$t('authorization.roles.fields.module')"
             >
             </va-check-list-input>
           </v-col>
@@ -60,7 +60,7 @@
       <v-window-item eager value="2">
         <v-row class="mt-2">
           <v-col cols="12" sm="12" md="12" lg="6">
-            <v-data-table v-if="tab == 2" :items="model.roleUsers" :headers="userHeaders">
+            <v-data-table :density="getDensity" v-if="tab == 2" :items="model.roleUsers" :headers="usersHeaders">
               <template v-slot:top>
                 <v-row>
                   <v-col class="d-flex justify-end">
@@ -89,8 +89,9 @@
       <v-card-title>Kullanıcı Seç</v-card-title>
       <v-card-text>
         <v-data-table-server
+          :density="getDensity"
           v-model:items-per-page="itemsPerPage"
-          :headers="userHeaders"
+          :headers="usersHeaders"
           :items="serverItems"
           :items-length="totalItems"
           :loading="loading"
@@ -132,6 +133,7 @@
 import { useVuelidate } from "@vuelidate/core";
 import { required, maxLength, numeric } from "@vuelidate/validators";
 import utils from "olobase-admin/src/mixins/utils";
+import config from '@/_config'
 import { provide } from 'vue'
 
 export default {
@@ -168,11 +170,11 @@ export default {
         { source: "route" },
         { source: "method"},
       ],
-      userHeaders: [
-        { text: 'Ad', value: 'firstname' },
-        { text: 'Soyad', value: 'lastname' },
-        { text: 'E-Posta', value: 'email' },
-        { text: 'İşlem', value: 'action', sortable: false }
+      usersHeaders: [
+        { value: 'firstname' },
+        { value: 'lastname' },
+        { value: 'email' },
+        { value: 'action', sortable: false }
       ],
     };
   },
@@ -196,6 +198,9 @@ export default {
     }
   },
   computed: {
+    getDensity() {
+      return config.density;
+    },
     headers() {
       return [
         {
@@ -258,9 +263,6 @@ export default {
     if (this.item) {
       this.model.roleUsers = this.item.roleUsers;
     }
-  },
-  mounted() {
-
   },
   watch: {
     tab(val) {
@@ -335,10 +337,15 @@ export default {
       return { items: paginated, total: items.length }
     },
     async addUser(user) {
+      const alreadyExists = this.model.roleUsers.some(roleUser => roleUser.id === user.id);
+      if (alreadyExists) {
+        this.$admin.message('info', this.$t("authorization.roles.messages.userAlreadyAssigned"));
+        return;
+      }
       const data = { userId: user.id, roleId: this.model.id };
       await this.$admin.http({ method: "PUT", url: '/authorization/userRoles/assign', data: data });
-      this.loadRoleUsers({ page: 1, itemsPerPage: this.itemsPerPage, search: { q: this.q } })
-    },
+      this.loadRoleUsers({ page: 1, itemsPerPage: this.itemsPerPage, search: { q: this.q } });
+    },    
     async removeUser(userId) {
       const data = { userId: userId, roleId: this.model.id };
       await this.$admin.http({ method: "PUT", url: '/authorization/userRoles/unassign', data: data });

@@ -93,7 +93,6 @@
                               @change="updateVisibility(item.key, visibilities[item.key])"
                               color="primary"
                               hide-details
-                              class="mt-2 mb-2"
                             ></v-switch>
                           </td>
                         </template>
@@ -110,7 +109,6 @@
                               @change="updateFilterability(item.key, filterabilities[item.key])"
                               color="primary"
                               hide-details
-                              class="mt-2 mb-2"
                             ></v-switch>
                           </td>
                         </template>

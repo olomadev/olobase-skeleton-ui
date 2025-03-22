@@ -12,7 +12,7 @@ import _tr from "./locales/tr.json";
 const i18n = createI18n({
   locale: config.i18n.defaultLocale,
   fallbackLocale: config.i18n.fallbackLocale,
-  legacy: false,
+  legacy: false, // If you want to use reactive i18n for Vue 3 you can do this right
   globalInjection: true,
   // forceStringify: false,
   messages: { tr: _tr, en: _en },

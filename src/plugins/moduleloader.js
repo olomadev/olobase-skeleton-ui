@@ -8,7 +8,7 @@
 import { defineAsyncComponent } from "vue";
 import { capitalize, camelCase, upperFirst } from '@/helpers/lodash';
 import router from "@/router";
-import i18n from "../i18n";
+import i18nInstance from "../i18n";
 
 class ModuleLoader {
 
@@ -29,7 +29,6 @@ class ModuleLoader {
   async install(app) {
     this.app = app;
     this.pinia = app.config.globalProperties.$pinia;
-    const i18nInstance = i18n;
     const defaultStore = app.config.globalProperties.$store;
     const moduleInstances = await Promise.all(this.modules.map(m => this.loadModule(m)));
 
@@ -39,11 +38,11 @@ class ModuleLoader {
         const { i18n, routes, stores, components, navigation, resources, resourceComponents } =
           await moduleInstance.default.install(app);
 
-        // **Add i18n Messages**
-        if (i18n && i18n.messages) {
-          Object.keys(i18n.messages).forEach((lang) => {
+        // **Merge i18n Messages**
+        if (i18n?.messages) {
+          for (const lang in i18n.messages) {
             i18nInstance.global.mergeLocaleMessage(lang, i18n.messages[lang]);
-          });
+          }
         }
 
         // **Store Navigations**
