@@ -44,7 +44,7 @@ export default ({ app, admin, store, i18n, resource, title }) => {
           let componentName = standalone 
             ? `${upperFirst(camelCase(resourceName))}${upperFirst(action)}` 
             : `${upperFirst(camelCaseModuleName)}${upperFirst(camelCase(resourceName))}${upperFirst(action)}`;
-
+            
           let props = {
             id: this.id,
             title: this.$route.meta.title,

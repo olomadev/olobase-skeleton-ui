@@ -5,10 +5,8 @@
  * 
  * automatically load resources and external libs
  */
-import "./vuetify";
 import PortalVue from "portal-vue";
 import UnsavedFormDialog from "../components/UnsavedFormDialog.vue";
-// const modules = import.meta.glob("../modules/**/plugins/loader.js");
 
 /**
  * Dynamic vuetify components

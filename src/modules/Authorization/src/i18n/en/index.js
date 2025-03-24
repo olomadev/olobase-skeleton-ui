@@ -3,12 +3,10 @@ import permissions from './permissions.js';
 import enums from './enums.js';
 
 export default {
-  authorization: {
-    menu: {
-      label: "Authorization",
-    },
-    roles,
-    permissions,
-    enums
-  }
+  menu: {
+    label: "Authorization",
+  },
+  roles,
+  permissions,
+  enums
 };

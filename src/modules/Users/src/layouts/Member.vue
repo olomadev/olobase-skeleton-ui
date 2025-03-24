@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Trans from "@/i18n/translation";
+import Translation from "@/modules/i18n/src/translation";
 
 export default {
   inject: [],
@@ -24,9 +24,9 @@ export default {
     /**
      * Set default locale
      */
-    const lang = Trans.guessDefaultLocale();
-    if (lang && Trans.supportedLocales.includes(lang)) { // assign browser language
-      await Trans.switchLanguage(lang);
+    const lang = Translation.guessDefaultLocale();
+    if (lang && Translation.supportedLocales.includes(lang)) { // assign browser language
+      await Translation.switchLanguage(lang);
     }
   },
   computed: {

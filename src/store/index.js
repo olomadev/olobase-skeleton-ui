@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import mainNavigation from "@/_nav";
+import axios from "@/helpers/axios";
 
 const store = defineStore('index', {
   state: () => {

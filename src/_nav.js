@@ -8,14 +8,14 @@ export default  {
     let menuItems = [
       {
         icon: "mdi-view-dashboard-outline",
-        text: t("menu.dashboard"),
+        text: "Dashboard", // t("menu.dashboard"),
         link: "/dashboard",
         order: 0,
       },
       // { divider: true },
       {
         icon: "mdi-api",
-        text: t("menu.api"),
+        text: "API", // t("menu.api"),
         link: "/swagger",
         order: 99,
        }

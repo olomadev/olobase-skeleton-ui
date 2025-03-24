@@ -6,19 +6,17 @@
  * bootstraps Vuetify and other plugins then mounts the App`
  */
 // Components
-import App from "./App.vue";
-
-// Composables
-import { createApp } from "vue";
+import { createApp } from 'vue';
+import App from './App.vue';
 import '@/assets/styles/app.css'; // put your styles here
 import '@/assets/styles/materialdesignicons.css'; // https://pictogrammers.com/library/mdi/
-
-// Plugins
 import { registerPlugins } from "@/plugins";
+
 const app = createApp(App);
 
 async function init() {
   await registerPlugins(app);
   app.mount("#app");
 }
-init()
+// start the application
+init();

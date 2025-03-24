@@ -1,4 +1,4 @@
-import en from "./en.json";
-import tr from "./tr.json";
+import en from "./en.js";
+import tr from "./tr.js";
 
 export { en, tr };

@@ -34,7 +34,7 @@
       align-tabs="left"
     >
       <v-tab value="1">{{ $t("authorization.roles.tabs.permissions.label") }}</v-tab>
-      <v-tab value="2">{{ $t("authorization.roles.tabs.users.label") }}</v-tab>
+      <v-tab value="2" v-if="action == 'edit'">{{ $t("authorization.roles.tabs.users.label") }}</v-tab>
     </v-tabs>
 
     <v-window v-model="tab">
@@ -57,7 +57,7 @@
         </v-row>
       </v-window-item>
 
-      <v-window-item eager value="2">
+      <v-window-item eager value="2" v-if="action == 'edit'">
         <v-row class="mt-2">
           <v-col cols="12" sm="12" md="12" lg="6">
             <v-data-table :density="getDensity" v-if="tab == 2" :items="model.roleUsers" :headers="usersHeaders">
@@ -148,6 +148,7 @@ export default {
     return {
       q: null,
       tab: null,
+      action: "edit",
       serverItems: [],
       totalItems: 0,
       loadingUsers: false,
@@ -260,6 +261,7 @@ export default {
   },
   created() {
     this.model.id = this.generateId(this);
+    this.action = this.$route.name.split('_').pop();
     if (this.item) {
       this.model.roleUsers = this.item.roleUsers;
     }

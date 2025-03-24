@@ -1,15 +1,53 @@
 import users from './users.js';
-import views from './views.js';
+import login from './login.js';
 
 export default {
-  users: {
+  title: "Kullanıcılar",
+  menu: {
+    label: "Kullanıcılar",
+  },
+  buttons: {
+    editRoles: { label: "Rolleri Düzenle" }
+  },
+  users,
+  login,
+  logout: {
+    title: "Logout",
     menu: {
-      label: "Kullanıcılar",
-    },
+      label: "Logout"
+    }
+  },
+  forgotPassword: {
+    title: "Forgot Password",
     buttons: {
-      editRoles: { label: "Rolleri Düzenle" }
+      resetMyPassword: "Reset Password",
+      backToLogin: "Back to Login"
+    }
+  },
+  resetPassword: {
+    title: "Reset Password"
+  },
+  myAccount: {
+    title: "My Account",
+    menu: {
+      label: "My Account"
     },
-    users,
-    views
+    fields: {
+      avatar: {
+        set: "Set Avatar",
+        del: "Delete"
+      }
+    }
+  },
+  changePassword: {
+    title: "My Password",
+    menu: {
+      label: "Change Password"
+    },
+    fields: {
+      currentPassword: "Current Password",
+      newPassword: "New Password",
+      confirmPassword: "Confirm Password"
+    }
   }
 };

@@ -1,0 +1,4 @@
+[submodule "packages/admin"]
+	path = packages/admin
+	url = git@github.com:olomadev/olobase-admin.git
+	branch = 3.x

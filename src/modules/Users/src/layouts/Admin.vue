@@ -95,9 +95,9 @@
 <script>
 import { isEmpty} from '@/helpers/lodash';
 import { useDisplay } from "vuetify";
-import Trans from "@/i18n/translation";
 import { storeToRefs } from 'pinia'
 import useAuth from "olobase-admin/src/store/auth";
+import Translation from "@/modules/i18n/src/translation";
 import config from "../_config";
 
 export default {
@@ -120,9 +120,9 @@ export default {
     /**
      * Set default locale
      */
-    const lang = Trans.guessDefaultLocale();
-    if (lang && Trans.supportedLocales.includes(lang)) { // assign browser language
-      await Trans.switchLanguage(lang);
+    const lang = Translation.guessDefaultLocale();
+    if (lang && Translation.supportedLocales.includes(lang)) { // assign browser language
+      await Translation.switchLanguage(lang);
     }
     /**
      * Check user is authenticated
@@ -201,8 +201,9 @@ export default {
     }
   },
   methods: {
-    logout() {
-      this.$store.getModule("auth").logout();
+    async logout() {
+      this.$store.getModule("api").setLoading(true);
+      await this.$store.getModule("auth").logout();
       this.$router.push({ name: "users_login" });
     },
   },

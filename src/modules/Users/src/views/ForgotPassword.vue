@@ -51,7 +51,7 @@
                     text
                     rounded
                   >
-                    {{ $t("auth.resetMyPassword") }}
+                    {{ $t("users.forgotPassword.buttons.resetMyPassword") }}
                   </v-btn>
                 </div>
               </v-col>
@@ -68,7 +68,7 @@
             :to="{ name: 'users_login' }"
             style="color: white; font-size: 13px"
           >
-            {{ $t("auth.backToLogin") }}
+            {{ $t("users.forgotPassword.buttons.backToLogin") }}
           </router-link>
         </div>
       </v-col>

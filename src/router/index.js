@@ -1,5 +1,5 @@
 // Composables
-import i18n from "../i18n";
+// import i18n from "../i18n";
 import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
@@ -12,7 +12,7 @@ const routes = [
         name: "dashboard",
         component: () => import('@/views/Dashboard.vue'),
         meta: {
-          title: i18n.global.t("routes.dashboard"),
+          title: "Dashboard",
         },
       },
     ],

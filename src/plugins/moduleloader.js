@@ -8,7 +8,7 @@
 import { defineAsyncComponent } from "vue";
 import { capitalize, camelCase, upperFirst } from '@/helpers/lodash';
 import router from "@/router";
-import i18nInstance from "../i18n";
+import i18nInstance from "@/modules/i18n/src/plugin";
 
 class ModuleLoader {
 
@@ -53,8 +53,8 @@ class ModuleLoader {
         }
 
         // **Load Routes**
-        if (routes && Array.isArray(routes)) {
-          this.routes.push(...routes);
+        if (routes && typeof routes.build === "function") {
+          this.routes.push(...routes.build());
         }
 
         // **Load Stores**
@@ -92,6 +92,10 @@ class ModuleLoader {
     this.routes.forEach((route) => router.addRoute(route));
 
     return this.getResources();
+  }
+
+  getI18nInstance() {
+    return this.i18nInstance;
   }
 
   /**

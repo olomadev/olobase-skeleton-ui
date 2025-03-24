@@ -78,7 +78,7 @@
 <script>
 import { useVuelidate } from "@vuelidate/core";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
-import Trans from "@/i18n/translation";
+import Translation from "@/modules/i18n/src/translation";
 
 export default {
   inject: [],
@@ -215,10 +215,10 @@ export default {
               // 
               if (Self.locale instanceof Object
                 && Self.locale["id"]
-                && Trans.currentLocale != Self.locale.id
-                && Trans.supportedLocales.includes(Self.locale.id)
+                && Translation.currentLocale != Self.locale.id
+                && Translation.supportedLocales.includes(Self.locale.id)
                 ) {
-                await Trans.switchLanguage(Self.locale.id);
+                await Translation.switchLanguage(Self.locale.id);
               }
               Self.$vuetify.theme.themes.light.colors.primary = Self.themeColor;
               localStorage.setItem("themeColor", Self.themeColor);

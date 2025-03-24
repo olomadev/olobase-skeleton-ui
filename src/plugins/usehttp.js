@@ -5,7 +5,6 @@
  *
  * Defines useHttp() method to configure global http settings
  */
-import i18n from "../i18n";
 import router from "@/router";
 import cookies from "@/helpers/cookies";
 import eventBus from "@/helpers/eventbus";

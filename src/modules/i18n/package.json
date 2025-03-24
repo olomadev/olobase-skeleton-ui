@@ -1,0 +1,13 @@
+{
+  "name": "i18n",
+  "version": "1.0.0",
+  "main": "dist/modules/i18n/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "vue-i18n": "^11.1.2"
+  }
+}

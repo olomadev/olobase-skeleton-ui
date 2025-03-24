@@ -7,7 +7,7 @@
         v-if="resetPassword"
         class="mb-4"      
         color="primary"
-        :text="$t('auth.passwordResetEmail')"
+        :text="$t('users.login.messages.passwordResetEmail')"
       ></v-alert>
     </v-row>
 
@@ -30,7 +30,7 @@
                 prepend-inner-icon="mdi-account"
                 v-model="username"
                 name="username"
-                :label="$t('auth.username')"
+                :label="$t('users.login.fields.username')"
                 type="text"
                 variant="outlined"
                 class="mx-1"
@@ -48,7 +48,7 @@
                 :type="showPass ? 'text' : 'password'"
                 v-model="password"
                 name="password"
-                :label="$t('auth.password')"
+                :label="$t('users.login.fields.password')"
                 variant="outlined"
                 class="mx-1"
                 autocomplete="password"
@@ -72,7 +72,7 @@
                       type="submit"
                       text
                     >
-                      {{ $t("auth.signIn") }}
+                      {{ $t("users.login.buttons.signIn.label") }}
                     </v-btn>
                   </div>
                 </v-col>
@@ -92,7 +92,7 @@
                 :to="{ name: 'users_forgotPassword' }"
                 style="color: white; font-size: 13px"
               >
-                {{ $t("auth.forgotPassword") }}
+                {{ $t("users.login.buttons.forgotPassword.label") }}
               </router-link>
             </div>
           </v-col>
@@ -105,7 +105,7 @@
 <script>
 import { useDisplay } from "vuetify";
 import { useVuelidate } from "@vuelidate/core";
-import LanguageSwitcher from "@/components/LanguageSwitcher.vue";
+import LanguageSwitcher from "@/modules/i18n/src/components/LanguageSwitcher.vue";
 import { required, email, minLength, maxLength } from "@vuelidate/validators";
 import { useRoute } from 'vue-router';
 
