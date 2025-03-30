@@ -44,37 +44,37 @@
   },
   "v": {
     "text": {
-      "required": "This field is required"
+        "required": "This field is required"
     },
     "email": {
-      "required": "E-mail field is required",
-      "invalid": "Invalid e-mail address"
+        "required": "E-mail field is required",
+        "invalid": "Invalid e-mail address"
     },
     "string": {
-      "required": "This field is required",
-      "alpha": "This field can only contains alphabetic characters",
-      "minLength": "This field must be a minimum of {min} characters",
-      "maxLength": "This field must be a maximum of {max} characters"
+        "required": "This field is required",
+        "alpha": "This field can only contains alphabetic characters",
+        "minLength": "This field must be a minimum of {min} characters",
+        "maxLength": "This field must be a maximum of {max} characters"
     },
     "number": {
-      "required": "This field is required",
-      "integer": "This field must contains an integer value",
-      "numeric": "This field must contains a numeric value",
-      "decimal": "This field must contains a decimal value"
+        "required": "This field is required",
+        "integer": "This field must contains an integer value",
+        "numeric": "This field must contains a numeric value",
+        "decimal": "This field must contains a decimal value"
     },
     "password": {
-      "required": "Password field is required",
-      "sameAs": "Password confirmation must be same as new password"
+        "required": "Password field is required",
+        "sameAs": "Password confirmation must be same as new password"
     },
     "captcha": {
-      "invalid" : "You need to pass the security verification stage"
+        "invalid": "You need to pass the security verification stage"
     }
   },
   "form": {
-    "saved" : "Saved sucessfully"
+    "saved": "Saved sucessfully"
   },
   "messages": {
-    "welcome" : "Welcome to demo application" 
+    "welcome": "Welcome to demo application"
   },
   "routes": {
     "home": "Home",
@@ -95,12 +95,12 @@
     "search": "Search",
     "default": "Default",
     "selected_items": "1 item selected | {count} items selected",
-    "no_data_available" : "No data available",
+    "no_data_available": "No data available",
     "yes": "Yes",
     "no": "No"
   },
   "dataiterator": {
-    "displaying_page": "Displaying page {page} of {pageCount}",
+    "displaying_page": "Displaying page {page} of {pageCount}"
   },
   "auth": {
     "username": "E-mail Address",
@@ -133,7 +133,7 @@
     "text": "Text"
   },
   "search": {
-    "q" : "Search"
+    "q": "Search"
   },
   "dialog": {
     "addNew": "Add New",
@@ -150,8 +150,8 @@
     "batchUpdateButton": "Update",
     "printWindow": "Print Window",
     "print": "Print",
-    "importExcelButton" : "Import Excel",
-    "importExcelTitle" : "Import Excel",
+    "importExcelButton": "Import Excel",
+    "importExcelTitle": "Import Excel",
     "excelExportTitle": "Excel Export",
     "getReportTitle": "Get Report"
   },
@@ -162,7 +162,6 @@
     "companies": "Companies",
     "users": "Users",
     "roles": "Roles",
-    "jobTitleList": "Job Titles List",
     "dataTableServer": "Data Table Server",
     "dataTableServerEditable": "Data Table Editable",
     "dataTableServerGroup": "Data Table Group",
@@ -216,14 +215,16 @@
     "profile": "Profile",
     "dashboard": "Dashboard",
     "terms": "End User License Agreement (EULA)",
-    "api": "REST Api",
+    "api": "REST Api"
   },
   "crumbs": {
     "list": "List",
     "create": "Create",
     "edit": "Edit",
     "show": "Details",
-    "menu": { "tab": "Tab"},
+    "menu": {
+      "tab": "Tab"
+    },
     "avatars": "Avatars",
     "autocomplete": "Auto Completer",
     "boolean": "Boolean",
@@ -263,41 +264,41 @@
   "resources": {
     "swagger": {
       "rest_api": "REST API Documents",
-      "open_docs" : "Click to Read the Docs",
+      "open_docs": "Click to Read the Docs"
     },
     "categories": {
       "fields": {
         "q": "Search",
-        "name" : "Category Name",
-        "parentId" : "Parent Category"
+        "name": "Category Name",
+        "parentId": "Parent Category"
       }
     },
     "roles": {
-      "rolePermissions" : "Role Permissions",
-      "addPermissionButton" : "Add Permission",
+      "rolePermissions": "Role Permissions",
+      "addPermissionButton": "Add Permission",
       "fields": {
-        "q" : "Search",
-        "resource" : "Resource",
-        "roleKey" : "Rol Key",
-        "roleName" : "Rol Name",
-        "roleLevel" : "Rol Level",
-        "permissions" : "Yetkiler",
-        "moduleName" : "Module",
-        "route" : "Route",
-        "action" : "Action",
-        "method" : "Method"
+        "q": "Search",
+        "resource": "Resource",
+        "roleKey": "Rol Key",
+        "roleName": "Rol Name",
+        "roleLevel": "Rol Level",
+        "permissions": "Yetkiler",
+        "moduleName": "Module",
+        "route": "Route",
+        "action": "Action",
+        "method": "Method"
       }
     },
     "permissions": {
       "fields": {
-        "q" : "Search",
-        "groupName" : "Module",
-        "moduleName" : "Module Name",
-        "resource" : "Resource",
-        "action" : "Action",
-        "route" : "Route",
-        "method" : "Method",
-        "actions" : "Actions"
+        "q": "Search",
+        "groupName": "Module",
+        "moduleName": "Module Name",
+        "resource": "Resource",
+        "action": "Action",
+        "route": "Route",
+        "method": "Method",
+        "actions": "Actions"
       },
       "enums": {
         "action": {
@@ -309,31 +310,31 @@
         },
         "method": {
           "POST": "POST",
-          "GET" : "GET",
-          "PUT" : "PUT",
+          "GET": "GET",
+          "PUT": "PUT",
           "DELETE": "DELETE",
-          "PATCH" : "PATCH"
+          "PATCH": "PATCH"
         }
       }
     },
     "users": {
       "fields": {
-        "q": "Search",
-        "email": "E-Mail",
-        "firstname": "Firstname",
-        "lastname": "Lastname",
-        "password": "Password",
-        "userRoles": "User Roles",
-        "avatarImage": "Avatar Image",
-        "setPasswordButton": "Set Password",
-        "changePasswordButton": "Change Password",
-        "changePasswordTitle": "Password",
-        "newPassword": "Password",
-        "active": "Active",
-        "emailActivation": "E-Mail Activation",
-        "createdAt": "Created At",
-        "themeColor": "Theme Color"
-      },
+          "q": "Search",
+          "email": "E-Mail",
+          "firstname": "Firstname",
+          "lastname": "Lastname",
+          "password": "Password",
+          "userRoles": "User Roles",
+          "avatarImage": "Avatar Image",
+          "setPasswordButton": "Set Password",
+          "changePasswordButton": "Change Password",
+          "changePasswordTitle": "Password",
+          "newPassword": "Password",
+          "active": "Active",
+          "emailActivation": "E-Mail Activation",
+          "createdAt": "Created At",
+          "themeColor": "Theme Color"
+      }
     },
     "account": {
       "title": "Account",
@@ -382,10 +383,9 @@
         "userAgent": "User Agent",
         "ip": "Ip Address",
         "attemptedAt": "Attempted At",
-        "attemptedAtStart" : "Attempt Date Start",
-        "attemptedAtEnd" : "Attempt Date End "
+        "attemptedAtStart": "Attempt Date Start",
+        "attemptedAtEnd": "Attempt Date End "
       }
     }
-
   }
 }
