@@ -1,3 +1,5 @@
+import { i18n, loadI18nMessages } from "@/helpers/i18n";
+
 export default {
   name: "Users",
   version: "1.0.0",
@@ -13,7 +15,7 @@ export default {
     // const { default: plugins } = await import("./plugins.js");
 
     // Install i18n messages
-    const { default: i18n } = await import("./i18n/index.js");
+    i18n.messages = await loadI18nMessages("users", import.meta.glob('./i18n/*/index.js'));
 
     // Install resources
     const { default: resources } = await import("./resources/index.js");

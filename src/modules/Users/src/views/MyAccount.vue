@@ -45,7 +45,7 @@
                   source="locale"
                   resource="account"
                   v-model="locale"
-                  reference="common_locales"
+                  reference="i18_languages"
                   variant="outlined"
                   clearable
                   :error-messages="localeErrors"
@@ -66,7 +66,7 @@
               </v-col>
             </v-row>
             <v-btn color="primary" :loading="accountUpdating" type="submit">
-              {{ $t("va.actions.save") }}
+              {{ $t("i18n.actions.save") }}
             </v-btn>
           </v-card-text>
         </v-card>

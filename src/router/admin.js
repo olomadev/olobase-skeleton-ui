@@ -1,4 +1,4 @@
-// import i18n from "../i18n";
+import i18n from "@/modules/i18n/src/plugin";
 
 export default {
   path: "",

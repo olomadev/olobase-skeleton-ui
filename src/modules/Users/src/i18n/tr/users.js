@@ -8,6 +8,8 @@ export default {
     password: "Şifre",
     avatarImage: "Avatar",
     userRoles: "Roller",
+    createdAtStart: "Oluşturulma Baş.",
+    createdAtEnd: "Oluşturulma Bit.",
     active: "Durum",
     emailActivation: "E-Posta Aktivasyonu",
     createdAt: "Oluşturulma",

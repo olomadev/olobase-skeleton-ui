@@ -1,0 +1,22 @@
+export default {
+  search: "Search",
+  group: " ",
+  addFilter: "Add filter",
+  selectedItems: "1 item selected | {count} items selected",
+  itemsPerPageText: "Items per page",
+  noDataAvailable: "No data available",
+  yes: "Yes",
+  no: "No",
+  nodata: "There is no data in this view",
+  actions: "Actions",
+  settings: "Settings",
+  filters: "Filters",
+  column: "Column",
+  visible: "Visibility",
+  filterable: "Filtering",
+  positioning: "Positioning",
+  saveSettings: "Save Settings",
+  closeSettings: "Close",
+  loadingText: "Loading Items...",
+  restoreDefaults: "Restore"
+}

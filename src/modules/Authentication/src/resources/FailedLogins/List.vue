@@ -69,15 +69,15 @@
                 >
                   <tbody>
                     <tr align="right">
-                      <th width="20%">{{ $t("resources.failedlogins.fields.attemptedAt") }}:</th>
+                      <th width="20%">{{ $t("authentication.failedlogins.fields.attemptedAt") }}:</th>
                       <td>{{ item.raw.attemptedAt }}</td>
                     </tr>
                     <tr align="right">
-                      <th>{{ $t("resources.failedlogins.fields.ip") }}:</th>
+                      <th>{{ $t("authentication.failedlogins.fields.ip") }}:</th>
                       <td>{{ item.raw.ip }}</td>
                     </tr>
                     <tr align="right">
-                      <th>{{ $t("resources.failedlogins.fields.userAgent") }}:</th>
+                      <th>{{ $t("authentication.failedlogins.fields.userAgent") }}:</th>
                       <td>{{ item.raw.userAgent }}</td>
                     </tr>
                   </tbody>
@@ -89,7 +89,7 @@
 
         <template v-slot:bottom.pagination.header="{ page, pageCount }">
           <v-footer class="text-body-3 mt-6 mb-2" style="padding:0;">
-            <div>{{ $t("dataiterator.displaying_page", {page, pageCount}) }}</div>
+            <div>{{ $t("i18n.dataiterator.displayingPage", {page, pageCount}) }}</div>
           </v-footer>
         </template>
 
@@ -101,7 +101,7 @@
             ></v-progress-circular>
           </v-row>
           <v-row no-gutters class="bordered pt-2 pb-2 justify-center" v-else>
-            {{ $t("va.datatable.nodata")}}
+            {{ $t("i18n.datatable.nodata")}}
           </v-row>
         </template>
         

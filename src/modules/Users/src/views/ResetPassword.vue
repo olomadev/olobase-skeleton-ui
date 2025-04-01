@@ -4,7 +4,7 @@
       <v-row>
         <v-card width="375" style="margin-top: 200px">
           <v-card-title class="mt-2">
-            {{ $t("auth.setNewPassword") }}
+            {{ $t("users.resetPassword.title") }}
           </v-card-title>
           <v-container>
             <v-form ref="form" @submit.prevent="validate">

@@ -8,7 +8,10 @@ export default {
       label: "Permissions"
     },
     users: {
-      label: "Users"
+      label: "Users",
+      dialog: {
+        title: "Select User"
+      }
     }
   },
   fields: {

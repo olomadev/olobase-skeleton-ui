@@ -24,7 +24,7 @@ export default  {
       variant: "elevated",
       rounded: true,
       timeout: 7500,
-      title: false, // "va.messages.error",
+      title: false, // "i18n.messages.error",
       visible: true 
     },
     info: {
@@ -35,7 +35,7 @@ export default  {
       variant: "elevated",
       rounded: true,
       timeout: 7500,
-      title: false, // "va.messages.info",
+      title: false, // "i18n.messages.info",
       visible: true
     },
     success: {
@@ -46,7 +46,7 @@ export default  {
       variant: "elevated",
       rounded: true,
       timeout: 7500,
-      title: false, // "va.messages.success",
+      title: false, // "i18n.messages.success",
       visible: true
     },
     warning: {
@@ -57,7 +57,7 @@ export default  {
       variant: "elevated",
       rounded: true,
       timeout: 7500,
-      title: false, // "va.messages.warning",
+      title: false, // "i18n.messages.warning",
       visible: true
     }
   }

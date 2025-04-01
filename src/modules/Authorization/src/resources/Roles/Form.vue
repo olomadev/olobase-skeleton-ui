@@ -86,7 +86,7 @@
 
   <v-dialog v-model="showAddUserDialog" max-width="600px">
     <v-card>
-      <v-card-title>Kullanıcı Seç</v-card-title>
+      <v-card-title>{{ $t('authorization.roles.users.dialog.title') }}</v-card-title>
       <v-card-text>
         <v-data-table-server
           :density="getDensity"
@@ -112,7 +112,7 @@
               v-model="q" 
               class="mt-2" 
               color="primary"
-              :label="$t('va.actions.q')"
+              :label="$t('i18n.actions.q')"
               hide-details
               clearable
             >

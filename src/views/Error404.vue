@@ -8,7 +8,7 @@
             404
           </div>
           <div class="h3 text-center">
-            {{ $t("error.404") }}
+            {{ $t("i18n.error.notFound") }}
           </div>
         </v-container>
       </v-card>

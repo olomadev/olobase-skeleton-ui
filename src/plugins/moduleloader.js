@@ -30,6 +30,7 @@ class ModuleLoader {
     this.app = app;
     this.pinia = app.config.globalProperties.$pinia;
     const defaultStore = app.config.globalProperties.$store;
+
     const moduleInstances = await Promise.all(this.modules.map(m => this.loadModule(m)));
 
     for (const [index, moduleInstance] of moduleInstances.entries()) {
@@ -46,10 +47,8 @@ class ModuleLoader {
         }
 
         // **Store Navigations**
-        if (typeof navigation.build === "function") {
+        if (navigation && typeof navigation.build === "function") {
           defaultStore.navigations.push(navigation);
-        } else {
-          console.error(`Invalid navigation function in module ${module.name}`);
         }
 
         // **Load Routes**
@@ -103,7 +102,7 @@ class ModuleLoader {
    */
   async loadModule(module) {
     try {
-      const moduleName = capitalize(module.name);
+      const moduleName = module.name;
       if (this.moduleCache[moduleName]) {
         return this.moduleCache[moduleName];
       }

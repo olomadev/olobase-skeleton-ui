@@ -5,7 +5,7 @@ export default {
     password: "Şifre",
   },
   buttons: {
-    signIn: { label: "Login" },
+    signIn: { label: "Giriş" },
     forgotPassword: { label: "Forgot Password" }
   },
   messages: {

@@ -96,7 +96,7 @@ export default {
       fields: [
         {
           source: "data-table-group",
-          label: this.$t("va.datatable.group"),
+          label: this.$t("i18n.datatable.group"),
           sortable: false,
         },
         {

@@ -35,7 +35,7 @@
           :loading="loading"
           type="submit"
         >
-          {{ $t("va.actions.save") }}
+          {{ $t("i18n.actions.save") }}
         </v-btn>
       </v-card-text>
     </v-card>

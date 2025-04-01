@@ -15,7 +15,7 @@
               <Flag :name="locale"></Flag>
             </v-img>
           </v-avatar>
-          <v-spacer>{{ $t(`languages.${locale}`) }}</v-spacer>
+          <v-spacer>{{ $t(`i18n.languages.${locale}`) }}</v-spacer>
           <v-icon small right>mdi-menu-down</v-icon>
         </v-btn>
       </template>
@@ -36,7 +36,7 @@
                 <Flag :name="lang"></Flag>
               </v-img>
             </v-avatar>
-            {{ $t(`languages.${lang}`) }}
+            {{ $t(`i18n.languages.${lang}`) }}
           </v-list-item-title>
         </v-list-item>
       </v-list>

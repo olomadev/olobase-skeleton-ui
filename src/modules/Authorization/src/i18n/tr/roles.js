@@ -8,7 +8,10 @@ export default {
       label: "Yetkiler"
     },
     users: {
-      label: "Kullanıcılar"
+      label: "Kullanıcılar",
+      dialog: {
+        title: "Kullanıcı Seç"
+      }
     }
   },
   fields: {

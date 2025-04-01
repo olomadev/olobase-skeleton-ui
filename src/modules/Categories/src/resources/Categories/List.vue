@@ -34,7 +34,7 @@
           style="margin-top:2px;"
           variant="outlined" 
           @click="addNode()">
-          {{ $t("va.actions.add") }}
+          {{ $t("i18n.actions.add") }}
         </v-btn>
       </v-col>
     </v-row>

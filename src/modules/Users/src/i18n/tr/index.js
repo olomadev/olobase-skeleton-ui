@@ -12,42 +12,42 @@ export default {
   users,
   login,
   logout: {
-    title: "Logout",
+    title: "Çıkış",
     menu: {
-      label: "Logout"
+      label: "Çıkış"
     }
   },
   forgotPassword: {
-    title: "Forgot Password",
+    title: "Şifremi Unuttum",
     buttons: {
-      resetMyPassword: "Reset Password",
-      backToLogin: "Back to Login"
+      resetMyPassword: "Şifre Sıfırlama",
+      backToLogin: "Girişe Dön"
     }
   },
   resetPassword: {
-    title: "Reset Password"
+    title: "Şifre Sıfırlama"
   },
   myAccount: {
-    title: "My Account",
+    title: "Hesabım",
     menu: {
-      label: "My Account"
+      label: "Hesabım"
     },
     fields: {
       avatar: {
-        set: "Set Avatar",
-        del: "Delete"
+        set: "Resim Yükle",
+        del: "Sil"
       }
     }
   },
   changePassword: {
-    title: "My Password",
+    title: "Şifrem",
     menu: {
-      label: "Change Password"
+      label: "Şifre değiştir"
     },
     fields: {
-      currentPassword: "Current Password",
-      newPassword: "New Password",
-      confirmPassword: "Confirm Password"
+      currentPassword: "Mevcut Şifre",
+      newPassword: "Yeni Şifre",
+      confirmPassword: "Şifreyi Onayla"
     }
   }
 };

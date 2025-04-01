@@ -86,7 +86,6 @@ export default defineConfig({
     // https://github.com/lokalise/lokalise-tutorials/blob/main/vue-3-i18n/vite.config.js
     VueI18nPlugin({
       runtimeOnly: false,
-      include: resolve(__dirname, './src/i18n/locales/**'),
     }),
   ],
   resolve: {

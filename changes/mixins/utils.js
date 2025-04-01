@@ -1,3 +1,4 @@
+import config from "@/_config";
 import i18nConfig from "@/modules/i18n/src/_config";
 
 /**
