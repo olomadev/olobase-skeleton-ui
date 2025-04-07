@@ -133,7 +133,7 @@
 import { useVuelidate } from "@vuelidate/core";
 import { required, maxLength, numeric } from "@vuelidate/validators";
 import utils from "olobase-admin/src/mixins/utils";
-import config from '@/_config'
+import config from '@/@config'
 import { provide } from 'vue'
 
 export default {

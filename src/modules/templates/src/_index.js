@@ -1,5 +1,5 @@
 export default {
-  name: "Categories",
+  name: "Templates",
   version: "1.0.0",
   install: async (app) => {
 
@@ -13,7 +13,7 @@ export default {
     // const { default: plugins } = await import("./plugins.js");
 
     // Install i18n messages
-    // const { default: i18n } = await import("./i18n.js");
+    const { default: i18n } = await import("./i18n.js");
 
     // Install resources
     const { default: resources } = await import("./resources/index.js");
@@ -24,7 +24,7 @@ export default {
     // };
 
     // Install navigation menu object
-    const { default: navigation } = await import("./_nav.js");
+    const { default: navigation } = await import("./@nav.js");
 
     // Install resource components
     const resourceComponents = {
@@ -32,7 +32,7 @@ export default {
     };
 
     return {
-      // i18n,
+      i18n,
       // stores,
       // routes,
       // plugins,

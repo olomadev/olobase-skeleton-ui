@@ -1,6 +1,6 @@
 import useStore from "@/store";
 import i18n from "./plugin";
-import i18nConfig from "./_config";
+import i18nConfig from "./@config";
 import cookies from "@/helpers/cookies";
 
 /**

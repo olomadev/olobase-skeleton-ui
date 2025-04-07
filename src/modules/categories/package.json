@@ -1,6 +1,5 @@
 {
   "name": "categories-module",
   "version": "1.0.0",
-  "main": "dist/categories-module.js",
   "type": "module"
 }

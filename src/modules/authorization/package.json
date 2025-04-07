@@ -1,7 +1,6 @@
 {
   "name": "Authorization",
   "version": "1.0.0",
-  "main": "dist/modules/Authorization/index.js",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -3,7 +3,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build:modules": "cross-env ENV=production bash bin/build-modules.sh",
     "dev": "cross-env ENV=development VITE_CJS_IGNORE_WARNING=true vite --host --mode dev",
     "build": "cross-env ENV=production VITE_CJS_IGNORE_WARNING=true vite build --mode prod",
     "preview": "VITE_CJS_IGNORE_WARNING=true vite preview",

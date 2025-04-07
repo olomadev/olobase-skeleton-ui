@@ -12,7 +12,7 @@ export default {
   },
   v,
   form: {
-    saved: "Saved sucessfully"
+    saved: "Saved successfully"
   },
   error: {
     notFound: "Page not found",

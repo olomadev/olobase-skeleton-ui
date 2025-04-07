@@ -9,7 +9,7 @@
 import "vuetify/styles";
 
 // Translations provided by Vuetify
-import i18Config from "../_config";
+import i18Config from "../@config";
 import Translation from "../translation";
 import { en, tr } from "vuetify/locale";
 import { aliases, mdi } from 'vuetify/iconsets/mdi';

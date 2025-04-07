@@ -20,11 +20,6 @@ import axios from "@/helpers/axios";
 // Register default locale for backend api
 axios.defaults.headers.common['X-Client-Locale'] = i18n.global.locale.value;
 
-
-import _en from "../locales/en.js";
-
-console.error(_en);
-
 /**
  * Register app plugins
  */

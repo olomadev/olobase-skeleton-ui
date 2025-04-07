@@ -1,7 +1,5 @@
-import { i18n, loadI18nMessages } from "@/helpers/i18n";
-
 export default {
-  name: "Users",
+  name: "Authentication",
   version: "1.0.0",
   install: async (app) => {
 
@@ -12,10 +10,10 @@ export default {
     const { default: routes } = await import("./routes.js");
 
     // Install plugins
-    // const { default: plugins } = await import("./plugins.js");
+    // const { default: routes } = await import("./plugins.js");
 
     // Install i18n messages
-    i18n.messages = await loadI18nMessages("users", import.meta.glob('./i18n/*/index.js'));
+    // const { default: i18n } = await import("./i18n.js");
 
     // Install resources
     const { default: resources } = await import("./resources/index.js");
@@ -25,20 +23,15 @@ export default {
     //   ComponentName: () => import("./components/ComponentName.vue")
     // };
 
-    // Install navigation menu object
-    const { default: navigation } = await import("./_nav.js");
+    const { default: navigation } = await import("./@nav.js");
 
     // Install resource components
     const resourceComponents = {
-      "UsersCreate": () => import("./resources/Users/Create.vue"),
-      "UsersEdit": () => import("./resources/Users/Edit.vue"),
-      "UsersForm": () => import("./resources/Users/Form.vue"),
-      "UsersList": () => import("./resources/Users/List.vue"),
-      "UsersShow": () => import("./resources/Users/Show.vue"),
+      "AuthenticationFailedLoginsList": () => import("./resources/FailedLogins/List.vue"),
     };
 
     return {
-      i18n,
+      // i18n,
       // stores,
       routes,
       // plugins,

@@ -43,7 +43,7 @@
         :rounded="rounded"
         :showAdjacentMonths="showAdjacentMonths"
         :showWeek="showWeek"
-        :title="$t('va.datepicker.title')"
+        :title="$t('i18n.datepicker.title')"
         :hide-actions="hideActions"
         :hide-weekdays="hideWeekdays"
         :input-placeholder="inputPlaceholder"
@@ -54,8 +54,8 @@
         :modelValue="getDate"
         @update:modelValue="updateDate"
         @change="change"
-        :cancel-text="$t('va.datepicker.cancel')"
-        :ok-text="$t('va.datepicker.select')"
+        :cancel-text="$t('i18n.datepicker.cancel')"
+        :ok-text="$t('i18n.datepicker.select')"
       ></v-date-picker>
       </v-locale-provider>
     </v-menu>
@@ -63,7 +63,7 @@
 </template>
 
 <script>
-import i18nConfig from "@/modules/i18n/src/_config";
+import i18nConfig from "@/modules/i18n/src/@config";
 import Input from "../../../mixins/input";
 
 /**

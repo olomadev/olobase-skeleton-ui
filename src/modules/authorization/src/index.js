@@ -1,5 +1,7 @@
+import { i18n, loadI18nMessages } from "@/helpers/i18n";
+
 export default {
-  name: "Templates",
+  name: "Authorization",
   version: "1.0.0",
   install: async (app) => {
 
@@ -13,7 +15,7 @@ export default {
     // const { default: plugins } = await import("./plugins.js");
 
     // Install i18n messages
-    const { default: i18n } = await import("./i18n.js");
+    i18n.messages = await loadI18nMessages("authorization", import.meta.glob('./i18n/*/index.js'));
 
     // Install resources
     const { default: resources } = await import("./resources/index.js");
@@ -24,11 +26,15 @@ export default {
     // };
 
     // Install navigation menu object
-    const { default: navigation } = await import("./_nav.js");
+    const { default: navigation } = await import("./@nav.js");
 
     // Install resource components
     const resourceComponents = {
-      "CategoriesList": () => import("./resources/Categories/List.vue"),
+      "AuthorizationRolesCreate": () => import("./resources/Roles/Create.vue"),
+      "AuthorizationRolesEdit": () => import("./resources/Roles/Edit.vue"),
+      "AuthorizationRolesForm": () => import("./resources/Roles/Form.vue"),
+      "AuthorizationRolesList": () => import("./resources/Roles/List.vue"),
+      "AuthorizationPermissionsList": () => import("./resources/Permissions/List.vue"),
     };
 
     return {

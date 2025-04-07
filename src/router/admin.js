@@ -2,7 +2,7 @@ import i18n from "@/modules/i18n/src/plugin";
 
 export default {
   path: "",
-  component:() => import("@/modules/Users/src/layouts/Admin.vue"),
+  component:() => import("@/modules/users/src/layouts/Admin.vue"),
   meta: {
     title: () => "Home" // i18n.global.t("routes.home"),
   },

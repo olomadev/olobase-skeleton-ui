@@ -9,13 +9,12 @@
  */
 import OlobaseAdmin from "olobase-admin";
 import router from "@/router";
-import config from "@/_config";
+import config from "@/@config";
 import routes from "@/router/admin";
 import {
   jsonServerDataProvider,
   jwtAuthProvider,
 } from "olobase-admin/src/providers";
-import { en, tr } from "olobase-admin/src/locales";
 
 // How to write a plugin for vue 3 !
 // @see
@@ -38,7 +37,7 @@ export default {
       downloadUrl: "/files/findOneById/",
       readFileUrl: "/files/readOneById/",
       routes,
-      locales: { en, tr },
+      locales: {  },
       dataProvider: jsonServerDataProvider(http),
       authProvider: jwtAuthProvider(http),
       http,
