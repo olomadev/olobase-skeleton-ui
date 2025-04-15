@@ -102,7 +102,7 @@ class ModuleLoader {
    */
   async loadModule(module) {
     try {
-      const moduleName = module.name.toLowerCase();
+      const moduleName = module.uiName;
       if (this.moduleCache[moduleName]) {
         return this.moduleCache[moduleName];
       }
