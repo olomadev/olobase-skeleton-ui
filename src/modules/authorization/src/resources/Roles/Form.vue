@@ -86,7 +86,7 @@
 
   <v-dialog v-model="showAddUserDialog" max-width="600px">
     <v-card>
-      <v-card-title>{{ $t('authorization.roles.users.dialog.title') }}</v-card-title>
+      <v-card-title>{{ $t('authorization.roles.tabs.users.dialog.title') }}</v-card-title>
       <v-card-text>
         <v-data-table-server
           :density="getDensity"
