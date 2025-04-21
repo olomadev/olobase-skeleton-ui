@@ -154,9 +154,6 @@ span.circle {
 /*      box-shadow: none !important;*/
     box-shadow: 0px 3px 1px -2px var(--v-shadow-key-umbra-opacity, rgba(0, 0, 0, 0.2)), 0px 0px 0px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.10)), 0px 1px 5px 0px var(--v-shadow-key-penumbra-opacity, rgba(0, 0, 0, 0.10)) !important;
 }
-.v-btn-group--density-default {
-  height: calc(var(--v-btn-height) + 10px) !important;
-}
 /* select option padding & height */
 .v-list-item--density-default.v-list-item--one-line {
     min-height: 38px !important;
