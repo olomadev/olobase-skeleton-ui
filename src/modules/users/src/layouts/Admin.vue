@@ -72,10 +72,6 @@
         </va-app-bar>
       </template>
 
-      <template #aside>
-        <va-aside></va-aside>
-      </template>
-
       <template #footer>
         <va-footer 
           :key="getCurrentLocale" 
