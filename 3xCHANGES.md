@@ -93,5 +93,6 @@ groupByArray: {
     </va-data-table-server>
 
 - added  disableUnsavedFormDialog prop to Form provider.
+- added listQuery feature to Form provider, edit button save lastest list queries to localStorage then form provider read it if it's available.
 
     
