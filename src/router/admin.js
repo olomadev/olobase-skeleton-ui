@@ -14,13 +14,6 @@ export default {
       meta: {
         title: () => "API" // i18n.global.t("menu.api"),
       },
-    },
-    {
-      path: "*",
-      component:() => import("@/views/Error404.vue"),
-      meta: {
-        title: () => "Dashboard", // i18n.global.t("routes.notFound"),
-      },
     }
   ],
 };
