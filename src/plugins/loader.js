@@ -7,6 +7,7 @@
  */
 import PortalVue from "portal-vue";
 import UnsavedFormDialog from "../components/UnsavedFormDialog.vue";
+import PageNotFound from "@/views/Error404.vue";
 
 /**
  * Dynamic vuetify components
@@ -23,6 +24,10 @@ export default {
      */
     app.use(PortalVue);
     /**
+     * 404 Not found component
+     */
+    app.component("PageNotFound", PageNotFound);
+    /**
      * Register global modal
      */
     app.component('UnsavedFormDialog', UnsavedFormDialog);
@@ -31,7 +36,6 @@ export default {
      */
     app.component("VAutocomplete", VAutocomplete);
     app.component("VCombobox", VCombobox);
-
     /**
      * Load all module loaders dynamically
      */
