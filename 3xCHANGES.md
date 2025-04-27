@@ -94,5 +94,15 @@ groupByArray: {
 
 - added  disableUnsavedFormDialog prop to Form provider.
 - added listQuery feature to Form provider, edit button save lastest list queries to localStorage then form provider read it if it's available.
+- added path redirect support
 
-    
+    editIntake(intake) {
+      //  
+      //  store list redirect query params we will use it for save
+      //  operations which is located
+      //  in form provider / this.formState.submit(redirect?querParams)
+      //  
+      localStorage.setItem("path", this.$route.path);
+      localStorage.setItem("listQuery", JSON.stringify(this.$route.query));
+      this.$router.push("/intakes/" + intake.id + "/edit");
+    },
