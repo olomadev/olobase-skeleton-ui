@@ -106,3 +106,6 @@ groupByArray: {
       localStorage.setItem("listQuery", JSON.stringify(this.$route.query));
       this.$router.push("/intakes/" + intake.id + "/edit");
     },
+
+- added loadCurrentItems to autcompleter input
+- added prepend logo feature to all input filters
