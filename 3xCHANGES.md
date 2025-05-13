@@ -109,3 +109,11 @@ groupByArray: {
 
 - added loadCurrentItems to autcompleter input
 - added prepend logo feature to all input filters
+- Added readable option to each fields in DataTableServer.vue
+
+        {
+          source: "updatedAt",
+          type: "date",
+          readable: true,
+          sortable: true,
+        },
