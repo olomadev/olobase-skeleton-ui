@@ -117,3 +117,5 @@ groupByArray: {
           readable: true,
           sortable: true,
         },
+- Added DateTimeField.vue into fields, updated component index.js file
+
