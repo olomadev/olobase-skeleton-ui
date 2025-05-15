@@ -9,6 +9,7 @@ import { defineConfig } from 'vite'
 import { fileURLToPath, URL } from 'node:url'
 import { resolve, dirname } from 'node:path'
 
+const timestamp = Date.now();
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // https://vitejs.dev/config/
@@ -43,8 +44,9 @@ export default defineConfig({
           vue: 'Vue', // Vue.js global değişkenini tanımla
         },
         format: 'es',
-        chunkFileNames: 'chunks/[name].js',
-        assetFileNames: 'assets/[name].[ext]',
+        entryFileNames: `assets/[name]-${timestamp}.js`,
+        chunkFileNames: `chunks/[name]-${timestamp}.js`,
+        assetFileNames: `assets/[name]-${timestamp}.[ext]`,      
         manualChunks(id) {
           if (id.includes('src/modules/')) {
             const moduleName = id.split('src/modules/')[1].split('/')[0]; // 'Users', 'Authentication' gibi
