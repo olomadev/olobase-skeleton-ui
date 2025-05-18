@@ -2,6 +2,7 @@
 import i18n from "@/modules/i18n/src/plugin";
 import { createRouter, createWebHistory } from "vue-router";
 import useAuth from "olobase-admin/src/store/auth";
+import Translation from "@/modules/i18n/src/translation";
 
 const routes = [
   {
@@ -32,14 +33,22 @@ const router = createRouter({
 
 // Kullanıcı girişi yapılmamışsa login sayfasına yönlendir
 router.beforeEach(async (to, from, next) => {
-
+  /**
+   * Set default locale
+   */
+  const lang = Translation.guessDefaultLocale();
+  if (lang && Translation.supportedLocales.includes(lang)) { // assign browser language
+    await Translation.switchLanguage(lang);
+  }
+  /**
+   * Check authentication
+   */
   const auth = useAuth();
   const isAuthenticated = await auth.checkAuth();
 
   if (to.meta?.auth && !isAuthenticated) {
     return next({ name: "users_login" });
   }
-
   next();
 });
 
