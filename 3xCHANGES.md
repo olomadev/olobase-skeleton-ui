@@ -119,4 +119,6 @@ groupByArray: {
         },
 - Added DateTimeField.vue into fields, updated component index.js file
 - Added hideDetails prop to DateInput.vue
+- Added hideMarginBottom prop to DateInput.vue.
+- Added hideMarginBottom prop to InputFilter.vue
 
