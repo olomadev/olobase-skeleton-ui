@@ -25,7 +25,7 @@
     "vue-plugin-load-script": "^2.1.1",
     "vue-router": "^4.2.5",
     "vue3-draggable-next": "^4.1.4",
-    "vuetify": "^3.7.14",
+    "vuetify": "^3.8.11",
     "webfontloader": "^1.0.0"
   },
   "devDependencies": {

@@ -34,8 +34,6 @@ export default {
       resources,
       store,
       i18n,
-      downloadUrl: "/files/findOneById/",
-      readFileUrl: "/files/readOneById/",
       routes,
       locales: {  },
       dataProvider: jsonServerDataProvider(http),
